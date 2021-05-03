@@ -1,0 +1,8 @@
+## Il connaît l'histoire, le projet et les gens.
+
+
+Tout a commencé en 2017, lorsque Fulvio, architecte, illustrateur et artiste, a eu l'idée de raconter une histoire à travers ses peintures murales. Grâce au Fonds compétitif MEC, nous avons ouvert le premier récit Un Silencio Bárbaro deux ans plus tard, dans le quartier de Palerme à Montevideo. Plus de 30 professionnels et techniciens (écrivains, muralistes, musiciens, animateurs, etc.) ont travaillé à la création de ce projet.
+
+Plus de 500 téléchargements ont été effectués, atteignant en quelques mois environ 3 000 visites parmi les voisins, les touristes, les écoles et les personnes âgées du plan Ibirapitá. En 2019, nous avons obtenu le soutien de l'ANII pour améliorer le PPP et faire connaître son potentiel dans différents secteurs (technologie, tourisme et industries créatives). Nous nous sommes fait connaître, et nous avons donc fait une nouvelle histoire et un nouveau circuit dans la ville de Salto, avec le ministère du tourisme en collaboration avec la mairie de Salto pour le programme Corridor des oiseaux peints.
+
+Nous avons eu des répercussions dans les médias nationaux et internationaux, nous avons été qualifiés d'expérience culturelle et touristique, où les enfants, les jeunes et les adultes peuvent vivre et se rapprocher de l'art, du patrimoine et de la technologie. Dans cette section, vous trouverez certains des communiqués de presse. 

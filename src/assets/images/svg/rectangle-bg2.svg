@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1864px" height="1160px" viewBox="0 0 1864 1160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group Copy</title>
+    <defs>
+        <rect id="Group Copy--path-1" x="-1.66681017e-13" y="0" width="1861.66526" height="1158"></rect>
+        <path d="M71.4001538,2086.68806 C2.96969653,1693.353 -16.2745167,1294.056 13.6759842,888.77155 L571.698878,0 C1112.5104,160.844849 1689.66739,384.209288 2284.25599,637.604562 C2345.79173,1036.56987 2332.43428,1490.80858 2284.25599,1970.76614 C2131.11542,2235.37088 1923.24911,2458.82037 1668.50892,2647 L71.4001538,2086.68806 Z" id="Group Copy--path-3"></path>
+        <path d="M32.6398342,954.712141 C1.35756574,774.910321 -7.43972527,592.383171 6.25183327,407.119027 L261.346168,0.842648323 C508.572503,74.3682498 772.413792,176.472886 1044.22375,292.305255 C1072.35418,474.680782 1066.24796,682.322959 1044.22375,901.721767 C974.217143,1022.67822 879.193235,1124.82174 762.741419,1210.84265 L32.6398342,954.712141 Z" id="Group Copy--path-5"></path>
+    </defs>
+    <g id="Group Copy--simbolos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group Copy--Group-Copy" transform="translate(1.000000, 1.000000)">
+            <g id="Group Copy--path6-+-Mask4-+-path4-+-Mask6-Mask">
+                <mask id="Group Copy--mask-2" fill="white">
+                    <use xlink:href="#Group Copy--path-1"></use>
+                </mask>
+                <use id="Group Copy--Mask" fill="#357591" xlink:href="#Group Copy--path-1"></use>
+                <g id="Group Copy--Group" mask="url(#Group Copy--mask-2)">
+                    <g transform="translate(712.000000, -623.000000)" id="Group Copy--path1">
+                        <mask id="Group Copy--mask-4" fill="white">
+                            <use xlink:href="#Group Copy--path-3"></use>
+                        </mask>
+                        <use id="Group Copy--Mask1" fill="#897B73" xlink:href="#Group Copy--path-3"></use>
+                    </g>
+                </g>
+                <g id="Group Copy--path1" mask="url(#Group Copy--mask-2)">
+                    <g transform="translate(995.000000, -318.842648)">
+                        <mask id="Group Copy--mask-6" fill="white">
+                            <use xlink:href="#Group Copy--path-5"></use>
+                        </mask>
+                        <use id="Group Copy--Mask1" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.566662016" xlink:href="#Group Copy--path-5"></use>
+                    </g>
+                </g>
+                <g id="Group Copy--Group" mask="url(#Group Copy--mask-2)">
+                    <g transform="translate(-839.000000, -593.000000)" id="Group Copy--path5">
+                        <path d="M1521.90232,1446.77869 C1334.26202,1633.86802 38.0405951,1458.51087 2.47591025,1346.54235 C-57.2460391,1158.51779 981.509971,-34.9273435 1167.34976,0.785197315 C1278.14744,47.5139959 1624.42277,1244.14533 1521.90232,1446.77869 L1521.90232,1446.77869 Z" id="Group Copy--Mask5" fill="#339D66"></path>
+                    </g>
+                </g>
+                <g id="Group Copy--path5" mask="url(#Group Copy--mask-2)" opacity="0.537737165" stroke="#FEFEFE">
+                    <g transform="translate(-610.000000, -478.000000)" id="Group Copy--Mask5">
+                        <path d="M1521.90232,1446.77869 C1334.26202,1633.86802 38.0405951,1458.51087 2.47591025,1346.54235 C-57.2460391,1158.51779 981.509971,-34.9273435 1167.34976,0.785197315 C1278.14744,47.5139959 1624.42277,1244.14533 1521.90232,1446.77869 L1521.90232,1446.77869 Z"></path>
+                    </g>
+                </g>
+            </g>
+            <rect id="Group Copy--Rectangle" stroke="#979797" x="0" y="0" width="1861.66526" height="1158"></rect>
+        </g>
+    </g>
+</svg>

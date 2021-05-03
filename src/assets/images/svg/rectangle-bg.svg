@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1864px" height="1160px" viewBox="0 0 1864 1160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Rectangle 2</title>
+    <defs>
+        <rect id="Rectangle 2--path-1" x="-1.66681017e-13" y="0" width="1861.66526" height="1158"></rect>
+    </defs>
+    <g id="Rectangle 2--simbolos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Rectangle 2--Group" transform="translate(1.000000, 1.000000)">
+            <g id="Rectangle 2--path6-+-Mask4-+-path4-+-Mask6-Mask">
+                <mask id="Rectangle 2--mask-2" fill="white">
+                    <use xlink:href="#Rectangle 2--path-1"></use>
+                </mask>
+                <use id="Rectangle 2--Mask" fill="#AB514E" xlink:href="#Rectangle 2--path-1"></use>
+                <g id="Rectangle 2--Group" mask="url(#Rectangle 2--mask-2)">
+                    <g transform="translate(-227.251969, -90.881013)" id="Rectangle 2--path6">
+                        <path d="M1292.74132,1119.6891 C966.346402,1251.80858 561.780555,1329.1291 137.366136,1392.53165 C32.7693869,1031.73282 5.66316586,550.791091 -5.65433297e-13,36.6291935 C343.191975,-6.40967555 703.373447,-9.53825146 1076.14584,16.9010083 C1190.04833,353.264819 1258.2125,723.882346 1292.74132,1119.6891 Z" id="Rectangle 2--Mask4" fill="#E0A103"></path>
+                    </g>
+                </g>
+                <path d="M1401.2358,347.200492 C1074.84089,479.319973 670.275043,556.640492 245.860624,620.043038 C141.263875,259.244211 114.157654,-221.697517 108.494488,-735.859414 C451.686463,-778.898283 811.867935,-782.026859 1184.64033,-755.587599 C1298.54281,-419.223788 1366.70699,-48.6062615 1401.2358,347.200492 Z" id="Rectangle 2--Mask4" stroke="#FFFFFF" fill-opacity="0" fill="#FFFFFF" opacity="0.699242001" mask="url(#Rectangle 2--mask-2)"></path>
+                <g id="Rectangle 2--Group" mask="url(#Rectangle 2--mask-2)">
+                    <g transform="translate(1127.462992, -61.564557)" id="Rectangle 2--path4">
+                        <path d="M8.36996689,1258.35248 C-25.1424051,1091.19759 50.5774414,496.719352 84.0898134,172.02775 L357.322637,0 C622.173664,68.3539478 1118.01068,295.522174 1482.63371,550.504125 C1519.32522,658.453058 1548.55984,781.683584 1548.55984,929.414729 C1473.56248,1041.86333 944.194868,1363.21519 733.915399,1363.21519 L8.36996689,1258.35248 Z" id="Rectangle 2--Mask6" fill="#893E4E"></path>
+                    </g>
+                </g>
+                <path d="M1486.24083,1337.50691 C1452.72846,1170.35202 1528.44831,575.873782 1561.96068,251.18218 L1835.1935,79.1544304 C2100.04453,147.508378 2595.88155,374.676604 2960.50458,629.658555 C2997.19609,737.607489 3026.43071,860.838014 3026.43071,1008.56916 C2951.43335,1121.01776 2422.06573,1442.36962 2211.78627,1442.36962 L1486.24083,1337.50691 Z" id="Rectangle 2--Mask6" stroke-opacity="0.477873689" stroke="#FFFFFF" mask="url(#Rectangle 2--mask-2)"></path>
+            </g>
+            <rect id="Rectangle 2--Rectangle" stroke="#979797" x="0" y="0" width="1861.66526" height="1158"></rect>
+        </g>
+    </g>
+</svg>

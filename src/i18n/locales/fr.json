@@ -1,0 +1,199 @@
+{
+  "article": {
+    "categories": "Les catégories",
+    "cid": "CID",
+    "content": "Contenu",
+    "header": "Intestazione",
+    "header_image": "Image d'en-tête",
+    "lang": "Langage",
+    "title": "Titre"
+  },
+  "board": {
+    "categories": "",
+    "cid": "",
+    "content": "",
+    "header": "",
+    "header_image": "",
+    "lang": "",
+    "title": ""
+  },
+  "collaborate": {
+    "title": ""
+  },
+  "contact": {
+    "email": "Courrier électronique",
+    "name": "Prénom et nom de famille",
+    "phone": "Numéro de téléphone de contact"
+  },
+  "create": {
+    "community_we_are": "Nous sommes des artistes qui aiment travailler avec d'autres artistes.",
+    "community_we_create": "Nous créons des histoires avec des parcours originaux inspirés par divers éléments de la culture locale. Chaque histoire nécessite la collaboration de nombreuses professions telles que les écrivains, les scénaristes, les muralistes, les sculpteurs, les graphistes, les animateurs, les musiciens, les conteurs, les concepteurs audiovisuels, les communicateurs et les gestionnaires. Ensemble, nous traitons, concevons, créons et optimisons toutes sortes de contenus qui composent l'expérience.",
+    "joinus_header": "¿Vous voulez faire partie d'une équipe de créateurs multidisciplinaires, innovants et passionnés ? BooksOnWall, c'est votre place !",
+    "wokshop_header": "Le monde est plein d'histoires qui attendent d'être racontées et nous voulons le faire d'une manière très spéciale.",
+    "wokshop_subheader": "Créons ensemble une histoire enrichie !",
+    "workshop_by_step": "¿Voulez-vous créer un conte dans votre ville ? Nous pouvons guider et suivre le processus étape par étape, nous connecter avec nous.",
+    "workshop_stories": "Ateliers pour créer un conte BooksOnWall"
+  },
+  "dashboard": {
+    "articles": "Articles",
+    "dashboard": "Tableau de bord",
+    "faqs": "FAQ",
+    "kanban": "Kanban",
+    "masonry": "Masoney",
+    "members": "Membres",
+    "organisations": "Organisations",
+    "projects": "Projets",
+    "propositions": "Devis",
+    "stories": "Contes",
+    "storytelling": "StoryTelling",
+    "tasks": "Tâches",
+    "translations": "Traductions"
+  },
+  "event": {
+    "city": "Ville",
+    "country": "Pays",
+    "description": "Description",
+    "end": "Fin",
+    "geometry": "Geometry",
+    "name": "Nom",
+    "participant": "Participant",
+    "place": "Lieu",
+    "project": "Projet",
+    "public": "Public",
+    "start": "Début",
+    "type": "Type"
+  },
+  "explore": {
+    "header": "\"Vivez une histoire à travers l'art urbain et les nouvelles technologies!",
+    "subheader": "Téléchargez \"BookSonWall APP\" pour profiter des histoires et découvrir l'art urbain et la réalité augmentée."
+  },
+  "faq": {
+    "categories": "Catégories",
+    "cid": "CID",
+    "content": "Contenu",
+    "header": "Entête",
+    "header_image": "Image d'en-tête",
+    "lang": "Langage",
+    "title": "Titre"
+  },
+  "home": {
+    "take_a_tour": "Faites un tour de ville avec l'application BooksOnWall (lien), vivez une expérience hypermédia et vivez une histoire à travers l'art urbain!",
+    "title": "Art et culture urbains",
+    "we_are": "Nous sommes un collectif artistique qui raconte des histoires dans le monde entier. Nous connectons les gens à leurs territoires et réévaluons leurs propres récits grâce à l'art et aux technologies numériques."
+  },
+  "lang": {
+    "english": "English",
+    "french": "French",
+    "italian": "Italian",
+    "portuguese": "Português",
+    "spanish": "Español"
+  },
+  "login": {
+    "email": "Courrier électronique",
+    "password": "Mot de passe"
+  },
+  "member": {
+    "aka": "alias",
+    "bio": "Bio",
+    "cid": "CID",
+    "cv": "Expérience",
+    "email": "Email",
+    "facebook": "Facebook",
+    "flag": "Drapeau",
+    "instagram": "Instagram",
+    "lang": "Langage",
+    "name": "Nom",
+    "phone": "Téléphone",
+    "projects": "Projets",
+    "skills": "Talents",
+    "telegram": "Telegram",
+    "twitter": "Twitter",
+    "website": "Website",
+    "whatsapp": "whatsapp"
+  },
+  "menu": {
+    "associate": "Rejoignez",
+    "collaborate": "Collaborez",
+    "community": "Communautée",
+    "connect": "Connectez-vous!",
+    "create": "Créee",
+    "develop": "Developer + innover",
+    "download_app": "Téléchargez BookSonWall APP",
+    "explore": "Explorer",
+    "faqs": "FAQ",
+    "history": "Contes",
+    "info": "Informations",
+    "joinus": "Rejoignez nous",
+    "login": "S'identifier",
+    "manifest": "Manifeste",
+    "press": "Imprensa",
+    "stories": "Histoires",
+    "support": "Soutient un conte",
+    "workshop": "Atelier"
+  },
+  "org": {
+    "comments": "Commentaires",
+    "contact_email": "Email du contact",
+    "contact_name": "Nom du contact",
+    "contact_title": "Titre du contact",
+    "country": "Pays",
+    "logo": "Logo",
+    "name": "Nom",
+    "organisation_type": "Type d'organisation"
+  },
+  "project": {
+    "cid": "CID",
+    "description": "Description",
+    "end": "Date de fin",
+    "header_image": "Image d'en-tête",
+    "lang": "Langage",
+    "name": "Nom",
+    "project_step": "Étape du projet",
+    "start": "Date de début",
+    "website": "Site Internet",
+    "website_icon": "Icône de site Web"
+  },
+  "proposition": {
+    "comments": "",
+    "contact_email": "",
+    "contact_name": "",
+    "contact_title": "",
+    "country": "",
+    "logo": "",
+    "name": "",
+    "propositionanisation_type": ""
+  },
+  "story": {
+    "categories": "Catégories",
+    "cid": "CID",
+    "gallery": "Galerie",
+    "header_image": "Image d'en-tête",
+    "lang": "Langage",
+    "name": "",
+    "sponsors": "Sponsors",
+    "story_content": "Contenu",
+    "story_header": "Entête"
+  },
+  "task": {
+    "cid": "",
+    "description": "",
+    "end_date": "",
+    "from": "",
+    "lang": "",
+    "name": "",
+    "progress": "",
+    "project": "",
+    "start_date": "",
+    "to": ""
+  },
+  "uploadFile": {
+    "default": "",
+    "is_drag_active": "",
+    "is_drag_reject": ""
+  },
+  "uploadImage": {
+    "default": "Faites glisser et déposez certains fichiers ici, ou cliquez pour sélectionner des fichiers",
+    "is_drag_active": "Cliquez ici ou déposez un fichier à télécharger!",
+    "is_drag_reject": "Type de fichier non accepté, désolé!"
+  }
+}
