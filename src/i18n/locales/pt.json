@@ -1,22 +1,4 @@
 {
-  "article": {
-    "categories": "Categorias",
-    "cid": "CID",
-    "content": "Conteúdo",
-    "header": "Cabeçalho",
-    "header_image": "Imagem de cabeçalho",
-    "lang": "Língua",
-    "title": "Título"
-  },
-  "board": {
-    "categories": "",
-    "cid": "",
-    "content": "",
-    "header": "",
-    "header_image": "",
-    "lang": "",
-    "title": ""
-  },
   "collaborate": {
     "title": ""
   },
@@ -25,61 +7,16 @@
     "name": "Nome e apelido",
     "phone": "Número de telefone de contacto"
   },
-  "create": {
-    "community_we_are": "Nós somos artistas que adoram trabalhar com outros artistas.",
-    "community_we_create": "Criamos estórias com percursos originais inspirados em vários elementos da cultura local. Cada estória requer a colaboração de numerosas profissões, tais como escritores, argumentistas, muralistas, escultores, designers gráficos, animadores, músicos, contadores de estórias, designers audiovisuais, comunicadores e gestores. Juntos processamos, desenhamos, criamos e optimizamos todo o tipo de conteúdos que compõem a experiência.",
-    "joinus_header": "¿Queres fazer parte de uma equipa de criadores multidisciplinares, inovadores e apaixonados? BooksOnWall é o seu lugar!",
-    "wokshop_header": "O mundo está cheio de histórias à espera de serem contadas e nós queremos fazê-lo de uma forma muito especial.",
-    "wokshop_subheader": "Vamos criar juntos uma estória aumentada!",
-    "workshop_by_step": "¿Você quer criar um conto na sua cidade? Podemos guiar e acompanhar o processo passo a passo, liga-te a nós.",
-    "workshop_stories": "Workshops para criar um conto BooksOnWall"
-  },
-  "dashboard": {
-    "articles": "Artigos",
-    "dashboard": "Painel de controle",
-    "faqs": "Perguntas frequentes",
-    "kanban": "",
-    "masonry": "",
-    "members": "Membros",
-    "organisations": "",
-    "projects": "Projetos",
-    "propositions": "",
-    "stories": "Histórias",
-    "storytelling": "",
-    "tasks": "",
-    "translations": ""
-  },
-  "event": {
-    "city": "",
-    "country": "",
-    "description": "",
-    "end": "",
-    "geometry": "",
-    "name": "",
-    "participant": "",
-    "place": "",
-    "project": "",
-    "public": "",
-    "start": "",
-    "type": ""
-  },
   "explore": {
     "header": "Vive uma estória através da arte urbana e de novas tecnologias!",
     "subheader": "Descarrega \"BookSonWall APP\" para apreciar as histórias e experimentar a arte urbana e a realidade aumentada."
   },
-  "faq": {
-    "categories": "Categorias",
-    "cid": "CID",
-    "content": "Conteúdo",
-    "header": "Cabeçalho",
-    "header_image": "Imagem de cabeçalho",
-    "lang": "Língua",
-    "title": "Título"
-  },
   "home": {
+    "enjoy_the_experience": "",
     "take_a_tour": "¡Faz um percurso pela cidade com a aplicação BooksOnWall (link), desfruta de uma experiência hipermédia e vive uma estória através da arte urbana!",
     "title": "Arte e cultura urbana",
-    "we_are": "Somos um colectivo artístico que conta estórias em todo o mundo. Ligamos as pessoas aos seus territórios e revalorizamos as suas próprias narrativas através da arte e de tecnologias digitais."
+    "we_are": "Somos um colectivo artístico que conta estórias em todo o mundo. Ligamos as pessoas aos seus territórios e revalorizamos as suas próprias narrativas através da arte e de tecnologias digitais.",
+    "we_connet": ""
   },
   "lang": {
     "english": "English",
@@ -91,25 +28,6 @@
   "login": {
     "email": "Correio",
     "password": "Senha"
-  },
-  "member": {
-    "aka": "",
-    "bio": "Bio",
-    "cid": "CID",
-    "cv": "Experiência",
-    "email": "",
-    "facebook": "",
-    "flag": "",
-    "instagram": "",
-    "lang": "Língua",
-    "name": "Nome",
-    "phone": "",
-    "projects": "",
-    "skills": "",
-    "telegram": "",
-    "twitter": "",
-    "website": "",
-    "whatsapp": ""
   },
   "menu": {
     "associate": "Junte-se",
@@ -130,70 +48,5 @@
     "stories": "Histórias",
     "support": "Apoie uma história",
     "workshop": "Workshop"
-  },
-  "org": {
-    "comments": "",
-    "contact_email": "",
-    "contact_name": "",
-    "contact_title": "",
-    "country": "",
-    "logo": "",
-    "name": "Nome",
-    "organisation_type": ""
-  },
-  "project": {
-    "cid": "CID",
-    "description": "Descrição",
-    "end": "Data final",
-    "header_image": "Imagem de cabeçalho",
-    "lang": "Língua",
-    "name": "Nome",
-    "project_step": "Etapa do projeto",
-    "start": "Data de início",
-    "website": "Local na rede Internet",
-    "website_icon": "Ícone do site"
-  },
-  "proposition": {
-    "comments": "",
-    "contact_email": "",
-    "contact_name": "",
-    "contact_title": "",
-    "country": "",
-    "logo": "",
-    "name": "",
-    "propositionanisation_type": ""
-  },
-  "story": {
-    "categories": "Categorias",
-    "cid": "CID",
-    "gallery": "Galeria",
-    "header_image": "Imagem de cabeçalho",
-    "lang": "Língua",
-    "name": "",
-    "sponsors": "Patrocinadores",
-    "story_content": "Conteúdo",
-    "story_header": "Cabeçalho"
-  },
-  "task": {
-    "cid": "",
-    "description": "",
-    "end_date": "",
-    "from": "",
-    "lang": "",
-    "name": "",
-    "progress": "",
-    "project": "",
-    "start_date": "",
-    "to": ""
-  },
-  "uploadFile": {
-    "default": "",
-    "is_drag_active": "",
-    "is_drag_reject": ""
-  },
-  "uploadImage": {
-    "default": "Arraste e solte alguns arquivos aqui ou clique para selecionar os arquivos",
-    "is_drag_active": "Clique aqui ou solte um arquivo para fazer o upload!",
-    "is_drag_reject": "Tipo de arquivo não aceito, desculpe!"
   }
 }
