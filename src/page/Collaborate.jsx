@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     backgroundSize: 'cover',
     backgroundPositionY: 'center',
-    backgroundImage: `url(${Images.image22})`,
+    backgroundImage: `url(${Images.image22.default})`,
   },
   button1: {
     margin: '30px 0',
@@ -147,7 +147,7 @@ return (
     <Grid container spacing={8}>
         <Grid item xs>
           <Blob className={classes.marginLeft}  size="530px" style={{ zIndex: 1, backgroundColor: '#E18C23', background:'linear-gradient(0deg, #E18C23 0%, #A5523E 100%)' }}>
-              <Blob size="500px" src={Images.image11} />
+              <Blob size="500px" src={Images.image11.default} />
           </Blob>
             <Typography  className={classes.marginTop} gutterBottom color="white" variant="h2" component="h3" >{messages.collaborate.fund_a_story}</Typography>
             <Typography gutterBottom color="white" variant="h4" >{messages.collaborate.create_new_story}</Typography>
@@ -155,7 +155,7 @@ return (
         </Grid>
         <Grid item xs className={classes.collaborateGrid2} >
           <Blob className={classes.marginLeft}  size="380px" style={{ zIndex: 1, backgroundColor: '#3C4186', background:'linear-gradient(0deg, #C01227 0%, #3C4186 100%)' }}>
-              <Blob size="330px" src={Images.image1} />
+              <Blob size="330px" src={Images.image1.default} />
           </Blob>
             <Typography align="right" gutterBottom color="white" variant="h2" component="h3" className={classes.marginTop} >{messages.collaborate.join_us}</Typography>
             <Typography align="right" gutterBottom color="white" variant="h4" >{messages.collaborate.strategic_partner}</Typography>
@@ -172,20 +172,20 @@ return (
         <br /><br /><br />
         <Grid container spacing={8}>
         <Grid item xs>
-          <Image />
+          <Image src={Images.image1.default}/>
           <Typography  className={classes.marginTop} gutterBottom color="white" variant="h2" component="h3" >Storytelleing</Typography>
           <Typography  gutterBottom color="white" variant="p" > Quis <b>Booksonwall Poesia & Stories</b> ultrices leo ullamcorper non. Nullam nec urna odio. Aliquam vitae orci nec dui dapibus dignissim. Vivamus et dapibus arcu. In ultrices, nulla eu vulputate semper, metus ligula interdum dolor, vitae maximus erat quam in mauris. Aenean id aliquet leo, ac fermentum augue. Ut dapibus interdum cursus. Ut dapibus interdum cursus. </Typography>
           <Button size="large" className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
         </Grid>
         <Grid item xs>
-          <Image />
+          <Image src={Images.image1.default} />
           <Typography  className={classes.marginTop} gutterBottom color="white" variant="h2" component="h3" >Education</Typography>
           <Typography  gutterBottom color="white" variant="p" > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel euismod tellus. Proin faucibus, arcu vel pellentesque maximus, ex arcu euismod erat, id pretium ex risus quis velit. Curabitur vitae felis tincidunt, mollis lectus id, dictum dolor. Mauris in metus sapien. Cras pharetra consectetur purus non iaculis. Integer odio quam, varius condimentum lectus a, placerat facilisis magna. Mauris condimentum nibh ut metus pharetra pharetra. Mauris tristique ut purus ac mollis. Cras scelerisque orci est, </Typography>
 
           <Button size="large" className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
         </Grid>
         <Grid item xs>
-          <Image />
+          <Image src={Images.image1.default} />
           <Typography  className={classes.marginTop} gutterBottom color="white" variant="h2" component="h3" >Exploration</Typography>
           <Typography  gutterBottom color="white" variant="p" > Cras pharetra consectetur purus non iaculis. Integer odio quam, varius condimentum lectus a, placerat facilisis magna. Mauris condimentum nibh ut metus pharetra pharetra. Mauris tristique ut purus ac mollis. Cras scelerisque orci est, quis ultrices leo ullamcorper non. Nullam nec urna odio. Aliquam vitae orci nec dui dapibus dignissim. Vivamus et dapibus arcu. In ultrices, nulla eu vulputate semper, metus ligula interdum dolor. </Typography>
           <Button size="large" className={classes.button1}>{messages.collaborate.read_more_btn}</Button>

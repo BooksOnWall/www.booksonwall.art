@@ -5,7 +5,7 @@ import {
     Avatar,
     Badge,
   } from '@material-ui/core';
-import Image from 'material-ui-image';
+
 import {Marker, FlyToInterpolator, StaticMap} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import turf from 'turf';

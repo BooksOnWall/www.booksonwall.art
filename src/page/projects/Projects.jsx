@@ -96,7 +96,7 @@ class Projects extends Component {
     this.props.history.push('/Projects/'+e.currentTarget.src)
   }
   render() {
-    const {projects, apiURL, locale,} = this.state;
+    const {projects, locale,} = this.state;
 
     return (projects) ? (
       <>

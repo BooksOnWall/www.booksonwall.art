@@ -5,8 +5,6 @@ import {
     Box
   } from '@material-ui/core';
 
-import ToggleButton from '@material-ui/lab/ToggleButton';
-
 import Image from 'material-ui-image';
 import ReactMarkdown from 'react-markdown';
 
@@ -71,7 +69,7 @@ export default class Project extends Component {
       <Box placeholder>
         <h5>{name}</h5>
             <Card >
-              <Card.h5><Image src={apiURL + project.h5_image.formats.small.url} /></Card.h5>
+              <Card><Image src={apiURL + project.h5_image.formats.small.url} /></Card>
               <Card.Content >
                 <h5>{project.name}</h5>
                 <ReactMarkdown source={project.description} />

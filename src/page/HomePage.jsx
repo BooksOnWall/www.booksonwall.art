@@ -18,24 +18,27 @@ import Image from 'material-ui-image';
 
 import { injectIntl, defineMessages  } from 'react-intl';
 import Stories from './stories/stories.js';
+import { Images } from '../assets/images/pages';
 
 import { Blob } from 'react-blob';
+import Home from "../assets/images/pages/home.jpg";
+import Blob1 from "../assets/images/pages/home-app-blob.jpg";
+import Blob2 from "../assets/images/pages/home-we-are.jpg";
 
+import { ReactComponent as Svg1 } from '../assets/images/svg/mask1.svg';
+import { ReactComponent as Svg2 } from '../assets/images/svg/mask2.svg';
+import { ReactComponent as Svg3 } from '../assets/images/svg/mask3.svg';
+import { ReactComponent as Svg4 } from '../assets/images/svg/mask4.svg';
+import { ReactComponent as Svg5 } from '../assets/images/svg/mask5.svg';
+import { ReactComponent as Svg6 } from '../assets/images/svg/mask6.svg';
 
-import { ReactComponent as Svg1 } from './../assets/images/svg/mask1.svg';
-import { ReactComponent as Svg2 } from './../assets/images/svg/mask2.svg';
-import { ReactComponent as Svg3 } from './../assets/images/svg/mask3.svg';
-import { ReactComponent as Svg4 } from './../assets/images/svg/mask4.svg';
-import { ReactComponent as Svg5 } from './../assets/images/svg/mask5.svg';
-import { ReactComponent as Svg6 } from './../assets/images/svg/mask6.svg';
+import { ReactComponent as Bg1 } from '../assets/images/svg/bow-bg1.svg';
+import { ReactComponent as Bg2 } from '../assets/images/svg/bow-bg2.svg';
+import { ReactComponent as Bg3 } from '../assets/images/svg/bow-bg3.svg';
 
-import { ReactComponent as Bg1 } from './../assets/images/svg/bow-bg1.svg';
-import { ReactComponent as Bg2 } from './../assets/images/svg/bow-bg2.svg';
-import { ReactComponent as Bg3 } from './../assets/images/svg/bow-bg3.svg';
-
-import Bg4 from './../assets/images/svg/rectangle-bg.svg';
-import Bg5 from './../assets/images/svg/rectangle-bg2.svg';
-
+import Bg4 from '../assets/images/svg/rectangle-bg.svg';
+import Bg5 from '../assets/images/svg/rectangle-bg2.svg';
+console.log('Images', Images);
 
 const homeTraductions = defineMessages({
   title: {
@@ -171,7 +174,7 @@ homeHader:{
   color: 'white',
   backgroundSize: 'cover',
   backgroundPositionY: 'center',
-  backgroundImage: `url(../assets/images/pages/home.jpg})`,
+  backgroundImage: `url(${Home})`,
 },
 tileHead: {
     margin: 0,
@@ -202,7 +205,7 @@ const HomeHeaderBlock = ({messages}) => {
       <Grid container spacing={1}>
         <Grid item xs>
         <Blob size="50vw" style={{ zIndex: 1, backgroundColor: '#E18C23', background:'linear-gradient(0deg, #C33949 0%, #E18C23 100%)' }} >
-                <Blob size="45vw" src="../assets/images/pages/home-app-blob.jpg" il/>
+                <Blob size="45vw" src={Blob1} />
               </Blob>
         </Grid>
         <Grid item xs className={classes.wrapper}>
@@ -246,7 +249,7 @@ return (
         <Grid item md>
           <Box className={classes.blob}>
           <Blob size="50vh" style={{ zIndex: 1, backgroundColor: '#388e3c', background:'linear-gradient(0deg, #388e3c 0%, #009999 100%)' }}>
-                <Blob size="45vh" src="../assets/images/pages/home-we-are.jpg" />
+                <Blob size="45vh" src={Blob2} />
               </Blob>
           </Box>
         </Grid>
@@ -258,19 +261,19 @@ const PlaceholderBlock = ({messages}) => {
   const classes = useStyles();
   const tileData2 = [
  {
-     src: "../assets/images/pages/home-gallery1.jpg",
+     img: Images.image4,
      title: 'Image',
      author: 'author',
      cols: 1,
    },
    {
-     src: "../assets/images/pages/home-gallery2.jpg",
+     img: Images.image5,
      title: 'Image',
      author: 'author',
      cols: 1,
    },
    {
-     src: "../assets/images/pages/home-gallery3.jpg",
+     img: Images.image6,
      title: 'Image',
      author: 'author',
      cols: 1,
@@ -278,19 +281,19 @@ const PlaceholderBlock = ({messages}) => {
  ];
   const tileData = [
  {
-     src: "../assets/images/pages/home-gallery4.jpg",
+     img: Images.image14,
        title: 'Image',
        author: 'author',
        cols: 1,
      },
      {
-       src: "../assets/images/pages/home-gallery5.jpg",
+       img: Images.image15,
        title: 'Image',
        author: 'author',
        cols: 1,
      },
      {
-       src: "../assets/images/pages/home-gallery6.jpg",
+       img: Images.image16,
        title: 'Image',
        author: 'author',
        cols: 1,
@@ -303,26 +306,26 @@ return (
          {tileData.map((tile,i) => (
            <GridListTile key={i} cols={tile.cols || 1}>
               <Box elevation={0}  className={classes.paper2}>
-                  <Image src={tile.src} alt={tile.title} />
+                  <Image src={tile.img.default} alt={tile.title} />
                </Box>
            </GridListTile>
          ))}
          <Grid item cols={2}>
            <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg4})` }} >
-               <Typography gutterBottom align="center" color="textPrimary" variant="h4">{messages.home.download_app}</Typography>
+               <Typography gutterBottom align="center" color="white" variant="h4">{messages.home.download_app}</Typography>
                <Button className={classes.button3} variant="outlined" color="primary">{messages.home.enjoy_btn}</Button>
            </Paper>
          </Grid>
       <Grid item xs>
         <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg5})` }} >
-            <Typography gutterBottom align="center" color="textPrimary" variant="h4">{messages.home.create_togheter}</Typography>
+            <Typography gutterBottom align="center" color="white" variant="h4">{messages.home.create_togheter}</Typography>
             <Button href="/Collaborate#Support-a-story" className={classes.button3}  variant="outlined" color="primary">{messages.home.support_a_story_btn}</Button>
         </Paper>
         </Grid>
            {tileData2.map((tile,i) => (
              <GridListTile key={i} cols={tile.cols || 1}>
                 <Paper elevation={0}  className={classes.paper2}>
-                    <Image src={tile.src} alt={tile.title} />
+                    <Image src={tile.img.default} alt={tile.title} />
                  </Paper>
              </GridListTile>
            ))}

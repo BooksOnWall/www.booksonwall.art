@@ -45,7 +45,7 @@ weAre: {
   backgroundSize: 'cover',
   backgroundPositionY: 'top',
   backgroundPositionX: 'right',
-  backgroundImage: `url(${Images.image13})`,
+  backgroundImage: `url(${Images.image13.default})`,
 },
 weAreBg: {
   background:'linear-gradient(0deg, rgba(190,66,81,.88) 0%, rgba(224,161,3,.88) 100%) ',
@@ -167,7 +167,7 @@ const WorkShop = ({messages}) => {
             </Grid>
             <Grid item xs>
               <Blob size="65vh" style={{ zIndex: 1, backgroundColor: '#339D66', background:'linear-gradient(0deg, #339395 0%, #339D66 100%)' }}>
-                  <Blob size="63vh" src={Images.image11}  />
+                  <Blob size="63vh" src={Images.image11.default}  />
               </Blob>
             </Grid>
           </Grid>
@@ -178,7 +178,7 @@ const WorkShop = ({messages}) => {
     <Grid container spacing={8}>
         <Grid item xs>
           <Blob size="65vh" style={{ zIndex: 1, backgroundColor: '#424675', background:'linear-gradient(0deg, #893E4E 0%, #424675 100%)' }}>
-            <Blob size="60vh" src={Images.image1}/>
+            <Blob size="60vh" src={Images.image1.default}/>
           </Blob>
         </Grid>
         <Grid item xs className={classes.bottom}>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {IconButton, List, ListItem, ListItemText, Menu, makeStyles, MenuItem} from '@material-ui/core';
 import { CircleFlag } from 'react-circle-flags';
 

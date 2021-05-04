@@ -281,7 +281,7 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
             aria-haspopup="true"
             aria-controls="connect"
             aria-label="Connect"
-            onClick={(e) => loadPage('/Connect')}
+            onClick={(e) => loadPage('/'+messages.menu.connect)}
             >
             <ListItemText color="primary" primary={messages.menu.connect}  />
           </ListItem>

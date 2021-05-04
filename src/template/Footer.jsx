@@ -121,16 +121,16 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
             <Typography gutterBottom variant="h6">{messages.menu.explore}</Typography>
             <MenuList variant="selectedMenu">
               <MenuItem
-                selected={0 === activeIndex && activeItem === "explore"}
-                    onClick={(event) => handleMenuItemClick(event, 0, "explore", "Download App")}
+                selected={0 === activeIndex && activeItem === messages.menu.explore}
+                    onClick={(event) => handleMenuItemClick(event, 0, messages.menu.explore, messages.menu.download_app)}
                 >{messages.menu.download_app}</MenuItem>
               <MenuItem
-                selected={1 === activeIndex && activeItem === "explore"}
-                onClick={(event) => handleMenuItemClick(event, 1, "explore", "Stories")}
+                selected={1 === activeIndex && activeItem === messages.menu.explore}
+                onClick={(event) => handleMenuItemClick(event, 1, messages.menu.explore, messages.menu.stories)}
                 >{messages.menu.stories}</MenuItem>
               <MenuItem
-                selected={2 === activeIndex && activeItem === "explore"}
-                onClick={(event) => handleMenuItemClick(event, 2, "explore", "Faqs")}
+                selected={2 === activeIndex && activeItem === messages.menu.explore}
+                onClick={(event) => handleMenuItemClick(event, 2, messages.menu.explore, messages.menu.faqs)}
                 >{messages.menu.faqs}</MenuItem>
             </MenuList>
           </Paper>
@@ -141,17 +141,17 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
             <Typography gutterBottom  variant="h6">{messages.menu.create} </Typography>
             <MenuList variant="selectedMenu">
               <MenuItem
-                selected={0 === activeIndex && activeItem === "create"}
-                onClick={(event) => handleMenuItemClick(event, 0, "create", "Workshop")}
+                selected={0 === activeIndex && activeItem === messages.menu.create}
+                onClick={(event) => handleMenuItemClick(event, 0, messages.menu.create, messages.menu.workshop)}
                 >{messages.menu.workshop}</MenuItem>
               <MenuItem
-                selected={1 === activeIndex && activeItem === "create"}
-                onClick={(event) => handleMenuItemClick(event, 1, "create", "Community")}>
+                selected={1 === activeIndex && activeItem === messages.menu.create}
+                onClick={(event) => handleMenuItemClick(event, 1, messages.menu.create, messages.menu.community)}>
                 {messages.menu.community}
               </MenuItem>
               <MenuItem
-                selected={2 === activeIndex && activeItem === "create"}
-                onClick={(event) => handleMenuItemClick(event, 2, "create", "Join-us")}
+                selected={2 === activeIndex && activeItem === messages.menu.create}
+                onClick={(event) => handleMenuItemClick(event, 2, messages.menu.create, messages.menu.joinus)}
                 >{messages.menu.joinus}</MenuItem>
             </MenuList>
           </Paper>
@@ -162,16 +162,16 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
           <Typography gutterBottom  variant="h6">  {messages.menu.collaborate} </Typography>
             <MenuList variant="selectedMenu">
               <MenuItem
-                selected={0 === activeIndex && activeItem === "collaborate"}
-                onClick={(event) => handleMenuItemClick(event, 0, "collaborate", "Support")}
+                selected={0 === activeIndex && activeItem === messages.menu.collaborate}
+                onClick={(event) => handleMenuItemClick(event, 0, messages.menu.collaborate, messages.menu.support)}
               >{messages.menu.support}</MenuItem>
             <MenuItem
-                selected={1 === activeIndex && activeItem === "collaborate"}
-               onClick={(event) => handleMenuItemClick(event, 1, "collaborate", "Associate")}
+                selected={1 === activeIndex && activeItem === messages.menu.collaborate}
+               onClick={(event) => handleMenuItemClick(event, 1, messages.menu.collaborate, messages.menu.associate)}
               >{messages.menu.associate}</MenuItem>
             <MenuItem
-              selected={2 === activeIndex && activeItem === "collaborate"}
-               onClick={(event) => handleMenuItemClick(event, 2, "collaborate", "Develop")}
+              selected={2 === activeIndex && activeItem === messages.menu.collaborate}
+               onClick={(event) => handleMenuItemClick(event, 2, messages.menu.collaborate, messages.menu.develop)}
               >{messages.menu.develop}</MenuItem>
             </MenuList>
           </Paper>
@@ -182,20 +182,20 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
           <Typography gutterBottom  variant="h6">  {messages.menu.info} </Typography>
             <MenuList variant="selectedMenu">
               <MenuItem
-                selected={0 === activeIndex && activeItem === "info"}
-                 onClick={(event) => handleMenuItemClick(event, 0, "info", "Manifest")}
+                selected={0 === activeIndex && activeItem === messages.menu.info}
+                 onClick={(event) => handleMenuItemClick(event, 0, messages.menu.info, messages.menu.manifest)}
               >{messages.menu.manifest}</MenuItem>
             <MenuItem
-              selected={1 === activeIndex && activeItem === "info"}
-              onClick={(event) => handleMenuItemClick(event, 1, "info", "History")}
+              selected={1 === activeIndex && activeItem === messages.menu.info}
+              onClick={(event) => handleMenuItemClick(event, 1, messages.menu.info, messages.menu.history)}
               >{messages.menu.history}</MenuItem>
             <MenuItem
-              selected={2 === activeIndex && activeItem === "info"}
-              onClick={(event) => handleMenuItemClick(event, 2, "info", "Community")}
+              selected={2 === activeIndex && activeItem === messages.menu.info}
+              onClick={(event) => handleMenuItemClick(event, 2, messages.menu.info, messages.menu.community)}
               >{messages.menu.community}</MenuItem>
             <MenuItem
-              selected={3 === activeIndex && activeItem === "info"}
-              onClick={(event) => handleMenuItemClick(event, 3, "info", "Press")}
+              selected={3 === activeIndex && activeItem === messages.menu.info}
+              onClick={(event) => handleMenuItemClick(event, 3, messages.menu.info, messages.menu.press)}
                 >{messages.menu.press}</MenuItem>
             </MenuList>
           </Paper>
@@ -206,26 +206,26 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
             <Typography gutterBottom  variant="h6">{messages.menu.connect}</Typography>
             <MenuList variant="selectedMenu">
               <MenuItem
-                selected={activeItem === "connect"}
-                onClick={(event) => handleMenuItemClick(event, 0, "connect", "Email")}
+                selected={activeItem === messages.menu.connect}
+                onClick={(event) => handleMenuItemClick(event, 0, messages.menu.connect, messages.menu.email)}
               >{messages.menu.email}</MenuItem>
-            <MenuItem onClick={(event) => handleMenuItemClick(event, 1, "connect", "Facebook")}
+            <MenuItem onClick={(event) => handleMenuItemClick(event, 1, messages.menu.connect, "Facebook")}
               ><FacebookIcon />  Facebook</MenuItem>
-            <MenuItem onClick={(event) => handleMenuItemClick(event, 2, "connect", "Instagram")}
+            <MenuItem onClick={(event) => handleMenuItemClick(event, 2, messages.menu.connect, "Instagram")}
               ><InstagramIcon />  Instagram</MenuItem>
-            <MenuItem onClick={(event) => handleMenuItemClick(event, 3, "connect", "Tweeter")}
+            <MenuItem onClick={(event) => handleMenuItemClick(event, 3, messages.menu.connect, "Tweeter")}
                 ><TwitterIcon />  Twitter</MenuItem>
-              <MenuItem onClick={(event) => handleMenuItemClick(event, 4, "connect", "Chat")}
+              <MenuItem onClick={(event) => handleMenuItemClick(event, 4, messages.menu.connect, "Chat")}
                 ><ChatIcon />  Chat</MenuItem>
-              <MenuItem onClick={(event) => handleMenuItemClick(event, 5, "connect", "Linkedin")}
+              <MenuItem onClick={(event) => handleMenuItemClick(event, 5, messages.menu.connect, "Linkedin")}
                 ><LinkedInIcon />  Linkedin</MenuItem>
-              <MenuItem onClick={(event) => handleMenuItemClick(event, 6, "connect", "Youtube")}
+              <MenuItem onClick={(event) => handleMenuItemClick(event, 6, messages.menu.connect, "Youtube")}
                 ><YouTubeIcon />  Youtube</MenuItem>
-              <MenuItem onClick={(event) => handleMenuItemClick(event, 7, "connect", "Cloud")}
+              <MenuItem onClick={(event) => handleMenuItemClick(event, 7, messages.menu.connect, "Cloud")}
                 ><CloudIcon />  Cloud</MenuItem>
-              <MenuItem onClick={(event) => handleMenuItemClick(event, 8, "connect", "Github")}
+              <MenuItem onClick={(event) => handleMenuItemClick(event, 8, messages.menu.connect, "Github")}
                 ><GitHubIcon />  Github</MenuItem>
-              <MenuItem onClick={(event) => handleMenuItemClick(event, 9, "connect", "Telegram")}
+              <MenuItem onClick={(event) => handleMenuItemClick(event, 9, messages.menu.connect, "Telegram")}
                 ><TelegramIcon />  Telegram</MenuItem>
             </MenuList>
           </Paper>
@@ -253,6 +253,17 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
 };
 const Footer = ({intl}) => {
   let history = useHistory();
+
+  const [activeItem, setActiveItem] = useState();
+  const [activeIndex, setActiveIndex] = useState();
+  const [anchor, setAnchor] = useState();
+  const {messages} = intl;
+  const page = (activeItem) ? activeItem.charAt(0).toUpperCase() + activeItem.slice(1): activeItem;
+  const subPage = (anchor) ? anchor.charAt(0).toUpperCase()+ anchor.slice(1): anchor;
+  const handleItem = item => setActiveItem(item);
+  const handleIndex = index => setActiveIndex(index);
+  const handleAnchor= anchor => setAnchor(anchor);
+
   const goTo = (content,hash, admin = false) => {
     let path = (content === 'home') ? '' : content;
     path = (hash) ? path+'#'+ hash : path;
@@ -260,28 +271,22 @@ const Footer = ({intl}) => {
       default:
       history.push('/'+path) ;
     }
-
   }
   const handleMenuItemClick = (e, index, name, hash) => {
+    handleIndex(index);
     if (hash) {
+      handleItem(name);
+      handleAnchor(hash);
       goTo(name,hash);
     } else {
+      handleItem(name);
       goTo(name);
     }
-    // this.setState({activeIndex: index, anchorEl: null });
-    //this.props.history.push("/"+e.currentTarget.value);
   }
   const handleClick = (event) => {
     event.preventDefault();
     console.info('You clicked a breadcrumb.');
   };
-  const [activeItem, setActiveItem] = useState();
-  const [activeIndex, setActiveIndex] = useState();
-  const [anchor, setAnchor] = useState();
-  const {messages} = intl;
-  const page = (activeItem) ? activeItem.charAt(0).toUpperCase() + activeItem.slice(1): activeItem;
-  const subPage = (anchor) ? anchor.charAt(0).toUpperCase()+ anchor.slice(1): anchor;
-
     return (<>
       <Box className="footer" >
         <TopFooter messages={messages} />

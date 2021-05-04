@@ -6,10 +6,6 @@ import {
     Box,
   } from '@material-ui/core';
 
-import ToggleButton from '@material-ui/lab/ToggleButton';
-
-import Image from 'material-ui-image';
-
 import { injectIntl } from 'react-intl';
 
 const apiURL = process.env.REACT_APP_API;

@@ -4,8 +4,7 @@ import {
   TextField,
   TextareaAutosize,
   Box,
-  Typography,
-  makeStyles
+  Typography
   } from '@material-ui/core';
 
 import { defineMessages } from 'react-intl';
@@ -49,48 +48,48 @@ export default class ContactForm extends Component {
   render() {
     const {initialState} = this.state;
     const{messages} = this.props;
-    const options = [
-      {
-        key: 'general',
-        text: 'General enquiry',
-        value: 'general',
-
-      },
-      {
-        key: 'new story',
-        text: 'Proposal for a new story',
-        value: 'new story',
-
-      },
-      {
-        key: 'new partner',
-        text: 'I want to become a partner',
-        value: 'new partner',
-
-      },
-      {
-        key: 'join team',
-        text: 'I want to be part of the team',
-        value: 'new partner',
-
-      },
-      {
-        key: 'press',
-        text: 'Press',
-        value: 'press',
-
-      },
-    ];
+    // const options = [
+    //   {
+    //     key: 'general',
+    //     text: 'General enquiry',
+    //     value: 'general',
+    //
+    //   },
+    //   {
+    //     key: 'new story',
+    //     text: 'Proposal for a new story',
+    //     value: 'new story',
+    //
+    //   },
+    //   {
+    //     key: 'new partner',
+    //     text: 'I want to become a partner',
+    //     value: 'new partner',
+    //
+    //   },
+    //   {
+    //     key: 'join team',
+    //     text: 'I want to be part of the team',
+    //     value: 'new partner',
+    //
+    //   },
+    //   {
+    //     key: 'press',
+    //     text: 'Press',
+    //     value: 'press',
+    //
+    //   },
+    // ];
     return (
       <Box id="contactForm" >
       <Typography gutterBottom variant="h4">{messages.contact.contactUs}</Typography>
           <form  onSubmit={this.handleSubmit}>
-            {/**<Dropdown
+          {/*<Dropdown
                 placeholder='How can we help you ?'
                 fluid
                 selection
                 options={options}
-              /> **/}
+              /> */}
 
             <TextField
               fullWidth

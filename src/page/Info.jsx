@@ -53,7 +53,7 @@ tileHead: {
     color: 'white',
     backgroundSize: 'cover',
     backgroundPositionY: 'top',
-    backgroundImage: `url(${Images.image5})`,
+    backgroundImage: `url(${Images.image5.default})`,
   },
   homeHaderBg: {
     background:'linear-gradient(0deg,  rgba(224,161,3,.0) 0%, rgba(24,104,88,.92) 70%) ',
@@ -67,7 +67,7 @@ tileHead: {
 community:{
   backgroundSize: 'cover',
   backgroundPositionY: 'center',
-  backgroundImage: `url(${Images.image12})`,
+  backgroundImage: `url(${Images.image12.default})`,
   minHeight: '120vh',
   color: '#fff'
 },

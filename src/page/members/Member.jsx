@@ -97,9 +97,9 @@ class Member extends Component {
       <Box className="main">
       <Card.Group itemsPerRow={1}>
        <Card>
-         <Card.h5>
+         <Card>
            {(member.avatar) ? <Image src={apiURL + member.avatar.formats.thumbnail.url}  circular /> : ''}
-         </Card.h5>
+         </Card>
          <Card.Meta>{name}</Card.Meta>
          <Card.Content ><ReactMarkdown source={member.bio} /></Card.Content>
          <Card.Content ><ReactMarkdown source={member.cv} /></Card.Content>

@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     backgroundSize: 'cover',
     backgroundPositionY: 'center',
-    backgroundImage: `url(${Images.image12})`,
+    backgroundImage: `url(${Images.image12.default})`,
   },
   tile: {
     margin: 0,
