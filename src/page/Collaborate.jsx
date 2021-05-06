@@ -115,11 +115,40 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '-5vw',
   },
 }));
+
 const collaborateTraductions = defineMessages({
   title: {
     id: 'collaborate.title',
     defaultMessage: 'Together we can revalorate and resignify your city.<br/> Using Arte and New Technologies.'
-  }
+  },
+   fund_a_story: {
+    id: 'collaborate.fund_a_story',
+    defaultMessage: 'Fund a story'
+  },
+  create_new_story: {
+    id: 'collaborate.create_new_story',
+    defaultMessage: "Let's create a new story together in your city. Help us finance a BooksOnWall story and promote culture, heritage, territorial identity and technological innovation."
+  },
+  join_us: {
+  id: 'collaborate.join_us',
+  defaultMessage: 'Be a partner'
+},
+  strategic_partner: {
+    id: 'strategic_partner',
+    defaultMessage: 'We are looking for strategic partners who want to participate and contribute to the growth of BooksOnWall.'
+  },
+  lookink_for: {
+    id: 'collaborate.lookink_for',
+    defaultMessage: 'A unique connection with the creative industries: literary creation, audiovisual, music, plastic and visual arts with the city and its historical, cultural and social contents.',
+  },
+  read_more_btn:{
+  id: 'collaborate.read_more_btn',
+  defaultMessage: 'Read More',
+},
+how: {
+  id: 'collaborate.how',
+  defaultMessage: 'How to become a partner'
+}
 });
 
 const CollaborateHeader = ({messages}) => {

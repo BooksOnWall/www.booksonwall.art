@@ -12,12 +12,20 @@ import {
     Button,
     makeStyles
   } from '@material-ui/core';
-import { injectIntl  } from 'react-intl';
-import ExploreMap from '../map/exploreMap';
 
+import { injectIntl, defineMessages  } from 'react-intl';
+
+import ExploreMap from '../map/exploreMap';
 import { ReactComponent as Mapbg } from './../../assets/images/svg/map.svg';
 
 const apiURL = process.env.REACT_APP_API;
+
+const storiesTraductions = defineMessages({
+  read_more_btn: {
+    id: 'stories.read_more_btn',
+    defaultMessage: 'Read more'
+  },
+});
 
 const useStyles = makeStyles({
   root: {
@@ -30,6 +38,7 @@ const useStyles = makeStyles({
     color: '#E18C23'
   }
 });
+
 const StoriesList = ({stories, apiURL, goToStory, messages }) => {
   const classes = useStyles();
   return stories.map((story, i) => (
@@ -51,7 +60,7 @@ const StoriesList = ({stories, apiURL, goToStory, messages }) => {
        </CardContent>
      </CardActionArea>
      <CardActions>
-      <Button size="small" onClick={(e) => goToStory(story.name)} >{messages.story.read_more_btn}</Button>
+      <Button size="small" onClick={(e) => goToStory(story.name)} >{messages.stories.read_more_btn}</Button>
      </CardActions>
     </Card>
   ));
@@ -107,10 +116,10 @@ class Stories extends Component {
   goToStory = (url) => this.props.history.push('/stories/' + url)
   render() {
     const { stories, apiURL } = this.state;
-    const {messages} = this.props.intl;
+    const { messages } = this.props.intl
+    console.log(messages);
     return (
       <Box>
-      <Box className='mapbg'><Mapbg /></Box>
       <Container>{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}</Container>
       <Box id="stories">
         <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>

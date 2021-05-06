@@ -10,7 +10,7 @@ import {
     makeStyles
   } from '@material-ui/core';
 
-import { Images } from './../assets/images/pages';
+import { Images } from '../assets/images/pages';
 import AppleIcon from '@material-ui/icons/Apple';
 import ShopIcon from '@material-ui/icons/Shop';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -19,14 +19,19 @@ import Stories from './stories/stories.js';
 import Faqs from './faqs/faqs';
 
 const exploreTraductions = defineMessages({
-  title: {
+  header: {
     id: 'explore.header',
     defaultMessage: 'Come and live a story through urban art and new technologies!'
   },
-  take_a_tour: {
+  subheader: {
     id: 'explore.subheader',
-    defaultMessage: 'Download "BookSonWall APP" to enjoy the stories and experience urban art and augmented reality.'
+    defaultMessage: 'Download \"BookSonWall APP\" to enjoy the stories and experience urban art and augmented reality.'
   },
+  downloadDirect: {
+    id: 'explore.downloadDirect',
+    defaultMessage: "Direct"
+  }
+
 });
 const useStyles = makeStyles((theme) => ({
   root: {

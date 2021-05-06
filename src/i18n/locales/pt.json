@@ -1,22 +1,53 @@
 {
   "collaborate": {
+    "create_new_story": "",
+    "fund_a_story": "",
+    "how": "",
+    "join_us": "",
+    "lookink_for": "",
+    "read_more_btn": "",
     "title": ""
   },
   "contact": {
+    "contactUs": "",
     "email": "Correio",
     "name": "Nome e apelido",
-    "phone": "Número de telefone de contacto"
+    "phone": "Número de telefone de contacto",
+    "send": ""
+  },
+  "create": {
+    "community_we_are": "Nós somos artistas que adoram trabalhar com outros artistas.",
+    "community_we_create": "Criamos estórias com percursos originais inspirados em vários elementos da cultura local. Cada estória requer a colaboração de numerosas profissões, tais como escritores, argumentistas, muralistas, escultores, designers gráficos, animadores, músicos, contadores de estórias, designers audiovisuais, comunicadores e gestores. Juntos processamos, desenhamos, criamos e optimizamos todo o tipo de conteúdos que compõem a experiência.",
+    "joinus_header": "¿Queres fazer parte de uma equipa de criadores multidisciplinares, inovadores e apaixonados? BooksOnWall é o seu lugar!",
+    "know_more": "",
+    "meet_comunity": "",
+    "wokshop_header": "O mundo está cheio de histórias à espera de serem contadas e nós queremos fazê-lo de uma forma muito especial.",
+    "wokshop_subheader": "Vamos criar juntos uma estória aumentada!",
+    "workshop_by_step": "¿Você quer criar um conto na sua cidade? Podemos guiar e acompanhar o processo passo a passo, liga-te a nós.",
+    "workshop_stories": "Workshops para criar um conto BooksOnWall"
   },
   "explore": {
+    "downloadDirect": "",
     "header": "Vive uma estória através da arte urbana e de novas tecnologias!",
     "subheader": "Descarrega \"BookSonWall APP\" para apreciar as histórias e experimentar a arte urbana e a realidade aumentada."
   },
   "home": {
+    "create_togheter": "",
+    "download_app": "",
+    "download_app_btn": "",
+    "enjoy_btn": "",
     "enjoy_the_experience": "",
+    "join_btn": "",
+    "know_btn": "",
+    "support_a_story_btn": "",
     "take_a_tour": "¡Faz um percurso pela cidade com a aplicação BooksOnWall (link), desfruta de uma experiência hipermédia e vive uma estória através da arte urbana!",
     "title": "Arte e cultura urbana",
     "we_are": "Somos um colectivo artístico que conta estórias em todo o mundo. Ligamos as pessoas aos seus territórios e revalorizamos as suas próprias narrativas através da arte e de tecnologias digitais.",
     "we_connet": ""
+  },
+  "info": {
+    "we_are": "",
+    "we_create": ""
   },
   "lang": {
     "english": "English",
@@ -48,5 +79,6 @@
     "stories": "Histórias",
     "support": "Apoie uma história",
     "workshop": "Workshop"
-  }
+  },
+  "strategic_partner": ""
 }

@@ -10,17 +10,25 @@ import {
 import { defineMessages } from 'react-intl';
 
 const contactTraductions = defineMessages({
-  title: {
+  name: {
     id: 'contact.name',
     defaultMessage: 'Name'
   },
-  take_a_tour: {
+  mail: {
     id: 'contact.email',
     defaultMessage: 'Email'
   },
-  we_are : {
+  phone : {
     id: 'contact.phone',
     defaultMessage: 'Phone'
+  } ,
+  send : {
+    id: 'contact.send',
+    defaultMessage: 'Send'
+  },
+  contactUs: {
+    id: 'contact.contactUs',
+    defaultMessage: 'Contact Us',
   }
 });
 

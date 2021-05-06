@@ -9,8 +9,47 @@ import {
   } from '@material-ui/core';
 
 import { Images } from './../assets/images/pages';
-import { injectIntl } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 import { Blob } from 'react-blob';
+
+const createTraductions = defineMessages({
+  community_we_are: {
+    id: 'create.community_we_are',
+    defaultMessage: "We are artists who love working with other artists"
+  },
+  community_we_create: {
+    id: 'create.community_we_create',
+    defaultMessage: "We create stories with original routes inspired by various elements of local culture. Each story requires the collaboration of numerous professions such as writers, scriptwriters, Grafitti artist, sculptors, graphic designers, animators, musicians, storytellers, audiovisual designers, communicators and managers. Together we process, design, create and optimize all types of content that make up the experience."
+  },
+  joinus_header: {
+    id: 'create.joinus_header',
+    defaultMessage: "Do you want to be part of a team of multidisciplinary, innovative and passionate creators? Then BooksOnWall is your place!"
+  },
+  wokshop_header: {
+    id: 'create.wokshop_header',
+    defaultMessage: "The world is full of sto…t in a very special way"
+  },
+  wokshop_subheader: {
+    id: 'create.wokshop_subheader',
+    defaultMessage: "Let's create an augmented story together!"
+  },
+  workshop_by_step: {
+    id: 'create.workshop_by_step',
+    defaultMessage: "Do you want to create a …roject step after step."
+  },
+  workshop_stories: {
+    id: 'create.workshop_stories',
+    defaultMessage: "Workshops to create a BooksOnWall Story"
+  },
+  meet_comunity: {
+    id: 'create.meet_comunity',
+    defaultMessage: "Meet the community"
+  },
+  know_more: {
+    id: 'create.know_more',
+    defaultMessage: "know more here"
+  }
+});
 
 const useStyles = makeStyles((theme) => ({
 root: {
@@ -156,8 +195,6 @@ const WorkShop = ({messages}) => {
   return (
   <>
     <Box>
-
-
       <Container className={classes.stories} maxWidth="xl">
           <Grid container spacing={8} >
             <Grid item xs className={classes.top}>
@@ -221,7 +258,7 @@ const JoinUs = ({messages}) => {
   <Box>
     <Container className={classes.bePart} maxWidth="md">
       <Typography align="center" gutterBottom color="white" variant="h2" >{messages.create.joinus_header}</Typography>
-      <Button size="large"  className={classes.buton}>{messages.menu.joinus}</Button>
+      <Button size="large"  className={classes.buton}>{messages.create.joinus}</Button>
     </Container>
     </Box>
 )};

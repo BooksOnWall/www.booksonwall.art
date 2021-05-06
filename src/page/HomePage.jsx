@@ -43,7 +43,7 @@ console.log('Images', Images);
 const homeTraductions = defineMessages({
   title: {
     id: 'home.title',
-    defaultMessage: 'Art and urban culture'
+    defaultMessage: 'Immersive storytelling through art and urban culture'
   },
   enjoy: {
     id: 'home.enjoy_the_experience',
@@ -61,7 +61,34 @@ const homeTraductions = defineMessages({
     id: 'home.we_connet',
     defaultMessage: 'We connect people with their territories and revalue their own narratives through art and digital technologies.'
   },
-
+  support_a_story_btn: {
+    id: 'home.support_a_story_btn',
+    defaultMessage: "Support a Story"
+  },
+  create_togheter: {
+    id: 'home.create_togheter',
+    defaultMessage: "Let's create a fantastic story"
+  },
+  download_app: {
+    id: 'home.download_app',
+    defaultMessage: "Donwaload Booksonwall AR"
+  },
+  download_app_btn: {
+    id: 'home.download_app_btn',
+    defaultMessage: "Donwaload now"
+  },
+  enjoy_btn: {
+    id: 'home.enjoy_btn',
+    defaultMessage: '"Enjoy the experience"'
+  },
+  join_btn: {
+    id: 'home.join_btn',
+    defaultMessage: "Join Us"
+  },
+  know_btn: {
+    id: 'home.know_btn',
+    defaultMessage: "Know our community"
+  },
 });
 // An array of parallax effects to be applied - see below for detail
 const useStyles = makeStyles((theme) => ({
@@ -73,6 +100,18 @@ wrapper: {
   display: 'flex',
   justifyContent: 'space-around',
   zIndex: 999,
+},
+bgLeft:{
+  backgroundImage: `url(${Bg1})`,
+  backgroundRepeat: 'repeat',
+  backgroundSize: 'contain',
+  backgroundPosition: 'left center',
+},
+bgRight:{
+  backgroundImage: `url(${Bg2})`,
+  backgroundRepeat: 'repeat',
+  backgroundSize: 'contain',
+  backgroundPosition: 'left center',
 },
 paper: {
   padding: theme.spacing(3),
@@ -148,7 +187,6 @@ poligons2:{
   padding: 10,
 },
 dividerShape: {
-  position: 'absolute',
   left: 0,
   width: '100%',
   overflow: 'hidden',
@@ -175,11 +213,13 @@ homeHader:{
   backgroundSize: 'cover',
   backgroundPositionY: 'center',
   backgroundImage: `url(${Home})`,
+  padding: 0,
+  margin: 0
 },
 tileHead: {
     margin: 0,
     maxWidth: '55vw',
-    padding: '8vh 8vh 38vh',
+    padding: '0 8vh 38vh',
   },
 }));
 
@@ -197,9 +237,6 @@ const HomeHeaderBlock = ({messages}) => {
         </svg>
       </Box>
     </Box>
-    <Box className='bg1'><Bg1 /></Box>
-    <Box className='bg2'><Bg2 /></Box>
-    <Box className='bg3'><Bg3 /></Box>
     <Container className="app" maxWidth="lg">
     <Box className={classes.end}>
       <Grid container spacing={1}>

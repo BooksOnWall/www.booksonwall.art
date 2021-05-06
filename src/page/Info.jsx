@@ -14,7 +14,7 @@ import { Images } from './../assets/images/pages';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 
-import { injectIntl } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import community from '../md/page/en/info/community.md';
 import historyMD from '../md/page/en/info/history.md';
@@ -25,6 +25,16 @@ import history from '../md/history.js';
 import ContactForm from './ContactForm';
 import Articles from './articles/Articles';
 
+const infoTraductions = defineMessages({
+  we_are: {
+    id: 'info.we_are',
+    defaultMessage: "We are an interdisciplinary collective of creatives who tell stories through digital technology and cultural assets."
+  },
+   we_create: {
+    id: 'info.we_create',
+    defaultMessage: "We have created the Booksonwall App that with visual and sound stimuli, interacts with people, making them part of their stories, traveling around the city and enjoying urban artworks."
+  }
+});
 
 const useStyles = makeStyles((theme) => ({
 root: {
