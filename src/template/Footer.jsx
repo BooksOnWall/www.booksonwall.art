@@ -97,14 +97,14 @@ const useStyles = makeStyles((theme) => ({
 const TopFooter = ({messages}) => {
   const classes = useStyles();
   return (
-      <Box className='footerBg'>
+    <Box className='footerBg'>
       <Container>
         <Typography variant="h2" component="h3" className={classes.title}></Typography>
         <Typography variant="h4" className={classes.title}></Typography>
       </Container>
       <Principal className={classes.character}/>
       <FooterBg className={classes.bg} />
-      </Box>
+    </Box>
   );
 };
 

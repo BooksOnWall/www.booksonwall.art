@@ -647,17 +647,6 @@ div.public-DraftEditor-content {
 .content{ padding: 0; margin: 20px 0 !important; font-size: .8em !important; line-height: 1.1em; font-weight: 300;}
 #create .content{flex-grow: 0;}
 
-.bg1 svg, .bg3 svg, .bg2 svg, .mapbg svg{
-  position: absolute;
-  z-index: -1;
-  opacity: .1;
-  max-width: 50vw;
-}
-.mapbg svg{right: 0vw; padding-top: 30vh; opacity: 1; max-width: 70vw;}
-.bg1, .bg3{  position: relative;}
-.bg1 svg{  left: 0px;   top: -20vh; opacity: .1;}
-.bg2 svg{ top: 65vh; max-width: 45vw; opacity: .08;}
-.bg3 svg{ right: 0px;   top: 0vh;}
 
 .footerBg {position: relative}
 .footerBg svg{}

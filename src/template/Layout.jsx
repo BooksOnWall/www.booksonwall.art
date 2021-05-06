@@ -21,10 +21,9 @@ const Layout = ({ children, switchLang, locale, history }) => {
       flexDirection: 'column',
     },
     toolbar: {
-      paddingRight: 24, // keep right padding when drawer closed
-      maxWidth:'2020px',
       minWidth: 350,
       width: '100vw',
+      background: 'transparent'
     },
     toolbarIcon: {
       display: 'flex',
@@ -41,6 +40,7 @@ const Layout = ({ children, switchLang, locale, history }) => {
       flexWrap: 'noWrap',
       overflow: 'inherit',
       width: '100vw',
+      background: 'transparent',
       zIndex: theme.zIndex.drawer + 1,
       transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
@@ -69,11 +69,11 @@ const Layout = ({ children, switchLang, locale, history }) => {
       maxWidth: '100vw',
       height: '100vh',
       overflow: 'auto',
-      margin: '0',
-      padding: '0',
+      margin: 0,
+      padding: 0,
     },
     container: {
-      paddingTop: theme.spacing(4),
+      paddingTop: theme.spacing(0),
       paddingBottom: 0,
       margin:'0 auto'
     },
@@ -127,8 +127,8 @@ const Layout = ({ children, switchLang, locale, history }) => {
 
       <Box className={classes.root}>
         <CssBaseline />
-        <AppBar elevation={0}  color="transparent" position="absolute" className={clsx(classes.appBar)}>
-          <Toolbar variant="dense" className={classes.toolbar}>
+        <AppBar elevation={0}  color="default"  position="absolute" className={clsx(classes.appBar)}>
+          <Toolbar variant="regular" disableGutters className={classes.toolbar}>
             <Header locale={locale} switchLang={switchLang} history={history}/>
           </Toolbar>
         </AppBar>
@@ -138,9 +138,9 @@ const Layout = ({ children, switchLang, locale, history }) => {
             {children}
           </Box>
         </main>
-      </Box>
-       <Footer locale={locale} switchLang={switchLang} history={history}/>
+        <Footer locale={locale} switchLang={switchLang} history={history}/>
 
+      </Box>
   </ThemeProvider >
 )
 }

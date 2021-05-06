@@ -118,11 +118,21 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 13,
     margin: 5,
     padding: '8px 10px',
+    background: 'rgba(255, 255, 255, .3)',
     '&:hover': {
         background: 'rgba(0, 0, 0, 0.03)',
         color:  '#333'
       }
   },
+  toolbar: {
+  },
+  popper:{
+    marginTop: 11
+  },
+  menuitem:{
+    padding: 20
+  }
+
 }));
 /** @primary title of menu
 **  @secondary array of menu
@@ -171,7 +181,7 @@ return (
         >
         {primary}
       </Button>
-      <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+      <Popper className={classes.popper} open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
@@ -186,6 +196,7 @@ return (
                       value={option}
                       selected={index === activeIndex && activeItem === option}
                       onClick={(event) => handleMenuItemClick(event, index, primary, option)}
+                        className={classes.menuitem}
                       >
                       {option}
                     </MenuItem>
@@ -204,8 +215,8 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
   const classes = useStyles();
   return (
     <>
-    <AppBar id="appbar-mobile" color="default">
-      <Toolbar>
+    <AppBar elevation={0} id="appbar-mobile" color="default">
+      <Toolbar disableGutters variant='regular' className={classes.toolbar}>
         <IconButton value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
           <Avatar alt="logo" src={logo} />
         </IconButton>
@@ -239,7 +250,7 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
       </Toolbar>
     </AppBar>
 
-    <AppBar id="appbar-web" position="relative" color="default" >
+    <AppBar elevation={1} id="appbar-web" position="relative" color="default" >
       <Toolbar style={{display: 'flex', justifyContent: 'space-between',}}>
         <IconButton value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
           <Avatar alt="logo" src={logo} />
