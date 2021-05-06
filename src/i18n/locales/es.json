@@ -80,5 +80,8 @@
     "support": "Apoya una historia",
     "workshop": "Talleres"
   },
+  "stories": {
+    "read_more_btn": ""
+  },
   "strategic_partner": ""
 }

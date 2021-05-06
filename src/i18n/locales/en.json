@@ -80,5 +80,8 @@
     "support": "Support a story",
     "workshop": "Workshop"
   },
+  "stories": {
+    "read_more_btn": "Read more"
+  },
   "strategic_partner": "We are looking for strategic partners who want to participate and contribute to the growth of BooksOnWall."
 }

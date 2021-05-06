@@ -15,9 +15,9 @@ import {
   } from '@material-ui/core';
 
 import Image from 'material-ui-image';
-
+import loadable from '@loadable/component';
 import { injectIntl, defineMessages  } from 'react-intl';
-import Stories from './stories/stories.js';
+
 import { Images } from '../assets/images/pages';
 
 import { Blob } from 'react-blob';
@@ -38,7 +38,8 @@ import { ReactComponent as Bg3 } from '../assets/images/svg/bow-bg3.svg';
 
 import Bg4 from '../assets/images/svg/rectangle-bg.svg';
 import Bg5 from '../assets/images/svg/rectangle-bg2.svg';
-console.log('Images', Images);
+
+const Stories = loadable(() => import('./stories/stories'));
 
 const homeTraductions = defineMessages({
   title: {

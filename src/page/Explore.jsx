@@ -15,9 +15,9 @@ import AppleIcon from '@material-ui/icons/Apple';
 import ShopIcon from '@material-ui/icons/Shop';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
-import Stories from './stories/stories.js';
+import loadable from '@loadable/component';
 import Faqs from './faqs/faqs';
-
+const Stories = loadable(() => import('./stories/stories'));
 const exploreTraductions = defineMessages({
   header: {
     id: 'explore.header',
