@@ -14,19 +14,16 @@ body{
   padding-top: 0;
   padding-bottom: 0;
 }
-.nav div{padding: 0 !important; margin: 0}
-.nav span{
-  color: '#000';
-  font-Weight: 700;
-  text-Transform: 'uppercase';
-  font-Size: 13px;
-  padding: 9px 10px;
-  font-family: "RobotoCondensed-Bold", Helvetica, Arial, sans-serif;
+.bg1 svg, .bg3 svg, .bg2 svg, .mapbg svg{
+  position: absolute;
+  z-index: -1;
+  opacity: .1;
+  max-width: 50vw;
 }
-.nav span svg{ margin-top: 6px}
-.language .MuiList-padding{ margin: 0; padding: 0}
-.lenguage div div.MuiListItemText-root{ padding: 0; margin: 0 !important}
-.lenguage { margin: 5px !important }
+.mapbg svg{right: 0vw; padding-top: 25vh; opacity: .7; max-width: 85vw;}
+.bg1 svg{  left: 0px;   top: 120vh; opacity: .1;}
+.bg2 svg{ top: 110vh; max-width: 45vw; opacity: .08;}
+.bg3 svg{ right: 0px;   top: 105vh;}
 
 .mapBox{ border-radius: 8px}
 
@@ -63,19 +60,7 @@ body{
 
 #home .WhoAreWe{ padding: 10vh 0 20vh }
 
-#home .MuiContainer-root.app, #home .MuiContainer-root.about{ padding: 30px; margin: 10vh auto 20vh}
 
-
-#home .app .MuiPaper-root {
-  justify-content: flex-end;
-  display: flex;
-  flex-direction: column;
-}
-#home .about .MuiPaper-root {
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
-}
 #contactForm .button2{
   margin: 40px 0;
   color: #fff;
@@ -92,7 +77,9 @@ body{
 }
 
 #join-us{ min-height: 10vh}
-#stories{ padding: 10vh !important; margin: 0 !important; display: flex; justify-Content: space-around; }
+#stories{ min-height: 40vh; padding: 2vh 40px 300px; margin: 0 !important; display: flex; justify-Content:space-evenly; width: 100vw; flex-grow: 1; flex-wrap: wrap}
+#storiesWrapper{ padding-top: 200px; min-height: 110vh; display: flex; align-items: center; flex-direction: column}
+#storiesTitle{ padding: 80px 0 0}
 #story {
   background-color: transparent;
   margin: 0px;
@@ -414,7 +401,7 @@ ul.MuiList-root {
 .menu, .footer {
   margin: 0 !important;
 }
-.footer .footerBreadcrumb{ height: 50px; background: #102b34; padding: 13px 5vw;  text-transform: uppercase; }
+.footer .footerBreadcrumb{ height: 50px; background: #102b34; padding: 20px 5vw;  text-transform: uppercase; }
 .footer .MuiPaper-root{ padding: 25px 24px}
 .footer .MuiPaper-root h6{ padding: 20px 15px}
 .footer .MuiBreadcrumbs-ol{padding: 0 }

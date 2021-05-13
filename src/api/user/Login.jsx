@@ -10,6 +10,7 @@ import {
   Button,
   ButtonGroup,
   makeStyles,
+  Typography,
   Backdrop } from '@material-ui/core';
 import { defineMessages, injectIntl } from 'react-intl';
 import Auth from './Auth';
@@ -23,23 +24,32 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: '#000',
+    backgroundColor: theme.palette.primary.main,
     position: 'relative',
-    width: '80vw',
-    height: '40vh',
+    width: '50vw',
+    maxHeight: '40vh',
+    minHeight: '30vh',
     zIndex: '1300',
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
     margin: '2vh',
     flexDirection: 'column',
     flexWrap: 'no-wrap',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    boxShadow: theme.shadows[1],
+    padding: 40,
+    borderRadius: 15,
+    overflow: 'hidden'
+  },
+  bg:{
+    borderRadius: 15,
+    overflow: 'hidden'
   },
   menuItem: {
-    borderRadius: 8,
+    borderRadius: 400,
     color: '#000',
     fontWeight: 700,
+    padding: '8px 2px 7px 12px',
     textTransform: 'uppercase',
     fontSize: 13,
     margin: 5,
@@ -48,9 +58,17 @@ const useStyles = makeStyles((theme) => ({
        color:  '#333'
       }
   },
+  input: {
+    margin: 20,
+    minWidth: '300px'
+  }
 }));
 
 const loginTraductions = defineMessages({
+  title: {
+    id: 'login.title',
+    defaultMessage: 'Login',
+  },
   name: {
     id: 'login.email',
     defaultMessage: 'Email',
@@ -83,7 +101,7 @@ const loginTraductions = defineMessages({
             onClick={handleOpen}
             className={classes.menuItem}
             >
-            <ListItemText primary={<AccountCircleIcon fontSize='default'> Login</AccountCircleIcon>}  />
+            <ListItemText primary={<AccountCircleIcon fontSize='default' />}  />
           </ListItem>
         </List>
       <Modal
@@ -100,8 +118,8 @@ const loginTraductions = defineMessages({
         }}
       >
           <div className={classes.paper}>
-            <ParticlesBg type="circle" bg={true} num={3}/>
-            <h5>Login</h5>
+            <ParticlesBg className={classes.bg} type="circle" bg={true} num={5}/>
+            <Typography color="textSecondary" variant="h6" component="h2">{messages.login.title}</Typography>
             <TextField
               color="primary"
               inputProps={{ 'aria-label': 'email' }}
@@ -112,6 +130,7 @@ const loginTraductions = defineMessages({
               placeholder={messages.login.email}
               label={messages.login.email}
               autoFocus={true}
+              className={classes.input}
               />
             <Divider />
 
@@ -124,6 +143,7 @@ const loginTraductions = defineMessages({
               type="password"
               name="password"
               onChange={(e) => handleChange(e)}
+              className={classes.input}
               />
             <Divider />
             <ButtonGroup>

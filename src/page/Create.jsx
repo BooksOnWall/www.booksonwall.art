@@ -53,8 +53,11 @@ const createTraductions = defineMessages({
 
 const useStyles = makeStyles((theme) => ({
 root: {
-  flexGrow: 0,
+  flexGrow: 1,
+  display: 'flex',
+  flexDirection: 'column',
   background: 'transparent',
+  width: '100vw',
 },
 wrapper: {
   display: 'flex',
@@ -63,6 +66,8 @@ wrapper: {
 },
 stories: {
   padding:'0 6vw',
+  display: 'flex',
+  flexGrow: 1,
 },
 workshop: {
   minHeight: '110vh',
@@ -71,6 +76,7 @@ workshop: {
 },
 bePart: {
   display: 'flex',
+  flexGrow: 1,
   flexDirection: 'column',
   justifyContent: 'flex-end',
   alignItems: 'center',
@@ -78,6 +84,7 @@ bePart: {
 },
 weAre: {
   display:"flex",
+  flexGrow: 1,
   flexDirection: 'column',
   justifyContent:'space-between',
   color: 'white',
@@ -194,31 +201,30 @@ const WorkShop = ({messages}) => {
   const classes = useStyles();
   return (
   <>
-    <Box>
+    <Box className={classes.root}>
       <Container className={classes.stories} maxWidth="xl">
           <Grid container spacing={8} >
-            <Grid item xs className={classes.top}>
+            <Grid item className={classes.top} item xs={6}>
               <Typography gutterBottom color="white" variant="h2" >{messages.create.wokshop_header}</Typography>
               <Typography gutterBottom color="white" variant="h3" >{messages.create.wokshop_subheader}</Typography>
               <Button size="large" className={classes.buton2}>{messages.menu.joinus}</Button>
             </Grid>
-            <Grid item xs>
-              <Blob size="65vh" style={{ zIndex: 1, backgroundColor: '#339D66', background:'linear-gradient(0deg, #339395 0%, #339D66 100%)' }}>
-                  <Blob size="63vh" src={Images.image11.default}  />
+            <Grid item  item  xs={6}>
+              <Blob size="50vh" style={{ zIndex: 1, backgroundColor: '#339D66', background:'linear-gradient(0deg, #339395 0%, #339D66 100%)', maxWidth: '750px', maxHeight: '750px' }}>
+                  <Blob size="90%" src={Images.image11.default}  />
               </Blob>
             </Grid>
           </Grid>
       </Container>
-    </Box>
-   <Box>
-   <Container  className={classes.workshop} >
+
+   <Container  className={classes.workshop} maxWidth="xl">
     <Grid container spacing={8}>
-        <Grid item xs>
-          <Blob size="65vh" style={{ zIndex: 1, backgroundColor: '#424675', background:'linear-gradient(0deg, #893E4E 0%, #424675 100%)' }}>
-            <Blob size="60vh" src={Images.image1.default}/>
+        <Grid item xs={12} sm={6} >
+          <Blob size="50vh" style={{ zIndex: 1, backgroundColor: '#424675', background:'linear-gradient(0deg, #893E4E 0%, #424675 100%)', maxWidth: '750px', maxHeight: '750px'  }}>
+            <Blob size="90%" src={Images.image1.default}/>
           </Blob>
         </Grid>
-        <Grid item xs className={classes.bottom}>
+        <Grid item xs={12} sm={6} className={classes.bottom}>
           <Typography gutterBottom color="white" align="right" variant="h2" >{messages.create.workshop_stories}</Typography>
           <Typography gutterBottom color="white" align="right" variant="h3" >{messages.create.workshop_by_step}</Typography>
           <Button size="large" className={classes.buton3}>{messages.create.know_more}</Button>

@@ -291,13 +291,11 @@ const Footer = ({intl}) => {
       <Box className="footer" >
         <TopFooter messages={messages} />
         <Box className="footerBreadcrumb">
-          <Container maxWidth="xs">
             <Breadcrumbs aria-label="breadcrumb">
               <Link color="textPrimary" name={"Home"} href="/" onClick={handleClick}>Home</Link>
               <Link color="textPrimary" name={page} href={"/"+page} onClick={handleClick}>p {page}</Link>
               <Typography name={subPage} >{subPage}</Typography>
             </Breadcrumbs>
-          </Container>
           </Box>
           <SpacingGrid activeItem={activeItem} activeIndex={activeIndex} messages={messages} handleMenuItemClick={handleMenuItemClick}/>
       </Box>

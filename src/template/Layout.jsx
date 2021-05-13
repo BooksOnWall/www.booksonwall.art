@@ -67,7 +67,7 @@ const Layout = ({ children, switchLang, locale, history }) => {
       flexGrow: 1,
       width: '100vw',
       maxWidth: '100vw',
-      height: '100vh',
+      minHeight: '100vh',
       overflow: 'auto',
       margin: 0,
       padding: 0,

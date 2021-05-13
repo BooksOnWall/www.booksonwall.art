@@ -2,13 +2,14 @@ import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 let theme = createMuiTheme({
 type: 'light',
+palette: {
   common: {
     white: '#FEFEFE',
     black: '#131413',
   },
   background: {
-      paper: '#131413',
-      default: '#FEFEFE',
+      paper: '#fff',
+      default: '#FAFAFA',
   },
   text: {
     light: '#131413',
@@ -20,7 +21,7 @@ type: 'light',
   },
   primary: {
     light: '#AB514E', //will be calculated from palette.primary.main,
-    main: '#BE4251',
+    main: '#91201F',
     dark: '#893E4E', //will be calculated from palette.primary.main,
     contrastText: '#FEFEFE', //will be calculated to contrast with palette.primary.main
   },
@@ -48,6 +49,7 @@ type: 'light',
     dark: '#000055', //will be calculated from palette.secondary.main,
     contrastText: '#FEFEFE',
   },
+},
   typography: {
   fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',
   fontSize: 14,
@@ -124,7 +126,7 @@ overrides: {
   },
 },
 shape:{
-  borderRadius: 8
+  borderRadius: 4
 },
 });
 theme = responsiveFontSizes(theme);

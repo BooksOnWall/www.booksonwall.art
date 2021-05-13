@@ -25,7 +25,7 @@ const exploreTraductions = defineMessages({
   },
   subheader: {
     id: 'explore.subheader',
-    defaultMessage: 'Download \"BookSonWall APP\" to enjoy the stories and experience urban art and augmented reality.'
+    defaultMessage: 'Download \"BookSonWall AR\" to enjoy the stories and experience urban art and augmented reality.'
   },
   downloadDirect: {
     id: 'explore.downloadDirect',
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   dividerShape: {
     position: 'absolute',
-    bottom: '-3vh',
+    bottom: '-1vh',
     left: 0,
     width: '100%',
     overflow: 'hidden',
@@ -89,9 +89,7 @@ const ExploreHeader = ({messages}) => {
   <br />
   <Box>
     <ButtonGroup>
-      <Button className={classes.button} startIcon={<GetAppIcon />}>{messages.explore.downloadDirect}</Button>
-      <Button className={classes.button} disabled startIcon={<AppleIcon />}>Apple Store</Button>
-      <Button className={classes.button} disabled startIcon={<ShopIcon />} >Play Store</Button>
+      <Button size="large" className={classes.button} startIcon={<GetAppIcon />}>{messages.explore.downloadDirect}</Button>
     </ButtonGroup>
   </Box>
   </Container>

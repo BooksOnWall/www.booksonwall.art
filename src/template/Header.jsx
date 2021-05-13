@@ -18,6 +18,7 @@ import {
     MenuItem,
     makeStyles,
     Box,
+    Typography
   } from '@material-ui/core';
 
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
@@ -110,12 +111,18 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'flex-end',
   },
+  logo:{
+    padding: 0
+  },
+  logoMobile:{
+    marginLeft: 10,
+  },
   menuItem: {
     borderRadius:8,
     color: '#000',
     fontWeight: 700,
     textTransform: 'uppercase',
-    fontSize: 13,
+    fontSize: 14,
     margin: 5,
     padding: '8px 10px',
     background: 'rgba(255, 255, 255, .3)',
@@ -124,14 +131,61 @@ const useStyles = makeStyles((theme) => ({
         color:  '#333'
       }
   },
+  menuItemContact:{
+    textTransform: 'uppercase',
+    fontSize: 14,
+    margin: 0,
+    padding: '4px 17px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    fontWeight: 700,
+    '&:hover': {
+        background: 'rgba(0, 0, 0, 0.03)',
+        color:  "#000"
+      }
+  },
+  menuitemitem:{
+    textTransform: 'uppercase',
+    fontSize: 14,
+    margin: 0,
+    padding: '14px 17px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontWeight: 700,
+    '&:hover': {
+        background: 'rgba(0, 0, 0, 0.03)',
+        color:  "#000"
+      }
+  },
+  menuItemText:{
+    padding: 20
+  },
+  menuItemContactText:{
+    margin: '5px',
+    padding: '0',
+  },
   toolbar: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'noWrap',
+    justifyContent: 'space-between',
+    width: '100vw'
+  },
+  menuWrapp:{
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'noWrap',
+    alignItems: 'center',
   },
   popper:{
     marginTop: 11
   },
-  menuitem:{
-    padding: 20
-  }
+    lenguageSwitch:{
+
+    }
 
 }));
 /** @primary title of menu
@@ -196,9 +250,9 @@ return (
                       value={option}
                       selected={index === activeIndex && activeItem === option}
                       onClick={(event) => handleMenuItemClick(event, index, primary, option)}
-                        className={classes.menuitem}
+                        className={classes.menuitemitem}
                       >
-                      {option}
+                      <Typography variant="button">{option}</Typography>
                     </MenuItem>
                   ))}
                 </MenuList>
@@ -216,10 +270,11 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
   return (
     <>
     <AppBar elevation={0} id="appbar-mobile" color="default">
-      <Toolbar disableGutters variant='regular' className={classes.toolbar}>
-        <IconButton value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
+      <Toolbar className={classes.toolbar} disableGutters variant='regular' >
+        <IconButton className={classes.logoMobile} value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
           <Avatar alt="logo" src={logo} />
         </IconButton>
+        <Box className={classes.menuWrapp}>
         <MenuBranch
           primary="Menu"
           secondary={menuOptions}
@@ -234,6 +289,7 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
               <Menu>
               {adminMenu.map((option, index) => (
                 <MenuItem
+                  className={classes.menubranchItem}
                   key={index}
                   value={option}
                   selected={index === activeIndex}
@@ -246,14 +302,14 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
               </Menu>
              : <Login messages={messages} history={history}/>
          }
-
+         </Box>
       </Toolbar>
     </AppBar>
 
     <AppBar elevation={1} id="appbar-web" position="relative" color="default" >
       <Toolbar style={{display: 'flex', justifyContent: 'space-between',}}>
-        <IconButton value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
-          <Avatar alt="logo" src={logo} />
+        <IconButton className={classes.logo} value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
+          <Avatar  alt="logo" src={logo} />
         </IconButton>
         <Box style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center',}}>
         <MenuBranch
@@ -284,21 +340,23 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
           activeItem={activeItem}
           handleMenuItemClick={handleMenuItemClick}
         />
-        <List component="nav" aria-label="Connect" className="nav">
+        <List disablePadding component="nav" aria-label="Connect" className="nav">
           <ListItem
             button
-            className={classes.menuItem}
+            className={classes.menuItemContact}
             value="connect"
             aria-haspopup="true"
             aria-controls="connect"
             aria-label="Connect"
             onClick={(e) => loadPage('/'+messages.menu.connect)}
             >
-            <ListItemText color="primary" primary={messages.menu.connect}  />
+            <ListItemText className={classes.menuItemContactText} color="primary">
+            <Typography variant="button">{messages.menu.connect}</Typography>
+            </ListItemText>
           </ListItem>
         </List>
 
-        <LanguageSwitch langs={langs} locale={locale} switchLang={switchLang} className="lenguage" />
+        <LanguageSwitch langs={langs} locale={locale} switchLang={switchLang} className={classes.lenguageSwitch} />
 
         {Auth.isUserAuthenticated()
             ?

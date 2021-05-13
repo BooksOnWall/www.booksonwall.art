@@ -59,7 +59,7 @@ const homeTraductions = defineMessages({
     defaultMessage: 'We are a creative collective that tells stories around the world.'
   },
   we_connect: {
-    id: 'home.we_connet',
+    id: 'home.we_connect',
     defaultMessage: 'We connect people with their territories and revalue their own narratives through art and digital technologies.'
   },
   support_a_story_btn: {
@@ -80,7 +80,7 @@ const homeTraductions = defineMessages({
   },
   enjoy_btn: {
     id: 'home.enjoy_btn',
-    defaultMessage: '"Enjoy the experience"'
+    defaultMessage: 'Enjoy the experience'
   },
   join_btn: {
     id: 'home.join_btn',
@@ -95,12 +95,19 @@ const homeTraductions = defineMessages({
 const useStyles = makeStyles((theme) => ({
 root: {
   flexGrow: 1,
-  background: 'transparent',
+  with: '100vw',
+  overflow: 'hidden'
 },
-wrapper: {
+wrapperBlob:{
+  minHeight: '70vh',
   display: 'flex',
-  justifyContent: 'space-around',
+  alignItems: 'center',
+},
+wrapperGrid: {
+  display: 'flex',
   zIndex: 999,
+  minWidht: '50%',
+  padding: 50
 },
 bgLeft:{
   backgroundImage: `url(${Bg1})`,
@@ -118,23 +125,35 @@ paper: {
   padding: theme.spacing(3),
   background: '#EEEFEC',
 },
+card:{
+  background: 'transparent',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  maxWidth: 650,
+  marginLeft: '3vw'
+},
 paper2:{
   padding: 0,
-  margin: 0,
+  margin: 20,
   borderRadius: 8,
   overflow: 'hidden',
-  height: 232,
+  minheight: 400,
 },
 tile: {
   display:'flex',
   flexDirection: 'column',
   justifyContent:'center',
   color: 'white',
-  minHeight: 232,
+  minHeight: 370,
   backgroundSize: 'cover',
+  borderRadius: 8,
+  margin: '0 20px',
+
 },
 blob: {
-  paddingTop: '120px',
+  padding: '120px 30px 30px',
+  overflow: 'hidden'
 },
 button1: {
   color: '#C33949',
@@ -175,17 +194,26 @@ button4: {
 gridList: {
    height: 'inherit',
 },
-placeholderBlock: {
-  paddingTop: '30vh',
-  paddingBottom: '2vh',
-  paddingLeft: '15vh',
-  paddingRight: '15vh',
+gridPhoto:{
+},
+poligon: {
+display: 'flex',
+flexGrow: 1,
+flexDirection: 'row',
+justifyContent: 'space-around',
+alignItems: 'center',
+minHeight: '50vh',
+padding: 50
 },
 poligons: {
-  padding: 25,
+  padding: 0,
 },
 poligons2:{
-  padding: 10,
+  flex: '2 1 20%',
+  padding: '0',
+  alignSelf: 'flex-end',
+  minWidht: 270,
+  minHeight: 270,
 },
 dividerShape: {
   left: 0,
@@ -198,15 +226,15 @@ shapeFill: {
  fill: '#fafafa',
 },
 dividerSvg: {
-position: 'relative',
-display: 'block',
-width: 'calc(100% + 1.3px)',
-height: '110px',
+  position: 'relative',
+  display: 'block',
+  width: 'calc(100% + 1.3px)',
+  height: '110px',
 },
 homeHader:{
   display: 'flex',
   flexFlow: 'column wrap',
-  minHeight: '80vh',
+  minHeight: '75vh',
   justifyContent: 'flex-end',
   alignItems: 'flex-start',
   backgroundColor: '#ccc',
@@ -219,8 +247,8 @@ homeHader:{
 },
 tileHead: {
     margin: 0,
-    maxWidth: '55vw',
-    padding: '0 8vh 38vh',
+    maxWidth: '850px',
+    padding: '0 8vh 10vh',
   },
 }));
 
@@ -230,7 +258,7 @@ const HomeHeaderBlock = ({messages}) => {
   <div className={classes.root}>
     <Box id="HomeHeaderBlock" className={classes.homeHader}>
       <Container maxWidth='xs' className={classes.tileHead}>
-            <Typography gutterBottom color="textPrimary" variant="h1" >{messages.home.title}</Typography>
+            <Typography gutterBottom color="textSecondary" variant="h1" >{messages.home.title}</Typography>
       </Container>
       <Box className={classes.dividerShape}>
         <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 130" preserveAspectRatio="none">
@@ -238,26 +266,34 @@ const HomeHeaderBlock = ({messages}) => {
         </svg>
       </Box>
     </Box>
-    <Container className="app" maxWidth="lg">
-    <Box className={classes.end}>
-      <Grid container spacing={1}>
-        <Grid item xs>
-        <Blob size="50vw" style={{ zIndex: 1, backgroundColor: '#E18C23', background:'linear-gradient(0deg, #C33949 0%, #E18C23 100%)' }} >
-                <Blob size="45vw" src={Blob1} />
-              </Blob>
+    <Box className='bg1'><Bg1 /></Box>
+    <Box className='bg2'><Bg2 /></Box>
+    <Box className='bg3'><Bg3 /></Box>
+    <Container maxWidth="xl" className={classes.wrapperBlob}>
+    <Box>
+
+      <Grid container spacing={8}>
+
+        <Grid item  xs={6}>
+          <Blob size="50vw" style={{ zIndex: 1, backgroundColor: '#E18C23', background:'linear-gradient(0deg, #C33949 0%, #E18C23 100%)', maxWidth: '850px', maxHeight: '850px'  }} >
+            <Blob size="88%" src={Blob1} />
+          </Blob>
         </Grid>
-        <Grid item xs className={classes.wrapper}>
-            <Card elevation={0} className={classes.root}>
-            <CardContent>
-              <Typography gutterBottom variant="h2" >{messages.home.take_a_tour}</Typography>
-              <Typography gutterBottom variant="h4" >{messages.home.enjoy_the_experience}</Typography>
-            </CardContent>
-            <CardActions>
-              <Button href="/explore#Download-App" className={classes.button1}>{messages.home.download_app_btn}</Button>
-            </CardActions>
-          </Card>
+
+        <Grid item  xs={6} className={classes.wrapperGrid}>
+            <Card elevation={0} className={classes.card}>
+              <CardContent>
+                <Typography  gutterBottom variant="h2" >{messages.home.take_a_tour}</Typography>
+                <Typography gutterBottom variant="h4" >{messages.home.enjoy_the_experience}</Typography>
+              </CardContent>
+              <CardActions>
+                <Button href={messages.menu.explore+'#'+messages.menu.download_app} className={classes.button1}>{messages.home.download_app_btn}</Button>
+              </CardActions>
+            </Card>
         </Grid>
+
       </Grid>
+
       </Box>
       </Container>
     </div>
@@ -266,32 +302,38 @@ const HomeHeaderBlock = ({messages}) => {
 const WhoAreWe = ({messages}) => {
   const classes = useStyles();
 return (
-  <div className="who">
-    <Box className={classes.wrapper}>
-    <Svg1 className={classes.poligons2} />  <Svg2 className={classes.poligons}  /> <Svg3 className={classes.poligons2}  /> <Svg4 className={classes.poligons}  />   <Svg5 className={classes.poligons2}  /> <Svg6 className={classes.poligons}  />
+  <div className={classes.root}>
+  <Box  className={classes.poligon}>
+      <Svg1 className={classes.poligons2} />  <Svg2 className={classes.poligons}  /> <Svg3 className={classes.poligons2}  /> <Svg4 className={classes.poligons}  />   <Svg5 className={classes.poligons2}  /> <Svg6 className={classes.poligons}  />
     </Box>
 
-    <Container className="about" maxWidth="lg">
-      <Grid container spacing={1}>
-        <Grid item xs>
-            <Card className={classes.root} elevation={0}>
+    <Container maxWidth="xl" className={classes.wrapperBlob}>
+    <Box>
+
+    <Grid container spacing={8}>
+
+        <Grid item  xs={6} >
+          <Card elevation={0} className={classes.card}>
             <CardContent>
-              <Typography gutterBottom color="textSecondary" variant="h2" >{messages.home.we_are}</Typography>
-              <Typography gutterBottom color="textSecondary" variant="h4" >{messages.home.we_connect}</Typography>
+              <Typography gutterBottom color="textPrimary" variant="h2" >{messages.home.we_are}</Typography>
+              <Typography gutterBottom color="textPrimary" variant="h4" >{messages.home.we_connect}</Typography>
             </CardContent>
             <CardActions>
-              <Button href="/conenct" className={classes.button4}>{messages.home.join_btn}</Button> <Button href="/create#Community" className={classes.button2} color="primary">{messages.home.know_btn}</Button>
+              <Button href={messages.menu.connect} className={classes.button4}>{messages.home.join_btn}</Button>
+              <Button href={messages.menu.create+'#'+messages.menu.community} className={classes.button2} color="primary">{messages.home.know_btn}</Button>
             </CardActions>
           </Card>
         </Grid>
-        <Grid item md>
-          <Box className={classes.blob}>
-          <Blob size="50vh" style={{ zIndex: 1, backgroundColor: '#388e3c', background:'linear-gradient(0deg, #388e3c 0%, #009999 100%)' }}>
-                <Blob size="45vh" src={Blob2} />
-              </Blob>
-          </Box>
+
+        <Grid item  xs={6} className={classes.wrapperGrid}>
+          <Blob size="50vw" style={{ zIndex: 1, backgroundColor: '#388e3c', background:'linear-gradient(0deg, #388e3c 0%, #009999 100%)', maxWidth: '750px', maxHeight: '750px'  }}>
+            <Blob size="88%" src={Blob2} />
+          </Blob>
         </Grid>
+
       </Grid>
+
+      </Box>
       </Container>
     </div>
 )};
@@ -340,7 +382,7 @@ const PlaceholderBlock = ({messages}) => {
 return (
   <div>
   <Container className={classes.placeholderBlock} maxWidth="xl" >
-    <GridList cellHeight={232} className={classes.gridList} cols={5}>
+    <GridList cellHeight='400' className={classes.gridList} cols={5}>
          {tileData.map((tile,i) => (
            <GridListTile key={i} cols={tile.cols || 1}>
               <Box elevation={0}  className={classes.paper2}>
@@ -348,18 +390,20 @@ return (
                </Box>
            </GridListTile>
          ))}
-         <Grid item cols={2}>
+         <GridListTile item cols={2}>
            <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg4})` }} >
                <Typography gutterBottom align="center" color="white" variant="h4">{messages.home.download_app}</Typography>
-               <Button className={classes.button3} variant="outlined" color="primary">{messages.home.enjoy_btn}</Button>
+               <Button href={messages.menu.explore+'#'+messages.menu.download_app}  className={classes.button3} variant="outlined" color="primary">{messages.home.enjoy_btn}</Button>
            </Paper>
-         </Grid>
-      <Grid item xs>
-        <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg5})` }} >
-            <Typography gutterBottom align="center" color="white" variant="h4">{messages.home.create_togheter}</Typography>
-            <Button href="/Collaborate#Support-a-story" className={classes.button3}  variant="outlined" color="primary">{messages.home.support_a_story_btn}</Button>
-        </Paper>
-        </Grid>
+         </GridListTile>
+
+         <GridListTile item cols={2}>
+          <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg5})` }} >
+              <Typography gutterBottom align="center" color="white" variant="h4">{messages.home.create_togheter}</Typography>
+              <Button href={messages.menu.collaborate+'#'+messages.menu.support} className={classes.button3}  variant="outlined" color="primary">{messages.home.support_a_story_btn}</Button>
+          </Paper>
+        </GridListTile>
+
            {tileData2.map((tile,i) => (
              <GridListTile key={i} cols={tile.cols || 1}>
                 <Paper elevation={0}  className={classes.paper2}>
@@ -367,7 +411,9 @@ return (
                  </Paper>
              </GridListTile>
            ))}
+
          </GridList>
+
       </Container>
     </div>
 )};

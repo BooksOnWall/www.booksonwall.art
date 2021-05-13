@@ -12,26 +12,30 @@ const languageOptions = [
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.primar,
+  },
+  list:{
+    margin: 0,
+    padding: 0,
+  },
+  menulist:{
+    marginTop: 48,
+    padding: 0,
+    marginLeft: -15,
   },
   menuItem: {
-    borderRadius: 8,
+    borderRadius: 400,
     color: '#000',
     fontWeight: 700,
     textTransform: 'uppercase',
     fontSize: 13,
-    padding: 8,
+    padding: "8px 14px",
 },
-menuListItem: {
-  borderRadius: 0,
-  color: '#000',
-  fontWeight: 700,
-  textTransform: 'uppercase',
-  fontSize: 13,
-  '&:hover': {
-      background: 'rgba(0, 0, 0, 0.03)',
-      color:  '#333',
-    }
+  menuItemItem: {
+    padding: 15
+  },
+menuItemText:{
+  padding:0
 },
 menuList: {
   padding: 0,
@@ -58,7 +62,7 @@ const LanguageSwitch = ({locale, switchLang}) => {
   return (
     <>
 
-    <List component="nav" aria-label="Language" className="lenguage">
+    <List className={classes.list} disablePadding component="nav" aria-label="Language">
       <ListItem
         button
         aria-haspopup="true"
@@ -66,7 +70,7 @@ const LanguageSwitch = ({locale, switchLang}) => {
         aria-label="Languages"
         className={classes.menuItem}
         >
-        <ListItemText onClick={handleClickListItem} primary={<IconButton><CircleFlag countryCode={ (locale !== "en") ? locale : "gb" } height="20"/></IconButton>} secondary={languageOptions[locale]} />
+        <ListItemText className={classes.menuItemText} onClick={handleClickListItem} primary={<CircleFlag countryCode={ (locale !== "en") ? locale : "gb" } height="20"/>} secondary={languageOptions[locale]} />
       </ListItem>
     </List>
 
@@ -77,7 +81,8 @@ const LanguageSwitch = ({locale, switchLang}) => {
       open={Boolean(anchorEl)}
       name="language"
       onClose={handleClose}
-      className="language"
+      className={classes.menulist}
+      elevation={1}
       >
       {languageOptions.map((option, index) => (
         <MenuItem
@@ -86,9 +91,9 @@ const LanguageSwitch = ({locale, switchLang}) => {
           value={option}
           selected={option === locale}
           onClick={(e) => onLocaleChange(option)}
-          className={classes.menuItem}
+          className={classes.menuItemItem}
           >
-          <IconButton><CircleFlag countryCode={ (option !== "en") ? option : "gb" } height="20"/></IconButton> {option}
+          <CircleFlag countryCode={ (option !== "en") ? option : "gb" } height="20"/>
         </MenuItem>
       ))}
     </Menu>
