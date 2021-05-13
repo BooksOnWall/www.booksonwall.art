@@ -43,7 +43,7 @@
     "take_a_tour": "¡Faz um percurso pela cidade com a aplicação BooksOnWall (link), desfruta de uma experiência hipermédia e vive uma estória através da arte urbana!",
     "title": "Arte e cultura urbana",
     "we_are": "Somos um colectivo artístico que conta estórias em todo o mundo. Ligamos as pessoas aos seus territórios e revalorizamos as suas próprias narrativas através da arte e de tecnologias digitais.",
-    "we_connet": ""
+    "we_connect": ""
   },
   "info": {
     "we_are": "",
@@ -57,8 +57,9 @@
     "spanish": "Español"
   },
   "login": {
-    "email": "Correio",
-    "password": "Senha"
+    "email": "",
+    "password": "",
+    "title": ""
   },
   "menu": {
     "associate": "Junte-se",

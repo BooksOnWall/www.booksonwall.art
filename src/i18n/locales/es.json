@@ -43,7 +43,7 @@
     "take_a_tour": "Vamos a recorrer la ciudad con BooksOnWall App",
     "title": "Narrativas inmersivas, cultura y arte urbano",
     "we_are": "Somos un colectivo de creativos que cuenta historias por el mundo",
-    "we_connet": ""
+    "we_connect": "Conectamos a las personas con sus territorios y revalorizamos sus propias narrativas a través del arte y las tecnologías."
   },
   "info": {
     "we_are": "Somos es un colectivo interdisciplinario de creativos que contamos historias a través de tecnología digitales y bienes culturales.",
@@ -58,7 +58,8 @@
   },
   "login": {
     "email": "Correo",
-    "password": "Contraseña"
+    "password": "Clave secreta",
+    "title": "Acceso a la comunidad"
   },
   "menu": {
     "associate": "Asociate",

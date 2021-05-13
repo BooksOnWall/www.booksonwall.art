@@ -43,7 +43,7 @@
     "take_a_tour": "Fatti un giro per la città con l'app BooksOnWall (link), goditi un'esperienza ipermediale e vivi una storia attraverso l'arte urbana!",
     "title": "Arte e cultura urbane",
     "we_are": "Siamo un collettivo di creativi che racconta storie in giro per il mondo. Avviciniamo le persone ai loro stessi  territori e diamo visibilità alle loro narrazioni attraverso l'arte e le tecnologie digitali.",
-    "we_connet": ""
+    "we_connect": ""
   },
   "info": {
     "we_are": "",
@@ -57,8 +57,9 @@
     "spanish": "Español"
   },
   "login": {
-    "email": "Posta",
-    "password": "Parola d'ordine"
+    "email": "",
+    "password": "",
+    "title": ""
   },
   "menu": {
     "associate": "Unisciti a noi",
