@@ -24,12 +24,15 @@ palette: {
     main: '#91201F',
     dark: '#893E4E', //will be calculated from palette.primary.main,
     contrastText: '#FEFEFE', //will be calculated to contrast with palette.primary.main
+    mainGradient: 'linear-gradient(0deg, rgba(190,66,81,.88) 0%, rgba(224,161,3,.88) 100%)',
+    darkGradient: 'linear-gradient(0deg, rgba(20, 0, 100, .88) 0%, rgba(190,66,81,.88) 100%)'
   },
   secondary: {
-    light: '#42ACD8',
-    main: '#2577BB',
+    light: '#009999',
+    main: '#186858',
     dark: '#424675', //will be calculated from palette.secondary.main,
     contrastText: '#FEFEFE',
+    mainGradient: 'linear-gradient(0deg, rgba(56,142,60, 0.88) 0%, rgba(0,153,153, 0.88) 100%)'
   },
   success: {
     light: '#81c784',
@@ -52,18 +55,23 @@ palette: {
 },
   typography: {
   fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',
-  fontSize: 14,
+  fontSize: 15,
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightBold: 700,
   letterSpacing: 'normal',
+  body:{
+    fontFamily: '"Roboto", Helvetica, Arial, sans-serif',
+    fontSize: "1.3rem",
+    fontSize: 16,
+  },
   body1:{
     fontFamily: '"Roboto", Helvetica, Arial, sans-serif',
-    fontSize: "1.1rem",
-    lineHeight: 1,
+    fontSize: "1.3rem",
+    fontSize: 18,
   },
   body2:{
-    fontFamily: '"Roboto", Helvetica, Arial, sans-serif',
+    fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',
     fontSize: "1.1rem",
     lineHeight: 1.4,
   },
@@ -78,12 +86,14 @@ palette: {
     fontSize: "3rem",
     lineHeight: 1,
     fontFamily: '"RobotoCondensed-Bold", Helvetica, Arial, sans-serif',
+    letterSpacing: -.2
   },
   h3: {
     fontWeight: 700,
     fontSize: "2.33rem",
-    lineHeight: 1.1,
+    lineHeight: 1.2,
     fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',
+    letterSpacing: -.1
   },
   h4: {
     fontWeight: 400,
@@ -104,7 +114,9 @@ palette: {
     textTransform: "uppercase",
   },
   subtitle1:{
-    fontFamily: '"RobotoCondensed-Light", Helvetica, Arial, sans-serif',
+    fontSize: "1.3rem",
+    lineHeight: 1.3,
+    fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',
   },
   subtitle2:{
     fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',

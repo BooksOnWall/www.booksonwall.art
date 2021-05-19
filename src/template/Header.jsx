@@ -112,7 +112,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
   },
   logo:{
-    padding: 0
+    padding: 0,
+    minHeight: 50,
+    minWidth: 50,
+    marginLeft: 10
   },
   logoMobile:{
     marginLeft: 10,
@@ -165,7 +168,6 @@ const useStyles = makeStyles((theme) => ({
   },
   menuItemContactText:{
     margin: '5px',
-    padding: '0',
   },
   toolbar: {
     display: 'flex',
@@ -270,7 +272,7 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
   return (
     <>
     <AppBar elevation={0} id="appbar-mobile" color="default">
-      <Toolbar className={classes.toolbar} disableGutters variant='regular' >
+      <Toolbar elevation={0}  className={classes.toolbar} disableGutters variant='regular' >
         <IconButton className={classes.logoMobile} value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
           <Avatar alt="logo" src={logo} />
         </IconButton>
@@ -306,10 +308,10 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
       </Toolbar>
     </AppBar>
 
-    <AppBar elevation={1} id="appbar-web" position="relative" color="default" >
+    <AppBar elevation={0} id="appbar-web" position="relative" color="default" >
       <Toolbar style={{display: 'flex', justifyContent: 'space-between',}}>
         <IconButton className={classes.logo} value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
-          <Avatar  alt="logo" src={logo} />
+          <Avatar className={classes.logo}   alt="logo" src={logo} />
         </IconButton>
         <Box style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center',}}>
         <MenuBranch

@@ -13,12 +13,16 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import './layout.css';
+import { ReactComponent as FooterBg } from './../assets/images/svg/footer.svg';
+import  Bg from './../assets/images/bg_footer.png';
+import { ReactComponent as Principal } from './../assets/images/svg/principal.svg';
 
 const Layout = ({ children, switchLang, locale, history }) => {
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
       flexDirection: 'column',
+      background: 'transparent'
     },
     toolbar: {
       minWidth: 350,
@@ -77,6 +81,32 @@ const Layout = ({ children, switchLang, locale, history }) => {
       paddingBottom: 0,
       margin:'0 auto'
     },
+    footerBg:{
+      backgroundImage: `url(${Bg})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'contain',
+      backgroundPosition: 'bottom center',
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '80vh',
+      margin: 0,
+      overflow: 'hidden',
+      alignItems: 'center',
+      justifyContent: 'flex-end'
+    },
+    character: {
+      maxHeight: "100px",
+      bottom:'0',
+      zIndex: 99,
+      display: 'none'
+    },
+    bg:{
+      bottom: '0',
+      zIndex: 98,
+      width: '100vw',
+      height: 'auto',
+      marginTop: 130
+    },
     paper: {
       padding: theme.spacing(2),
       display: 'flex',
@@ -133,13 +163,16 @@ const Layout = ({ children, switchLang, locale, history }) => {
           </Toolbar>
         </AppBar>
         <main className={classes.content}>
+        <Box className={classes.footerBg}>
           <div className={classes.appBarSpacer} />
           <Box className={classes.container} id="top">
             {children}
           </Box>
+            <Principal className={classes.character}/>
+            <FooterBg className={classes.bg} />
+          </Box>
         </main>
         <Footer locale={locale} switchLang={switchLang} history={history}/>
-
       </Box>
   </ThemeProvider >
 )

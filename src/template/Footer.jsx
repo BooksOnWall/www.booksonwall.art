@@ -102,8 +102,6 @@ const TopFooter = ({messages}) => {
         <Typography variant="h2" component="h3" className={classes.title}></Typography>
         <Typography variant="h4" className={classes.title}></Typography>
       </Container>
-      <Principal className={classes.character}/>
-      <FooterBg className={classes.bg} />
     </Box>
   );
 };
@@ -289,11 +287,10 @@ const Footer = ({intl}) => {
   };
     return (<>
       <Box className="footer" >
-        <TopFooter messages={messages} />
         <Box className="footerBreadcrumb">
             <Breadcrumbs aria-label="breadcrumb">
               <Link color="textPrimary" name={"Home"} href="/" onClick={handleClick}>Home</Link>
-              <Link color="textPrimary" name={page} href={"/"+page} onClick={handleClick}>p {page}</Link>
+              <Link color="textPrimary" name={page} href={"/"+page} onClick={handleClick}>{page}</Link>
               <Typography name={subPage} >{subPage}</Typography>
             </Breadcrumbs>
           </Box>
