@@ -4,9 +4,19 @@ import {
     Badge,
     Divider,
     Box,
+    Typography
   } from '@material-ui/core';
 
-import { injectIntl } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
+
+
+
+const exploreTraductions = defineMessages({
+  subtitle: {
+    id: 'faqs.subtitle',
+    defaultMessage: "Here are some FAQ's with their answers!"
+  },
+})
 
 const apiURL = process.env.REACT_APP_API;
 
@@ -73,19 +83,19 @@ class Faqs extends Component {
   }
   render() {
     const {panels, faqs} = this.state;
+    const {messages} = this.props.intl;
 
     return (faqs && panels) ? (
 
       <Box id="FAQs">
       <Container>
-      <h2>
-        FAQS
-        <h4>
-          "Here are someFAQ's with their answers!"
-        </h4>
-      </h2>
+      <Typography gutterBottom variant='h2'>
+        {messages.menu.faqs}
+      </Typography>
+      <Typography gutterBottom variant='subtitle'>
+        {messages.faqs.subtitle}
+      </Typography>
       <Divider />
-
       <Divider />
       </Container>
       </Box>

@@ -13,6 +13,10 @@ import { injectIntl, defineMessages } from 'react-intl';
 import { Blob } from 'react-blob';
 
 const createTraductions = defineMessages({
+  community: {
+    id: 'create.community',
+    defaultMessage: "Community"
+  },
   community_we_are: {
     id: 'create.community_we_are',
     defaultMessage: "We are artists who love working with other artists"
@@ -23,7 +27,11 @@ const createTraductions = defineMessages({
   },
   joinus_header: {
     id: 'create.joinus_header',
-    defaultMessage: "Do you want to be part of a team of multidisciplinary, innovative and passionate creators? Then BooksOnWall is your place!"
+    defaultMessage: "Do you want to be part of a team of multidisciplinary, innovative and passionate creators?"
+  },
+  join_us:{
+    id: 'create.join_us',
+    defaultMessage: "Join Us"
   },
   wokshop_header: {
     id: 'create.wokshop_header',
@@ -48,6 +56,10 @@ const createTraductions = defineMessages({
   know_more: {
     id: 'create.know_more',
     defaultMessage: "know more here"
+  },
+  your_place:{
+    id:'create.your_place',
+    defaultMessage: 'The community of BooksOnWall is your place!'
   }
 });
 
@@ -67,10 +79,12 @@ wrapper: {
 stories: {
   padding:'0 6vw',
   display: 'flex',
+  flexWrap: 'wrap',
   flexGrow: 1,
+  minHeight: '60vh'
 },
 workshop: {
-  minHeight: '110vh',
+  minHeight: '70vh',
   display: "flex",
   alignItems: "center",
 },
@@ -80,7 +94,8 @@ bePart: {
   flexDirection: 'column',
   justifyContent: 'flex-end',
   alignItems: 'center',
-  height: '40vh',
+  minHeight: '40vh',
+  marginTop: 150
 },
 weAre: {
   display:"flex",
@@ -94,9 +109,9 @@ weAre: {
   backgroundImage: `url(${Images.image13.default})`,
 },
 weAreBg: {
-  background:'linear-gradient(0deg, rgba(190,66,81,.88) 0%, rgba(224,161,3,.88) 100%) ',
+  background:theme.palette.primary.mainGradient ,
   display:"flex",
-  minHeight: '120vh',
+  minHeight: '80vh',
   flexDirection: 'column',
   justifyContent:'space-between',
 },
@@ -106,45 +121,54 @@ container: {
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
+    maxWidth: 1080,
 },
 buton: {
-  margin: '20px 0',
-  color: '#C33949',
-  border: '1px #D9D2C6 solid',
+  fontSize: 18,
+  margin: '40px 0',
+  padding: '10px 20px',
+  color: theme.palette.primary.main,
+  border: '2px #D9D2C6 solid',
   '&:hover': {
       background: '#C33949',
-      color: 'white',
-        border: '1px #C33949 solid',
+      color: '#D9D2C6',
+      border: '2px #C33949 solid',
     }
 },
 buton2: {
-  margin: '40px 0',
-  color: '#186858',
-  border: '1px #186858 solid',
+  fontSize: 18,
+  margin: '20px 0',
+  padding: '10px 20px',
+  color: theme.palette.secondary.main,
+  border: '2px #D9D2C6 solid',
   '&:hover': {
       background: '#186858',
       color: 'white',
-        border: '1px #186858 solid',
+      border: '2px #186858 solid',
     }
   },
 buton4: {
+    fontSize: 18,
     margin: '40px 0',
+    padding: '10px 20px',
     color: '#D9D2C6',
-    border: '1px #D9D2C6 solid',
+    border: '2px #186858 solid',
+    background: '#186858',
     '&:hover': {
-        background: '#186858',
-        color: '#D9D2C6',
-          border: '1px #186858 solid',
+      color: '#D9D2C6',
+      border: '2px #186858 solid',
       }
     },
 buton3: {
+  fontSize: 18,
   margin: '20px 0',
+  padding: '10px 20px',
   color: '#3C4186',
-  border: '1px #3C4186 solid',
+  border: '2px #D9D2C6 solid',
   '&:hover': {
       background: '#3C4186',
       color: 'white',
-        border: '1px #3C4186 solid',
+      border: '2px #3C4186 solid',
     }
 },
 dividerShape: {
@@ -194,6 +218,9 @@ bottom: {
   justifyContent: 'center',
   alignItems: 'flex-end',
   alignContent: 'flex-end',
+},
+yourPlace:{
+  marginTop: 100,
 }
 }));
 
@@ -202,42 +229,43 @@ const WorkShop = ({messages}) => {
   return (
   <>
     <Box className={classes.root}>
+    <Box id={messages.create.workshop} >
       <Container className={classes.stories} maxWidth="xl">
           <Grid container spacing={8} >
-            <Grid item className={classes.top} item xs={6}>
-              <Typography gutterBottom color="white" variant="h2" >{messages.create.wokshop_header}</Typography>
-              <Typography gutterBottom color="white" variant="h3" >{messages.create.wokshop_subheader}</Typography>
-              <Button size="large" className={classes.buton2}>{messages.menu.joinus}</Button>
+            <Grid item className={classes.top} xs={12} sm={6}>
+              <Typography gutterBottom variant="h2" >{messages.create.wokshop_header}</Typography>
+              <Typography gutterBottom variant="h3" >{messages.create.wokshop_subheader}</Typography>
+              <Button className={classes.buton2}>{messages.menu.joinus}</Button>
             </Grid>
-            <Grid item  item  xs={6}>
+            <Grid item xs={12} sm={6}>
               <Blob size="50vh" style={{ zIndex: 1, backgroundColor: '#339D66', background:'linear-gradient(0deg, #339395 0%, #339D66 100%)', maxWidth: '750px', maxHeight: '750px' }}>
                   <Blob size="90%" src={Images.image11.default}  />
               </Blob>
             </Grid>
           </Grid>
       </Container>
-
-   <Container  className={classes.workshop} maxWidth="xl">
-    <Grid container spacing={8}>
-        <Grid item xs={12} sm={6} >
-          <Blob size="50vh" style={{ zIndex: 1, backgroundColor: '#424675', background:'linear-gradient(0deg, #893E4E 0%, #424675 100%)', maxWidth: '750px', maxHeight: '750px'  }}>
-            <Blob size="90%" src={Images.image1.default}/>
-          </Blob>
-        </Grid>
-        <Grid item xs={12} sm={6} className={classes.bottom}>
-          <Typography gutterBottom color="white" align="right" variant="h2" >{messages.create.workshop_stories}</Typography>
-          <Typography gutterBottom color="white" align="right" variant="h3" >{messages.create.workshop_by_step}</Typography>
-          <Button size="large" className={classes.buton3}>{messages.create.know_more}</Button>
-        </Grid>
-      </Grid>
-    </Container>
-  </Box>
+       <Container  className={classes.workshop} maxWidth="xl">
+        <Grid container spacing={8}>
+            <Grid item xs={12} sm={6} >
+              <Blob size="50vh" style={{ zIndex: 1, backgroundColor: '#424675', background:'linear-gradient(0deg, #893E4E 0%, #424675 100%)', maxWidth: '750px', maxHeight: '750px'  }}>
+                <Blob size="90%" src={Images.image1.default}/>
+              </Blob>
+            </Grid>
+            <Grid item xs={12} sm={6} className={classes.bottom}>
+              <Typography gutterBottom color="white" align="right" variant="h2" >{messages.create.workshop_stories}</Typography>
+              <Typography gutterBottom color="white" align="right" variant="h3" >{messages.create.workshop_by_step}</Typography>
+              <Button className={classes.buton3}>{messages.create.know_more}</Button>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+    </Box>
  </>
 )};
 const Community = ({history, messages}) => {
   const classes = useStyles();
   return (
-    <Box className={classes.weAre} >
+    <Box id={messages.create.community} className={classes.weAre} >
       <Box className={classes.weAreBg} >
       <Box className={classes.dividerShape2} >
         <svg className={classes.dividerSvg2} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
@@ -245,9 +273,9 @@ const Community = ({history, messages}) => {
         </svg>
       </Box>
       <Container className={classes.container} >
-        <Typography color="white" align="center" gutterBottom variant="h2" >{messages.create.community_we_are}</Typography>
-        <Typography color="white"  align="center" gutterBottom variant="h3" >{messages.create.community_we_create}</Typography>
-        <Button size="large" className={classes.buton4} onClick={(e) => history.push('/Community')}>{messages.create.meet_comunity}</Button>
+        <Typography color="textSecondary" align="center" gutterBottom variant="h2" >{messages.create.community_we_are}</Typography>
+        <Typography  color="textSecondary" align="center" gutterBottom variant="h3" >{messages.create.community_we_create}</Typography>
+        <Button className={classes.buton4} onClick={(e) => history.push('/Community')}>{messages.create.meet_comunity}</Button>
       </Container>
       <Box className={classes.dividerShape} >
         <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -261,12 +289,13 @@ const Community = ({history, messages}) => {
 const JoinUs = ({messages}) => {
   const classes = useStyles();
   return (
-  <Box>
+  <Box id={messages.create.join_us}>
     <Container className={classes.bePart} maxWidth="md">
-      <Typography align="center" gutterBottom color="white" variant="h2" >{messages.create.joinus_header}</Typography>
-      <Button size="large"  className={classes.buton}>{messages.create.joinus}</Button>
+      <Typography align="center" gutterBottom color="white" variant="h1" >{messages.create.joinus_header}</Typography>
+      <Typography className={classes.yourPlace} align="center"  color="primary" variant="h3" >{messages.create.your_place}</Typography>
+      <Button className={classes.buton}>{messages.create.join_us}</Button>
     </Container>
-    </Box>
+  </Box>
 )};
 class Create extends Component {
   render() {

@@ -24,7 +24,7 @@ import { Blob } from 'react-blob';
 import Home from "../assets/images/pages/home.jpg";
 import Blob1 from "../assets/images/pages/home-app-blob.jpg";
 import Blob2 from "../assets/images/pages/home-we-are.jpg";
-
+import { theme } from "../theme/theme"
 import { ReactComponent as Svg1 } from '../assets/images/svg/mask1.svg';
 import { ReactComponent as Svg2 } from '../assets/images/svg/mask2.svg';
 import { ReactComponent as Svg3 } from '../assets/images/svg/mask3.svg';
@@ -156,26 +156,32 @@ blob: {
   overflow: 'hidden'
 },
 button1: {
-  color: '#C33949',
-  border: '1px #D9D2C6 solid',
+  margin: 10,
+  color: theme.palette.primary.main,
+  border: '2px #D9D2C6 solid',
+  padding: '10px 20px',
   '&:hover': {
       background: '#C33949',
       color: 'white',
-        border: '1px #C33949 solid',
+        border: '2px #C33949 solid',
     }
 },
 button2: {
-  color: '#186858',
-  border: '1px #D9D2C6 solid',
+  margin: 10,
+  color: theme.palette.secondary.main,
+  border: '2px #D9D2C6 solid',
+  padding: '10px 20px',
   '&:hover': {
-      background: '#186858',
+      background: theme.palette.secondary.main,
       color: 'white',
-        border: '1px #186858 solid',
+        border: '2px #186858 solid',
     }
   },
 button3: {
+  margin: 10,
   color: '#EEEFEC',
-  border: '1px #D9D2C6 solid',
+  border: '2px #D9D2C6 solid',
+  padding: '10px 20px',
   '&:hover': {
       background: '#EEEFEC',
       color: '#333',
@@ -183,12 +189,14 @@ button3: {
     }
   },
 button4: {
-  color: '#009999',
-  border: '1px #D9D2C6 solid',
+  margin: 10,
+  color: theme.palette.secondary.light,
+  border: '2px #D9D2C6 solid',
+  padding: '10px 20px',
   '&:hover': {
-      background: '#009999',
+      background: theme.palette.secondary.light,
       color: 'white',
-        border: '1px #009999 solid',
+        border: '2px #009999 solid',
     }
 },
 gridList: {
@@ -231,6 +239,20 @@ dividerSvg: {
   width: 'calc(100% + 1.3px)',
   height: '110px',
 },
+blobA: {
+   zIndex: 1,
+   backgroundColor: '#E18C23',
+   background: theme.palette.primary.mainGradient,
+   maxWidth: '850px',
+   maxHeight: '850px'
+},
+blobB: {
+   zIndex: 1,
+   backgroundColor: '#E18C23',
+   background: theme.palette.secondary.mainGradient,
+   maxWidth: '850px',
+   maxHeight: '850px'
+},
 homeHader:{
   display: 'flex',
   flexFlow: 'column wrap',
@@ -252,7 +274,7 @@ tileHead: {
   },
 }));
 
-const HomeHeaderBlock = ({messages}) => {
+const HomeHeaderBlock = ({messages, theme}) => {
   const classes = useStyles();
   return (
   <div className={classes.root}>
@@ -275,7 +297,7 @@ const HomeHeaderBlock = ({messages}) => {
       <Grid container spacing={8}>
 
         <Grid item  xs={6}>
-          <Blob size="50vw" style={{ zIndex: 1, backgroundColor: '#E18C23', background:'linear-gradient(0deg, #C33949 0%, #E18C23 100%)', maxWidth: '850px', maxHeight: '850px'  }} >
+          <Blob className={classes.blobA} size="50vw" >
             <Blob size="88%" src={Blob1} />
           </Blob>
         </Grid>
@@ -326,7 +348,7 @@ return (
         </Grid>
 
         <Grid item  xs={6} className={classes.wrapperGrid}>
-          <Blob size="50vw" style={{ zIndex: 1, backgroundColor: '#388e3c', background:'linear-gradient(0deg, #388e3c 0%, #009999 100%)', maxWidth: '750px', maxHeight: '750px'  }}>
+          <Blob className={classes.blobB} size="50vw">
             <Blob size="88%" src={Blob2} />
           </Blob>
         </Grid>

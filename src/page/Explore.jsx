@@ -29,7 +29,7 @@ const exploreTraductions = defineMessages({
   },
   downloadDirect: {
     id: 'explore.downloadDirect',
-    defaultMessage: "Direct"
+    defaultMessage: "Download Booksonwall-AR.APK v.0.99.2"
   }
 
 });
@@ -41,27 +41,28 @@ const useStyles = makeStyles((theme) => ({
   exploreHader: {
     display: 'flex',
     flexFlow: 'column wrap',
-    minHeight: '95vh',
+    minHeight: '50vh',
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
     backgroundColor: '#ccc',
     color: 'white',
     backgroundSize: 'cover',
-    backgroundPositionY: 'center',
+    backgroundPosition: 'right ',
     backgroundImage: `url(${Images.image12.default})`,
   },
-  tile: {
-    margin: 0,
-    maxWidth: '55vw',
-    padding: '8vh 8vh 28vh',
+  titleWrapper: {
+    margin: '200px 0 0',
+    padding: '40px 8vh 8vh',
+  },
+  title:{
+    maxWidth: '600px',
   },
   button:{
     color: '#fff',
     border: '1px #fff solid'
   },
   dividerShape: {
-    position: 'absolute',
-    bottom: '-1vh',
+    bottom: '0',
     left: 0,
     width: '100%',
     overflow: 'hidden',
@@ -82,17 +83,17 @@ const ExploreHeader = ({messages}) => {
   const classes = useStyles();
   return (
 
-<Box id='Download_app' className={classes.exploreHader}>
-  <Container maxWidth='xs' className={classes.tile}>
-  <Typography gutterBottom color="white" variant="h1" >{messages.explore.header}</Typography>
-  <Typography gutterBottom color="white" variant="h4" component="h2">{messages.explore.subheader}</Typography>
-  <br />
-  <Box>
-    <ButtonGroup>
-      <Button size="large" className={classes.button} startIcon={<GetAppIcon />}>{messages.explore.downloadDirect}</Button>
-    </ButtonGroup>
+<Box className={classes.exploreHader}>
+  <Box className={classes.titleWrapper} >
+    <Typography className={classes.title} gutterBottom variant="h1" >{messages.explore.header}</Typography>
+    <Typography className={classes.title} gutterBottom variant="h4" component="h2">{messages.explore.subheader}</Typography>
+    <br />
+    <Box>
+      <ButtonGroup>
+        <Button size="large" className={classes.button} startIcon={<GetAppIcon />}>{messages.explore.downloadDirect}</Button>
+      </ButtonGroup>
+    </Box>
   </Box>
-  </Container>
   <Box className={classes.dividerShape} >
       <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className={classes.shapeFill} ></path>
@@ -115,11 +116,11 @@ class Explore extends Component {
   render() {
     const {messages} = this.props.intl;
     return (
-      <Box id="explore" className="main" >
-        <ExploreHeader messages={messages} />
-        <Stories history={this.props.history}/>
+      <Box className="main" >
+        <ExploreHeader id='Download_app' messages={messages} />
+        <Stories history={this.props.history} />
         <Faqs id="FAQs" messages={messages} />
-    </Box>
+      </Box>
     )
   }
 };

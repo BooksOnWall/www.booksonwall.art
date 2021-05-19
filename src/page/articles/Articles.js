@@ -60,7 +60,7 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
 const Categories = ({messages, categories, selectCategory, selected}) => {
   return (
     <>
-        {(categories) ? categories.map((cat, i) => <ToggleButton key={'cat'+i} onClick={(e) => selectCategory(e)}  style={{margin: '5px'}} color="primary" name={cat} >{cat}</ToggleButton>): ''}
+        {(categories) ? categories.map((cat, i) => <ToggleButton key={'cat'+i} onClick={(e) => selectCategory(e)}  style={{margin: '7px'}} color="primary" name={cat} >{cat}</ToggleButton>): ''}
     </>
   )
 };
@@ -161,10 +161,10 @@ class Articles extends Component {
     // images: [],
     return (
         <>
-          <Box style={{ alignItems: 'flex-start', display: 'flex', padding:'3vw'}}>
+          <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
             <Categories selected={selected} categories={categories} messages={messages} selectCategory={this.selectCategory}/>
           </Box>
-          <Box style={{justifyContent: 'space-around', display: 'flex'}}>
+          <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 20px 40px'}}>
           <Grid container spacing={3}>
             <News hasCategory={this.hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={this.goToArticle}/>
           </Grid>

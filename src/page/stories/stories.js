@@ -154,15 +154,15 @@ class Stories extends Component {
     const { messages } = this.props.intl
     console.log(messages);
     return (
-      <Box id="storiesWrapper">
+      <Box id={messages.menu.stories} className="stories">
       <Container maxWidth="xl">{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}</Container>
       <Box className='mapbg'><Mapbg /></Box>
 
       <Box id="storiesTitle">
-      <Typography variant="h3" color="primary" component="h3"> Stories</Typography>
-
+        <Typography variant="h3" color="primary" component="h3"> {messages.menu.stories}</Typography>
       </Box>
-      <Box id="stories">
+
+      <Box id="storyList">
         <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
       </Box>
       </Box>
