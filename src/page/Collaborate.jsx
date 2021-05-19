@@ -243,7 +243,6 @@ const SupportStory = ({messages}) => {
     }
     getServices();
   }, [apiURL]);
-  console.log(services);
 return (
   <Box className={classes.root}>
   <Box>
