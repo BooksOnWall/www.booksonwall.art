@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { makeStyles, Grid, Button,  Typography, Container, Box } from '@material-ui/core';
 
 import { injectIntl, defineMessages  } from 'react-intl';
@@ -189,10 +189,11 @@ we_are:{
 
 const CollaborateHeader = ({messages}) => {
   const classes = useStyles();
+
 return (
   <Box className={classes.collaborateHader}>
     <Box className={classes.gradient}>
-    <Container maxWidth='false'>
+    <Container>
       <Typography className={classes.titleTop} gutterBottom variant="h2" component="h1"> {messages.collaborate.title}</Typography>
     </Container>
     <Box className={classes.dividerShape}>
@@ -205,29 +206,67 @@ return (
 )};
 const SupportStory = ({messages}) => {
   const classes = useStyles();
+  const [services, setServices] = useState([]);
+  const apiURL = process.env.REACT_APP_API;
+
+  useEffect(() => {
+    const getServices = async () => {
+      try {
+
+        const fetchURL = apiURL + '/services?_limit=-1&_sort=published_at:DESC&lang=en';
+        await fetch(fetchURL, {
+          method: "get",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Host': 'backoff.booksonwall.art'
+          }
+        })
+        .then(response => {
+          if (response && !response.ok) { throw new Error(response.statusText);}
+          return response.json();
+        })
+        .then(data => {
+            if(data) {
+              setServices(data.map((c,i) => ({id: c.id, header: c.header, header_image: c.header_image, name:c.Name})));
+            } else {
+              console.log('No Data received from the server');
+            }
+        })
+        .catch((error) => {
+          // Your error is here!
+          if(error) console.log(JSON.stringify(error));
+        });
+      } catch(e) {
+        console.log(e.message);
+      }
+    }
+    getServices();
+  }, [apiURL]);
+  console.log(services);
 return (
   <Box className={classes.root}>
   <Box>
-    <Container className={classes.collaborate} maxWidth="false">
-    <Grid container spacing={8}>
-        <Grid item xs>
-          <Blob className={classes.blob} size="530px">
-              <Blob size="500px" src={Images.image11.default} />
-          </Blob>
-            <Typography gutterBottom variant="h2" component="h3" >{messages.collaborate.fund_a_story}</Typography>
-            <Typography gutterBottom  variant="h4" component="h4" >{messages.collaborate.create_new_story}</Typography>
-            <Button size="large" className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
-        </Grid>
-        <Grid item xs  className={classes.collaborateGrid2}>
-          <Blob  className={classes.blobB} size="380px">
-              <Blob size="330px" src={Images.image1.default} />
-          </Blob>
-            <Typography align="right" gutterBottom variant="h2" component="h3" >{messages.collaborate.join_us}</Typography>
-            <Typography align="right" gutterBottom variant="h4" component="h4" >{messages.collaborate.strategic_partner}</Typography>
-            <Typography align="right" gutterBottom variant="subtitle1" >{messages.collaborate.looking_for}</Typography>
-            <Button size="large" className={classes.button2}>{messages.collaborate.how}</Button>
+    <Container className={classes.collaborate} >
+      <Grid container spacing={8}>
+          <Grid item xs>
+            <Blob className={classes.blob} size="530px">
+                <Blob size="500px" src={Images.image11.default} />
+            </Blob>
+              <Typography gutterBottom variant="h2" component="h3" >{messages.collaborate.fund_a_story}</Typography>
+              <Typography gutterBottom  variant="h4" component="h4" >{messages.collaborate.create_new_story}</Typography>
+              <Button size="large" className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
           </Grid>
-      </Grid>
+          <Grid item xs  className={classes.collaborateGrid2}>
+            <Blob  className={classes.blobB} size="380px">
+                <Blob size="330px" src={Images.image1.default} />
+            </Blob>
+              <Typography align="right" gutterBottom variant="h2" component="h3" >{messages.collaborate.join_us}</Typography>
+              <Typography align="right" gutterBottom variant="h4" component="h4" >{messages.collaborate.strategic_partner}</Typography>
+              <Typography align="right" gutterBottom variant="subtitle1" >{messages.collaborate.looking_for}</Typography>
+              <Button size="large" className={classes.button2}>{messages.collaborate.how}</Button>
+            </Grid>
+        </Grid>
     </Container>
 <br /><br /><br />
     <Container maxWidth="xl" className={classes.servicesWrap}>
@@ -238,30 +277,16 @@ return (
       </Box>
         <br /><br /><br />
         <Grid container spacing={8} className={classes.servicesGrid}>
-        <Grid item xs={10} md={4}>
-          <Image className={classes.serviceImage}  src={Images.image1.default}/>
-          <br />
-          <Typography  gutterBottom variant="h3" component="h3" >Storytelleing</Typography>
-          <Typography  gutterBottom variant="body1" > Quis <b>Booksonwall Poesia & Stories</b> ultrices leo ullamcorper non. Nullam nec urna odio. Aliquam vitae orci nec dui dapibus dignissim. Vivamus et dapibus arcu. In ultrices, nulla eu vulputate semper, metus ligula interdum dolor, vitae maximus erat quam in mauris. Aenean id aliquet leo, ac fermentum augue. Ut dapibus interdum cursus. Ut dapibus interdum cursus. </Typography>
-          <br />
-          <Button size="large" className={classes.button2}>{messages.collaborate.read_more_btn}</Button>
-        </Grid>
-        <Grid item xs={10} md={4}>
-          <Image src={Images.image1.default} className={classes.serviceImage} />
-          <br />
-          <Typography  gutterBottom variant="h3" component="h3">Education</Typography>
-          <Typography  gutterBottom variant="body1" > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel euismod tellus. Proin faucibus, arcu vel pellentesque maximus, ex arcu euismod erat, id pretium ex risus quis velit. Curabitur vitae felis tincidunt, mollis lectus id, dictum dolor. Mauris in metus sapien. Cras pharetra consectetur purus non iaculis. Integer odio quam, varius condimentum lectus a, placerat facilisis magna. Mauris condimentum nibh ut metus pharetra. Mauris tristique ut purus ac mollis. Cras scelerisque orci est, </Typography>
-          <br />
-          <Button size="large" className={classes.button2}>{messages.collaborate.read_more_btn}</Button>
-        </Grid>
-        <Grid item xs={10} md={4}>
-          <Image src={Images.image1.default} className={classes.serviceImage}/>
-          <br />
-          <Typography  gutterBottom variant="h3" component="h3" >Exploration</Typography>
-          <Typography  gutterBottom variant="body" > Cras pharetra consectetur purus non iaculis. Integer odio quam, varius condimentum lectus a, placerat facilisis magna. Mauris condimentum nibh ut metus pharetra pharetra. Mauris tristique ut purus ac mollis. Cras scelerisque orci est, quis ultrices leo ullamcorper non. Nullam nec urna odio. Aliquam vitae orci nec dui dapibus dignissim. Vivamus et dapibus arcu. In ultrices, nulla eu vulputate semper, metus ligula interdum dolor. </Typography>
-          <br />
-          <Button size="large" className={classes.button2}>{messages.collaborate.read_more_btn}</Button>
-        </Grid>
+        {services && services.map((s,i) => (
+          <Grid item xs={10} md={4} key={"s"+i}>
+            {s.header_image && <Image className={classes.serviceImage}  src={apiURL+s.header_image.formats.small.url}/>}
+            <br />
+            <Typography  gutterBottom variant="h3" component="h3" >{s.name}</Typography>
+            <Typography  gutterBottom variant="body1" >{s.header}</Typography>
+            <br />
+            <Button size="large" className={classes.button2}>{messages.collaborate.read_more_btn}</Button>
+          </Grid>
+        ))}
       </Grid>
     </Container>
 
