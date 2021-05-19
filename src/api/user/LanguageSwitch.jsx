@@ -29,18 +29,19 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     textTransform: 'uppercase',
     fontSize: 13,
-    padding: "8px 14px",
+    padding: "12px 15px 4px",
 },
   menuItemItem: {
     padding: 15
   },
 menuItemText:{
-  padding:0
 },
 menuList: {
   padding: 0,
   margin: 5,
 },
+menuIcon:{
+}
 }));
 
 const LanguageSwitch = ({locale, switchLang}) => {
@@ -70,7 +71,7 @@ const LanguageSwitch = ({locale, switchLang}) => {
         aria-label="Languages"
         className={classes.menuItem}
         >
-        <ListItemText className={classes.menuItemText} onClick={handleClickListItem} primary={<CircleFlag countryCode={ (locale !== "en") ? locale : "gb" } height="20"/>} secondary={languageOptions[locale]} />
+        <ListItemText className={classes.menuItemText} onClick={handleClickListItem} primary={<CircleFlag className={classes.menuIcon}  countryCode={ (locale !== "en") ? locale : "gb" } height="22"/>} secondary={languageOptions[locale]} />
       </ListItem>
     </List>
 
@@ -93,7 +94,7 @@ const LanguageSwitch = ({locale, switchLang}) => {
           onClick={(e) => onLocaleChange(option)}
           className={classes.menuItemItem}
           >
-          <CircleFlag countryCode={ (option !== "en") ? option : "gb" } height="20"/>
+          <CircleFlag countryCode={ (option !== "en") ? option : "gb" } height="22"/>
         </MenuItem>
       ))}
     </Menu>

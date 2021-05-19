@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: theme.palette.primary.main,
+    background: theme.palette.primary.mainGradient,
     position: 'relative',
     width: '50vw',
     maxHeight: '40vh',
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 400,
     color: '#000',
     fontWeight: 700,
-    padding: '8px 2px 7px 12px',
+    padding: "12px 4px 4px 14px",
     textTransform: 'uppercase',
     fontSize: 13,
     margin: 5,
@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
   input: {
     margin: 20,
     minWidth: '300px'
+  },
+  buttonGroup:{
+    padding: "30px 0 0"
   }
 }));
 
@@ -69,6 +72,10 @@ const loginTraductions = defineMessages({
     id: 'login.title',
     defaultMessage: 'Login',
   },
+  login: {
+    id: 'login.login',
+    defaultMessage: 'Go!',
+  },
   name: {
     id: 'login.email',
     defaultMessage: 'Email',
@@ -76,6 +83,10 @@ const loginTraductions = defineMessages({
   passworrd: {
     id: 'login.password',
     defaultMessage: 'Password',
+  },
+  cancel: {
+    id: 'login.cancel',
+    defaultMessage: 'Cancel',
   },
 });
  const  LoginModal = ({values ,email, password, messages, handleChange, handleSubmit, login }) => {
@@ -121,7 +132,7 @@ const loginTraductions = defineMessages({
             <ParticlesBg className={classes.bg} type="circle" bg={true} num={5}/>
             <Typography color="textSecondary" variant="h6" component="h2">{messages.login.title}</Typography>
             <TextField
-              color="primary"
+              color="secondary"
               inputProps={{ 'aria-label': 'email' }}
               onChange={(e) => handleChange(e)}
               type="text"
@@ -135,7 +146,7 @@ const loginTraductions = defineMessages({
             <Divider />
 
             <TextField
-              color="primary"
+              color="secondary"
               inputProps={{ 'aria-label': 'password' }}
               defaultValue={messages.login.password}
               label={messages.login.password}
@@ -145,10 +156,9 @@ const loginTraductions = defineMessages({
               onChange={(e) => handleChange(e)}
               className={classes.input}
               />
-            <Divider />
-            <ButtonGroup>
-            <Button variant="contained" color="primary" onClick={login}>Login</Button>
-            <Button variant="contained" color="primary" onClick={handleClose}>Cancel</Button>
+            <ButtonGroup className={classes.buttonGroup}>
+            <Button elevation={1} variant="contained" color="primary" onClick={login}>{messages.login.login}</Button>
+            <Button elevation={1} variant="contained" color="primary" onClick={handleClose}>{messages.login.cancel}</Button>
             </ButtonGroup>
           </div>
       </Modal>
