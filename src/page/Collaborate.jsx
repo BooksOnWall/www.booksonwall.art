@@ -294,30 +294,14 @@ return (
 </Box>
 )};
 
-class Help extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-        collaborateTraductions:collaborateTraductions,
-        markdown: null,
-        support: null,
-      }
-  }
-  componentDidMount() {
-    // update authenticated state on logout
-    fetch(collaborate).then(res => res.text()).then(text => this.setState({ markdown: text }));
-  }
-
-  render() {
+const Collaborate = (props) => {
     const {messages} = this.props.intl;
     return (
       <Box id="collabora">
         <CollaborateHeader messages={messages}/>
         <SupportStory messages={messages} />
-    </Box>
+     </Box>
     )
-  }
 };
 
-export default injectIntl(Help);
+export default injectIntl(Collaborate);
