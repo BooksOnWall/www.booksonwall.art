@@ -4,9 +4,12 @@
     "fund_a_story": "Fund a story",
     "how": "How to become a partner",
     "join_us": "Be a partner",
-    "lookink_for": "A unique connection with the creative industries: literary creation, audiovisual, music, plastic and visual arts with the city and its historical, cultural and social contents.",
+    "looking_for": "A unique connection with the creative industries: literary creation, audiovisual, music, plastic and visual arts with the city and its historical, cultural and social contents.",
     "read_more_btn": "Read More",
-    "title": "Together we can revalorate and resignify your city.<br/> Using Arte and New Technologies."
+    "strategic_partner": "We are looking for strategic partners who want to participate and contribute to the growth of BooksOnWall.",
+    "title": "Together we can revalorate and resignify your city. Using Arte and New Technologies.",
+    "we_are": "We are a community of expert in art, media and contemporary technologies",
+    "we_produce": "We produce, direct and manage extended reality proyect."
   },
   "contact": {
     "contactUs": "Contact Us",
@@ -16,20 +19,27 @@
     "send": "Send"
   },
   "create": {
+    "community": "Community",
     "community_we_are": "We are artists who love working with other artists",
     "community_we_create": "We create stories with original routes inspired by various elements of local culture. Each story requires the collaboration of numerous professions such as writers, scriptwriters, Grafitti artist, sculptors, graphic designers, animators, musicians, storytellers, audiovisual designers, communicators and managers. Together we process, design, create and optimize all types of content that make up the experience.",
-    "joinus_header": "Do you want to be part of a team of multidisciplinary, innovative and passionate creators? Then BooksOnWall is your place!",
+    "join_us": "Join Us",
+    "joinus_header": "Do you want to be part of a team of multidisciplinary, innovative and passionate creators?",
     "know_more": "know more here",
     "meet_comunity": "Meet the community",
     "wokshop_header": "The world is full of sto…t in a very special way",
     "wokshop_subheader": "Let's create an augmented story together!",
     "workshop_by_step": "Do you want to create a …roject step after step.",
-    "workshop_stories": "Workshops to create a BooksOnWall Story"
+    "workshop_stories": "Workshops to create a BooksOnWall Story",
+    "your_place": "The community of BooksOnWall is your place!"
   },
+  "d4411": "Meet the community",
   "explore": {
-    "downloadDirect": "Direct",
+    "downloadDirect": "Download Booksonwall-AR.APK v.0.99.2",
     "header": "Come and live a story through urban art and new technologies!",
     "subheader": "Download \"BookSonWall AR\" to enjoy the stories and experience urban art and augmented reality."
+  },
+  "faqs": {
+    "subtitle": "Here are some FAQ's with their answers!"
   },
   "home": {
     "create_togheter": "Let's create a fantastic story",
@@ -46,6 +56,7 @@
     "we_connect": "We connect people with their territories and revalue their own narratives through art and digital technologies."
   },
   "info": {
+    "more_articles": "More articles",
     "we_are": "We are an interdisciplinary collective of creatives who tell stories through digital technology and cultural assets.",
     "we_create": "We have created the Booksonwall App that with visual and sound stimuli, interacts with people, making them part of their stories, traveling around the city and enjoying urban artworks."
   },
@@ -57,7 +68,9 @@
     "spanish": "Spanish"
   },
   "login": {
+    "cancel": "Cancel",
     "email": "Email",
+    "login": "Go!",
     "password": "Password",
     "title": "Login"
   },
@@ -81,8 +94,13 @@
     "support": "Support a story",
     "workshop": "Workshop"
   },
+  "press": {
+    "branding": "Branding",
+    "presentation": "presentation",
+    "press_title": "Branding and Press realease",
+    "presskit": "presskit"
+  },
   "stories": {
     "read_more_btn": "Read more"
-  },
-  "strategic_partner": "We are looking for strategic partners who want to participate and contribute to the growth of BooksOnWall."
+  }
 }

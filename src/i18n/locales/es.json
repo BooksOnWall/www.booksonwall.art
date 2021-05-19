@@ -4,9 +4,12 @@
     "fund_a_story": "Financiar una historia",
     "how": "Conoce como convertirte en socio",
     "join_us": "Se parte",
-    "lookink_for": "Una conexión única con las industrias creativas: creación literaria, audiovisual, música, artes plásticas y visuales con la ciudad y sus contenidos históricos, culturales y sociales.",
+    "looking_for": "Una conexión única con las industrias creativas: creación literaria, audiovisual, música, artes plásticas y visuales con la ciudad y sus contenidos históricos, culturales y sociales.",
     "read_more_btn": "Leer más",
-    "title": "Together we can revalorate and resignify your city. Using Arte and New Technologies."
+    "strategic_partner": "Buscamos socios estratégicos que quieran participar y contribuir con el crecimiento de BooksOnWall.",
+    "title": "Juntos podemos revalorizar y resignificar tu ciudad, a través del arte y las nuevas tecnologías.",
+    "we_are": "Somos una comunidad de expertos en arte, media y tecnologías contemporaneas.",
+    "we_produce": "Producimos, dirigimos y gestionamos proyectos de realidad extendida."
   },
   "contact": {
     "contactUs": "Conversemos!",
@@ -16,38 +19,46 @@
     "send": "enviar"
   },
   "create": {
+    "community": "Comunidad",
     "community_we_are": "Somos artistas que aman trabajar con otros artistas.",
     "community_we_create": "Creamos historias con recorridos originales e inspirados en diversos elementos de la cultura local. Cada cuento requiere de la colaboración de numerosos oficios como escritores, guionistas, muralistas, escultores, gráficos, animadores, músicos, narradores, diseñadores audiovisuales, comunicadores y gestores. Juntos procesamos, diseñamos, creamos y optimizamos todo tipo de contenidos que hacen a la experiencia.",
-    "joinus_header": "¿Querés formar parte de un equipo de creadores multidisciplinarios, innovadores y apasionados? ¡BooksOnWall es tu lugar!",
-    "know_more": "Conoce más",
+    "join_us": "¿Te gustaria ser parte?",
+    "joinus_header": "¿Querés formar parte de un equipo de creadores multidisciplinarios, innovadores y apasionados?",
+    "know_more": "Aquí te contamos más...",
     "meet_comunity": "Conoce la Comunidad",
     "wokshop_header": "El mundo está lleno de historias que esperan ser contadas y queremos hacerlo de una manera muy especial.",
     "wokshop_subheader": "¡Vamos a crear una historia aumentada juntos!",
     "workshop_by_step": "¿Quieres crear un cuento en tu ciudad? Podemos guiar y acompañar el proceso paso a paso, conectate con nosotros.",
-    "workshop_stories": "Talleres para crear un cuento"
+    "workshop_stories": "Talleres para crear un cuento",
+    "your_place": "¡BooksOnWall es tu lugar!"
   },
+  "d4411": "",
   "explore": {
-    "downloadDirect": "Descarga directa",
+    "downloadDirect": "Booksonwall-AR.APK v.0.99.2 android",
     "header": "¡Viví un cuento a través del arte urbano y nuevas tecnologías!",
-    "subheader": "Descargá “BookSonWall APP” para disfrutar de los cuentos y tener una experiencia de arte urbano y realidad aumentada."
+    "subheader": "Descargá BookSonWall AR para disfrutar de los cuentos y tener una experiencia de arte urbano y realidad aumentada."
+  },
+  "faqs": {
+    "subtitle": "Aquí algunas preguntas y sus respuestas!"
   },
   "home": {
     "create_togheter": "¿Creamos una historia fantastica?",
-    "download_app": "Descargar Booksonwall APP Móvil",
+    "download_app": "Descargar Booksonwall AR",
     "download_app_btn": "Descarga y comienza la aventura",
     "enjoy_btn": "A disfrutar la experiencia",
     "enjoy_the_experience": "Animate a disfrutar de una experiencia hipermedia y vivir un cuento a través del arte urbano!",
     "join_btn": "Has parte y únetenos!",
     "know_btn": "Conocenose la comunidad",
     "support_a_story_btn": "Apoya una historia",
-    "take_a_tour": "Vamos a recorrer la ciudad con BooksOnWall App",
+    "take_a_tour": "Vamos a recorrer la ciudad con BooksOnWall AR",
     "title": "Narrativas inmersivas, cultura y arte urbano",
     "we_are": "Somos un colectivo de creativos que cuenta historias por el mundo",
     "we_connect": "Conectamos a las personas con sus territorios y revalorizamos sus propias narrativas a través del arte y las tecnologías."
   },
   "info": {
+    "more_articles": "Más articulos",
     "we_are": "Somos es un colectivo interdisciplinario de creativos que contamos historias a través de tecnología digitales y bienes culturales.",
-    "we_create": "Hemos creamos la aplicación de realidad aumentada Booksonwall App que con estímulos visuales y sonoros, interactúa con las personas volviendolas parte de sus cuentos recorriendo la ciudad y visitando obras de arte urbano."
+    "we_create": "Hemos creamos la aplicación de realidad aumentada Booksonwall AR que con estímulos visuales y sonoros, interactúa con las personas volviendolas parte de sus cuentos recorriendo la ciudad y visitando obras de arte urbano."
   },
   "lang": {
     "english": "English",
@@ -57,8 +68,10 @@
     "spanish": "Español"
   },
   "login": {
-    "email": "Correo",
-    "password": "Clave secreta",
+    "cancel": "Cerrar",
+    "email": "e-mail",
+    "login": "Entrar",
+    "password": "clave secreta",
     "title": "Acceso a la comunidad"
   },
   "menu": {
@@ -68,7 +81,7 @@
     "connect": "Conéctate",
     "create": "Crea",
     "develop": "Inovación + desarrollo",
-    "download_app": "Descarga BooksOnWall APP",
+    "download_app": "Descarga BooksOnWall AR",
     "explore": "Explora",
     "faqs": "Preguntas frecuentes",
     "history": "Historia",
@@ -76,13 +89,18 @@
     "joinus": "Únetenos",
     "login": "Iniciar sesión",
     "manifest": "Manifiesto",
-    "press": "Sala prensa",
+    "press": "Articulos",
     "stories": "Cuentos",
     "support": "Apoya una historia",
     "workshop": "Talleres"
   },
-  "stories": {
-    "read_more_btn": ""
+  "press": {
+    "branding": "Logos",
+    "presentation": "Presentación",
+    "press_title": "Marca y comunicado de prensa",
+    "presskit": "kit de prensa"
   },
-  "strategic_partner": ""
+  "stories": {
+    "read_more_btn": "Leer más"
+  }
 }

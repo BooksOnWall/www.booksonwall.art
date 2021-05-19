@@ -4,9 +4,12 @@
     "fund_a_story": "",
     "how": "",
     "join_us": "",
-    "lookink_for": "",
+    "looking_for": "",
     "read_more_btn": "",
-    "title": ""
+    "strategic_partner": "",
+    "title": "",
+    "we_are": "",
+    "we_produce": ""
   },
   "contact": {
     "contactUs": "",
@@ -16,20 +19,27 @@
     "send": ""
   },
   "create": {
+    "community": "",
     "community_we_are": "Nous sommes des artistes qui aiment travailler avec d'autres artistes.",
     "community_we_create": "Nous créons des histoires avec des parcours originaux inspirés par divers éléments de la culture locale. Chaque histoire nécessite la collaboration de nombreuses professions telles que les écrivains, les scénaristes, les muralistes, les sculpteurs, les graphistes, les animateurs, les musiciens, les conteurs, les concepteurs audiovisuels, les communicateurs et les gestionnaires. Ensemble, nous traitons, concevons, créons et optimisons toutes sortes de contenus qui composent l'expérience.",
+    "join_us": "",
     "joinus_header": "¿Vous voulez faire partie d'une équipe de créateurs multidisciplinaires, innovants et passionnés ? BooksOnWall, c'est votre place !",
     "know_more": "",
     "meet_comunity": "",
     "wokshop_header": "Le monde est plein d'histoires qui attendent d'être racontées et nous voulons le faire d'une manière très spéciale.",
     "wokshop_subheader": "Créons ensemble une histoire enrichie !",
     "workshop_by_step": "¿Voulez-vous créer un conte dans votre ville ? Nous pouvons guider et suivre le processus étape par étape, nous connecter avec nous.",
-    "workshop_stories": "Ateliers pour créer un conte BooksOnWall"
+    "workshop_stories": "Ateliers pour créer un conte BooksOnWall",
+    "your_place": ""
   },
+  "d4411": "",
   "explore": {
     "downloadDirect": "",
     "header": "\"Vivez une histoire à travers l'art urbain et les nouvelles technologies!",
     "subheader": "Téléchargez \"BookSonWall APP\" pour profiter des histoires et découvrir l'art urbain et la réalité augmentée."
+  },
+  "faqs": {
+    "subtitle": ""
   },
   "home": {
     "create_togheter": "",
@@ -46,6 +56,7 @@
     "we_connect": ""
   },
   "info": {
+    "more_articles": "",
     "we_are": "",
     "we_create": ""
   },
@@ -57,7 +68,9 @@
     "spanish": "Español"
   },
   "login": {
+    "cancel": "",
     "email": "",
+    "login": "",
     "password": "",
     "title": ""
   },
@@ -81,8 +94,13 @@
     "support": "Soutient un conte",
     "workshop": "Atelier"
   },
+  "press": {
+    "branding": "",
+    "presentation": "",
+    "press_title": "",
+    "presskit": ""
+  },
   "stories": {
     "read_more_btn": ""
-  },
-  "strategic_partner": ""
+  }
 }

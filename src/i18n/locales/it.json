@@ -4,9 +4,12 @@
     "fund_a_story": "",
     "how": "",
     "join_us": "",
-    "lookink_for": "",
+    "looking_for": "",
     "read_more_btn": "",
-    "title": ""
+    "strategic_partner": "",
+    "title": "",
+    "we_are": "",
+    "we_produce": ""
   },
   "contact": {
     "contactUs": "",
@@ -16,20 +19,27 @@
     "send": ""
   },
   "create": {
+    "community": "",
     "community_we_are": "Siamo artisti che adorano lavorare con altri artisti.",
     "community_we_create": "Creiamo storie con tour originali ispirati a vari elementi della cultura locale. Ogni storia richiede la collaborazione di numerosi artisti come scrittori, sceneggiatori, muralisti, scultori, grafici, animatori, musicisti, narratori, designer audiovisivi, comunicatori e manager. Insieme elaboriamo, progettiamo, creiamo e ottimizziamo tutti i tipi di contenuti che rendono l'esperienza multisensoriale.",
+    "join_us": "",
     "joinus_header": "Vuoi far parte di un team di creatori multidisciplinari, innovativi e appassionati? BooksOnWall è il tuo posto!",
     "know_more": "",
     "meet_comunity": "",
     "wokshop_header": "Il mondo è pieno di storie che attendono di essere raccontate e vogliamo farlo in un modo molto speciale.",
     "wokshop_subheader": "Creiamo insieme una storia con la realtà aumentata!",
     "workshop_by_step": "Vuoi creare una storia nella tua città? Siamo in grado di guidare e accompagnare il processo passo dopo passo, connettendoti con noi.",
-    "workshop_stories": "Workshop per creare una storia"
+    "workshop_stories": "Workshop per creare una storia",
+    "your_place": ""
   },
+  "d4411": "",
   "explore": {
     "downloadDirect": "",
     "header": "Vieni a vivere una storia attraverso l'arte urbana e le nuove tecnologie!",
     "subheader": "Scarica \"APP BookSonWall\" per goderti le storie e sperimentare l'arte urbana e la realtà aumentata."
+  },
+  "faqs": {
+    "subtitle": ""
   },
   "home": {
     "create_togheter": "",
@@ -46,6 +56,7 @@
     "we_connect": ""
   },
   "info": {
+    "more_articles": "",
     "we_are": "",
     "we_create": ""
   },
@@ -57,7 +68,9 @@
     "spanish": "Español"
   },
   "login": {
+    "cancel": "",
     "email": "",
+    "login": "",
     "password": "",
     "title": ""
   },
@@ -81,8 +94,13 @@
     "support": "Sostieni una storia",
     "workshop": "Workshop"
   },
+  "press": {
+    "branding": "",
+    "presentation": "",
+    "press_title": "",
+    "presskit": ""
+  },
   "stories": {
     "read_more_btn": ""
-  },
-  "strategic_partner": ""
+  }
 }
