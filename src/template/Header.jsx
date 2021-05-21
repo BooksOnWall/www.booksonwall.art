@@ -32,7 +32,11 @@ import ProfileIcon from '@material-ui/icons/Face';
 
 
 const menuTraductions = defineMessages({
-  explore: {
+  home: {
+    id: 'menu.home',
+    defaultMessage: 'Home',
+  },
+    explore: {
     id: 'menu.explore',
     defaultMessage: 'Explore',
   },
@@ -103,6 +107,10 @@ const menuTraductions = defineMessages({
   connect: {
     id: 'menu.connect',
     defaultMessage: 'Connect',
+  },
+  projects: {
+    id: 'menu.projects',
+    defaultMessage: 'Projects',
   },
 });
 

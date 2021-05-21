@@ -18,7 +18,17 @@ import { ReactComponent as FooterBg } from './../assets/images/svg/footer.svg';
 import { ReactComponent as Principal } from './../assets/images/svg/principal.svg';
 import { ReactComponent as Logo }   from './../assets/images/svg/logo_extended.svg';
 
-import { injectIntl } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
+const createTraductions = defineMessages({
+  thx_for_support_us: {
+    id: 'footer.thx_for_support_us',
+    defaultMessage: "Thx for supporting us"
+  },
+  terms: {
+    id: 'footer.terms',
+    defaultMessage: "Terms"
+  },
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,17 +62,20 @@ const useStyles = makeStyles((theme) => ({
   },
   footerContainer: {
     backgroundColor: '#001111',
-    background:'linear-gradient(0deg, #000011 0%, #001111 100%)',
+    background:'linear-gradient(0deg, #000005 0%, #001030 100%)',
     color: '#fff',
   },
+  footerBreadcrumb:{
+    height: '67px'
+  },
   divider: {
-      backgroundColor: '#18404d',
-      background: 'linear-gradient(0deg, #000011 0%, #18404d 100%)',
+      backgroundColor: '#184050',
+      background: 'linear-gradient(0deg, #000010 0%, #184050 100%)',
   },
   dividerH: {
     marginTop: 15,
-    backgroundColor: '#18404d',
-    background: 'linear-gradient(-90deg, #18404d 0%, #000111 60%)',
+    backgroundColor: '#184050',
+    background: 'linear-gradient(-90deg, #18404d 0%, #000010 60%)',
     },
   title: {
     color: '#131413',
@@ -111,10 +124,9 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
   return (
     <>
     <Box className={classes.footerContainer}>
-    <Container  >
+    <Container maxWidth="false" >
     <Grid container className={classes.root}>
-      <Grid container >
-        <Grid item xs>
+        <Grid item xs={2}>
           <Paper elevation={0} className={classes.paper}>
             <Typography gutterBottom variant="h6">{messages.menu.explore}</Typography>
             <MenuList variant="selectedMenu">
@@ -134,7 +146,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
           </Paper>
         </Grid>
         <Divider orientation="vertical" flexItem className={classes.divider} />
-        <Grid item xs>
+        <Grid item xs={2}>
           <Paper elevation={0} className={classes.paper}>
             <Typography gutterBottom  variant="h6">{messages.menu.create} </Typography>
             <MenuList variant="selectedMenu">
@@ -155,7 +167,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
           </Paper>
         </Grid>
         <Divider orientation="vertical" flexItem className={classes.divider} />
-        <Grid item xs>
+        <Grid item xs={2}>
           <Paper elevation={0} className={classes.paper}>
           <Typography gutterBottom  variant="h6">  {messages.menu.collaborate} </Typography>
             <MenuList variant="selectedMenu">
@@ -175,7 +187,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
           </Paper>
         </Grid>
         <Divider orientation="vertical" flexItem light className={classes.divider} />
-        <Grid item xs>
+        <Grid item xs={2}>
           <Paper elevation={0} className={classes.paper}>
           <Typography gutterBottom  variant="h6">  {messages.menu.info} </Typography>
             <MenuList variant="selectedMenu">
@@ -199,7 +211,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
           </Paper>
         </Grid>
         <Divider orientation="vertical" flexItem className={classes.divider} />
-        <Grid item xs>
+        <Grid item xs={2}>
           <Paper elevation={0} className={classes.paper}>
             <Typography gutterBottom  variant="h6">{messages.menu.connect}</Typography>
             <MenuList variant="selectedMenu">
@@ -228,7 +240,6 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
             </MenuList>
           </Paper>
         </Grid>
-      </Grid>
     </Grid>
 
     <Divider light className={classes.dividerH} />
@@ -238,8 +249,8 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
       </Grid>
       <Grid item xs>
           <Grid className={classes.menuBottom} >
-            <Button className={classes.button} color="default" startIcon={<Heart color='secondary' />}>THX for Support US</Button>
-            <Button className={classes.button}  startIcon={<Cc color='primary' />}>Terms</Button>
+            <Button className={classes.button} color="default" startIcon={<Heart color='secondary' />}>{messages.footer.thx_for_support_us}</Button>
+            <Button className={classes.button}  startIcon={<Cc color='primary' />}>{messages.footer.terms}</Button>
           </Grid>
       </Grid>
       </Grid>
@@ -289,7 +300,7 @@ const Footer = ({intl}) => {
       <Box className="footer" >
         <Box className="footerBreadcrumb">
             <Breadcrumbs aria-label="breadcrumb">
-              <Link color="textPrimary" name={"Home"} href="/" onClick={handleClick}>Home</Link>
+              <Link color="textPrimary" name={"Home"} href="/" onClick={handleClick}>{messages.menu.home}</Link>
               <Link color="textPrimary" name={page} href={"/"+page} onClick={handleClick}>{page}</Link>
               <Typography name={subPage} >{subPage}</Typography>
             </Breadcrumbs>
