@@ -8,7 +8,33 @@ body{
 #root, body  {
   margin: 0px !important;
   padding: 0px;
-
+}
+.connect{
+min-width: 100vw;
+min-height: 100vh;
+}
+.contact{
+  min-height: 80vh;
+  display: flex;
+  align-Items: center;
+  justify-content: center;
+  align-content: center;
+  padding: 140px 30px;
+  background: linear-gradient(0deg, rgba(190,66,81,.88) 0%, rgba(224,161,3,.88) 100%);
+}
+.contactGrid{
+}
+.projects{
+  min-width: 100vw;
+  padding: 120px 30px;
+}
+.register{
+  background: #ccc;
+  padding: 50px 0;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: 'center'
 }
 #appbar-web .MuiToolbar-gutters .MuiList-padding, #appbar-web .MuiToolbar-gutters , #appbar-web .MuiToolbar-gutters .MuiIconButton-root {
   padding-top: 0;
@@ -59,27 +85,54 @@ body{
 #home .HomeHeaderBlock .MuiBox-root{ width: 40vw; margin-bottom: 10vh;}
 
 #home .WhoAreWe{ padding: 10vh 0 20vh }
-
-
+#contactForm{
+  padding: 50px 60px 20px;
+  background: ;
+  background: linear-gradient(0deg,  rgba(190,66,81,.88)  0%, rgba(190,66,81,.5) 100%);
+  border-radius: 12px;
+}
 #contactForm .button2{
-  margin: 40px 0;
+  margin: 30px 0;
   color: #fff;
-  border: 1px #fff solid;
+  border: 2px #fff solid;
 }
 #contactForm .button2:hover{
   background: #fff;
   color: rgba(190,66,81,1);
-  border: 1px #fff solid;
+  border: 2px #fff solid;
 }
 #contactForm .formMessage{
   width: 100%;
   padding: 20px;
+  background: transparent;
+  border-radius: 2px;
+  border: 2px solid #fff;
+  font-size:18px;
+  color: #fff;
+  margin: 30px 0px 0
+}
+
+#contactForm .formMessage:focus-visible{
+  border-color:  #91201F ;
+  outline: none;
+}
+#contactForm .MuiInputBase-input{margin: 10px 0; color: #fff}
+#contactForm .formImput .MuiFormLabel-root.Mui-focused{color: #fff; font-weight: bold;}
+#contactForm .formImput .MuiInput-underline::before {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "\00a0";
+    position: absolute;
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 2px solid #fff;
+    pointer-events: none;
 }
 
 #join-us{ min-height: 10vh}
 #storyList{ min-height: 40vh; padding: 2vh 40px 300px; margin: 0 !important; display: flex; justify-Content:space-evenly; width: 100vw; flex-grow: 1; flex-wrap: wrap}
 .stories{ padding-top: 200px; min-height: 110vh; display: flex; align-items: center; flex-direction: column}
-#storiesTitle{ padding: 80px 0 0}
+#storiesTitle{ padding: 0px 0 120px}
 #story {
   background-color: transparent;
   margin: 0px;
@@ -382,7 +435,7 @@ ul.MuiList-root {
 .menu, .footer {
   margin: 0 !important;
 }
-.footer .footerBreadcrumb{ height: 50px; background: #102b34; padding: 20px 5vw;  text-transform: uppercase; }
+.footer .footerBreadcrumb{ background: #102b40; padding: 20px 5vw;  text-transform: uppercase; }
 .footer .MuiPaper-root{ padding: 25px 24px}
 .footer .MuiPaper-root h6{ padding: 20px 15px}
 .footer .MuiBreadcrumbs-ol{padding: 0 }
@@ -397,7 +450,7 @@ ul.MuiList-root {
   align-items: center;
   background-color: #999;
 }
-.explore-header, .communityHeader, .home-header {
+.explore-header, .home-header {
   display: flex;
   flex-flow: column wrap;
   min-height: 65vh;
@@ -416,7 +469,7 @@ ul.MuiList-root {
   padding: 25vh 0!important;
   margin-top: 0 !important;
 }
-.skills , .collaborateHeader, .communityHeader  {
+.skills , .collaborateHeader  {
   display: flex;
   justify-content: center ;
   flex-flow: column wrap;
@@ -427,7 +480,7 @@ ul.MuiList-root {
 }
 #manifest h3, #manifest p{ max-width: 80vh}
 
-.collaborateHeader, .communityHeader, .explore-header  {
+.collaborateHeader, .explore-header  {
   min-height: 65vh;
 }
 
