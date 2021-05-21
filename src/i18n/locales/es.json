@@ -11,8 +11,12 @@
     "we_are": "Somos una comunidad de expertos en arte, media y tecnologías contemporaneas.",
     "we_produce": "Producimos, dirigimos y gestionamos proyectos de realidad extendida."
   },
+  "connect": {
+    "keed_in_touch": "¿Seguimos en contacto? siguenos en redes sociales o dejanos un mensaje por acá, estamos a tu disposición.",
+    "register": "Si quieres unirtenos y colaborar, pasa por aquí ¡nos encanta la idea!"
+  },
   "contact": {
-    "contactUs": "Conversemos!",
+    "contactUs": "Conversemos...",
     "email": "Correo electrónico",
     "name": "Nombre completo",
     "phone": "Teléfono de contacto",
@@ -40,6 +44,10 @@
   },
   "faqs": {
     "subtitle": "Aquí algunas preguntas y sus respuestas!"
+  },
+  "footer": {
+    "terms": "Terminos y condiciones",
+    "thx_for_support_us": "Ayudanos a sostener, Gracias."
   },
   "home": {
     "create_togheter": "¿Creamos una historia fantastica?",
@@ -81,15 +89,17 @@
     "connect": "Conéctate",
     "create": "Crea",
     "develop": "Inovación + desarrollo",
-    "download_app": "Descarga BooksOnWall AR",
+    "download_app": "Descargar",
     "explore": "Explora",
     "faqs": "Preguntas frecuentes",
     "history": "Historia",
+    "home": "Inicio",
     "info": "Info",
     "joinus": "Únetenos",
     "login": "Iniciar sesión",
     "manifest": "Manifiesto",
     "press": "Articulos",
+    "projects": "",
     "stories": "Cuentos",
     "support": "Apoya una historia",
     "workshop": "Talleres"

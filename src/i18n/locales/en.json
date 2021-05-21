@@ -11,6 +11,10 @@
     "we_are": "We are a community of expert in art, media and contemporary technologies",
     "we_produce": "We produce, direct and manage extended reality proyect."
   },
+  "connect": {
+    "keed_in_touch": "Keep in touch, we are in the networks and you can also write us, we are at your service.",
+    "register": "If you want to join us and collaborate in any of the projects, drop by here and we will get in touch with some ideas to participate."
+  },
   "contact": {
     "contactUs": "Contact Us",
     "email": "Email",
@@ -40,6 +44,10 @@
   },
   "faqs": {
     "subtitle": "Here are some FAQ's with their answers!"
+  },
+  "footer": {
+    "terms": "Terms",
+    "thx_for_support_us": "Thx for supporting us"
   },
   "home": {
     "create_togheter": "Let's create a fantastic story",
@@ -85,11 +93,13 @@
     "explore": "Explore",
     "faqs": "FAQs",
     "history": "History",
+    "home": "Home",
     "info": "Info",
     "joinus": "Join us",
     "login": "Login",
     "manifest": "Manifest",
     "press": "Press",
+    "projects": "Projects",
     "stories": "Stories",
     "support": "Support a story",
     "workshop": "Workshop"

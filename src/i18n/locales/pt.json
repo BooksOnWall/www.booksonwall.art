@@ -11,6 +11,10 @@
     "we_are": "",
     "we_produce": ""
   },
+  "connect": {
+    "keed_in_touch": "",
+    "register": ""
+  },
   "contact": {
     "contactUs": "",
     "email": "Correio",
@@ -40,6 +44,10 @@
   },
   "faqs": {
     "subtitle": ""
+  },
+  "footer": {
+    "terms": "",
+    "thx_for_support_us": ""
   },
   "home": {
     "create_togheter": "",
@@ -85,11 +93,13 @@
     "explore": "Explora",
     "faqs": "Perguntas frequentes",
     "history": "História",
+    "home": "",
     "info": "Informação",
     "joinus": "Junta-te a nós",
     "login": "Conecte-se",
     "manifest": "Manifesto",
     "press": "Imprensa",
+    "projects": "",
     "stories": "Histórias",
     "support": "Apoie uma história",
     "workshop": "Workshop"

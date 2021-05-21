@@ -11,6 +11,10 @@
     "we_are": "",
     "we_produce": ""
   },
+  "connect": {
+    "keed_in_touch": "",
+    "register": ""
+  },
   "contact": {
     "contactUs": "",
     "email": "Courrier électronique",
@@ -40,6 +44,10 @@
   },
   "faqs": {
     "subtitle": ""
+  },
+  "footer": {
+    "terms": "",
+    "thx_for_support_us": ""
   },
   "home": {
     "create_togheter": "",
@@ -85,11 +93,13 @@
     "explore": "Explorer",
     "faqs": "FAQ",
     "history": "Contes",
+    "home": "",
     "info": "Informations",
     "joinus": "Rejoignez nous",
     "login": "S'identifier",
     "manifest": "Manifeste",
     "press": "Imprensa",
+    "projects": "",
     "stories": "Histoires",
     "support": "Soutient un conte",
     "workshop": "Atelier"
