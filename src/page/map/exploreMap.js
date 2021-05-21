@@ -59,7 +59,7 @@ class ExploreMap extends Component {
     const {stories, mode} = this.props;
 
     this.state = {
-      mapStyle: (mode && mode === "Dark") ? "mapbox://styles/croll/ckc3vw1zm03w91inw353d7jn9" : "mapbox://styles/mapbox/light-v9",
+      mapStyle: (mode && mode === "Dark") ? "mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8" : "mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8",
       viewport: viewport,
       stories: stories
     }
@@ -101,7 +101,7 @@ class ExploreMap extends Component {
         className= "mapBox"
         mapStyle={mapStyle}
         logoEnabled={false}
-        localizeLabels={true}
+        localizeLabels={false}
         onViewportChange={this.onViewportChange}
         mapboxApiAccessToken={MapboxAccessToken}
       >

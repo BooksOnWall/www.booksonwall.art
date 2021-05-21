@@ -155,13 +155,11 @@ class Stories extends Component {
     console.log(messages);
     return (
       <Box id={messages.menu.stories} className="stories">
+      <Box id="storiesTitle">
+        <Typography variant="h2" color="primary" component="h2" style={{textTransform:'uppercase'}}> {messages.menu.stories}</Typography>
+      </Box>
       <Container maxWidth="xl">{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}</Container>
       <Box className='mapbg'><Mapbg /></Box>
-
-      <Box id="storiesTitle">
-        <Typography variant="h3" color="primary" component="h3"> {messages.menu.stories}</Typography>
-      </Box>
-
       <Box id="storyList">
         <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
       </Box>

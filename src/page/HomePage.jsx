@@ -185,7 +185,7 @@ button3: {
   '&:hover': {
       background: '#EEEFEC',
       color: '#333',
-        border: '1px #EEEFEC solid',
+        border: '2px #EEEFEC solid',
     }
   },
 button4: {

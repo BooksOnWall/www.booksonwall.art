@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { injectIntl, defineMessages } from 'react-intl';
 import {
     Typography,
-    Container,
+//    Container,
     ButtonGroup,
     Box,
     Button,
@@ -11,8 +11,8 @@ import {
   } from '@material-ui/core';
 
 import { Images } from '../assets/images/pages';
-import AppleIcon from '@material-ui/icons/Apple';
-import ShopIcon from '@material-ui/icons/Shop';
+// import AppleIcon from '@material-ui/icons/Apple';
+// import ShopIcon from '@material-ui/icons/Shop';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
 import loadable from '@loadable/component';
@@ -58,8 +58,13 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '600px',
   },
   button:{
-    color: '#fff',
-    border: '1px #fff solid'
+    color: theme.palette.primary.main,
+    border: '2px #fff solid',
+    background: '#fff',
+    '&:hover':{
+      color: "#fff",
+      border: '2px #fff solid',
+    }
   },
   dividerShape: {
     bottom: '0',
@@ -75,7 +80,7 @@ dividerSvg: {
   position: 'relative',
   display: 'block',
   width: 'calc(100% + 1.3px)',
-  height: '260px',
+  height: '200px',
 }
 }));
 
@@ -117,9 +122,9 @@ class Explore extends Component {
     const {messages} = this.props.intl;
     return (
       <Box className="main" >
-        <ExploreHeader id='Download_app' messages={messages} />
-        <Stories history={this.props.history} />
-        <Faqs id="FAQs" messages={messages} />
+        <ExploreHeader id={messages.menu.download_app} messages={messages} />
+        <Stories id={messages.menu.stories} history={this.props.history} />
+        <Faqs id={messages.menu.faqs} messages={messages} />
       </Box>
     )
   }

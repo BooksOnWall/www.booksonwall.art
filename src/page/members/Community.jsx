@@ -3,7 +3,7 @@ import { injectIntl } from 'react-intl';
 import CommunityMap from './communityMap';
 import {
     Box,
-    Divider,
+    Typography,
     Card,
     CardMedia,
     CardContent,
@@ -161,20 +161,22 @@ class Community extends Component {
   }
   render() {
     const {skills, selected, members, apiURL} = this.state;
+    const {messages} = this.props.intl;
 
     return (members && members.length > 0) ? (
       <Box className="main" >
-        <h5 className="communityHeader">Community</h5>
-        <Skills skills={skills} select={this.select} isSelected={this.isSelected} selected={selected}/>
         <CommunityMap members={members} selected={selected} hasSkill={this.hasSkill} history={this.props.history}/>
-        <Divider />
+        <Typography variant="h2" color="primary" component="h2" style={{textTransform:'uppercase'}} >{messages.menu.community}</Typography>
+        <Skills skills={skills} select={this.select} isSelected={this.isSelected} selected={selected}/>
         <Box style={{
             display: 'flex',
             flexDirection: 'row',
             flexWrap: 'wrap',
-            alignContent : 'space-around',
+            alignContent : 'space-between',
             justifyContent: 'center'
-             }}><Members  selected={selected} members={members} hasSkill={this.hasSkill} goToMember={this.goToMember} apiURL={apiURL}/></Box>
+             }}>
+           <Members  selected={selected} members={members} hasSkill={this.hasSkill} goToMember={this.goToMember} apiURL={apiURL}/>
+        </Box>
       </Box>
   ) : '';
   }

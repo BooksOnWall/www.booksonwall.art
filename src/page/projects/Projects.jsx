@@ -100,7 +100,7 @@ class Projects extends Component {
 
     return (projects) ? (
       <>
-        <h5>Projects</h5>
+        <Typography variant="h4" color='primary'>Projects</Typography>
         <Box style={{display: 'flex', justifyContent: 'space-around'}}>
           <Project  projects={projects} goToProject={this.goToProject} locale={locale}/>
         </Box>

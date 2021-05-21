@@ -60,7 +60,7 @@ export default class CommunityMap extends Component {
       pitch: 58  // pitch in degrees
     };
     console.log(lines);
-    this.state = { mapStyle: (theme) ? 'mapbox://styles/croll/ckc3vw1zm03w91inw353d7jn9' : 'mapbox://styles/mapbox/light-v9',lines: lines, members: members, selected: selected, viewport: viewport }
+    this.state = { mapStyle: (theme) ? 'mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8' : 'mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8',lines: lines, members: members, selected: selected, viewport: viewport }
   }
   onViewportChange = (viewport) => this.setState({viewport})
   goToViewport = (coordinates) => {

@@ -1,8 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import { makeStyles, Grid, Button,  Typography, Container, Box } from '@material-ui/core';
-
+import ReactMarkdown from 'react-markdown';
 import { injectIntl, defineMessages  } from 'react-intl';
-import collaborate from '../md/page/en/collaborate.md';
 
 import { Blob } from 'react-blob';
 
@@ -20,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'transparent'
   },
   collaborate: {
-    padding:'8vh 12vw',
+    padding:'12vh 12vw',
+    minHeight: '100vh'
   },
   titleTop: {
      maxWidth: 1280,
@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
      maxWidth: 1280,
      padding: '0 8vh'
+  },
+  blobText: {
+     maxWidth: 780,
   },
   collaborateHader: {
     display: 'flex',
@@ -42,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center right',
     backgroundImage: `url(${Images.image22.default})`,
   },
+
   button1: {
     margin: '30px 0',
     color: '#186858',
@@ -62,6 +66,16 @@ const useStyles = makeStyles((theme) => ({
           border: '2px #C33949 solid',
       }
     },
+    button3: {
+      margin: '0',
+      color: theme.palette.primary.main,
+      border: '2px #D9D2C6 solid',
+      '&:hover': {
+          background: '#C33949',
+          color: 'white',
+            border: '2px #C33949 solid',
+        }
+      },
     bottom2: {
       zIndex: 1,
       display: 'flex',
@@ -128,13 +142,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    marginBottom: 80
+    marginBottom: '12vh'
   },
   servicesWrap:{
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    padding:'4vw'
   },
   servicesGrid:{
     justifyContent: 'space-evenly'
@@ -193,7 +208,7 @@ const CollaborateHeader = ({messages}) => {
 return (
   <Box className={classes.collaborateHader}>
     <Box className={classes.gradient}>
-    <Container>
+    <Container maxWidth="false">
       <Typography className={classes.titleTop} gutterBottom variant="h2" component="h1"> {messages.collaborate.title}</Typography>
     </Container>
     <Box className={classes.dividerShape}>
@@ -246,23 +261,23 @@ const SupportStory = ({messages}) => {
 return (
   <Box className={classes.root}>
   <Box>
-    <Container className={classes.collaborate} >
+    <Container className={classes.collaborate} maxWidth='false'>
       <Grid container spacing={8}>
           <Grid item xs>
             <Blob className={classes.blob} size="530px">
                 <Blob size="500px" src={Images.image11.default} />
             </Blob>
-              <Typography gutterBottom variant="h2" component="h3" >{messages.collaborate.fund_a_story}</Typography>
-              <Typography gutterBottom  variant="h4" component="h4" >{messages.collaborate.create_new_story}</Typography>
+              <Typography gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.fund_a_story}</Typography>
+              <Typography gutterBottom  variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.create_new_story}</Typography>
               <Button size="large" className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
           </Grid>
-          <Grid item xs  className={classes.collaborateGrid2}>
+          <Grid item xs className={classes.collaborateGrid2}>
             <Blob  className={classes.blobB} size="380px">
                 <Blob size="330px" src={Images.image1.default} />
             </Blob>
-              <Typography align="right" gutterBottom variant="h2" component="h3" >{messages.collaborate.join_us}</Typography>
-              <Typography align="right" gutterBottom variant="h4" component="h4" >{messages.collaborate.strategic_partner}</Typography>
-              <Typography align="right" gutterBottom variant="subtitle1" >{messages.collaborate.looking_for}</Typography>
+              <Typography align="right" gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.join_us}</Typography>
+              <Typography align="right" gutterBottom variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.strategic_partner}</Typography>
+              <Typography align="right" gutterBottom variant="subtitle1" className={classes.blobText}>{messages.collaborate.looking_for}</Typography>
               <Button size="large" className={classes.button2}>{messages.collaborate.how}</Button>
             </Grid>
         </Grid>
@@ -274,16 +289,15 @@ return (
         <Typography align='center' className={classes.title}  gutterBottom  variant="h4" >{messages.collaborate.we_produce}</Typography>
         <Typography align='center' className={classes.title} gutterBottom  variant="subtitle1" >{messages.collaborate.we_are}</Typography>
       </Box>
-        <br /><br /><br />
-        <Grid container spacing={8} className={classes.servicesGrid}>
+        <Grid container spacing={10} className={classes.servicesGrid}>
         {services && services.map((s,i) => (
           <Grid item xs={10} md={4} key={"s"+i}>
             {s.header_image && <Image className={classes.serviceImage}  src={apiURL+s.header_image.formats.small.url}/>}
             <br />
-            <Typography  gutterBottom variant="h3" component="h3" >{s.name}</Typography>
-            <Typography  gutterBottom variant="body1" >{s.header}</Typography>
+            <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
+            <Typography  variant="body1" ><ReactMarkdown children={s.header} /></Typography>
             <br />
-            <Button size="large" className={classes.button2}>{messages.collaborate.read_more_btn}</Button>
+            <Button size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
           </Grid>
         ))}
       </Grid>
@@ -294,7 +308,7 @@ return (
 )};
 
 const Collaborate = (props) => {
-    const {messages} = this.props.intl;
+    const {messages} = props.intl;
     return (
       <Box id="collabora">
         <CollaborateHeader messages={messages}/>

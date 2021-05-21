@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import {
     Button,
+    Box,
     makeStyles
   } from '@material-ui/core';
 
@@ -18,8 +19,23 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
+  socialWrap:{
+    padding: '40px 0',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+    alignSelf: 'flex-end'
+  },
   button: {
     margin: theme.spacing(1),
+    border: '2px solid #fff',
+    background: 'transparent',
+    color: '#fff',
+    '&:hover': {
+      background: '#fff',
+      color: theme.palette.primary.main
+    }
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -54,53 +70,59 @@ const useStyles = makeStyles((theme) => ({
 const SocialBar = ({goTo}) => {
   const classes = useStyles();
   return (
-    <>
+    <Box className={classes.socialWrap}>
     <Button
+      disableElevation
       variant="contained"
       className={classes.button}
-      color="secondary"
       href="https://www.facebook.com/BooksOnWall"
       startIcon={<FacebookIcon />}
       onClick={goTo}>Facebook </Button>
-
-  <Button
+    <Button
+      disableElevation
       variant="contained"
-      color="secondary"
+      className={classes.button}
       href="https://www.instagram.com/booksonwall"
       startIcon={<InstagramIcon />}
       onClick={goTo}>Instagram </Button>
     <Button
+      disableElevation
       variant="contained"
-      color="secondary"
+      className={classes.button}
       href="https://twitter.com/hashtag/booksonwall"
       startIcon={<TwitterIcon />}
       onClick={goTo}>Twitter </Button>
     <Button
+      disableElevation
       variant="contained"
-      color="secondary"
+      className={classes.button}
       href="https://www.youtube.com/channel/UCNWiz7RDGgoM3HHgoYPAS3w"
       icon="youtube"
       startIcon={<YouTubeIcon />}
       onClick={goTo}>Youtube </Button>
     <Button
+      disableElevation
       variant="contained"
-      color="secondary"
+      className={classes.button}
       href="https://web.telegram.org/#/im?p=g355580041"
       startIcon={<TelegramIcon />}
       onClick={goTo}>Telegram </Button>
+      <Button
+        disableElevation
+        variant="contained"
+        className={classes.button}
+        startIcon={<GitHubIcon />}
+        href="https://github.com/BooksOnWall"
+        onClick={goTo}>Github </Button>
     <Button
+      disableElevation
       variant="contained"
-      color="secondary"
+      className={classes.button}
       startIcon={<VideocamIcon />}
       href="https://meet.jit.si/BooksOnwall"
       onClick={goTo}>Jitsi Video Conferencing </Button>
-    <Button
-      variant="contained"
-      color="secondary"
-      startIcon={<GitHubIcon />}
-      href="https://github.com/BooksOnWall"
-      onClick={goTo}>Github </Button>
-    </>
+
+    </Box>
   )
 };
 class Social extends Component {

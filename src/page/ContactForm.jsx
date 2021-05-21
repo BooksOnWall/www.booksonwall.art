@@ -90,7 +90,7 @@ export default class ContactForm extends Component {
     // ];
     return (
       <Box id="contactForm" >
-      <Typography gutterBottom variant="h4">{messages.contact.contactUs}</Typography>
+      <Typography gutterBottom color="textSecondary" variant="h4">{messages.contact.contactUs}</Typography>
           <form  onSubmit={this.handleSubmit}>
           {/*<Dropdown
                 placeholder='How can we help you ?'
@@ -100,6 +100,7 @@ export default class ContactForm extends Component {
               /> */}
 
             <TextField
+              className="formImput"
               fullWidth
               label={messages.contact.name}
               placeholder={messages.contact.name}
@@ -111,6 +112,7 @@ export default class ContactForm extends Component {
               />
               <br /><br />
             <TextField
+              className="formImput"
               fullWidth
               label={messages.contact.email}
               placeholder={messages.contact.email}
@@ -121,6 +123,7 @@ export default class ContactForm extends Component {
               />
               <br /><br />
               <TextField
+                className="formImput"
                 fullWidth
                 label={messages.contact.phone}
                 placeholder={messages.contact.phone}
@@ -141,7 +144,7 @@ export default class ContactForm extends Component {
               defaultValue={initialState.message}
             />
             <br /><br />
-            <Button className="button2" label={messages.contact.send}>{messages.contact.send}</Button>
+            <Button className="button2" disableElevation label={messages.contact.send}>{messages.contact.send}</Button>
           </form>
       </Box>
     );
