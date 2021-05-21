@@ -64,6 +64,7 @@ const App = () => {
           return (
             <Layout locale={locale} switchLang={switchLang} history={history}>
             <Switch>
+            <Route exact path="/"> <Home history={history} /> </Route>
             <Route path={"/"+messages[locale].menu.explore}> <Explore history={history}/> </Route>
             <Route path={"/"+messages[locale].menu.create}> <Create history={history}/> </Route>
             <Route path={"/"+messages[locale].menu.collaborate}> <Help history={history} /> </Route>
@@ -77,7 +78,6 @@ const App = () => {
             <Route exact path={"/"+messages[locale].menu.stories}><Stories history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.story+":name"}><Story history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.community+"/"+messages[locale].menu.member+":name"} ><Member history={history}/></Route>
-            <Route path="/"> <Home history={history} /> </Route>
             </Switch>
             </Layout>
           );
