@@ -62,7 +62,7 @@ const App = () => {
       <Router>
         <Route render={({ location, history }) => {
           return (
-            <Layout locale={locale} switchLang={switchLang} history={history}>
+            <Layout locale={locale} allMessages={messages} switchLang={switchLang} history={history}>
             <Switch>
             <Route exact path="/"> <Home history={history} /> </Route>
             <Route path={"/"+messages[locale].menu.explore}> <Explore history={history}/> </Route>

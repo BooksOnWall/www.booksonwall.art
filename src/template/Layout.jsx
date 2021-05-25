@@ -17,7 +17,7 @@ import { ReactComponent as FooterBg } from './../assets/images/svg/footer.svg';
 import  Bg from './../assets/images/bg_footer.png';
 import { ReactComponent as Principal } from './../assets/images/svg/principal.svg';
 
-const Layout = ({ children, switchLang, locale, history }) => {
+const Layout = ({ children, switchLang, locale, history, allMessages }) => {
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -159,7 +159,7 @@ const Layout = ({ children, switchLang, locale, history }) => {
         <CssBaseline />
         <AppBar elevation={0}  color="default"  position="absolute" className={clsx(classes.appBar)}>
           <Toolbar variant="regular" disableGutters className={classes.toolbar}>
-            <Header locale={locale} switchLang={switchLang} history={history}/>
+            <Header locale={locale} allMessages={allMessages} switchLang={switchLang} history={history}/>
           </Toolbar>
         </AppBar>
         <main className={classes.content}>
