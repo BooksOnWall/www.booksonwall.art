@@ -2,12 +2,15 @@ import React, {useState} from "react";
 import {
   Button,
   TextField,
+  Backdrop,
   TextareaAutosize,
   Box,
-  Typography
+  Typography,
+  makeStyles,
   } from '@material-ui/core';
 import { useForm, Controller } from "react-hook-form";
 import { defineMessages } from 'react-intl';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const contactTraductions = defineMessages({
   name: {
@@ -22,6 +25,10 @@ const contactTraductions = defineMessages({
     id: 'contact.phone',
     defaultMessage: 'Phone'
   } ,
+  subject : {
+    id: 'contact.subject',
+    defaultMessage: 'Subject'
+  } ,
   send : {
     id: 'contact.send',
     defaultMessage: 'Send'
@@ -31,18 +38,56 @@ const contactTraductions = defineMessages({
     defaultMessage: 'Contact Us',
   }
 });
-
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#99FF44',
+  },
+}));
 const ContactForm = ({messages, locale}) => {
+    const classes = useStyles();
+    const [complete, setComplete] = useState(false);
+    const [isSubmitting, setSubmitting] = useState(false)
+    const [open, setOpen] = useState(false);
+    const { control, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = async data => {
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [message, setMessage] = useState('');
+      try {
+          const { name, email, phone, message, subject } = errors;
+          if (email || name || phone || message || subject) {
+            console.log(errors);
+          } else {
+            setSubmitting(true)
+            setOpen(!open);
+            const contact  = await fetch(`${process.env.REACT_APP_API}/email/`, {
+              method: 'POST',
+              mode: 'cors',
+              headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({foo: 'contact', name: data.name, from: data.email, to: 'hola@booksonwall.art', subject: data.subject, lang: locale, phone: data.phone, message: data.message})
+            })
+            .then(response => response.json())
+            .then(data => data)
+            .catch(error => console.log(error));
 
-    const { register, control, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
-
-    console.log(watch("name")); // watch input value by passing the name of it
+            if(contact && contact.message) {
+              if(contact.message !== 'Email sent') {
+                console.log(contact.message);
+              } else {
+                console.log(contact.message);
+              }
+              setOpen(false);
+              setSubmitting(false);
+              setComplete(true);
+            }
+          }
+      } catch (err) {
+        console.log("error",err);
+      }
+    }
+   // watch input value by passing the name of it
     const options = [
       {
         key: 'general',
@@ -77,7 +122,17 @@ const ContactForm = ({messages, locale}) => {
     ];
     return (
       <Box id="contactForm" >
-      <Typography gutterBottom color="textSecondary" variant="h4">{messages.contact.contactUs}</Typography>
+      <Backdrop className={classes.backdrop} open={open} >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      {complete &&
+        <Box>
+          Gracias Message enviado
+        </Box>
+      }
+      {!complete &&
+        <>
+        <Typography gutterBottom color="textSecondary" variant="h4">{messages.contact.contactUs}</Typography>
       <form  onSubmit={handleSubmit(onSubmit)}>
 
           {/*<Dropdown
@@ -89,7 +144,7 @@ const ContactForm = ({messages, locale}) => {
               <Controller
                 name="name"
                 control={control}
-                value={name}
+                defaultValue=""
                 rules={{ required: 'name required' }}
                 render={({ field: { onChange, value }, fieldState: { error }  }) => (
                   <TextField
@@ -153,6 +208,27 @@ const ContactForm = ({messages, locale}) => {
               />
               <br /><br />
               <Controller
+                name="subject"
+                control={control}
+                defaultValue=""
+                render={({ field: { onChange, value }, fieldState: { error } }) => (
+                  <TextField
+                    fullWidth
+                    className="formImput"
+                    label={messages.contact.subject}
+                    placeholder={messages.contact.subject}
+                    variant="filled"
+                    value={value}
+                    onChange={onChange}
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                    type="text"
+                  />
+                )}
+                rules={{ required: 'subject required' }}
+              />
+              <br /><br />
+              <Controller
                 name="message"
                 control={control}
                 defaultValue=""
@@ -177,6 +253,8 @@ const ContactForm = ({messages, locale}) => {
             <br /><br />
             <Button type="submit" className="button2" disableElevation label={messages.contact.send}>{messages.contact.send}</Button>
           </form>
+          </>
+        }
       </Box>
     );
 }

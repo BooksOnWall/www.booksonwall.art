@@ -20,7 +20,8 @@
     "email": "Correio",
     "name": "Nome e apelido",
     "phone": "Número de telefone de contacto",
-    "send": ""
+    "send": "",
+    "subject": ""
   },
   "create": {
     "community": "",

@@ -20,7 +20,8 @@
     "email": "Email",
     "name": "Name",
     "phone": "Phone",
-    "send": "Send"
+    "send": "Send",
+    "subject": "Subject"
   },
   "create": {
     "community": "Community",

@@ -20,7 +20,8 @@
     "email": "Posta",
     "name": "Nome e cognome",
     "phone": "Telefono di contatto",
-    "send": ""
+    "send": "",
+    "subject": ""
   },
   "create": {
     "community": "",
