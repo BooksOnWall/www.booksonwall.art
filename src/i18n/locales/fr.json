@@ -12,8 +12,10 @@
     "we_produce": ""
   },
   "connect": {
+    "adress": "",
     "keed_in_touch": "",
-    "register": ""
+    "register": "",
+    "we_are": ""
   },
   "contact": {
     "contactUs": "",
@@ -109,6 +111,10 @@
     "presentation": "",
     "press_title": "",
     "presskit": ""
+  },
+  "register": {
+    "register": "",
+    "send": ""
   },
   "stories": {
     "read_more_btn": ""

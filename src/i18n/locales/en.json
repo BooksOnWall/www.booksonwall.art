@@ -12,11 +12,13 @@
     "we_produce": "We produce, direct and manage extended reality proyect."
   },
   "connect": {
+    "adress": "Magallanes 1064, Montevideo, Uruguay.",
     "keed_in_touch": "Keep in touch, we are in the networks and you can also write us, we are at your service.",
-    "register": "If you want to join us and collaborate in any of the projects, drop by here and we will get in touch with some ideas to participate."
+    "register": "If you want to join us and collaborate in any of the projects, drop by here and we will get in touch with some ideas to participate.",
+    "we_are": "Our brand management team is based in Montevideo, Uruguay.  Also the community currently has referents in Portugal, Spain, Egypt and Chile."
   },
   "contact": {
-    "contactUs": "Contact Us",
+    "contactUs": "Let's talk?",
     "email": "Email",
     "name": "Name",
     "phone": "Phone",
@@ -109,6 +111,10 @@
     "presentation": "presentation",
     "press_title": "Branding and Press realease",
     "presskit": "presskit"
+  },
+  "register": {
+    "register": "Register!",
+    "send": "Send"
   },
   "stories": {
     "read_more_btn": "Read more"

@@ -12,11 +12,13 @@
     "we_produce": "Producimos, dirigimos y gestionamos proyectos de realidad extendida."
   },
   "connect": {
-    "keed_in_touch": "¿Seguimos en contacto? siguenos en redes sociales o dejanos un mensaje por acá, estamos a tu disposición.",
-    "register": "Si quieres unirtenos y colaborar, pasa por aquí ¡nos encanta la idea!"
+    "adress": "",
+    "keed_in_touch": "¿Sigamos en contacto?, tambien estamos en las redes sociales.",
+    "register": "Si quieres unirtenos y colaborar, pasa por aquí ¡nos encanta la idea!",
+    "we_are": ""
   },
   "contact": {
-    "contactUs": "Conversemos...",
+    "contactUs": "¿Conversamos?",
     "email": "Correo electrónico",
     "name": "Nombre completo",
     "phone": "Teléfono de contacto",
@@ -109,6 +111,10 @@
     "presentation": "Presentación",
     "press_title": "Marca y comunicado de prensa",
     "presskit": "kit de prensa"
+  },
+  "register": {
+    "register": "¡Animate y registrate!",
+    "send": "Enviar"
   },
   "stories": {
     "read_more_btn": "Leer más"
