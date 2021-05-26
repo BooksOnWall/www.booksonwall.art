@@ -22,7 +22,8 @@
     "email": "Correo electrónico",
     "name": "Nombre completo",
     "phone": "Teléfono de contacto",
-    "send": "enviar"
+    "send": "enviar",
+    "subject": "Subjecto"
   },
   "create": {
     "community": "Comunidad",

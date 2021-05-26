@@ -27,14 +27,14 @@ class Faqs extends Component {
     this.state = {
         faqs: null,
         panels: null,
+        locale: this.props.intl.locale,
         apiURL: apiURL,
       }
   }
   loadFAQ = async (rows, index, sort, order) => {
-    const { apiURL } = this.state;
-    const fetchURL = apiURL + '/FAQS';
+    const { apiURL, locale } = this.state;
+    const fetchURL = apiURL + '/faqs?_limit=10&_sort=updated_at&lang='+locale;
     this.setState({loading: true});
-
     await fetch(fetchURL, {
       crossDomain:true,
       headers: {'Content-Type':'application/json'},
@@ -46,27 +46,7 @@ class Faqs extends Component {
     })
     .then(data => {
         if(data) {
-
-          const panels = [];
-          data.map((faq, i) => {
-
-            panels.push({
-                key: 'faq'+i,
-                title: {
-                  content: <Badge as='h3' size='big' content={faq.Question} />,
-                },
-                content: {
-                  content: (
-                    <Box className='answer' compact>
-                        {faq.Answer}
-                    </Box>
-                  ),
-                },
-            });
-            return faq;
-          });
-
-          this.setState({faqs: data, loading: false, panels: panels});
+          this.setState({faqs: data, loading: false});
         } else {
           console.log('No Data received from the server');
         }
@@ -82,12 +62,12 @@ class Faqs extends Component {
     await this.loadFAQ();
   }
   render() {
-    const {panels, faqs} = this.state;
+    const { faqs} = this.state;
     const {messages} = this.props.intl;
 
-    return (faqs && panels) ? (
+    return (faqs) ? (
 
-      <Box id="FAQs">
+
       <Container>
       <Typography gutterBottom variant='h2'>
         {messages.menu.faqs}
@@ -95,10 +75,20 @@ class Faqs extends Component {
       <Typography gutterBottom variant='subtitle'>
         {messages.faqs.subtitle}
       </Typography>
-      <Divider />
-      <Divider />
+      {faqs.map(faq => (
+        <>
+        <Box>
+          <Badge color="secondary" variant="dot">
+            <Typography as='h2'>{faq.Question}</Typography>
+          </Badge>
+          <Box className='answer' compact>
+              {faq.Answer}
+          </Box>
+        </Box>
+        </>
+      ))}
       </Container>
-      </Box>
+
 
     ) : '';
   }

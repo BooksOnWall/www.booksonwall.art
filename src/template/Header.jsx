@@ -275,7 +275,7 @@ return (
   </div>
 );
 };
-const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex, activeItem,handleMenuItemClick,adminMenu, messages, exploreOptions, createOptions, collaborateOptions, infoOptions, langs, locale  }) => {
+const MainMenu = ({history, allMessages, switchLang, goTo,menuOptions, loadPage, activeIndex, activeItem,handleMenuItemClick,adminMenu, messages, exploreOptions, createOptions, collaborateOptions, infoOptions, langs, locale  }) => {
   const classes = useStyles();
   return (
     <>
@@ -366,7 +366,7 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
           </ListItem>
         </List>
 
-        <LanguageSwitch langs={langs} locale={locale} switchLang={switchLang} className={classes.lenguageSwitch} />
+        <LanguageSwitch langs={langs} history={history} allMessages={allMessages} messages={messages} locale={locale} switchLang={switchLang} className={classes.lenguageSwitch} />
 
         {Auth.isUserAuthenticated()
             ?
@@ -388,7 +388,7 @@ const MainMenu = ({history, switchLang, goTo,menuOptions, loadPage, activeIndex,
     </>
   )
 }
-const TopMenu = ({intl, pathvalue, hash, authenticated, switchLang, locale , history}) => {
+const TopMenu = ({intl, pathvalue, hash, authenticated, switchLang, locale , history, allMessages}) => {
     const { messages } = intl;
     const navigate = target => {
       const siteUrl = process.env.REACT_APP_URL;
@@ -504,6 +504,7 @@ const TopMenu = ({intl, pathvalue, hash, authenticated, switchLang, locale , his
         createOptions={createOptions}
         collaborateOptions={collaborateOptions}
         infoOptions={infoOptions}
+        allMessages={allMessages}
         langs={langs}
         loadPage={loadPage}
         locale={locale}

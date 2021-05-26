@@ -22,7 +22,8 @@
     "email": "Courrier électronique",
     "name": "Prénom et nom de famille",
     "phone": "Numéro de téléphone de contact",
-    "send": ""
+    "send": "",
+    "subject": ""
   },
   "create": {
     "community": "",

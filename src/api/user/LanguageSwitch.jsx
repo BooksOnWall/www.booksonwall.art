@@ -1,6 +1,7 @@
-import React from "react";
-import {IconButton, List, ListItem, ListItemText, Menu, makeStyles, MenuItem} from '@material-ui/core';
+import React, {useState} from "react";
+import {List, ListItem, ListItemText, Menu, makeStyles, MenuItem} from '@material-ui/core';
 import { CircleFlag } from 'react-circle-flags';
+import { useLocation } from 'react-router-dom';
 
 const languageOptions = [
   'en',
@@ -44,13 +45,28 @@ menuIcon:{
 }
 }));
 
-const LanguageSwitch = ({locale, switchLang}) => {
+const LanguageSwitch = ({locale, switchLang, messages, history, allMessages}) => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const [anchorEl, setAnchorEl] = useState(null);
+  const {pathname, hash} = useLocation();
+  const translatePath = (pathname, hash, newLang) => {
+    let pathKey = null;
+    let hashKey = null;
+    for (const [key, value] of Object.entries(messages.menu)) {
+      if(value === pathname.substring(1)) {
+         pathKey = key;
+      }
+      if(value === decodeURIComponent(hash.substring(1))) {
+        hashKey = key;
+      }
+    }
+    return {path: (pathKey) ? '/'+ allMessages[newLang].menu[pathKey] : '/', hash: (hashKey) ? '#'+allMessages[newLang].menu[hashKey] : ''}
+  }
   const onLocaleChange = (lang) => {
+    const newPath = translatePath(pathname, hash, lang);
     switchLang(lang);
     handleClose();
+    if(newPath) history.push(newPath.path+newPath.hash);
   }
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
