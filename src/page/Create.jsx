@@ -11,6 +11,8 @@ import {
 import { Images } from './../assets/images/pages';
 import { injectIntl, defineMessages } from 'react-intl';
 import { Blob } from 'react-blob';
+import { ReactComponent as Svg1 } from '../assets/images/svg/fulviet/capitel-ninno.svg';
+import Bg from "../assets/images/pages/Bg-APP.png";
 
 const createTraductions = defineMessages({
   community: {
@@ -71,22 +73,30 @@ root: {
   background: 'transparent',
   width: '100vw',
 },
+bgHeader:{
+  backgroundSize: 'contain',
+  backgroundPositionY: 'top',
+  backgroundPositionX: 'right',
+  backgroundImage: `url(${Images.image23.default})`,
+},
 wrapper: {
   display: 'flex',
   justifyContent: 'space-around',
   zIndex: 999,
 },
 stories: {
-  padding:'0 6vw',
+  padding:'20vh 6vw 0',
   display: 'flex',
   flexWrap: 'wrap',
   flexGrow: 1,
   minHeight: '80vh'
 },
 workshop: {
-  minHeight: '80vh',
+  minHeight: '60vh',
   display: "flex",
   alignItems: "center",
+  padding:'0 6vw 20vh',
+
 },
 bePart: {
   display: 'flex',
@@ -94,8 +104,7 @@ bePart: {
   flexDirection: 'column',
   justifyContent: 'flex-end',
   alignItems: 'center',
-  minHeight: '40vh',
-  marginTop: 150
+  minHeight: '68vh',
 },
 weAre: {
   display:"flex",
@@ -103,10 +112,6 @@ weAre: {
   flexDirection: 'column',
   justifyContent:'space-between',
   color: 'white',
-  backgroundSize: 'cover',
-  backgroundPositionY: 'top',
-  backgroundPositionX: 'right',
-  backgroundImage: `url(${Images.image13.default})`,
 },
 weAreBg: {
   background:theme.palette.primary.mainGradient ,
@@ -221,6 +226,19 @@ bottom: {
 },
 yourPlace:{
   marginTop: 100,
+},
+poligons1:{
+  minWidth: 510,
+  minHeight: 520,
+  position: 'absolute',
+  zIndex: '-2',
+  left: 0,
+},
+poligons2:{
+  position: 'absolute',
+  top: -300,
+  zIndex: '-3',
+  width: '100vw',
 }
 }));
 
@@ -229,6 +247,7 @@ const WorkShop = ({messages}) => {
   return (
   <>
     <Box className={classes.root}>
+    <Box className={classes.bgHeader} >
     <Box id={messages.create.workshop} >
       <Container className={classes.stories} maxWidth="xl">
           <Grid container spacing={8} >
@@ -260,6 +279,8 @@ const WorkShop = ({messages}) => {
         </Container>
       </Box>
     </Box>
+    </Box>
+
  </>
 )};
 const Community = ({history, messages}) => {

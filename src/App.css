@@ -30,8 +30,8 @@ body{
 .bg1 svg{  left: 0px;   top: 120vh; opacity: .1;}
 .bg2 svg{ top: 110vh; max-width: 45vw; opacity: .08;}
 .bg3 svg{ right: 0px;   top: 105vh;}
-
-.mapBox{ border-radius: 8px}
+.map{width: 100vw}
+.mapBox{ }
 
 .storytellingMap {
     top:0;
@@ -48,7 +48,7 @@ body{
 #home, #explore, #collabora{
   padding-top: 8px 0!important;
 }
-#create{ padding-top: 18vh !important}
+#create{ padding-top: 0}
 
 #home .HomeHeaderBlock  {
   display: flex;
@@ -67,8 +67,7 @@ body{
 #home .WhoAreWe{ padding: 10vh 0 20vh }
 #contactForm{
   padding: 50px 60px 20px;
-  background: ;
-  background: linear-gradient(0deg,  rgba(190,66,81,.88)  0%, rgba(190,66,81,.5) 100%);
+  background: linear-gradient(0deg,  rgba(190,66,81,.0)  0%, rgba(190,66,81,.5) 100%);
   border-radius: 12px;
 }
 #registerForm{
@@ -95,9 +94,10 @@ body{
 #contactForm .formMessage, #registerForm .formMessage{
   width: 100%;
   padding: 20px;
-  background: transparent;
-  border-radius: 2px;
-  border: 2px solid #fff;
+  background:  rgba(0, 0, 0, .1);
+  border-radius: 6px 6px 0 0;
+  border: 0;
+  border-bottom: 2px solid rgba(0,0,0, .1);
   font-size:18px;
   color: #fff;
   margin: 30px 0px 0
@@ -111,7 +111,17 @@ body{
   border-color: rgba(56,100,60, 1) ;
   outline: none;
 }
-#registerForm .MuiFormControl-root, #contactForm .MuiFormControl-root{ margin-top: 20px; margin-bottom: 30px}
+#registerForm .MuiFormControl-root, #contactForm .MuiFormControl-root{}
+#contactForm .react-tel-input .form-control{padding:30px 74px; border: 0; border-radius: 6px 6px 0 0; border-bottom: 1px solid rgba(0, 0, 0, 0.42); background: rgba(0, 0, 0, 0.09); color: #fff;}
+#contactForm .react-tel-input .selected-flag{ border: 0; background: transparent; padding: 0 44px 0 20px !important;}
+.react-tel-input .flag-dropdown{ border: 0px solid #cacaca !important; border-radius: 6px 0 0 0; background-color: rgba(0, 0, 0, 0.42) !important}
+.react-tel-input .flag-dropdown.open{ background: rgba(0, 0, 0, 0.6);}
+.react-tel-input .country-list{ border-radius: 0 0 6px 6px; top: 61px;  left: 1px; background-color: rgba(0, 0, 0, 0.42) !important; border: 0 !important}
+.react-tel-input .country-list li.country{padding:15px 22px; background: rgba(0, 0, 0, 0.6); color: #fff  }
+.react-tel-input .country-list li.country:hover{padding:15px 22px; background: rgba(0, 0, 0, 0.9); color: #fff  }
+.react-tel-input .selected-flag .arrow{border-top: 4px solid #fff; margin-left: 5px}
+.react-tel-input .selected-flag .arrow.up {border-bottom: 4px solid #fff !important; margin-left: 5px}
+.react-tel-input .country-list .country.highlight{ background: rgba(0, 0, 0, .9) !important;}
 #contactForm .MuiInputBase-input, #registerForm .MuiInputBase-input{margin: 20px 0 0; color: #fff}
 #contactForm .formImput .MuiFormLabel-root.Mui-focused, #registerForm .formImput .MuiFormLabel-root.Mui-focused{color: #fff; font-weight: bold;}
 #registerForm .formImput .MuiInput-underline::after { border-color: rgb(56,100,60)}
@@ -125,11 +135,18 @@ body{
     border-bottom: 2px solid #fff;
     pointer-events: none;
 }
-
+.custom-shape-divider-top-1622082498 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
 #join-us{ min-height: 10vh}
 #storyList{ min-height: 40vh; padding: 2vh 40px 300px; margin: 0 !important; display: flex; justify-Content:space-evenly; width: 100vw; flex-grow: 1; flex-wrap: wrap}
-.stories{ padding-top: 200px; min-height: 110vh; display: flex; align-items: center; flex-direction: column}
-#storiesTitle{ padding: 0px 0 120px}
+.stories{ padding-top: 0px; min-height: 110vh; display: flex; align-items: center; flex-direction: column}
+#storiesTitle{ padding: 20px 4vw; background: transparent; width: 100vw; min-height: 10vh;  display: flex; align-content: center; align-items: center;  margin:0}
 #story {
   background-color: transparent;
   margin: 0px;

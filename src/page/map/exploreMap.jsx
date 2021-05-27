@@ -36,7 +36,7 @@ const Stories =({stories, goToStory, onHover}) => {
           type='circle'
           paint={{
             'circle-radius': 20,
-            'circle-color': '#AB514E'
+            'circle-color': '#91201F'
           }}
           onClick={(e, m) => goToStory(e,m)}
         />
@@ -59,7 +59,7 @@ class ExploreMap extends Component {
     const {stories, mode} = this.props;
 
     this.state = {
-      mapStyle: (mode && mode === "Dark") ? "mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8" : "mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8",
+      mapStyle: (mode && mode === "Dark") ? "mapbox://styles/cseverin/ckp6acbwt08hj17o3shq8bmgw" : "mapbox://styles/cseverin/ckp6acbwt08hj17o3shq8bmgw",
       viewport: viewport,
       stories: stories
     }
@@ -91,7 +91,7 @@ class ExploreMap extends Component {
       <StaticMap
         {...viewport}
         width="inherit"
-        height="45vh"
+        height="55vh"
         captureScroll={false}
         captureZoom={false}
         showZoom={false}

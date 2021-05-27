@@ -77,10 +77,11 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
       margin: 0,
       padding: 0,
     },
-    container: {
+    wrapper: {
       paddingTop: theme.spacing(0),
       paddingBottom: 0,
-      margin:'0 auto'
+      margin:'0',
+      width: '100vw'
     },
     footerBg:{
       backgroundImage: `url(${Bg})`,
@@ -165,7 +166,7 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
         </AppBar>
         <main className={classes.content}>
         <Box className={classes.footerBg}>
-          <Box className={classes.container} id="top">
+          <Box className={classes.wrapper} id="top">
             {children}
           </Box>
             <Principal className={classes.character}/>

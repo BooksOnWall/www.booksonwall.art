@@ -173,7 +173,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     fontWeight: 700,
     '&:hover': {
-        background: 'rgba(0, 0, 0, 0.03)',
+        background: 'rgba(0, 0, 0, 0.1)',
         color:  "#000"
       }
   },
@@ -197,12 +197,28 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   popper:{
-    marginTop: 11
+    marginTop: 6,
+    background:'transparent',
+    padding: 0,
   },
-    lenguageSwitch:{
-
-    }
-
+  paper:{
+    background: 'transparent',
+    margin: 0,
+    padding: 0,
+  },
+  grow:{
+    background: 'transparent',
+    padding:0,
+    margin: 0,
+  },
+  menuListGrow:{
+    padding:0,
+    margin: 0,
+    background: 'rgba(0, 0, 0,  .3)',
+    borderRadius:6
+  },
+  lenguageSwitch:{
+  }
 }));
 /** @primary title of menu
 **  @secondary array of menu
@@ -256,19 +272,20 @@ return (
           <Grow
             {...TransitionProps}
             style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+            className={classes.grow}
             >
-            <Paper>
+            <Paper className={classes.paper}>
               <ClickAwayListener onClickAway={handleClose}>
-                <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                <MenuList autoFocusItem={open} className={classes.menuListGrow} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                   {secondary.map((option, index) => (
                     <MenuItem
                       key={index}
                       value={option}
                       selected={index === activeIndex && activeItem === option}
                       onClick={(event) => handleMenuItemClick(event, index, primary, option)}
-                        className={classes.menuitemitem}
+                      className={classes.menuitemitem}
                       >
-                      <Typography variant="button">{option}</Typography>
+                      <Typography color='textSecondary' variant="button">{option}</Typography>
                     </MenuItem>
                   ))}
                 </MenuList>

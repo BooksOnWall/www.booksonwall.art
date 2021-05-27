@@ -20,4 +20,5 @@ export const Images = {
    image20: require('./home-gallery9.jpg'),
    image21: require('./explore-weare.jpg'),
    image22: require('./cow-colab.jpg'),
+   image23: require('./Bg-APP.png'),
 };

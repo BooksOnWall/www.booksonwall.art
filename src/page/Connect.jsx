@@ -45,15 +45,16 @@ homeHaderBg:{
   backgroundPositionY: 'top',
 },
 connect:{
+
   minWidth: '100vw',
-  minHeight: '100vh'
+  minHeight: '90vh'
 },
 contact: {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   alignContent: 'center',
-  padding: '140px 30px',
+  padding: '20vh 30px',
 },
 gradine:{
   background:  theme.palette.primary.darkGradient,

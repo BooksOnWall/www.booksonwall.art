@@ -29,39 +29,83 @@ const storiesTraductions = defineMessages({
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 600,
+    minHeight: 400,
+    minWidth: 300,
+    background: 'transparent',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    margin: 10,
+    flex: "2 1 auto"
   },
+  actionArea:{
+    display: 'flex',
+    padding: '0 180px 150px 30px',
+    borderRadius: 20,
+    minHeight: 590,
+    },
   media: {
-    height: 180,
+    minHeight: 250,
+    minWidth: 250,
+    maxWidth: 400,
+    maxHeight: 400,
+    borderRadius: 14,
+    display: 'flex',
+    flexDirection: 'column',
+    margin: 0,
+    rotate: '-3deg',
+    flex: '2 1 auto'
+  },
+  content:{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    background: '#fff',
+    width: '80%',
+    maxWidth: 360,
+    minWidth: 260,
+    position: 'absolute',
+    top: 260,
+    left: '25%',
+    borderRadius: 8,
+    padding: 20
+  },
+  actions:{
+    padding: '25px 0 0'
   },
   readMore:{
-    color: '#E18C23'
   }
 });
-
+const DividerTop =() => {
+  const classes = useStyles();
+  return (
+    <Box className={classes.dividerShape} >
+        <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className={classes.shapeFill} ></path>
+        </svg>
+    </Box>
+  )
+};
 const StoriesList = ({stories, apiURL, goToStory, messages }) => {
   const classes = useStyles();
   return stories.map((story, i) => (
     <Card elevation={0}  className={classes.root} key={'story'+i}>
-    <CardActionArea>
+    <CardActionArea className={classes.actionArea}>
        <CardMedia
          onClick={(e) => goToStory(story.name)}
          className={classes.media}
          image={apiURL + story.header_image.formats.medium.url}
          title={story.name}
        />
-       <CardContent>
-         <Typography gutterBottom variant="h5" component="h2">
-           {story.name}
-         </Typography>
-         <Typography variant="body2" color="textSecondary" component="p">
-           {story.story_header}
-         </Typography>
+       <CardContent className={classes.content}>
+         <Typography gutterBottom color="textPrimary" variant="h3" component="h2">{story.name}</Typography>
+         <Typography variant="body2" color="textPrimary" component="p">{story.story_header}</Typography>
+         <CardActions className={classes.actions}>
+          <Button elevation={0} variant="outlined" color="primary" size="small" onClick={(e) => goToStory(story.name)} >{messages.stories.read_more_btn}</Button>
+         </CardActions>
        </CardContent>
      </CardActionArea>
-     <CardActions>
-      <Button size="small" onClick={(e) => goToStory(story.name)} >{messages.stories.read_more_btn}</Button>
-     </CardActions>
     </Card>
   ));
 };
@@ -119,11 +163,17 @@ class Stories extends Component {
     const { messages } = this.props.intl
     console.log(messages);
     return (
-      <Box>
-      <Container>{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}</Container>
-      <Box id="stories">
-        <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
+      <Box id={messages.menu.stories} className="stories">
+      <Box id="storiesTitle">
+        <Typography variant="h1" color="secondary" component="h2" style={{textTransform:'uppercase'}}> {messages.menu.stories}</Typography>
       </Box>
+        <Box className='map' >{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}
+        </Box>
+        <Box className='mapbg'><Mapbg /></Box>
+
+        <Box id="storyList">
+          <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
+        </Box>
       </Box>
     )
   }

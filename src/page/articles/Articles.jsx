@@ -28,12 +28,30 @@ const replaceAll = (string, search, replace) =>  {
 }
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 600,
     minWidth: 180,
+    background: 'transparent',
+    borderRadius: 20,
   },
   media: {
-    height: 300,
+    height: 340,
+    borderRadius: 20,
   },
+  CardContent: {
+    padding: '30px 40px 10px',
+    background: 'transparent',
+  },
+  CardActions:{
+    padding: '10px 40px 20px',
+    background: 'transparent'
+  },
+  CardActionArea:{
+    borderRadius: 20,
+    background: 'transparent',
+    '&:hover': {
+      background: 'transparent'
+    }
+  }
 });
 const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
   const classes = useStyles();
@@ -41,14 +59,14 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
   return  (articles) ? articles.map((article, i) => (
     <Grid item xs>
     <Card className={classes.root} elevation={0} key={'article'+i}>
-    <CardActionArea>
+    <CardActionArea className={classes.CardActionArea}>
        <CardMedia
          onClick={(e) => goToArticle(article.title)}
          className={classes.media}
          image={apiURL + article.header_image.formats.medium.url}
          title={article.title}
        />
-       <CardContent>
+       <CardContent className={classes.CardContent} >
          <Typography gutterBottom variant="h4" component="h3">
            {article.title}
          </Typography>
@@ -57,7 +75,7 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
          </Typography>
        </CardContent>
      </CardActionArea>
-     <CardActions>
+     <CardActions className={classes.CardActions}>
       <Button size="small" color="primary" onClick={(e) => goToArticle(article.name)} >{messages.stories.read_more_btn}</Button>
      </CardActions>
     </Card>
