@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import {
     Typography,
     Container,
@@ -16,12 +16,6 @@ import PermMediaIcon from '@material-ui/icons/PermMedia';
 
 import { injectIntl, defineMessages  } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
-import community from '../md/page/en/info/community.md';
-import historyMD from '../md/page/en/info/history.md';
-import manifest from '../md/page/en/info/manifest.md';
-import formList from '../md/page/en/info/formList.md';
-import press from '../md/page/en/info/press.md';
-import history from '../md/history.js';
 import ContactForm from './ContactForm';
 import Articles from './articles/Articles';
 
@@ -206,9 +200,41 @@ pressTitle:{
 
 },
 }));
-
-const Manifest = ({manifest, messages}) => {
+const apiURL = process.env.REACT_APP_API;
+const Manifest = ({messages, locale}) => {
   const classes = useStyles();
+  const [manifest, setManifest] = useState();
+
+  useEffect(() => {
+    const fetchURL = apiURL + '/uniques?type=manifest&lang=' + locale;
+    const getManifest = async () => {
+      try {
+        await fetch(fetchURL, {
+          crossDomain:true,
+          headers: {'Content-Type':'application/json'},
+          method: "get"
+        })
+        .then(response => {
+          if (response && !response.ok) { throw new Error(response.statusText);}
+          return response.json();
+        })
+        .then(data => {
+            if(data) {
+              setManifest(data[0]);
+            } else {
+              console.log('No Data received from the server');
+            }
+        })
+        .catch((error) => {
+          // Your error is here!
+          if(error) console.log(JSON.stringify(error));
+        });
+      } catch(e) {
+        console.log(e.message);
+      }
+    }
+    getManifest();
+  }, [apiURL, locale]);
   return (
     <>
     <Box className={classes.homeHader}>
@@ -227,7 +253,7 @@ const Manifest = ({manifest, messages}) => {
   <Container  maxWidth='false'>
     <Typography variant="h4" gutterBottom>{messages.info.we_create}</Typography>
     <br/><br/>
-    <ReactMarkdown children={manifest} />
+    {manifest && <ReactMarkdown children={manifest.header} />}
     <br/><br/>
       <ButtonGroup color="secondary" aria-label="outlined secondary button group">
         <Button size="large" className={classes.buton1} startIcon={<PictureAsPdfIcon />}>{messages.press.presentation} </Button>
@@ -240,45 +266,96 @@ const Manifest = ({manifest, messages}) => {
   </>
 )
 };
-const History =({messages, historyMD, historyFeed, goToCommunity}) => {
+const History =({messages, locale, historyFeed, goToCommunity}) => {
+  const [history, setHistory] = useState();
+  useEffect(() => {
+    const fetchURL = apiURL + '/uniques?type=history&lang=' + locale;
+    const getHistory = async () => {
+      try {
+        await fetch(fetchURL, {
+          crossDomain:true,
+          headers: {'Content-Type':'application/json'},
+          method: "get"
+        })
+        .then(response => {
+          if (response && !response.ok) { throw new Error(response.statusText);}
+          return response.json();
+        })
+        .then(data => {
+            if(data) {
+              setHistory(data[0]);
+            } else {
+              console.log('No Data received from the server');
+            }
+        })
+        .catch((error) => {
+          // Your error is here!
+          if(error) console.log(JSON.stringify(error));
+        });
+      } catch(e) {
+        console.log(e.message);
+      }
+    }
+    getHistory();
+  }, [locale]);
+
   const classes = useStyles();
   return (
-
   <Box id={messages.menu.history} className={classes.history}>
     <Container maxWidth='md'>
-    <ReactMarkdown source={historyMD} />
+    {history && <ReactMarkdown children={history.header} />}
       <Button primary  onClick={goToCommunity} labelPosition='right' icon='down arrow' content={messages.create.meet_comunity} />
-      {/** <Grid columns={2} stackable textAlign='left'>
-        <Grid.Row verticalAlign='middle'>
-          <Grid.Column>
-            <HistoryFeed history={historyFeed} />
-          </Grid.Column>
-          <Grid.Column>
-
-        </Grid.Column>
-        </Grid.Row>
-      </Grid> **/}
-      </Container>
+    </Container>
   </Box>
 )
 };
 
 
-const Community =({community, goToCommunity, formList, messages}) => {
+const Community =({goToCommunity, messages, locale}) => {
   const classes = useStyles();
-  return (
+  const [community, setCommunity] = useState();
+  useEffect(() => {
+    const fetchURL = apiURL + '/uniques?type=community&lang=' + locale;
+    const getCommunity = async () => {
+      try {
+        await fetch(fetchURL, {
+          crossDomain:true,
+          headers: {'Content-Type':'application/json'},
+          method: "get"
+        })
+        .then(response => {
+          if (response && !response.ok) { throw new Error(response.statusText);}
+          return response.json();
+        })
+        .then(data => {
+            if(data) {
+              setCommunity(data[0]);
+            } else {
+              console.log('No Data received from the server');
+            }
+        })
+        .catch((error) => {
+          // Your error is here!
+          if(error) console.log(JSON.stringify(error));
+        });
+      } catch(e) {
+        console.log(e.message);
+      }
+    }
+    getCommunity();
+  }, [locale]);
 
+  return (
     <Box id={messages.menu.community} className={classes.community}>
     <Box className={classes.communityBg}>
     <Container className={classes.communityContainer}>
       <Grid container spacing={8}  className={classes.communityGrid}>
         <Grid item  xs={6}>
-            <ReactMarkdown source={formList} />
             <ContactForm style={{textAlign: 'left'}} messages={messages} />
         </Grid>
 
         <Grid item  xs={6}>
-            <ReactMarkdown source={community} />
+            {community && <ReactMarkdown children={community.header} /> }
             <Button onClick={goToCommunity} size="large" className={classes.buton2} >{messages.create.meet_comunity}</Button>
         </Grid>
       </Grid>
@@ -287,46 +364,29 @@ const Community =({community, goToCommunity, formList, messages}) => {
     </Box>
 )};
 
-const Press =({press, goToArticle, history, messages}) => {
+const Press =({goToArticle, history, messages}) => {
   const classes = useStyles();
   return (
   <Box id={messages.menu.press} className={classes.press} >
       <Container maxWidth='false'>
         <Typography color='primary' align='center' className={classes.pressTitle} variant='h3'>{messages.menu.press}</Typography>
-        <ReactMarkdown source={press} />
         <Articles max={4} tags={['Press']} history={history}/>
         <Button primary  onClick={goToArticle} labelPosition='right' icon='arrow right' content={messages.info.more_articles}  />
       </Container>
   </Box>
 )};
 
-class Info extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {  manifest: null, historyMD: null, formList: null, press: null, community: null  }
-  }
-  componentDidMount() {
-    // update authenticated state on logout
-    fetch(formList).then(res => res.text()).then(text => this.setState({ formList: text }));
-    fetch(community).then(res => res.text()).then(text => this.setState({ community: text }));
-    fetch(historyMD).then(res => res.text()).then(text => this.setState({ historyMD: text }));
-    fetch(manifest).then(res => res.text()).then(text => this.setState({ manifest: text }));
-    fetch(press).then(res => res.text()).then(text => this.setState({ press: text }));
-  }
-  goToCommunity = () => this.props.history.push('/Community')
-  render() {
-    const { manifest, historyMD, community, press, formList } = this.state;
-    const {messages} = this.props.intl;
+const  Info = (props) => {
+  const goToCommunity = () => props.history.push('/Community')
+  const {messages, locale} = props.intl;
     return (
       <Box id={messages.menu.info} className="main" >
-        <Manifest messages={messages} manifest={manifest}/>
-        <History messages={messages} historyMD={historyMD} history={history} goToCommunity={this.goToCommunity}/>
-        <Community community={community} goToCommunity={this.goToCommunity} formList={formList} messages={messages}/>
-        <Press messages={messages} press={press} history={this.props.history}/>
+        <Manifest messages={messages} locale={locale}/>
+        <History messages={messages} locale={locale} goToCommunity={goToCommunity}/>
+        <Community  goToCommunity={goToCommunity}  locale={locale} messages={messages}/>
+        <Press messages={messages} history={props.history}/>
       </Box>
-    )
-  }
+    );
 };
 
 export default injectIntl(Info);

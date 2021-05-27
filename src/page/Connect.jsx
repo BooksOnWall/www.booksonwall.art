@@ -15,7 +15,7 @@ import Register from './Register'
 import { Images } from './../assets/images/pages';
 
 import Social from './Social';
-import projects from '../md/projects/index';
+
 import Projects from './projects/Projects';
 
 const connectTraductions = defineMessages({
@@ -155,8 +155,8 @@ const Connect = (props) => {
 
       <Box className={classes.projects}>
       <Container maxWidth="xl">
-        <Projects messages={messages} locale={locale} projects={projects}/>
-        </ Container>
+        <Projects messages={messages} locale={locale} />
+      </ Container>
       </Box>
     </Box>
   );
