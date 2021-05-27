@@ -9,9 +9,10 @@ import {
   IconButton,
   makeStyles,
   } from '@material-ui/core';
+  import CircularProgress from '@material-ui/core/CircularProgress';
 import { useForm, Controller } from "react-hook-form";
 import { defineMessages } from 'react-intl';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/plain.css';
 
@@ -138,12 +139,6 @@ const ContactForm = ({messages, locale}) => {
         <Typography gutterBottom className="titleContactForm" color="primary" variant="h5">{messages.contact.contactUs}</Typography>
       <form  onSubmit={handleSubmit(onSubmit)}>
 
-          {/*<Dropdown
-                placeholder='How can we help you ?'
-                fluid
-                selection
-                options={options}
-              /> */}
               <Controller
                 name="name"
                 control={control}
