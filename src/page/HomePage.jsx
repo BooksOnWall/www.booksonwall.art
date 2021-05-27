@@ -10,7 +10,6 @@ import {
     CardActions,
     Button,
     GridList,
-    GridListTile,
     makeStyles
   } from '@material-ui/core';
 
@@ -121,9 +120,11 @@ bgRight:{
   backgroundSize: 'contain',
   backgroundPosition: 'left center',
 },
-paper: {
-  padding: theme.spacing(3),
+paperGallery: {
+  padding: theme.spacing(0),
   background: '#EEEFEC',
+  borderRadius: 8,
+  overflow: 'hidden'
 },
 card:{
   background: 'transparent',
@@ -133,22 +134,20 @@ card:{
   maxWidth: 650,
   marginLeft: '3vw'
 },
-paper2:{
-  padding: 0,
-  margin: 20,
-  borderRadius: 8,
-  overflow: 'hidden',
-  minheight: 400,
+
+imageGaller:{
+  borderRadius: 0,
 },
 tile: {
   display:'flex',
   flexDirection: 'column',
   justifyContent:'center',
   color: 'white',
-  minHeight: 370,
+  minHeight: 340,
+  padding: '30px',
   backgroundSize: 'cover',
   borderRadius: 8,
-  margin: '0 20px',
+  margin: '25px 0',
 
 },
 blob: {
@@ -199,11 +198,7 @@ button4: {
         border: '2px #009999 solid',
     }
 },
-gridList: {
-   height: 'inherit',
-},
-gridPhoto:{
-},
+
 poligon: {
 display: 'flex',
 flexGrow: 1,
@@ -217,11 +212,12 @@ poligons: {
   padding: 0,
 },
 poligons2:{
-  flex: '2 1 20%',
+  flex: '2 1 16%',
   padding: '0',
   alignSelf: 'flex-end',
   minWidht: 270,
   minHeight: 270,
+  maxWidth: 320
 },
 dividerShape: {
   left: 0,
@@ -302,7 +298,7 @@ const HomeHeaderBlock = ({messages, theme}) => {
           </Blob>
         </Grid>
 
-        <Grid item  xs={6} className={classes.wrapperGrid}>
+        <Grid item xs={6} className={classes.wrapperGrid}>
             <Card elevation={0} className={classes.card}>
               <CardContent>
                 <Typography  gutterBottom variant="h2" >{messages.home.take_a_tour}</Typography>
@@ -334,7 +330,7 @@ return (
 
     <Grid container spacing={8}>
 
-        <Grid item  xs={6} >
+        <Grid item xs={6} >
           <Card elevation={0} className={classes.card}>
             <CardContent>
               <Typography gutterBottom color="textPrimary" variant="h2" >{messages.home.we_are}</Typography>
@@ -379,6 +375,12 @@ const PlaceholderBlock = ({messages}) => {
      title: 'Image',
      author: 'author',
      cols: 1,
+   },
+   {
+     img: Images.image9,
+     title: 'Image',
+     author: 'author',
+     cols: 1,
    }
  ];
   const tileData = [
@@ -400,42 +402,49 @@ const PlaceholderBlock = ({messages}) => {
        author: 'author',
        cols: 1,
      },
+     {
+       img: Images.image17,
+       title: 'Image',
+       author: 'author',
+       cols: 1,
+     },
  ];
 return (
   <div>
   <Container className={classes.placeholderBlock} maxWidth="xl" >
-    <GridList cellHeight='400' className={classes.gridList} cols={5}>
-         {tileData.map((tile,i) => (
-           <GridListTile key={i} cols={tile.cols || 1}>
-              <Box elevation={0}  className={classes.paper2}>
-                  <Image src={tile.img.default} alt={tile.title} />
-               </Box>
-           </GridListTile>
-         ))}
-         <GridListTile item cols={2}>
-           <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg4})` }} >
-               <Typography gutterBottom align="center" color="white" variant="h4">{messages.home.download_app}</Typography>
-               <Button href={messages.menu.explore+'#'+messages.menu.download_app}  className={classes.button3} variant="outlined" color="primary">{messages.home.enjoy_btn}</Button>
-           </Paper>
-         </GridListTile>
+          <Grid container justify="center" spacing={6}>
+            {tileData.map((tile,i) => (
+              <Grid key={i} item xs={6} md={3}>
+                <Paper className={classes.paperGallery} >
+                <Image aspectRatio={1/1} className={classes.imageGaller} src={tile.img.default} alt={tile.title} />
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+          <Grid container justify="center" spacing={6}>
+            <Grid item xs={12} md={6}>
+              <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg4})` }} >
+                <Typography gutterBottom align="center" color="textSecondary" variant="h3">{messages.home.download_app}</Typography>
+                <Button className={classes.button3} variant="outlined" color="primary">{messages.home.enjoy_btn}</Button>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={6}>
+             <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg5})` }} >
+               <Typography gutterBottom align="center" color="textSecondary" variant="h3">{messages.home.create_togheter}</Typography>
+               <Button href="/Collaborate#Support-a-story" className={classes.button3}  variant="outlined" color="primary">{messages.home.support_a_story_btn}</Button>
+             </Paper>
+            </Grid>
+         </Grid>
 
-         <GridListTile item cols={2}>
-          <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg5})` }} >
-              <Typography gutterBottom align="center" color="white" variant="h4">{messages.home.create_togheter}</Typography>
-              <Button href={messages.menu.collaborate+'#'+messages.menu.support} className={classes.button3}  variant="outlined" color="primary">{messages.home.support_a_story_btn}</Button>
-          </Paper>
-        </GridListTile>
-
-           {tileData2.map((tile,i) => (
-             <GridListTile key={i} cols={tile.cols || 1}>
-                <Paper elevation={0}  className={classes.paper2}>
-                    <Image src={tile.img.default} alt={tile.title} />
-                 </Paper>
-             </GridListTile>
-           ))}
-
-         </GridList>
-
+          <Grid container justify="center" spacing={6}>
+            {tileData2.map((tile,i) => (
+              <Grid key={i} item xs={6} md={3}>
+               <Paper className={classes.paperGallery} >
+                  <Image aspectRatio={1/1} className={classes.imageGaller} src={tile.img.default} alt={tile.title} />
+                </Paper>
+              </Grid>
+          ))}
+          </Grid>
       </Container>
     </div>
 )};
