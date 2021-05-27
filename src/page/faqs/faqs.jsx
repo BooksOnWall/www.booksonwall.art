@@ -66,27 +66,25 @@ class Faqs extends Component {
     const {messages} = this.props.intl;
 
     return (faqs) ? (
-
-
       <Container>
-      <Typography gutterBottom variant='h2'>
-        {messages.menu.faqs}
-      </Typography>
-      <Typography gutterBottom variant='subtitle'>
-        {messages.faqs.subtitle}
-      </Typography>
-      {faqs.map(faq => (
-        <>
-        <Box>
-          <Badge color="secondary" variant="dot">
-            <Typography as='h2'>{faq.Question}</Typography>
-          </Badge>
-          <Box className='answer' compact>
-              {faq.Answer}
-          </Box>
-        </Box>
-        </>
-      ))}
+        <Typography gutterBottom variant='h2'>
+          {messages.menu.faqs}
+        </Typography>
+        <Typography gutterBottom variant='subtitle'>
+          {messages.faqs.subtitle}
+        </Typography>
+        {faqs.map(faq => (
+          <>
+            <Box>
+              <Badge color="secondary" variant="dot">
+                <Typography as='h2'>{faq.Question}</Typography>
+              </Badge>
+              <Box className='answer' compact>
+                  {faq.Answer}
+              </Box>
+            </Box>
+          </>
+        ))}
       </Container>
 
 
