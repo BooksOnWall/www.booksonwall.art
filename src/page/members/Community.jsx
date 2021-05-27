@@ -123,7 +123,7 @@ class Community extends Component {
   loadMembers = async (filter, rows, index, sort, order) => {
     console.log("load members");
     const { apiURL } = this.state;
-    const fetchURL = apiURL + '/Members';
+    const fetchURL = apiURL + '/Members?_limit=-1&_sort=created_at:desc&lang=en';
     this.setState({loading: true});
     console.log("URL",fetchURL );
 
