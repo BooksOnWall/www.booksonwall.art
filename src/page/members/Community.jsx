@@ -162,7 +162,6 @@ class Community extends Component {
   render() {
     const {skills, selected, members, apiURL} = this.state;
     const {messages} = this.props.intl;
-
     return (members && members.length > 0) ? (
       <Box className="main" >
         <CommunityMap members={members} selected={selected} hasSkill={this.hasSkill} history={this.props.history}/>

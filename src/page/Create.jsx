@@ -296,7 +296,7 @@ const Community = ({history, messages}) => {
       <Container className={classes.container} >
         <Typography color="textSecondary" align="center" gutterBottom variant="h2" >{messages.create.community_we_are}</Typography>
         <Typography  color="textSecondary" align="center" gutterBottom variant="h3" >{messages.create.community_we_create}</Typography>
-        <Button className={classes.buton4} onClick={(e) => history.push('/Community')}>{messages.create.meet_comunity}</Button>
+        <Button className={classes.buton4} onClick={(e) => history.push('/'+messages.menu.community)}>{messages.create.meet_comunity}</Button>
       </Container>
       <Box className={classes.dividerShape} >
         <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">

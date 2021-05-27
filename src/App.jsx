@@ -57,6 +57,7 @@ const App = () => {
   navLocale = navLocale.split("-")[0];
   const [locale, setLocale] = useState(navLocale);
   const switchLang = locale => setLocale(locale);
+  console.log("/"+messages[locale].menu.community);
   return (
     <IntlProvider key={locale} locale={locale} messages={messages[locale]}>
       <Router>
@@ -70,7 +71,7 @@ const App = () => {
             <Route path={"/"+messages[locale].menu.collaborate}> <Help history={history} /> </Route>
             <Route path={"/"+messages[locale].menu.info}> <Info history={history} /> </Route>
             <Route exact path={"/"+messages[locale].menu.connect}> <Connect history={history} /> </Route>
-            <Route exact path={"/"+messages[locale].menu.community}>   <Community history={history} /> </Route>
+            <Route exact path={"/"+messages[locale].menu.community}> <Community history={history} /> </Route>
             <Route exact path={"/"+messages[locale].menu.projects} > <Projects history={history} /> </Route>
             <Route exact path={"/"+messages[locale].menu.project+":name"}> <Project history={history} /> </Route>
             <Route exact path={"/"+messages[locale].menu.news}><Articles history={history}/> </Route>
