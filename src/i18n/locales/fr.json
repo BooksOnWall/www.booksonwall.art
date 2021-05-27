@@ -1,123 +1,123 @@
 {
   "collaborate": {
-    "create_new_story": "",
-    "fund_a_story": "",
-    "how": "",
-    "join_us": "",
-    "looking_for": "",
-    "read_more_btn": "",
-    "strategic_partner": "",
-    "title": "",
-    "we_are": "",
-    "we_produce": ""
+    "create_new_story": "Créer un nouveau conte",
+    "fund_a_story": "Financer un conte",
+    "how": "Comment devenir partenaire",
+    "join_us": "Rejoignez nous",
+    "looking_for": "Un lien unique avec les industries créatives : création littéraire, audiovisuel, musique, arts plastiques et visuels avec la ville et ses contenus historiques, culturels et sociaux.",
+    "read_more_btn": "En savoir plus",
+    "strategic_partner": "Nous recherchons des partenaires stratégiques qui souhaitent participer et contribuer à la croissance de BooksOnWall.",
+    "title": "Ensemble, nous pouvons revaloriser et redonner du sens à votre ville. En utilisant l'Art et les nouvelles technologies.",
+    "we_are": "Nous sommes une communauté d'experts en art, médias et technologies contemporaines.",
+    "we_produce": "Nous produisons, dirigeons et gérons des projets de réalité augmentée."
   },
   "connect": {
-    "adress": "",
-    "keed_in_touch": "",
-    "register": "",
-    "we_are": ""
+    "adress": "Magallanes 1064, Montevideo, Uruguay.",
+    "keed_in_touch": "Restez en contact, nous sommes dans les réseaux et vous pouvez aussi nous écrire, nous sommes à votre service.",
+    "register": "Si vous voulez vous joindre à nous et collaborer à l'un des projets, passez par ici et nous vous contacterons pour vous proposer des idées de participation.",
+    "we_are": "L'équipe de gestion de notre marque est basée à Montevideo, en Uruguay.  La communauté a également des référents au Portugal, en Espagne, en Égypte et au Chili."
   },
   "contact": {
-    "contactUs": "",
+    "contactUs": "On en parle ?",
     "email": "Courrier électronique",
     "name": "Prénom et nom de famille",
     "phone": "Numéro de téléphone de contact",
-    "send": "",
-    "subject": ""
+    "send": "Envoyer",
+    "subject": "Sujet"
   },
   "create": {
-    "community": "",
+    "community": "Comunautée",
     "community_we_are": "Nous sommes des artistes qui aiment travailler avec d'autres artistes.",
     "community_we_create": "Nous créons des histoires avec des parcours originaux inspirés par divers éléments de la culture locale. Chaque histoire nécessite la collaboration de nombreuses professions telles que les écrivains, les scénaristes, les muralistes, les sculpteurs, les graphistes, les animateurs, les musiciens, les conteurs, les concepteurs audiovisuels, les communicateurs et les gestionnaires. Ensemble, nous traitons, concevons, créons et optimisons toutes sortes de contenus qui composent l'expérience.",
-    "join_us": "",
-    "joinus_header": "¿Vous voulez faire partie d'une équipe de créateurs multidisciplinaires, innovants et passionnés ? BooksOnWall, c'est votre place !",
-    "know_more": "",
-    "meet_comunity": "",
+    "join_us": "Join Us",
+    "joinus_header": "Vous voulez faire partie d'une équipe de créateurs multidisciplinaires, innovants et passionnés ? BooksOnWall, c'est votre place !",
+    "know_more": "En savoir plus",
+    "meet_comunity": "Rencontrer la communauté",
     "wokshop_header": "Le monde est plein d'histoires qui attendent d'être racontées et nous voulons le faire d'une manière très spéciale.",
     "wokshop_subheader": "Créons ensemble une histoire enrichie !",
-    "workshop_by_step": "¿Voulez-vous créer un conte dans votre ville ? Nous pouvons guider et suivre le processus étape par étape, nous connecter avec nous.",
+    "workshop_by_step": "Voulez-vous créer un conte dans votre ville ? Nous pouvons guider et suivre le processus étape par étape, nous connecter avec nous.",
     "workshop_stories": "Ateliers pour créer un conte BooksOnWall",
-    "your_place": ""
+    "your_place": "La communauté de BooksOnWall est votre place !"
   },
   "d4411": "",
   "explore": {
-    "downloadDirect": "",
+    "downloadDirect": "Download Booksonwall-AR.APK v.0.99.2",
     "header": "\"Vivez une histoire à travers l'art urbain et les nouvelles technologies!",
     "subheader": "Téléchargez \"BookSonWall APP\" pour profiter des histoires et découvrir l'art urbain et la réalité augmentée."
   },
   "faqs": {
-    "subtitle": ""
+    "subtitle": "Voici quelques FAQ avec leurs réponses !"
   },
   "footer": {
-    "terms": "",
-    "thx_for_support_us": ""
+    "terms": "Conditions d'utilisation",
+    "thx_for_support_us": "Merci de nous soutenir"
   },
   "home": {
-    "create_togheter": "",
-    "download_app": "",
-    "download_app_btn": "",
-    "enjoy_btn": "",
-    "enjoy_the_experience": "",
-    "join_btn": "",
-    "know_btn": "",
-    "support_a_story_btn": "",
+    "create_togheter": "Créons une histoire fantastique",
+    "download_app": "Télécharger Booksonwall AR",
+    "download_app_btn": "Télécharger maintenant",
+    "enjoy_btn": "Profitez de l'expérience",
+    "enjoy_the_experience": "Profitez d'une expérience hypermédia et vivez une histoire à travers l'art urbain !",
+    "join_btn": "Rejoignez-nous",
+    "know_btn": "Connaître notre communauté",
+    "support_a_story_btn": "Soutenez une histoire",
     "take_a_tour": "Faites un tour de ville avec l'application BooksOnWall (lien), vivez une expérience hypermédia et vivez une histoire à travers l'art urbain!",
     "title": "Art et culture urbains",
     "we_are": "Nous sommes un collectif artistique qui raconte des histoires dans le monde entier. Nous connectons les gens à leurs territoires et réévaluons leurs propres récits grâce à l'art et aux technologies numériques.",
-    "we_connect": ""
+    "we_connect": "Nous connectons les gens avec leurs territoires et revalorisons leurs propres récits à travers l'art et les technologies numériques."
   },
   "info": {
-    "more_articles": "",
-    "we_are": "",
-    "we_create": ""
+    "more_articles": "Plus d'articles",
+    "we_are": "Nous sommes un collectif interdisciplinaire de créatifs qui racontent des histoires à travers la technologie numérique et les biens culturels.",
+    "we_create": "Nous avons créé l'application Booksonwall qui, grâce à des stimuli visuels et sonores, interagit avec les gens, les faisant participer à leurs histoires, voyager dans la ville et profiter des œuvres d'art urbaines."
   },
   "lang": {
-    "english": "English",
-    "french": "French",
-    "italian": "Italian",
-    "portuguese": "Português",
-    "spanish": "Español"
+    "english": "Anglais",
+    "french": "Français",
+    "italian": "Italien",
+    "portuguese": "Portuguais",
+    "spanish": "Espagnol"
   },
   "login": {
-    "cancel": "",
-    "email": "",
-    "login": "",
-    "password": "",
-    "title": ""
+    "cancel": "Annuler",
+    "email": "Email",
+    "login": "Login",
+    "password": "Mot de passe",
+    "title": "Titre"
   },
   "menu": {
     "associate": "Rejoignez",
     "collaborate": "Collaborez",
     "community": "Communautée",
     "connect": "Connectez-vous!",
-    "create": "Créee",
+    "create": "Créez",
     "develop": "Developer + innover",
     "download_app": "Téléchargez BookSonWall APP",
     "explore": "Explorer",
     "faqs": "FAQ",
     "history": "Contes",
-    "home": "",
+    "home": "Accueil",
     "info": "Informations",
     "joinus": "Rejoignez nous",
     "login": "S'identifier",
     "manifest": "Manifeste",
-    "press": "Imprensa",
-    "projects": "",
+    "press": "Presse",
+    "projects": "Projets",
     "stories": "Histoires",
-    "support": "Soutient un conte",
+    "support": "Soutiens un conte",
     "workshop": "Atelier"
   },
   "press": {
-    "branding": "",
-    "presentation": "",
-    "press_title": "",
-    "presskit": ""
+    "branding": "Branding",
+    "presentation": "presentation",
+    "press_title": "Branding et communiqué de presse",
+    "presskit": "Kit à télécharger"
   },
   "register": {
-    "register": "",
-    "send": ""
+    "register": "Enregistrez-vous !",
+    "send": "Envoyer"
   },
   "stories": {
-    "read_more_btn": ""
+    "read_more_btn": "En savoir plus"
   }
 }
