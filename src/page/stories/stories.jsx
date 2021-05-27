@@ -27,56 +27,44 @@ const storiesTraductions = defineMessages({
   },
 });
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 600,
-    minHeight: 400,
-    minWidth: 300,
+const useStyles = makeStyles((theme) => ({
+  card: {
     background: 'transparent',
-    display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
-    margin: 10,
-    flex: "2 1 auto"
+    margin: 30,
+    maxWidth: '700px'
   },
   actionArea:{
-    display: 'flex',
-    padding: '0 180px 150px 30px',
-    borderRadius: 20,
-    minHeight: 590,
     },
   media: {
-    minHeight: 250,
-    minWidth: 250,
-    maxWidth: 400,
-    maxHeight: 400,
+    minHeight: 350,
+    minWidth:400,
     borderRadius: 14,
     display: 'flex',
     flexDirection: 'column',
-    margin: 0,
+    margin: 40,
     rotate: '-3deg',
     flex: '2 1 auto'
   },
   content:{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    background: '#fff',
-    width: '80%',
-    maxWidth: 360,
-    minWidth: 260,
-    position: 'absolute',
-    top: 260,
-    left: '25%',
-    borderRadius: 8,
-    padding: 20
+    background:'rgba(255,255,255, .6)',
+    padding: 40,
+    borderRadius: 8
   },
   actions:{
     padding: '25px 0 0'
   },
   readMore:{
+  },
+  storyBtn:{
+    border: '2px solid #D9D2C6',
+    '&:hover':{
+      background: theme.palette.primary.main,
+      color: '#fff',
+      border: '2px #D9D2C6 solid',
+    }
   }
-});
+}));
 const DividerTop =() => {
   const classes = useStyles();
   return (
@@ -90,8 +78,7 @@ const DividerTop =() => {
 const StoriesList = ({stories, apiURL, goToStory, messages }) => {
   const classes = useStyles();
   return stories.map((story, i) => (
-    <Card elevation={0}  className={classes.root} key={'story'+i}>
-    <CardActionArea className={classes.actionArea}>
+    <Card elevation={0} className={classes.card} key={'story'+i}>
        <CardMedia
          onClick={(e) => goToStory(story.name)}
          className={classes.media}
@@ -100,12 +87,11 @@ const StoriesList = ({stories, apiURL, goToStory, messages }) => {
        />
        <CardContent className={classes.content}>
          <Typography gutterBottom color="textPrimary" variant="h3" component="h2">{story.name}</Typography>
-         <Typography variant="body2" color="textPrimary" component="p">{story.story_header}</Typography>
+         <Typography variant="subtitle1" color="textPrimary" component="p">{story.story_header}</Typography>
          <CardActions className={classes.actions}>
-          <Button elevation={0} variant="outlined" color="primary" size="small" onClick={(e) => goToStory(story.name)} >{messages.stories.read_more_btn}</Button>
+          <Button className={classes.storyBtn} elevation={0} variant="outlined" color="primary" size="small" onClick={(e) => goToStory(story.name)} >{messages.stories.read_more_btn}</Button>
          </CardActions>
        </CardContent>
-     </CardActionArea>
     </Card>
   ));
 };
