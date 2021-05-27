@@ -26,7 +26,7 @@ body{
   opacity: .1;
   max-width: 50vw;
 }
-.mapbg svg{right: 0vw; padding-top: 25vh; opacity: .7; max-width: 85vw;}
+.mapbg svg{right: 0vw; padding-top: 5vh; opacity: .4; max-width:90vw;}
 .bg1 svg{  left: 0px;   top: 120vh; opacity: .1;}
 .bg2 svg{ top: 110vh; max-width: 45vw; opacity: .08;}
 .bg3 svg{ right: 0px;   top: 105vh;}
@@ -144,9 +144,9 @@ body{
     line-height: 0;
 }
 #join-us{ min-height: 10vh}
-#storyList{ min-height: 40vh; padding: 2vh 40px 300px; margin: 0 !important; display: flex; justify-Content:space-evenly; width: 100vw; flex-grow: 1; flex-wrap: wrap}
-.stories{ padding-top: 0px; min-height: 110vh; display: flex; align-items: center; flex-direction: column}
-#storiesTitle{ padding: 20px 4vw; background: transparent; width: 100vw; min-height: 10vh;  display: flex; align-content: center; align-items: center;  margin:0}
+#storyList{ min-height: 40vh; padding: 8vh 40px 300px; margin: 0 !important; display: flex; justify-Content:space-evenly; width: 100vw; flex-grow: 1; flex-wrap: wrap}
+.stories{ padding-top: 100px; min-height: 110vh; display: flex; align-items: center; flex-direction: column}
+#storiesTitle{ padding: 20px 4vw 80px; background: transparent; width: 100vw; min-height: 10vh;  display: flex; align-content: center; align-items: center; justify-content: center; margin:0}
 #story {
   background-color: transparent;
   margin: 0px;
@@ -154,6 +154,7 @@ body{
 }
 .story .ui.pagination { margin-top: 50px !important; border: 0 !important}
 #FAQs .label { background: transparent !important; color: black;  }
+#FAQs .questionWrap{ padding: 40px 20px 0}
 #FAQs .answer{padding: .5em 3em !important; margin-bottom: 40px}
 #FAQs .answer .content{ margin: 5px 0 !important; }
 #info{ }
