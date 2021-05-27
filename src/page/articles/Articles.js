@@ -12,7 +12,15 @@ import {
     makeStyles
   } from '@material-ui/core';
 import ToggleButton from '@material-ui/lab/ToggleButton';
-import { injectIntl } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
+
+// const articleTraductions = defineMessages({
+//   read_more_btn: {
+//     id: 'article.read_more_btn',
+//     defaultMessage: 'Read more'
+//   }
+// });
+
 const apiURL = process.env.REACT_APP_API;
 
 const replaceAll = (string, search, replace) =>  {
@@ -24,7 +32,7 @@ const useStyles = makeStyles({
     minWidth: 180,
   },
   media: {
-    height: 135,
+    height: 300,
   },
 });
 const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
@@ -32,7 +40,7 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
   if(articles) console.log(articles[0]);
   return  (articles) ? articles.map((article, i) => (
     <Grid item xs>
-    <Card className={classes.root} key={'article'+i}>
+    <Card className={classes.root} elevation={0} key={'article'+i}>
     <CardActionArea>
        <CardMedia
          onClick={(e) => goToArticle(article.title)}
@@ -41,7 +49,7 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
          title={article.title}
        />
        <CardContent>
-         <Typography gutterBottom variant="h5" component="h2">
+         <Typography gutterBottom variant="h4" component="h3">
            {article.title}
          </Typography>
          <Typography variant="body2" color="textSecondary" component="p">
@@ -50,7 +58,7 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
        </CardContent>
      </CardActionArea>
      <CardActions>
-      <Button size="small" color="primary" bgcolor="primary" onClick={(e) => goToArticle(article.name)} >Read More</Button>
+      <Button size="small" color="primary" onClick={(e) => goToArticle(article.name)} >{messages.stories.read_more_btn}</Button>
      </CardActions>
     </Card>
     </Grid>

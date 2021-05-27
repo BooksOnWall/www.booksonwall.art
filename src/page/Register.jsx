@@ -3,8 +3,22 @@ import {
   Button,
   TextField,
   TextareaAutosize,
-  Divider
+  Divider,
+  Box,
+  Typography
   } from '@material-ui/core';
+  import { defineMessages } from 'react-intl';
+
+  const registerTraductions = defineMessages({
+    register: {
+      id: 'register.register',
+      defaultMessage: 'Register!'
+    },
+    send: {
+      id: 'register.send',
+      defaultMessage: 'Send'
+    },
+  });
 
 export default class Register extends Component {
   constructor(props) {
@@ -31,12 +45,14 @@ export default class Register extends Component {
     const {messages} = this.props;
 
     return (
-      <>
-      <h5>Register</h5>
+      <Box id="registerForm">
+      <Typography gutterBottom className="titleContactForm" color="secondary" variant="h5">{messages.register.register}</Typography>
 
           <form size='large' onSubmit={this.handleSubmit}>
             <>
             <TextField
+              className="formImput"
+              fullWidth
               label={messages.contact.name}
               placeholder={messages.contact.name}
               autoFocus={true}
@@ -46,8 +62,9 @@ export default class Register extends Component {
               defaultValue={initialState.name}
               />
 
-            <Divider />
             <TextField
+            className="formImput"
+              fullWidth
               label={messages.contact.email}
               placeholder={messages.contact.email}
               type="email"
@@ -55,8 +72,9 @@ export default class Register extends Component {
               onChange={this.handleChange}
               defaultValue={initialState.email}
               />
-            <Divider />
               <TextField
+                className="formImput"
+                fullWidth
                 label={messages.contact.phone}
                 placeholder={messages.contact.phone}
                 type="text"
@@ -65,9 +83,9 @@ export default class Register extends Component {
                 defaultValue={initialState.phone}
                 />
 
-            <Divider />
               <TextareaAutosize
                 aria-label="minimum height"
+                fullWidth
                 rowsMin={3}
                 rows={10}
                 className="formMessage"
@@ -76,12 +94,10 @@ export default class Register extends Component {
                 onChange={this.handleChange}
                 defaultValue={initialState.message}
               />
-            <Divider />
-            <Button onClick={this.handleSubmit}  primary size='large' type="submit" disabled={this.isSubmitting} content="Send" />
-            <Divider />
+            <Button className="button2" disableElevation label={messages.contact.send} onClick={this.handleSubmit} size='large' type="submit" disabled={this.isSubmitting}>{messages.register.send}</Button>
             </>
           </form>
-      </>
+      </Box>
     );
   }
 }

@@ -18,6 +18,7 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import loadable from '@loadable/component';
 import Faqs from './faqs/faqs';
 const Stories = loadable(() => import('./stories/stories'));
+
 const exploreTraductions = defineMessages({
   header: {
     id: 'explore.header',
@@ -31,8 +32,8 @@ const exploreTraductions = defineMessages({
     id: 'explore.downloadDirect',
     defaultMessage: "Download Booksonwall-AR.APK v.0.99.2"
   }
-
 });
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   exploreHader: {
     display: 'flex',
     flexFlow: 'column wrap',
-    minHeight: '50vh',
+    minHeight: '90vh',
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
     backgroundColor: '#ccc',

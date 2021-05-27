@@ -20,20 +20,23 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   menulist:{
-    marginTop: 48,
+    marginTop: 64,
+    marginLeft: -11,
     padding: 0,
-    marginLeft: -15,
   },
   menuItem: {
-    borderRadius: 400,
-    color: '#000',
-    fontWeight: 700,
-    textTransform: 'uppercase',
-    fontSize: 13,
-    padding: "12px 15px 4px",
+    padding: 8,
+    margin: '0 5px 0 15px',
+    background: 'rgba(0, 0, 0, 0)',
 },
   menuItemItem: {
     padding: 15
+  },
+  menuItemButton:{
+    padding:0,
+  },
+  menuItemIcon:{
+
   },
 menuItemText:{
 },
@@ -81,13 +84,12 @@ const LanguageSwitch = ({locale, switchLang, messages, history, allMessages}) =>
 
     <List className={classes.list} disablePadding component="nav" aria-label="Language">
       <ListItem
-        button
         aria-haspopup="true"
         aria-controls="Language"
         aria-label="Languages"
         className={classes.menuItem}
         >
-        <ListItemText className={classes.menuItemText} onClick={handleClickListItem} primary={<CircleFlag className={classes.menuIcon}  countryCode={ (locale !== "en") ? locale : "gb" } height="22"/>} secondary={languageOptions[locale]} />
+          <IconButton className={classes.menuItemButton} onClick={handleClickListItem}><CircleFlag  className={classes.menuItemIcon} fontSize="large" countryCode={ (locale !== "en") ? locale : "gb" } height="30"/></IconButton>
       </ListItem>
     </List>
 

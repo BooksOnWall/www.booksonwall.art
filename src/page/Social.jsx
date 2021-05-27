@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
     padding: '40px 0',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
     flexWrap: 'wrap',
-    alignSelf: 'flex-end'
+    alignItems: 'flex-start'
   },
   button: {
-    margin: theme.spacing(1),
-    border: '2px solid #fff',
+    margin: theme.spacing(2),
+    border: '0px solid #fff',
     background: 'transparent',
+    maxWidth: 160,
     color: '#fff',
     '&:hover': {
       background: '#fff',
@@ -74,6 +74,7 @@ const SocialBar = ({goTo}) => {
     <Button
       disableElevation
       variant="contained"
+      size="large"
       className={classes.button}
       href="https://www.facebook.com/BooksOnWall"
       startIcon={<FacebookIcon />}
@@ -81,6 +82,7 @@ const SocialBar = ({goTo}) => {
     <Button
       disableElevation
       variant="contained"
+      size="large"
       className={classes.button}
       href="https://www.instagram.com/booksonwall"
       startIcon={<InstagramIcon />}
@@ -88,6 +90,7 @@ const SocialBar = ({goTo}) => {
     <Button
       disableElevation
       variant="contained"
+      size="large"
       className={classes.button}
       href="https://twitter.com/hashtag/booksonwall"
       startIcon={<TwitterIcon />}
@@ -95,6 +98,7 @@ const SocialBar = ({goTo}) => {
     <Button
       disableElevation
       variant="contained"
+      size="large"
       className={classes.button}
       href="https://www.youtube.com/channel/UCNWiz7RDGgoM3HHgoYPAS3w"
       icon="youtube"
@@ -103,6 +107,7 @@ const SocialBar = ({goTo}) => {
     <Button
       disableElevation
       variant="contained"
+      size="large"
       className={classes.button}
       href="https://web.telegram.org/#/im?p=g355580041"
       startIcon={<TelegramIcon />}
@@ -110,6 +115,7 @@ const SocialBar = ({goTo}) => {
       <Button
         disableElevation
         variant="contained"
+        size="large"
         className={classes.button}
         startIcon={<GitHubIcon />}
         href="https://github.com/BooksOnWall"
@@ -117,10 +123,11 @@ const SocialBar = ({goTo}) => {
     <Button
       disableElevation
       variant="contained"
+      size="large"
       className={classes.button}
       startIcon={<VideocamIcon />}
       href="https://meet.jit.si/BooksOnwall"
-      onClick={goTo}>Jitsi Video Conferencing </Button>
+      onClick={goTo}>Jitsi Meet </Button>
 
     </Box>
   )

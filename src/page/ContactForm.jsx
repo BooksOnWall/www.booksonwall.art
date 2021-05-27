@@ -6,11 +6,14 @@ import {
   TextareaAutosize,
   Box,
   Typography,
+  IconButton,
   makeStyles,
   } from '@material-ui/core';
 import { useForm, Controller } from "react-hook-form";
 import { defineMessages } from 'react-intl';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/plain.css';
 
 const contactTraductions = defineMessages({
   name: {
@@ -35,7 +38,7 @@ const contactTraductions = defineMessages({
   },
   contactUs: {
     id: 'contact.contactUs',
-    defaultMessage: 'Contact Us',
+    defaultMessage: "Let's talk?",
   }
 });
 const useStyles = makeStyles((theme) => ({
@@ -132,7 +135,7 @@ const ContactForm = ({messages, locale}) => {
       }
       {!complete &&
         <>
-        <Typography gutterBottom color="textSecondary" variant="h4">{messages.contact.contactUs}</Typography>
+        <Typography gutterBottom className="titleContactForm" color="primary" variant="h5">{messages.contact.contactUs}</Typography>
       <form  onSubmit={handleSubmit(onSubmit)}>
 
           {/*<Dropdown
@@ -191,17 +194,14 @@ const ContactForm = ({messages, locale}) => {
                 control={control}
                 defaultValue=""
                 render={({ field: { onChange, value }, fieldState: { error } }) => (
-                  <TextField
-                    fullWidth
-                    className="formImput"
-                    label={messages.contact.phone}
-                    placeholder={messages.contact.phone}
-                    variant="filled"
-                    value={value}
-                    onChange={onChange}
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    type="text"
+                  <PhoneInput
+                  label={messages.contact.phone}
+                  placeholder={messages.contact.phone}
+                  variant="filled"
+                  value={value}
+                  onChange={onChange}
+                  error={!!error}
+                  helperText={error ? error.message : null}
                   />
                 )}
                 rules={{ required: 'Phone required' }}
@@ -249,7 +249,6 @@ const ContactForm = ({messages, locale}) => {
                 )}
                 rules={{ required: 'Message required' }}
               />
-
             <br /><br />
             <Button type="submit" className="button2" disableElevation label={messages.contact.send}>{messages.contact.send}</Button>
           </form>

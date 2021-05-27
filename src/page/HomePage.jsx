@@ -256,7 +256,7 @@ blobB: {
 homeHader:{
   display: 'flex',
   flexFlow: 'column wrap',
-  minHeight: '75vh',
+  minHeight: '90vh',
   justifyContent: 'flex-end',
   alignItems: 'flex-start',
   backgroundColor: '#ccc',

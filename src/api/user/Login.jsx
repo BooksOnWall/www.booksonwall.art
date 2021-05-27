@@ -9,6 +9,7 @@ import {
   TextField,
   Button,
   ButtonGroup,
+  IconButton,
   makeStyles,
   Typography,
   Backdrop } from '@material-ui/core';
@@ -45,19 +46,18 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 15,
     overflow: 'hidden'
   },
-  menuItem: {
-    borderRadius: 400,
-    color: '#000',
-    fontWeight: 700,
-    padding: "12px 4px 4px 14px",
-    textTransform: 'uppercase',
-    fontSize: 13,
-    margin: 5,
-    '&:hover': {
-       background: 'rgba(0, 0, 0, 0.03)',
-       color:  '#333'
+    menuItem:{
+      padding: 0,
+      margin: '0',
+      background: 'rgba(0, 0, 0, 0)',
+    },
+    menuItemButton:{
+      padding:0,
+      margin: 0,
+      '&:hover':{
+        padding: 0
       }
-  },
+    },
   input: {
     margin: 20,
     minWidth: '300px'
@@ -104,7 +104,6 @@ const loginTraductions = defineMessages({
      <>
         <List component="nav" aria-label="Connect" className="nav">
           <ListItem
-            button
             value="Login"
             aria-haspopup="true"
             aria-controls="connect"
@@ -112,7 +111,7 @@ const loginTraductions = defineMessages({
             onClick={handleOpen}
             className={classes.menuItem}
             >
-            <ListItemText primary={<AccountCircleIcon fontSize='default' />}  />
+            <IconButton className={classes.menuItemButton}><AccountCircleIcon className={classes.menuItemIcon} fontSize="large"/></IconButton>
           </ListItem>
         </List>
       <Modal

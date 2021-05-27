@@ -95,8 +95,8 @@ tileHead: {
     with: '100vw',
     display: 'flex',
     flexFlow: 'column wrap',
-    minHeight: '60vh',
-    justifyContent: 'space-between',
+    minHeight: '80vh',
+    justifyContent: 'flex-end',
     alignItems: 'flex-start',
   },
 community:{
@@ -202,6 +202,7 @@ press: {
   padding: '100px 40px'
 },
 pressTitle:{
+ textTransform: 'uppercase',
 
 },
 }));
@@ -291,7 +292,7 @@ const Press =({press, goToArticle, history, messages}) => {
   return (
   <Box id={messages.menu.press} className={classes.press} >
       <Container maxWidth='false'>
-        <Typography className={classes.pressTitle} variant='h4'>{messages.menu.press}</Typography>
+        <Typography color='primary' align='center' className={classes.pressTitle} variant='h3'>{messages.menu.press}</Typography>
         <ReactMarkdown source={press} />
         <Articles max={4} tags={['Press']} history={history}/>
         <Button primary  onClick={goToArticle} labelPosition='right' icon='arrow right' content={messages.info.more_articles}  />

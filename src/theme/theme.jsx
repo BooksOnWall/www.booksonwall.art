@@ -24,7 +24,7 @@ palette: {
     main: '#91201F',
     dark: '#893E4E', //will be calculated from palette.primary.main,
     contrastText: '#FEFEFE', //will be calculated to contrast with palette.primary.main
-    mainGradient: 'linear-gradient(0deg, rgba(190,66,81,.88) 0%, rgba(224,161,3,.88) 100%)',
+    mainGradient: 'linear-gradient(0deg, rgba(190,66,81,.8) 0%, rgba(224,161,3,.8) 100%)',
     darkGradient: 'linear-gradient(0deg, rgba(20, 0, 100, .88) 0%, rgba(190,66,81,.88) 100%)'
   },
   secondary: {
@@ -62,13 +62,11 @@ palette: {
   letterSpacing: 'normal',
   body:{
     fontFamily: '"Roboto", Helvetica, Arial, sans-serif',
-    fontSize: "1.3rem",
-    fontSize: 16,
+    fontSize: "1.2rem",
   },
   body1:{
     fontFamily: '"Roboto", Helvetica, Arial, sans-serif',
-    fontSize: "1.3rem",
-    fontSize: 18,
+    fontSize: "1.2rem",
   },
   body2:{
     fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',

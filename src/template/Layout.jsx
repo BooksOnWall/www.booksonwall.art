@@ -27,7 +27,8 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
     toolbar: {
       minWidth: 350,
       width: '100vw',
-      background: 'transparent'
+      background: 'transparent',
+      minHeight: 150
     },
     toolbarIcon: {
       display: 'flex',
@@ -157,14 +158,13 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
 
       <Box className={classes.root}>
         <CssBaseline />
-        <AppBar elevation={0}  color="default"  position="absolute" className={clsx(classes.appBar)}>
+        <AppBar elevation={0}  color="transparent"  position="absolute" className={clsx(classes.appBar)}>
           <Toolbar variant="regular" disableGutters className={classes.toolbar}>
             <Header locale={locale} allMessages={allMessages} switchLang={switchLang} history={history}/>
           </Toolbar>
         </AppBar>
         <main className={classes.content}>
         <Box className={classes.footerBg}>
-          <div className={classes.appBarSpacer} />
           <Box className={classes.container} id="top">
             {children}
           </Box>

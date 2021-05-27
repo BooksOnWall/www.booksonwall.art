@@ -121,37 +121,43 @@ const useStyles = makeStyles((theme) => ({
   },
   logo:{
     padding: 0,
-    minHeight: 50,
-    minWidth: 50,
-    marginLeft: 10
+    marginTop: 0,
+    marginLeft: '2vw',
+  },
+  logoIcon:{
+    minHeight: 70,
+    minWidth: 70,
+    background: '#fff',
+    padding: 3
   },
   logoMobile:{
     marginLeft: 10,
   },
   menuItem: {
-    borderRadius:8,
-    color: '#000',
+    borderRadius: 6,
+    color: theme.palette.secondary.contrastText,
     fontWeight: 700,
     textTransform: 'uppercase',
-    fontSize: 14,
-    margin: 5,
-    padding: '8px 10px',
-    background: 'rgba(255, 255, 255, .3)',
+    margin: 3,
+    padding: '8px 14px',
+    background: 'rgba(0, 0, 0,  .09)',
     '&:hover': {
-        background: 'rgba(0, 0, 0, 0.03)',
-        color:  '#333'
+        background: 'rgba(0, 0, 0, 0.2)',
+        color:  '#fff'
       }
   },
   menuItemContact:{
     textTransform: 'uppercase',
     fontSize: 14,
-    margin: 0,
-    padding: '4px 17px',
+    margin: '0 2px',
+    padding: '3px 12px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 8,
+    borderRadius: 6,
     fontWeight: 700,
+    background: 'rgba(0, 0, 0,  .1)',
+    color: theme.palette.secondary.contrastText,
     '&:hover': {
         background: 'rgba(0, 0, 0, 0.03)',
         color:  "#000"
@@ -279,7 +285,7 @@ const MainMenu = ({history, allMessages, switchLang, goTo,menuOptions, loadPage,
   const classes = useStyles();
   return (
     <>
-    <AppBar elevation={0} id="appbar-mobile" color="default">
+    <AppBar elevation={0} id="appbar-mobile" color="transparent" >
       <Toolbar elevation={0}  className={classes.toolbar} disableGutters variant='regular' >
         <IconButton className={classes.logoMobile} value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
           <Avatar alt="logo" src={logo} />
@@ -316,10 +322,10 @@ const MainMenu = ({history, allMessages, switchLang, goTo,menuOptions, loadPage,
       </Toolbar>
     </AppBar>
 
-    <AppBar elevation={0} id="appbar-web" position="relative" color="default" >
+    <AppBar elevation={0} id="appbar-web" position="relative" color="transparent"  >
       <Toolbar style={{display: 'flex', justifyContent: 'space-between',}}>
         <IconButton className={classes.logo} value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
-          <Avatar className={classes.logo}   alt="logo" src={logo} />
+          <Avatar className={classes.logoIcon}   alt="logo" src={logo} />
         </IconButton>
         <Box style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center',}}>
         <MenuBranch

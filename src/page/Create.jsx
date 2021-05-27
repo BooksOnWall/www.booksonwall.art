@@ -81,10 +81,10 @@ stories: {
   display: 'flex',
   flexWrap: 'wrap',
   flexGrow: 1,
-  minHeight: '60vh'
+  minHeight: '80vh'
 },
 workshop: {
-  minHeight: '70vh',
+  minHeight: '80vh',
   display: "flex",
   alignItems: "center",
 },

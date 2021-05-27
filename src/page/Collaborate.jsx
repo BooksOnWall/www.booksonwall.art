@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   collaborateHader: {
     display: 'flex',
     flexFlow: 'column wrap',
-    minHeight: '36vh',
+    minHeight: '50vh',
     justifyContent: 'center',
     alignContent: 'center',
     backgroundColor: '#ccc',
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     gradient: {
       background: theme.palette.primary.darkGradient,
       display: "flex",
-      height: '36vh',
+      minHeight: '50vh',
       flexDirection: 'column',
       width: '100vw',
       justifyContent: 'flex-end',
