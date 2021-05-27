@@ -219,7 +219,7 @@ return (
     </Box>
   </Box>
 )};
-const SupportStory = ({messages}) => {
+const SupportStory = ({messages, lang}) => {
   const classes = useStyles();
   const [services, setServices] = useState([]);
   const apiURL = process.env.REACT_APP_API;
@@ -228,7 +228,7 @@ const SupportStory = ({messages}) => {
     const getServices = async () => {
       try {
 
-        const fetchURL = apiURL + '/services?_limit=-1&_sort=published_at:DESC&lang=en';
+        const fetchURL = apiURL + '/services?_limit=-1&_sort=published_at:DESC&lang='+lang;
         await fetch(fetchURL, {
           method: "get",
           headers: {
@@ -308,11 +308,11 @@ return (
 )};
 
 const Collaborate = (props) => {
-    const {messages} = props.intl;
+    const {messages, locale} = props.intl;
     return (
       <Box id="collabora">
         <CollaborateHeader messages={messages}/>
-        <SupportStory messages={messages} />
+        <SupportStory lang={locale} messages={messages} />
      </Box>
     )
 };

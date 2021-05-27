@@ -147,7 +147,7 @@ const Connect = (props) => {
               <Button onClick={goToCommunity} size="large" className={classes.buton2} >{messages.create.meet_comunity}</Button>
             </Grid>
             <Grid item xs={12} md={6} xl={4} >
-              <Register messages={messages}/>
+              <Register messages={messages} locale={locale}/>
             </Grid>
           </Grid>
         </ Container>

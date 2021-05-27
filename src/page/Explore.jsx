@@ -16,7 +16,7 @@ import { Images } from '../assets/images/pages';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
 import loadable from '@loadable/component';
-import Faqs from './faqs/faqs';
+const Faqs = loadable(() => import('./faqs/faqs'));
 const Stories = loadable(() => import('./stories/stories'));
 
 const exploreTraductions = defineMessages({
