@@ -41,21 +41,21 @@
   },
   "d4411": "Meet the community",
   "explore": {
-    "downloadDirect": "Download Booksonwall-AR.APK v.0.99.2",
+    "downloadDirect": "Booksonwall-AR - Android",
     "header": "Come and live a story through urban art and new technologies!",
     "subheader": "Download BookSonWall AR to enjoy the stories and experience urban art and augmented reality."
   },
   "faqs": {
-    "subtitle": "Here are some FAQ's with their answers!"
+    "subtitle": "Here are some questions with their answers..."
   },
   "footer": {
-    "terms": "Terms",
+    "terms": "Terms and Conditions",
     "thx_for_support_us": "Thx for supporting us"
   },
   "home": {
     "create_togheter": "Let's create a fantastic story",
-    "download_app": "Donwaload Booksonwall AR",
-    "download_app_btn": "Donwaload now",
+    "download_app": "Download Booksonwall AR",
+    "download_app_btn": "Download and start the adventure!",
     "enjoy_btn": "Enjoy the experience",
     "enjoy_the_experience": "Enjoy a hypermedia experience and live a story through urban art!",
     "join_btn": "Join Us",
@@ -80,10 +80,10 @@
   },
   "login": {
     "cancel": "Cancel",
-    "email": "Email",
+    "email": "e-mail",
     "login": "Go!",
     "password": "Password",
-    "title": "Login"
+    "title": "Community login "
   },
   "menu": {
     "article": "Article",
@@ -111,13 +111,13 @@
     "workshop": "Workshop"
   },
   "press": {
-    "branding": "Branding",
+    "branding": "brand logos",
     "presentation": "presentation",
     "press_title": "Branding and Press realease",
     "presskit": "presskit"
   },
   "register": {
-    "register": "Register!",
+    "register": "Join us and register!",
     "send": "Send"
   },
   "stories": {

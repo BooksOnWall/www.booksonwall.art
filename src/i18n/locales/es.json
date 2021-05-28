@@ -3,7 +3,7 @@
     "create_new_story": "Creemos juntos una nueva historia en tu ciudad. Ayúdanos a financiar un un cuento de BooksOnWall y promovamos juntos la cultura, el patrimonio, la identidad territorial y la innovación tecnológica.",
     "fund_a_story": "Financiar una historia",
     "how": "Conoce como convertirte en socio",
-    "join_us": "Se parte",
+    "join_us": "Se parte, asociate.",
     "looking_for": "Una conexión única con las industrias creativas: creación literaria, audiovisual, música, artes plásticas y visuales con la ciudad y sus contenidos históricos, culturales y sociales.",
     "read_more_btn": "Leer más",
     "strategic_partner": "Buscamos socios estratégicos que quieran participar y contribuir con el crecimiento de BooksOnWall.",
@@ -12,13 +12,13 @@
     "we_produce": "Producimos, dirigimos y gestionamos proyectos de realidad extendida."
   },
   "connect": {
-    "adress": "",
+    "adress": "Magallanes 1064, Montevideo, Uruguay.",
     "keed_in_touch": "¿Sigamos en contacto?, tambien estamos en las redes sociales.",
     "register": "Si quieres unirtenos y colaborar, pasa por aquí ¡nos encanta la idea!",
-    "we_are": ""
+    "we_are": "Nuestro equipo de gestión de la marca tiene su sede en Montevideo, Uruguay.  Además la comunidad cuenta actualmente con referentes en Portugal, España, Egipto y Chile."
   },
   "contact": {
-    "contactUs": "¿Conversamos?",
+    "contactUs": "¿conversamos?",
     "email": "Correo electrónico",
     "name": "Nombre completo",
     "phone": "Teléfono de contacto",
@@ -39,25 +39,25 @@
     "workshop_stories": "Talleres para crear un cuento",
     "your_place": "¡BooksOnWall es tu lugar!"
   },
-  "d4411": "",
+  "d4411": "Conozca a la comunidad",
   "explore": {
-    "downloadDirect": "Booksonwall-AR.APK v.0.99.2 android",
+    "downloadDirect": "Booksonwall-AR - Android",
     "header": "¡Viví un cuento a través del arte urbano y nuevas tecnologías!",
     "subheader": "Descargá BookSonWall AR para disfrutar de los cuentos y tener una experiencia de arte urbano y realidad aumentada."
   },
   "faqs": {
-    "subtitle": "Aquí algunas preguntas y sus respuestas!"
+    "subtitle": "Aquí algunas preguntas y sus respuestas..."
   },
   "footer": {
     "terms": "Terminos y condiciones",
-    "thx_for_support_us": "Ayudanos a sostener, Gracias."
+    "thx_for_support_us": "Gracias por apoyarnos."
   },
   "home": {
     "create_togheter": "¿Creamos una historia fantastica?",
     "download_app": "Descargar Booksonwall AR",
     "download_app_btn": "Descarga y comienza la aventura",
     "enjoy_btn": "A disfrutar la experiencia",
-    "enjoy_the_experience": "Animate a disfrutar de una experiencia hipermedia y vivir un cuento a través del arte urbano!",
+    "enjoy_the_experience": "Animate a disfrutar de una experiencia hipermedia y vive un cuento a través del arte urbano!",
     "join_btn": "Has parte y únetenos!",
     "know_btn": "Conocenose la comunidad",
     "support_a_story_btn": "Apoya una historia",
@@ -81,7 +81,7 @@
   "login": {
     "cancel": "Cerrar",
     "email": "e-mail",
-    "login": "Entrar",
+    "login": "Vamos!",
     "password": "clave secreta",
     "title": "Acceso a la comunidad"
   },
@@ -111,7 +111,7 @@
     "workshop": "Talleres"
   },
   "press": {
-    "branding": "Logos",
+    "branding": "Logotipos",
     "presentation": "Presentación",
     "press_title": "Marca y comunicado de prensa",
     "presskit": "kit de prensa"
