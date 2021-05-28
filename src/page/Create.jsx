@@ -319,6 +319,7 @@ const JoinUs = ({messages}) => {
   </Box>
 )};
 class Create extends Component {
+
   render() {
     const {messages} = this.props.intl;
     return (
