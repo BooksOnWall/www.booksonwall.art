@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {
     Container,
-    Badge,
-    Divider,
     Box,
     Typography
   } from '@material-ui/core';

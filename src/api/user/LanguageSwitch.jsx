@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {List, ListItem, ListItemText, Menu, makeStyles, MenuItem, IconButton} from '@material-ui/core';
+import {List, ListItem, Menu, makeStyles, MenuItem, IconButton} from '@material-ui/core';
 import { CircleFlag } from 'react-circle-flags';
 import { useLocation } from 'react-router-dom';
 

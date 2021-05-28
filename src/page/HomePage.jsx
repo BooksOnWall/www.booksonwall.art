@@ -9,7 +9,6 @@ import {
     Card,
     CardActions,
     Button,
-    GridList,
     makeStyles
   } from '@material-ui/core';
 
@@ -23,7 +22,7 @@ import { Blob } from 'react-blob';
 import Home from "../assets/images/pages/home.jpg";
 import Blob1 from "../assets/images/pages/home-app-blob.jpg";
 import Blob2 from "../assets/images/pages/home-we-are.jpg";
-import { theme } from "../theme/theme"
+
 import { ReactComponent as Svg1 } from '../assets/images/svg/mask1.svg';
 import { ReactComponent as Svg2 } from '../assets/images/svg/mask2.svg';
 import { ReactComponent as Svg3 } from '../assets/images/svg/mask3.svg';

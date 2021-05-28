@@ -6,7 +6,6 @@ import {
   TextareaAutosize,
   Box,
   Typography,
-  IconButton,
   makeStyles,
   } from '@material-ui/core';
   import CircularProgress from '@material-ui/core/CircularProgress';
@@ -91,39 +90,7 @@ const ContactForm = ({messages, locale}) => {
         console.log("error",err);
       }
     }
-   // watch input value by passing the name of it
-    const options = [
-      {
-        key: 'general',
-        text: 'General enquiry',
-        value: 'general',
-
-      },
-      {
-        key: 'new story',
-        text: 'Proposal for a new story',
-        value: 'new story',
-
-      },
-      {
-        key: 'new partner',
-        text: 'I want to become a partner',
-        value: 'new partner',
-
-      },
-      {
-        key: 'join team',
-        text: 'I want to be part of the team',
-        value: 'new partner',
-
-      },
-      {
-        key: 'press',
-        text: 'Press',
-        value: 'press',
-
-      },
-    ];
+   
     return (
       <Box id="contactForm" >
       <Backdrop className={classes.backdrop} open={open} >
