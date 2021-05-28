@@ -13,9 +13,6 @@ import ImageGallery from 'react-image-gallery';
 import { injectIntl } from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
 
-const replaceAll = (string, search, replace) =>  {
-  return string.split(search).join(replace);
-}
 const ImgGallery = ({images, apiURL, setImages}) => {
   let set = [];
   if(images.length > 0) {
@@ -84,16 +81,15 @@ class Article extends Component {
     const {article, apiURL} = this.state;
     const {messages} = this.props.intl;
     const images = (article) ? article.images : null;
-    console.log(article);
     return (article) ? (
       <Box className="main" >
+      {(article.header_image) ? <Image src={apiURL + article.header_image.formats.medium.url}  /> : ''}
         <h5>{article.title}</h5>
         <Box>{article.updated_at}</Box>
-        {(article.header_image) ? <Image src={apiURL + article.header_image.formats.medium.url}  /> : ''}
         <Categories messages={messages} categories={article.categories}/>
         <Box placeholder>
             <ReactMarkdown children={article.header} />
-          </Box>
+        </Box>
         <ImgGallery images={images} apiURL={apiURL}/>
         <Box placeholder>
           <ReactMarkdown children={article.content} />

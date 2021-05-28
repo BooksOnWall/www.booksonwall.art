@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -57,11 +57,36 @@ const App = () => {
   navLocale = navLocale.split("-")[0];
   const [locale, setLocale] = useState(navLocale);
   const switchLang = locale => setLocale(locale);
-  console.log("/"+messages[locale].menu.community);
+
+  const checkLang = pathname => {
+    // verify that the url passed correspond to the good lang or locale
+    const page = pathname.substring(1);
+    if(page) {
+      // check that locale correspond to the page if no change it
+      const menu = messages[locale]["menu"];
+      let exist = false;
+      for (const [value] of Object.entries(menu)) {
+        if(value === page) exist = true;
+      }
+      if(!exist) {
+        // locale and url are different
+        for (const [key, value] of Object.entries(messages)) {
+          if(key !== locale) {
+            for (const [mkey, mvalue] of Object.entries(value.menu)) {
+              if(mvalue === page) {
+                switchLang(key);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   return (
     <IntlProvider key={locale} locale={locale} messages={messages[locale]}>
       <Router>
         <Route render={({ location, history }) => {
+          checkLang(location.pathname);
           return (
             <Layout locale={locale} allMessages={messages} switchLang={switchLang} history={history}>
             <Switch>
