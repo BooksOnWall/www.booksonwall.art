@@ -61,7 +61,7 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
     <Card className={classes.root} elevation={0} key={'article'+i}>
     <CardActionArea className={classes.CardActionArea}>
        <CardMedia
-         onClick={(e) => goToArticle(article.title)}
+         onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
          className={classes.media}
          image={apiURL + article.header_image.formats.medium.url}
          title={article.title}
@@ -76,7 +76,7 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
        </CardContent>
      </CardActionArea>
      <CardActions className={classes.CardActions}>
-      <Button size="small" color="primary" onClick={(e) => goToArticle(article.name)} >{messages.stories.read_more_btn}</Button>
+      <Button size="small" color="primary" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
      </CardActions>
     </Card>
     </Grid>
@@ -97,6 +97,7 @@ class Articles extends Component {
 
     this.state = {
       apiURL: apiURL,
+      lang: this.props.intl.locale,
       articles: null,
       categories: null,
       locale: this.props.intl.locale,
@@ -122,9 +123,8 @@ class Articles extends Component {
     selected = (selected.indexOf(cat) === 0) ?  selected.filter(item => (item !== cat)) : [cat];
     this.setState({selected: selected});
   }
-  goToArticle = (name) => {
-    const src = replaceAll(name, " ", "_");
-    this.props.history.push('/News/'+ src);
+  goToArticle = (url) => {
+    this.props.history.push('/'+ url);
   }
   loadArticles = async (filter, rows, index, sort, order) => {
     console.log("load articles");

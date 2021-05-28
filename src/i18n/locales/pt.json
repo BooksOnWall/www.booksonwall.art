@@ -86,6 +86,8 @@
     "title": ""
   },
   "menu": {
+    "article": "",
+    "articles": "",
     "associate": "Junte-se",
     "collaborate": "Vai colaborar",
     "community": "Comunidade",
@@ -104,6 +106,7 @@
     "press": "Imprensa",
     "projects": "",
     "stories": "Histórias",
+    "story": "",
     "support": "Apoie uma história",
     "workshop": "Workshop"
   },

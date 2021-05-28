@@ -9,9 +9,11 @@ import {
   } from '@material-ui/core';
 
 import { injectIntl } from 'react-intl';
-
-import Avatar from '../../assets/images/avatar/';
+import Image from 'material-ui-image';
+import  ReactMarkdown from 'react-markdown';
 import ImageGallery from 'react-image-gallery';
+import Avatar from '../../assets/images/avatar/';
+
 
 const apiURL = process.env.REACT_APP_API;
 const useStyles = makeStyles({
@@ -30,7 +32,7 @@ const StoryHeader = ({story, md}) => {
           {story.name}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          {story.story_header}
+          <ReactMarkdown children={story.story_header} />
         </Typography>
       </CardContent>
   </Card>
@@ -95,12 +97,14 @@ const Credits = ({credits}) => (
 class Story extends Component {
   constructor(props) {
     super(props)
-    const name = this.props.history.location.pathname.replace("/stories/", "");
+    const {messages, locale} = this.props.intl;
+    const name = this.props.history.location.pathname.replace("/"+messages.menu.story+"/", "");
     console.log(name);
     // const credits = require(story.credits);
     this.state = {
       apiURL:apiURL,
       name: name,
+      lang: locale,
       stories: null,
         story: null,
         credits: null,
@@ -109,12 +113,10 @@ class Story extends Component {
         md : null,
       }
   }
-  loadStory = async (name, rows, index, sort, order) => {
-    console.log("load story");
-    const { apiURL } = this.state;
-    const fetchURL = apiURL + '/stories';
+  loadStory = async (rows, index, sort, order) => {
+    const { apiURL, name, lang } = this.state;
+    const fetchURL = apiURL + '/stories?name='+name+'&lang='+lang;
     this.setState({loading: true});
-    console.log("URL",fetchURL );
 
     await fetch(fetchURL, {
       crossDomain:true,
@@ -126,11 +128,8 @@ class Story extends Component {
       return response.json();
     })
     .then(data => {
-      console.log(data);
         if(data) {
-          console.log(data);
-          const story = data.filter(story => (story.name === this.state.name))[0];
-          this.setState({stories: data, loading: false, story: story});
+          this.setState({loading: false, story: data[0]});
         } else {
           console.log('No Data received from the server');
         }
@@ -141,17 +140,17 @@ class Story extends Component {
     });
   }
   componentDidMount = async () =>  {
-    // update authenticated state on logout
-    //
     await this.loadStory();
   }
   render() {
     const {story, apiURL} = this.state;
+    console.log(story);
     return (story) ?  (
       <Box className="main">
-        <StoryGallery gallery={story.gallery} story={story} apiURL={apiURL}/>
+        {story.header_image && <Image src={apiURL + story.header_image.formats.medium.url} />}
         <StoryHeader story={story}/>
-        <Box>{story.story_content}</Box>
+        <StoryGallery gallery={story.gallery} story={story} apiURL={apiURL}/>
+        <Box><ReactMarkdown children={story.story_content} /></Box>
         <Sponsors sponsors={story.sponsors} story={story}/>
         <Credits credits={story.credits} story={story}/>
       </Box>

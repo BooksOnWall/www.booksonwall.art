@@ -86,6 +86,8 @@
     "title": "Titre"
   },
   "menu": {
+    "article": "Articles",
+    "articles": "Article",
     "associate": "Rejoignez",
     "collaborate": "Collaborez",
     "community": "Communautée",
@@ -103,7 +105,8 @@
     "manifest": "Manifeste",
     "press": "Presse",
     "projects": "Projets",
-    "stories": "Histoires",
+    "stories": "Contes",
+    "story": "Conte",
     "support": "Soutiens un conte",
     "workshop": "Atelier"
   },

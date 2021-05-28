@@ -16,9 +16,10 @@ import Image from 'material-ui-image';
 import loadable from '@loadable/component';
 import { injectIntl, defineMessages  } from 'react-intl';
 
-import { Images } from '../assets/images/pages';
+import {Images}  from '../assets/images/pages/index';
 
 import { Blob } from 'react-blob';
+
 import Home from "../assets/images/pages/home.jpg";
 import Blob1 from "../assets/images/pages/home-app-blob.jpg";
 import Blob2 from "../assets/images/pages/home-we-are.jpg";
@@ -38,6 +39,7 @@ import Bg4 from '../assets/images/svg/rectangle-bg.svg';
 import Bg5 from '../assets/images/svg/rectangle-bg2.svg';
 
 const Stories = loadable(() => import('./stories/stories'));
+const Articles = loadable(() => import('./articles/Articles'));
 
 const homeTraductions = defineMessages({
   title: {
@@ -465,6 +467,7 @@ class HomePage extends Component {
         <HomeHeaderBlock messages={messages}/>
         <WhoAreWe messages={messages} />
         <Stories messages={messages} history={this.props.history}/>
+        <Articles messages={messages} history={this.props.history}/>
         <PlaceholderBlock messages={messages} />
     </Box>
     )

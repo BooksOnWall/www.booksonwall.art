@@ -86,6 +86,8 @@
     "title": "Acceso a la comunidad"
   },
   "menu": {
+    "article": "Articulos",
+    "articles": "Articulo",
     "associate": "Asociate",
     "collaborate": "Colabora",
     "community": "Comunidad",
@@ -104,6 +106,7 @@
     "press": "Articulos",
     "projects": "Projectos",
     "stories": "Cuentos",
+    "story": "Cuento",
     "support": "Apoya una historia",
     "workshop": "Talleres"
   },

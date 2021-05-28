@@ -74,10 +74,10 @@ const App = () => {
             <Route exact path={"/"+messages[locale].menu.community}> <Community history={history} /> </Route>
             <Route exact path={"/"+messages[locale].menu.projects} > <Projects history={history} /> </Route>
             <Route exact path={"/"+messages[locale].menu.project+":name"}> <Project history={history} /> </Route>
-            <Route exact path={"/"+messages[locale].menu.news}><Articles history={history}/> </Route>
-            <Route exact path={"/"+messages[locale].menu.news+":name"}><Article history={history}/></Route>
+            <Route exact path={"/"+messages[locale].menu.articles}><Articles history={history}/> </Route>
+            <Route exact path={"/"+messages[locale].menu.article+"/:name"}><Article history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.stories}><Stories history={history}/></Route>
-            <Route exact path={"/"+messages[locale].menu.story+":name"}><Story history={history}/></Route>
+            <Route exact path={"/"+messages[locale].menu.story+"/:name"}><Story history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.community+"/"+messages[locale].menu.member+":name"} ><Member history={history}/></Route>
             </Switch>
             </Layout>

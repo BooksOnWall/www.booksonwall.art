@@ -52,6 +52,18 @@ const menuTraductions = defineMessages({
     id: 'menu.stories',
     defaultMessage: 'Stories',
   },
+  story: {
+    id: 'menu.story',
+    defaultMessage: 'Story',
+  },
+  articles: {
+    id: 'menu.articles',
+    defaultMessage: 'Articles',
+  },
+  article: {
+    id: 'menu.article',
+    defaultMessage: 'Article',
+  },
   faqs: {
     id: 'menu.faqs',
     defaultMessage: 'FAQs',

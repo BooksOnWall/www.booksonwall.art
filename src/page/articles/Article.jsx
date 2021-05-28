@@ -38,25 +38,21 @@ const Categories = ({messages, categories}) => {
 class Article extends Component {
   constructor(props) {
     super(props)
-    const path = this.props.history.location.pathname;
-    let name = path.replace('/News/', '');
-    name = replaceAll(name, "_", " ");
-    if(name && name==='undefined') return this.backOff();
-    (name && name !=='undefined') ? console.log(name) : console.log('error', 'name is empty')
+    const {messages, locale} = this.props.intl;
+    const name = this.props.history.location.pathname.replace("/"+messages.menu.article+"/", "");
+
     this.state = {
       name: name,
       article: null,
       apiURL: apiURL,
-      locale: this.props.intl.locale,
+      locale: locale,
     }
   }
-  backOff = () => this.props.history.push('/News')
+  backOff = () => this.props.history.push('/Articles')
   loadArticle = async (rows, index, sort, order) => {
-    console.log("load article");
-    const { apiURL, name } = this.state;
-    const fetchURL = apiURL + '/articles?title='+name;
+    const { apiURL, name, locale } = this.state;
+    const fetchURL = apiURL + '/articles?title='+name+'&lang='+locale;
     this.setState({loading: true});
-    console.log("URL",fetchURL );
 
     await fetch(fetchURL, {
       crossDomain:true,
@@ -93,14 +89,14 @@ class Article extends Component {
       <Box className="main" >
         <h5>{article.title}</h5>
         <Box>{article.updated_at}</Box>
-        {(article.h5_image) ? <Image src={apiURL + article.h5_image.formats.large.url}  /> : ''}
+        {(article.header_image) ? <Image src={apiURL + article.header_image.formats.medium.url}  /> : ''}
         <Categories messages={messages} categories={article.categories}/>
         <Box placeholder>
-            <ReactMarkdown source={article.h5} />
+            <ReactMarkdown children={article.header} />
           </Box>
         <ImgGallery images={images} apiURL={apiURL}/>
         <Box placeholder>
-          <ReactMarkdown source={article.content} />
+          <ReactMarkdown children={article.content} />
         </Box>
       </Box>
     ) : null

@@ -69,7 +69,7 @@ const StoriesList = ({stories, apiURL, goToStory, messages }) => {
   return stories.map((story, i) => (
     <Card elevation={0} className={classes.card} key={'story'+i}>
        <CardMedia
-         onClick={(e) => goToStory(story.name)}
+         onClick={() => goToStory(messages.menu.story+'/'+story.name)}
          className={classes.media}
          image={apiURL + story.header_image.formats.medium.url}
          title={story.name}
@@ -78,7 +78,7 @@ const StoriesList = ({stories, apiURL, goToStory, messages }) => {
          <Typography gutterBottom color="textPrimary" variant="h3" component="h2">{story.name}</Typography>
          <Typography variant="subtitle1" color="textPrimary" component="p">{story.story_header}</Typography>
          <CardActions className={classes.actions}>
-          <Button className={classes.storyBtn} elevation={0} variant="outlined" color="primary" size="small" onClick={(e) => goToStory(story.name)} >{messages.stories.read_more_btn}</Button>
+          <Button className={classes.storyBtn} elevation={0} variant="outlined" color="primary" size="small" onClick={() => goToStory(messages.menu.story+'/'+story.name)} >{messages.stories.read_more_btn}</Button>
          </CardActions>
        </CardContent>
     </Card>
@@ -132,11 +132,13 @@ class Stories extends Component {
     //
     await this.loadStories();
   }
-  goToStory = (url) => this.props.history.push('/stories/' + url)
+  goToStory = (url) => {
+    console.log('url', url);
+    this.props.history.push('/' + url)
+  }
   render() {
     const { stories, apiURL } = this.state;
     const { messages } = this.props.intl
-    console.log(messages);
     return (
       <Box id={messages.menu.stories} className="stories">
       <Box id="storiesTitle">

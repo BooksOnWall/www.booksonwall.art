@@ -43,7 +43,7 @@
   "explore": {
     "downloadDirect": "Download Booksonwall-AR.APK v.0.99.2",
     "header": "Come and live a story through urban art and new technologies!",
-    "subheader": "Download \"BookSonWall AR\" to enjoy the stories and experience urban art and augmented reality."
+    "subheader": "Download BookSonWall AR to enjoy the stories and experience urban art and augmented reality."
   },
   "faqs": {
     "subtitle": "Here are some FAQ's with their answers!"
@@ -54,8 +54,8 @@
   },
   "home": {
     "create_togheter": "Let's create a fantastic story",
-    "download_app": "Download Booksonwall AR",
-    "download_app_btn": "Download now",
+    "download_app": "Donwaload Booksonwall AR",
+    "download_app_btn": "Donwaload now",
     "enjoy_btn": "Enjoy the experience",
     "enjoy_the_experience": "Enjoy a hypermedia experience and live a story through urban art!",
     "join_btn": "Join Us",
@@ -86,6 +86,8 @@
     "title": "Login"
   },
   "menu": {
+    "article": "Article",
+    "articles": "Articles",
     "associate": "Associate",
     "collaborate": "Collaborate",
     "community": "Community",
@@ -104,6 +106,7 @@
     "press": "Press",
     "projects": "Projects",
     "stories": "Stories",
+    "story": "Story",
     "support": "Support a story",
     "workshop": "Workshop"
   },
