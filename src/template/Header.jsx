@@ -124,6 +124,10 @@ const menuTraductions = defineMessages({
     id: 'menu.projects',
     defaultMessage: 'Projects',
   },
+  project: {
+    id: 'menu.project',
+    defaultMessage: 'Project',
+  },
 });
 
 const useStyles = makeStyles((theme) => ({

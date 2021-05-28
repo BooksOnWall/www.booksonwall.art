@@ -41,21 +41,21 @@
   },
   "d4411": "Meet the community",
   "explore": {
-    "downloadDirect": "Booksonwall-AR - Android",
+    "downloadDirect": "Download Booksonwall-AR.APK v.0.99.2",
     "header": "Come and live a story through urban art and new technologies!",
     "subheader": "Download BookSonWall AR to enjoy the stories and experience urban art and augmented reality."
   },
   "faqs": {
-    "subtitle": "Here are some questions with their answers..."
+    "subtitle": "Here are some FAQ's with their answers!"
   },
   "footer": {
-    "terms": "Terms and Conditions",
+    "terms": "Terms",
     "thx_for_support_us": "Thx for supporting us"
   },
   "home": {
     "create_togheter": "Let's create a fantastic story",
-    "download_app": "Download Booksonwall AR",
-    "download_app_btn": "Download and start the adventure!",
+    "download_app": "Donwaload Booksonwall AR",
+    "download_app_btn": "Donwaload now",
     "enjoy_btn": "Enjoy the experience",
     "enjoy_the_experience": "Enjoy a hypermedia experience and live a story through urban art!",
     "join_btn": "Join Us",
@@ -80,10 +80,10 @@
   },
   "login": {
     "cancel": "Cancel",
-    "email": "e-mail",
+    "email": "Email",
     "login": "Go!",
     "password": "Password",
-    "title": "Community login "
+    "title": "Login"
   },
   "menu": {
     "article": "Article",
@@ -104,6 +104,7 @@
     "login": "Login",
     "manifest": "Manifest",
     "press": "Press",
+    "project": "Project",
     "projects": "Projects",
     "stories": "Stories",
     "story": "Story",
@@ -111,13 +112,13 @@
     "workshop": "Workshop"
   },
   "press": {
-    "branding": "brand logos",
+    "branding": "Branding",
     "presentation": "presentation",
     "press_title": "Branding and Press realease",
     "presskit": "presskit"
   },
   "register": {
-    "register": "Join us and register!",
+    "register": "Register!",
     "send": "Send"
   },
   "stories": {

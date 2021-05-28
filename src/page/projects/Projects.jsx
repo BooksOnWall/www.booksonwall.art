@@ -53,10 +53,10 @@ const Project = ({projects, goToProject}) => {
 class Projects extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.locale);
     this.state = {
         projects: null,
         apiURL: apiURL,
+        messages: this.props.intl.messages,
         locale: (this.props.intl && this.props.intl.locale) ? this.props.intl.locale : this.props.locale,
     };
   }
@@ -67,7 +67,7 @@ class Projects extends Component {
   loadProjects = async (filter, rows, index, sort, order) => {
     console.log("load projects");
     const { apiURL, locale } = this.state;
-    const fetchURL = apiURL + '/Projects?lang='+locale;
+    const fetchURL = apiURL + '/Projects?public=true&lang='+locale;
     this.setState({loading: true});
 
     await fetch(fetchURL, {
@@ -91,9 +91,9 @@ class Projects extends Component {
       if(error) console.log(JSON.stringify(error));
     });
   }
-  goToProject = (e) => {
-    console.log(e);
-    this.props.history.push('/Projects/'+e.currentTarget.src)
+  goToProject = (name) => {
+    const {messages} = this.props.intl;
+    this.props.history.push('/'+messages.menu.project+'/'+name)
   }
   render() {
     const {projects, locale,} = this.state;

@@ -155,7 +155,7 @@ const Connect = (props) => {
 
       <Box className={classes.projects}>
       <Container maxWidth="xl">
-        <Projects messages={messages} locale={locale} />
+        <Projects messages={messages} history={props.history} locale={locale} />
       </ Container>
       </Box>
     </Box>

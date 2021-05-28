@@ -72,7 +72,7 @@ const App = () => {
         // locale and url are different
         for (const [key, value] of Object.entries(messages)) {
           if(key !== locale) {
-            for (const [mkey, mvalue] of Object.entries(value.menu)) {
+            for (const [mvalue] of Object.entries(value.menu)) {
               if(mvalue === page) {
                 switchLang(key);
               }
@@ -98,7 +98,7 @@ const App = () => {
             <Route exact path={"/"+messages[locale].menu.connect}> <Connect history={history} /> </Route>
             <Route exact path={"/"+messages[locale].menu.community}> <Community history={history} /> </Route>
             <Route exact path={"/"+messages[locale].menu.projects} > <Projects history={history} /> </Route>
-            <Route exact path={"/"+messages[locale].menu.project+":name"}> <Project history={history} /> </Route>
+            <Route exact path={"/"+messages[locale].menu.project+"/:name"}> <Project history={history} /> </Route>
             <Route exact path={"/"+messages[locale].menu.articles}><Articles history={history}/> </Route>
             <Route exact path={"/"+messages[locale].menu.article+"/:name"}><Article history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.stories}><Stories history={history}/></Route>
