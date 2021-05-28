@@ -59,7 +59,7 @@ export default class CommunityMap extends Component {
       bearing:  -1.4082113938641867, // bearing in degrees
       pitch: 58  // pitch in degrees
     };
-    console.log(lines);
+
     this.state = { mapStyle: (theme) ? 'mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8' : 'mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8',lines: lines, members: members, selected: selected, viewport: viewport }
   }
   onViewportChange = (viewport) => this.setState({viewport})

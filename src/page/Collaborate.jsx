@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles, Grid, Button,  Typography, Container, Box } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import { injectIntl, defineMessages  } from 'react-intl';
@@ -257,7 +257,7 @@ const SupportStory = ({messages, lang}) => {
       }
     }
     getServices();
-  }, [apiURL]);
+  }, [apiURL, lang]);
 return (
   <Box className={classes.root}>
   <Box>

@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Typography,
     Container,
@@ -234,7 +234,7 @@ const Manifest = ({messages, locale}) => {
       }
     }
     getManifest();
-  }, [apiURL, locale]);
+  }, [locale]);
   return (
     <>
     <Box className={classes.homeHader}>

@@ -26,7 +26,7 @@ const exploreTraductions = defineMessages({
   },
   subheader: {
     id: 'explore.subheader',
-    defaultMessage: 'Download \"BookSonWall AR\" to enjoy the stories and experience urban art and augmented reality.'
+    defaultMessage: 'Download BookSonWall AR to enjoy the stories and experience urban art and augmented reality.'
   },
   downloadDirect: {
     id: 'explore.downloadDirect',
