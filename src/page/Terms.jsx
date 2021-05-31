@@ -41,7 +41,7 @@ const Terms = (props) => {
 
   return (
     <Box>
-      {terms && terms.header_image && <Image src={apiURL + terms.header_image.formats.medium.url} />}
+      {terms && terms.image_header && <Image src={apiURL + terms.image_header.formats.medium.url} />}
       {terms && <h1>{terms.title}</h1>}
       {terms && terms.header && <ReactMarkdown children={terms.header} />}
     </Box>
