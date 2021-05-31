@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useRef,forwardRef, useEffect } from 'react';
 
 import { injectIntl, defineMessages } from 'react-intl';
 import {
@@ -9,6 +9,8 @@ import {
     Button,
     makeStyles
   } from '@material-ui/core';
+import { useLocation } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 
 import { Images } from '../assets/images/pages';
 // import AppleIcon from '@material-ui/icons/Apple';
@@ -85,11 +87,11 @@ dividerSvg: {
 }
 }));
 
-const ExploreHeader = ({messages}) => {
+const ExploreHeader = forwardRef(({ onBackClick,messages }, ref) => {
   const classes = useStyles();
   return (
 
-<Box className={classes.exploreHader}>
+<Box ref={ref} className={classes.exploreHader}>
   <Box className={classes.titleWrapper} >
     <Typography className={classes.title} gutterBottom variant="h1" >{messages.explore.header}</Typography>
     <Typography className={classes.title} gutterBottom variant="h4" component="h2">{messages.explore.subheader}</Typography>
@@ -102,27 +104,23 @@ const ExploreHeader = ({messages}) => {
   </Box>
 </Box>
 );
-};
-class  Explore extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { trad: exploreTraductions }
-  }
-  componentDidMount() {
-    // update authenticated state on logout
-
-  }
-
-  render() {
-    const {messages} = this.props.intl;
+});
+const Explore = (props) => {
+    const {messages} = props.intl;
+    const {hash} = useLocation();
     return (
       <Box className="main" >
-        <ExploreHeader id={messages.menu.download_app} messages={messages} />
-        <Stories id={messages.menu.stories} history={this.props.history} />
-        <Faqs id={messages.menu.faqs} messages={messages} />
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.download_app)}>
+          <ExploreHeader  id={messages.menu.download_app} messages={messages} />
+        </ScrollIntoViewIfNeeded>
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.stories)}>
+          <Stories  id={messages.menu.stories} history={props.history} />
+        </ScrollIntoViewIfNeeded>
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.faqs)}>
+          <Faqs  id={messages.menu.faqs} messages={messages} />
+        </ScrollIntoViewIfNeeded>
       </Box>
     )
-  }
 };
 
 export default injectIntl(Explore);

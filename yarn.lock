@@ -10424,6 +10424,11 @@ react-scripts@4.0.3:
   optionalDependencies:
     fsevents "^2.1.3"
 
+react-scroll-into-view-if-needed@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-scroll-into-view-if-needed/-/react-scroll-into-view-if-needed-3.0.0.tgz#7cbf55aebb06fe162f673754fef4eca23ee20eca"
+  integrity sha512-oyShya92rSp4Vfp84PW2BayugSEVQ5AwmBFPjoE6KKJ6sMs4bh8yaeTiq5J9lPC/6ExnCwgWWhbvt9BZzrdcsw==
+
 react-swipeable@^5.2.0:
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-5.5.1.tgz#48ae6182deaf62f21d4b87469b60281dbd7c4a76"

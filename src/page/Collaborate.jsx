@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles, Grid, Button,  Typography, Container, Box } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import { injectIntl, defineMessages  } from 'react-intl';
-
+import { useLocation } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Blob } from 'react-blob';
 
 import Image from 'material-ui-image';
@@ -309,10 +310,15 @@ return (
 
 const Collaborate = (props) => {
     const {messages, locale} = props.intl;
+    const {hash} = useLocation();
     return (
       <Box id="collabora">
-        <CollaborateHeader messages={messages}/>
-        <SupportStory lang={locale} messages={messages} />
+        <ScrollIntoViewIfNeeded active={(!hash)}>
+          <CollaborateHeader messages={messages}/>
+        </ScrollIntoViewIfNeeded>
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.support)}>
+          <SupportStory lang={locale} messages={messages} />
+        </ScrollIntoViewIfNeeded>
      </Box>
     )
 };

@@ -13,7 +13,8 @@ import { Images } from './../assets/images/pages';
 
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
-
+import { useLocation } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl, defineMessages  } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import ContactForm from './ContactForm';
@@ -379,12 +380,21 @@ const Press =({goToArticle, history, messages}) => {
 const  Info = (props) => {
   const goToCommunity = () => props.history.push('/Community')
   const {messages, locale} = props.intl;
+  const {hash} = useLocation();
     return (
       <Box id={messages.menu.info} className="main" >
-        <Manifest messages={messages} locale={locale}/>
-        <History messages={messages} locale={locale} goToCommunity={goToCommunity}/>
-        <Community  goToCommunity={goToCommunity}  locale={locale} messages={messages}/>
-        <Press messages={messages} history={props.history}/>
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.manifest)}>
+          <Manifest messages={messages} locale={locale}/>
+        </ScrollIntoViewIfNeeded>
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.history)}>
+          <History messages={messages} locale={locale} goToCommunity={goToCommunity}/>
+        </ScrollIntoViewIfNeeded>
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.community)}>
+          <Community  goToCommunity={goToCommunity}  locale={locale} messages={messages}/>
+        </ScrollIntoViewIfNeeded>
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.press)}>
+          <Press messages={messages} history={props.history}/>
+        </ScrollIntoViewIfNeeded>
       </Box>
     );
 };

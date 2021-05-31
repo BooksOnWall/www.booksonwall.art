@@ -7,7 +7,8 @@ import {
     Grid,
     makeStyles
   } from '@material-ui/core';
-
+import { useLocation } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Images } from './../assets/images/pages';
 import { injectIntl, defineMessages } from 'react-intl';
 import { Blob } from 'react-blob';
@@ -318,18 +319,22 @@ const JoinUs = ({messages}) => {
     </Container>
   </Box>
 )};
-class Create extends Component {
-
-  render() {
-    const {messages} = this.props.intl;
+const Create = (props) => {
+    const {messages} = props.intl;
+    const {hash} = useLocation();
     return (
       <Box id="create" className="main" >
-        <WorkShop messages={messages} history={this.props.history}/>
-        <Community messages={messages} history={this.props.history}/>
-        <JoinUs messages={messages} history={this.props.history}/>
+      <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.workshop)}>
+        <WorkShop messages={messages} history={props.history}/>
+      </ScrollIntoViewIfNeeded>
+      <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.community)}>
+        <Community messages={messages} history={props.history}/>
+      </ScrollIntoViewIfNeeded>
+      <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.joinus)}>
+        <JoinUs messages={messages} history={props.history}/>
+      </ScrollIntoViewIfNeeded>
       </Box>
     )
-  }
 };
 
 export default injectIntl(Create);
