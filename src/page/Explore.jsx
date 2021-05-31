@@ -103,10 +103,9 @@ const ExploreHeader = ({messages}) => {
 </Box>
 );
 };
-class Explore extends Component {
+class  Explore extends Component {
   constructor(props) {
     super(props)
-
     this.state = { trad: exploreTraductions }
   }
   componentDidMount() {
