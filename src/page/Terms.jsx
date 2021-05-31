@@ -38,10 +38,10 @@ const Terms = (props) => {
     }
     getTerms();
   }, [locale]);
-  console.log('terms',terms);
+
   return (
     <Box>
-      {terms && terms.header_image && <Image src={apiURL+terms.header_image.formats.medium.url} />}
+      {terms && terms.header_image && <Image src={apiURL + terms.header_image.formats.medium.url} />}
       {terms && <h1>{terms.title}</h1>}
       {terms && terms.header && <ReactMarkdown children={terms.header} />}
     </Box>
