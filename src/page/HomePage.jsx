@@ -426,13 +426,13 @@ return (
             <Grid item xs={12} md={6}>
               <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg4})` }} >
                 <Typography gutterBottom align="center" color="textSecondary" variant="h3">{messages.home.download_app}</Typography>
-                <Button className={classes.button3} variant="outlined" color="primary">{messages.home.enjoy_btn}</Button>
+                <Button href={"/"+messages.menu.explore+"#"+messages.menu.download_app} className={classes.button3} variant="outlined" color="primary">{messages.home.enjoy_btn}</Button>
               </Paper>
             </Grid>
             <Grid item xs={12} md={6}>
              <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg5})` }} >
                <Typography gutterBottom align="center" color="textSecondary" variant="h3">{messages.home.create_togheter}</Typography>
-               <Button href="/Collaborate#Support-a-story" className={classes.button3}  variant="outlined" color="primary">{messages.home.support_a_story_btn}</Button>
+               <Button href={"/"+messages.menu.collaborate+"#"+messages.menu.support} className={classes.button3}  variant="outlined" color="primary">{messages.home.support_a_story_btn}</Button>
              </Paper>
             </Grid>
          </Grid>
