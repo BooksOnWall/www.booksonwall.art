@@ -86,8 +86,8 @@
     "title": "Acesso Comunitário"
   },
   "menu": {
-    "article": "",
-    "articles": "",
+    "article": "Articulo",
+    "articles": "Articulos",
     "associate": "Junte-se",
     "collaborate": "Vai colaborar",
     "community": "Comunidade",
@@ -104,11 +104,12 @@
     "login": "Conecte-se",
     "manifest": "Manifesto",
     "press": "Imprensa",
-    "project": "",
+    "project": "Projecto",
     "projects": "Projectos",
     "stories": "Histórias",
-    "story": "",
+    "story": "História",
     "support": "Apoie uma história",
+    "terms": "Termos e Condições",
     "workshop": "Workshop"
   },
   "press": {

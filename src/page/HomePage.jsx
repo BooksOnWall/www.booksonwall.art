@@ -349,9 +349,7 @@ return (
             <Blob size="88%" src={Blob2} />
           </Blob>
         </Grid>
-
       </Grid>
-
       </Box>
       </Container>
     </div>

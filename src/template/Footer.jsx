@@ -121,6 +121,7 @@ const TopFooter = ({messages}) => {
 
 const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) => {
   const classes = useStyles();
+    let history = useHistory();
   return (
     <>
     <Box className={classes.footerContainer}>
@@ -250,7 +251,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
       <Grid item xs>
           <Grid className={classes.menuBottom} >
             <Button className={classes.button} color="default" startIcon={<Heart color='secondary' />}>{messages.footer.thx_for_support_us}</Button>
-            <Button className={classes.button}  startIcon={<Cc color='primary' />}>{messages.footer.terms}</Button>
+            <Button onClick={() => history.push("/"+messages.menu.terms)} className={classes.button}  startIcon={<Cc color='primary' />}>{messages.footer.terms}</Button>
           </Grid>
       </Grid>
       </Grid>
@@ -305,7 +306,7 @@ const Footer = ({intl}) => {
               <Typography name={subPage} >{subPage}</Typography>
             </Breadcrumbs>
           </Box>
-          <SpacingGrid activeItem={activeItem} activeIndex={activeIndex} messages={messages} handleMenuItemClick={handleMenuItemClick}/>
+          <SpacingGrid  activeItem={activeItem} activeIndex={activeIndex} messages={messages} handleMenuItemClick={handleMenuItemClick}/>
       </Box>
       </>
     )
