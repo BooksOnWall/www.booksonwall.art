@@ -15,7 +15,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
-
+import Gallery from "../../utils/Gallery";
 const useStyles = makeStyles({
   root: {
     maxWidth: '100vw',
@@ -23,20 +23,29 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
+  homeHaderBg:{
+    padding:0,
+  },
+  service:{
+
+    minWidth: '100vw',
+    minHeight: '90vh'
+  },
 });
 
-const Services = (props) => {
+const Service = (props) => {
   const classes = useStyles();
-  const [services, setServices] = useState([]);
   const [unique, setUnique] = useState();
+  const [service, setService] = useState();
   const {locale, messages} = props.intl;
   const apiURL = process.env.REACT_APP_API;
   let history=useHistory();
+  const {pathname} = useLocation();
   useEffect(() => {
-    const getServices = async () => {
+    const name = pathname.replace("/"+messages.menu.service+"/", "");
+    const getService = async () => {
       try {
-
-        const fetchURL = apiURL + '/services?_limit=-1&_sort=published_at:DESC&lang='+locale;
+        const fetchURL = apiURL + '/services?Name='+name+'&lang='+locale;
         await fetch(fetchURL, {
           method: "get",
           headers: {
@@ -51,7 +60,7 @@ const Services = (props) => {
         })
         .then(data => {
             if(data) {
-              setServices(data.map((c,i) => ({id: c.id, header: c.header, header_image: c.header_image, name:c.Name})));
+              setService(data[0]);
             } else {
               console.log('No Data received from the server');
             }
@@ -95,33 +104,40 @@ const Services = (props) => {
       }
     }
     getUnique();
-    getServices();
-  }, [apiURL, locale]);
+    getService();
+  }, [apiURL, locale, pathname, messages.menu]);
   return (
-    <Box className={classes.root}>
-    {unique &&
-      <Grid item xs sm >
-      <h1>{unique.Name}</h1>
-      <ReactMarkdown children={unique.header} />
-      </Grid>
+    <Box className={classes.connect}>
 
-    }
-      {unique && unique.image_header && <Image src={apiURL+unique.image_header} />}
-    <Grid container spacing={3}>
-
-          {services && services.map((s,i) => (
-            <Grid item xs sm key={"s"+i}>
-              {s.header_image && <Image className={classes.serviceImage}  src={apiURL+s.header_image.formats.small.url}/>}
-              <br />
-              <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
-              <Typography  variant="body1" ><ReactMarkdown children={s.header} /></Typography>
-              <br />
-              <Button onClick={() => history.push("/"+messages.menu.service+"/"+s.name) } size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
+    {service && service.header_image && <Image src={apiURL+service.header_image.formats.small.url} />}
+    <Box className={classes.homeHaderBg}>
+    <Box className={classes.gradine}>
+      {unique && service &&
+        <Container maxWidth="xl">
+        <Typography gutterBottom color="textSecondary" variant='h2'> {unique.Name}</Typography>
+          <Grid container spacing={10} >
+            <Grid item xs={12} md={3} xl={3}>
+              <ReactMarkdown children={unique.header} />
             </Grid>
-          ))}
-        </Grid>
-
-  </Box>
+            <Grid item xs={12} md={3} xl={3}>
+              <ReactMarkdown children={service.header} />
+            </Grid>
+            <Grid item xs={12} md={3} xl={3}>
+              <ReactMarkdown children={service.activity} />
+            </Grid>
+            <Grid item xs={12} md={3} xl={3}>
+              <ReactMarkdown children={service.ressources} />
+            </Grid>
+            <Grid item xs={12} md={3} xl={3}>
+              <ReactMarkdown children={service.fullOptions} />
+            </Grid>
+          </Grid>
+          <Gallery images={service.images} />
+        </Container>
+      }
+    </Box>
+    </Box>
+    </Box>
   )
 }
-export default injectIntl(Services);
+export default injectIntl(Service);
