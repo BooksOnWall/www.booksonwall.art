@@ -61,6 +61,10 @@ const menuTraductions = defineMessages({
     id: 'menu.service',
     defaultMessage: 'Service',
   },
+  partner: {
+    id: 'menu.partner',
+    defaultMessage: 'Partner',
+  },
   articles: {
     id: 'menu.articles',
     defaultMessage: 'Articles',

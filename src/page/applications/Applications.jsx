@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import {
-    Container,
     Grid,
-    CardMedia,
     Typography,
-    Card,
-    CardActions,
     Box,
     Button,
     makeStyles
@@ -108,7 +104,6 @@ const Applications = (props) => {
     }
     {unique && unique.image_header && <Image src={apiURL+unique.image_header} />}
     <Grid container spacing={3}>
-
           {applications && applications.map((s,i) => (
             <Grid item xs sm key={"s"+i}>
               {s.header_image && <Image className={classes.applicationImage}  src={apiURL+s.header_image.formats.small.url}/>}

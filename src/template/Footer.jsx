@@ -107,13 +107,15 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
   }
 }));
-const TopFooter = ({messages}) => {
+const TopFooter = ({messages,activeItem, activeIndex, handleMenuItemClick}) => {
   const classes = useStyles();
   return (
     <Box className='footerBg'>
       <Container>
         <Typography variant="h2" component="h3" className={classes.title}></Typography>
         <Typography variant="h4" className={classes.title}></Typography>
+        <Button ></Button>
+
       </Container>
     </Box>
   );
@@ -263,7 +265,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
 };
 const Footer = ({intl}) => {
   let history = useHistory();
-
+  const classes = useStyles();
   const [activeItem, setActiveItem] = useState();
   const [activeIndex, setActiveIndex] = useState();
   const [anchor, setAnchor] = useState();
@@ -306,6 +308,23 @@ const Footer = ({intl}) => {
               <Typography name={subPage} >{subPage}</Typography>
             </Breadcrumbs>
           </Box>
+
+            <MenuList variant="selectedMenu">
+              <MenuItem
+                selected={0 === activeIndex && activeItem === messages.menu.articles}
+                onClick={(event) => handleMenuItemClick(event, 0, messages.menu.articles)}
+                >{messages.menu.articles}</MenuItem>
+              <MenuItem
+                selected={1 === activeIndex && activeItem === messages.menu.services}
+                onClick={(event) => handleMenuItemClick(event, 1, messages.menu.services)}>
+                {messages.menu.services}
+              </MenuItem>
+              <MenuItem
+                selected={2 === activeIndex && activeItem === messages.menu.applications}
+                onClick={(event) => handleMenuItemClick(event, 2, messages.menu.applications)}
+                >{messages.menu.applications}</MenuItem>
+            </MenuList>
+
           <SpacingGrid  activeItem={activeItem} activeIndex={activeIndex} messages={messages} handleMenuItemClick={handleMenuItemClick}/>
       </Box>
       </>
