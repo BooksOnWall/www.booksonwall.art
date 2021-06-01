@@ -11,6 +11,7 @@ import {
   import CircularProgress from '@material-ui/core/CircularProgress';
   import { useForm, Controller } from "react-hook-form";
   import { defineMessages } from 'react-intl';
+  import Captcha from "demos-react-captcha";
   import PhoneInput from 'react-phone-input-2';
   import 'react-phone-input-2/lib/plain.css';
 
@@ -36,12 +37,13 @@ const Register = ({messages, locale}) => {
     const [complete, setComplete] = useState(false);
     const [isSubmitting, setSubmitting] = useState(false)
     const [open, setOpen] = useState(false);
+    const [captchaSuccess, setCaptchaSuccess] = useState(false);
     const { control, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = async data => {
 
       try {
           const { name, email, phone, message, subject } = errors;
-          if (email || name || phone || message || subject) {
+          if (email || name || phone || message || subject || !captchaSuccess) {
             console.log(errors);
           } else {
             setSubmitting(true)
@@ -173,6 +175,9 @@ const Register = ({messages, locale}) => {
                 />
               )}
               rules={{ required: 'Message required' }}
+            />
+            <Captcha
+              onChange={status => setCaptchaSuccess(status)}
             />
             <Button type="submit" className="button2" disableElevation label={messages.contact.send}  size='large' disabled={isSubmitting}>{messages.register.send}</Button>
             </>

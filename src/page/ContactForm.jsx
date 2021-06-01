@@ -8,12 +8,13 @@ import {
   Typography,
   makeStyles,
   } from '@material-ui/core';
-  import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { useForm, Controller } from "react-hook-form";
 import { defineMessages } from 'react-intl';
 
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/plain.css';
+import Captcha from "demos-react-captcha";
 
 const contactTraductions = defineMessages({
   name: {
@@ -50,17 +51,17 @@ const useStyles = makeStyles((theme) => ({
 const ContactForm = ({messages, locale}) => {
     const classes = useStyles();
     const [complete, setComplete] = useState(false);
-    const [isSubmitting, setSubmitting] = useState(false)
+
     const [open, setOpen] = useState(false);
+    const [captchaSuccess, setCaptchaSuccess] = useState(false);
     const { control, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = async data => {
 
       try {
           const { name, email, phone, message, subject } = errors;
-          if (email || name || phone || message || subject) {
+          if (email || name || phone || message || subject || !captchaSuccess ) {
             console.log(errors);
           } else {
-            setSubmitting(true)
             setOpen(!open);
             const contact  = await fetch(`${process.env.REACT_APP_API}/email/`, {
               method: 'POST',
@@ -82,7 +83,6 @@ const ContactForm = ({messages, locale}) => {
                 console.log(contact.message);
               }
               setOpen(false);
-              setSubmitting(false);
               setComplete(true);
             }
           }
@@ -90,7 +90,7 @@ const ContactForm = ({messages, locale}) => {
         console.log("error",err);
       }
     }
-   
+
     return (
       <Box id="contactForm" >
       <Backdrop className={classes.backdrop} open={open} >
@@ -210,6 +210,9 @@ const ContactForm = ({messages, locale}) => {
                   />
                 )}
                 rules={{ required: 'Message required' }}
+              />
+              <Captcha
+                onChange={status => setCaptchaSuccess(status)}
               />
             <br /><br />
             <Button type="submit" className="button2" disableElevation label={messages.contact.send}>{messages.contact.send}</Button>

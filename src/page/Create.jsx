@@ -7,7 +7,7 @@ import {
     Grid,
     makeStyles
   } from '@material-ui/core';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Images } from './../assets/images/pages';
 import { injectIntl, defineMessages } from 'react-intl';
@@ -245,6 +245,7 @@ poligons2:{
 
 const WorkShop = ({messages}) => {
   const classes = useStyles();
+  let history= useHistory();
   return (
   <>
     <Box className={classes.root}>
@@ -255,7 +256,7 @@ const WorkShop = ({messages}) => {
             <Grid item className={classes.top} xs={12} sm={6}>
               <Typography gutterBottom variant="h2" >{messages.create.wokshop_header}</Typography>
               <Typography gutterBottom variant="h3" >{messages.create.wokshop_subheader}</Typography>
-              <Button className={classes.buton2}>{messages.menu.joinus}</Button>
+              <Button onClick={() => history.push("/"+messages.menu.connect+"#"+messages.menu.register)} className={classes.buton2}>{messages.menu.joinus}</Button>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Blob size="50vh" style={{ zIndex: 1, backgroundColor: '#339D66', background:'linear-gradient(0deg, #339395 0%, #339D66 100%)', maxWidth: '750px', maxHeight: '750px' }}>
@@ -274,7 +275,7 @@ const WorkShop = ({messages}) => {
             <Grid item xs={12} sm={6} className={classes.bottom}>
               <Typography gutterBottom color="white" align="right" variant="h2" >{messages.create.workshop_stories}</Typography>
               <Typography gutterBottom color="white" align="right" variant="h3" >{messages.create.workshop_by_step}</Typography>
-              <Button className={classes.buton3}>{messages.create.know_more}</Button>
+              <Button onClick={() => history.push("/"+messages.menu.services+"#"+messages.menu.story)} className={classes.buton3}>{messages.create.know_more}</Button>
             </Grid>
           </Grid>
         </Container>
@@ -310,12 +311,13 @@ const Community = ({history, messages}) => {
 )};
 const JoinUs = ({messages}) => {
   const classes = useStyles();
+  let history = useHistory();
   return (
   <Box id={messages.create.join_us}>
     <Container className={classes.bePart} maxWidth="md">
       <Typography align="center" gutterBottom color="white" variant="h1" >{messages.create.joinus_header}</Typography>
       <Typography className={classes.yourPlace} align="center"  color="primary" variant="h3" >{messages.create.your_place}</Typography>
-      <Button className={classes.buton}>{messages.create.join_us}</Button>
+      <Button onClick={() => history.push("/"+messages.menu.connect+"#"+messages.menu.register)} className={classes.buton}>{messages.create.join_us}</Button>
     </Container>
   </Box>
 )};
