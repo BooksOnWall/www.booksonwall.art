@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {  Box } from '@material-ui/core';
+import {  Box, Container } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
 import { injectIntl } from 'react-intl';
@@ -41,9 +41,11 @@ const Terms = (props) => {
 
   return (
     <Box>
-      {terms && terms.image_header && <Image src={apiURL + terms.image_header.formats.medium.url} />}
+      {terms && terms.image_header && <Image aspectRatio={5/1} src={apiURL + terms.image_header.formats.medium.url} />}
+      <Container>
       {terms && <h1>{terms.title}</h1>}
       {terms && terms.header && <ReactMarkdown children={terms.header} />}
+      </Container>
     </Box>
   )
 }

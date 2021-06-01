@@ -10,7 +10,7 @@ import {
     Button,
     makeStyles
   } from '@material-ui/core';
-
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { injectIntl, defineMessages  } from 'react-intl';
 
 import ExploreMap from '../map/exploreMap';
@@ -30,24 +30,37 @@ const useStyles = makeStyles((theme) => ({
     background: 'transparent',
     alignItems: 'center',
     margin: 30,
-    maxWidth: '700px'
+    maxWidth: 1000,
+    minWidth: 320,
+    borderRadius: 21,
   },
   actionArea:{
     },
   media: {
-    minHeight: 350,
-    minWidth:400,
-    borderRadius: 14,
+    minHeight: 500,
     display: 'flex',
     flexDirection: 'column',
-    margin: 40,
-    rotate: '-3deg',
-    flex: '2 1 auto'
   },
   content:{
-    background:'rgba(255,255,255, .6)',
-    padding: 40,
-    borderRadius: 8
+    background: theme.palette.primary.mainGradient,
+    padding: 60,
+    display: 'flex',
+    flexGrow: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    alignContent: 'center',
+    minHeight: '100%',
+    justifyContent: 'center'
+  },
+  title:{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    alignContent: 'center',
+  },
+  paragraph:{
+    marginTop: 30,
+    maxWidth: 620
   },
   actions:{
     padding: '25px 0 0'
@@ -55,11 +68,14 @@ const useStyles = makeStyles((theme) => ({
   readMore:{
   },
   storyBtn:{
-    border: '2px solid #D9D2C6',
+    margin: 20,
+    color: "#fff",
+    border: '2px solid transparent',
+    borderRadius: 8,
     '&:hover':{
-      background: theme.palette.primary.main,
       color: '#fff',
-      border: '2px #D9D2C6 solid',
+      border: '2px solid #fff',
+      borderRadius: 8,
     }
   }
 }));
@@ -67,20 +83,26 @@ const useStyles = makeStyles((theme) => ({
 const StoriesList = ({stories, apiURL, goToStory, messages }) => {
   const classes = useStyles();
   return stories.map((story, i) => (
-    <Card elevation={0} className={classes.card} key={'story'+i}>
+    <Card elevation={1} className={classes.card} key={'story'+i}>
        <CardMedia
          onClick={() => goToStory(messages.menu.story+'/'+story.name)}
          className={classes.media}
          image={apiURL + story.header_image.formats.medium.url}
          title={story.name}
-       />
+       >
        <CardContent className={classes.content}>
-         <Typography gutterBottom color="textPrimary" variant="h3" component="h2">{story.name}</Typography>
-         <Typography variant="subtitle1" color="textPrimary" component="p">{story.story_header}</Typography>
+        <Box className={classes.title}>
+         <Typography  color="textSecondary" variant="h2" align="center" component="h2">{story.name}</Typography>
+         <Typography gutterBottom color="textSecondary" align="center" variant="subtitle1" component="subtitle1">Salto, Montevideo Uruguay</Typography>
+         <Typography  color="textSecondary" variant="h6" align="center" component="h2">By BooksOnWall</Typography>
+         </Box>
+         <Typography className={classes.paragraph} variant="body1" align="center" color="textSecondary" component="p">{story.story_header}</Typography>
          <CardActions className={classes.actions}>
-          <Button className={classes.storyBtn} elevation={0} variant="outlined" color="primary" size="small" onClick={() => goToStory(messages.menu.story+'/'+story.name)} >{messages.stories.read_more_btn}</Button>
+          <Button className={classes.storyBtn} elevation={0} variant="outlined" color="primary" size="large" onClick={() => goToStory(messages.menu.story+'/'+story.name)} endIcon={<ChevronRightIcon/ >}>{messages.stories.read_more_btn}</Button>
          </CardActions>
        </CardContent>
+       </CardMedia>
+
     </Card>
   ));
 };
