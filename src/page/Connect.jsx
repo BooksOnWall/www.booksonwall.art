@@ -11,7 +11,8 @@ import {
 import { injectIntl, defineMessages } from 'react-intl';
 import ContactForm from './ContactForm';
 import Register from './Register'
-
+import { useLocation } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Images } from './../assets/images/pages';
 
 import Social from './Social';
@@ -106,22 +107,28 @@ buton2: {
 const Connect = (props) => {
   const classes = useStyles();
   const goTo = (e, b) => window.location.href = b.src;
+  const {hash} = useLocation();
   const { locale, messages, goToCommunity } = props.intl;
   return (
     <Box className={classes.connect}>
-
     <Box className={classes.homeHaderBg}>
     <Box className={classes.gradine}>
+
+
       <Box className={classes.contact}>
         <Container maxWidth="xl">
           <Grid container spacing={10} >
             <Grid item xs={12} md={4} xl={4} className={classes.contactGrid}>
+
                 <Typography gutterBottom color="textSecondary" variant='h2'> {messages.connect.keed_in_touch}</Typography>
+
                 <Typography gutterBottom color="textSecondary" variant='subtitle1'> {messages.connect.we_are}</Typography>
                 <Typography gutterBottom color="textSecondary" variant='subtitle1'> {messages.connect.addres}</Typography>
             </Grid>
             <Grid item xs={12} md={5} xl={5} className={classes.contactGrid}>
+              <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.connect)}>
                 <ContactForm messages={messages} locale={locale}/>
+              </ScrollIntoViewIfNeeded>
             </Grid>
             <Grid item xs={12} md={3} xl={3}>
               <Social tab goTo={goTo}/>
@@ -147,7 +154,9 @@ const Connect = (props) => {
               <Button onClick={goToCommunity} size="large" className={classes.buton2} >{messages.create.meet_comunity}</Button>
             </Grid>
             <Grid item xs={12} md={6} xl={4} >
-              <Register messages={messages} locale={locale}/>
+              <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.register)}>
+                <Register messages={messages} locale={locale}/>
+              </ScrollIntoViewIfNeeded>
             </Grid>
           </Grid>
         </ Container>
@@ -155,7 +164,9 @@ const Connect = (props) => {
 
       <Box className={classes.projects}>
       <Container maxWidth="xl">
-        <Projects messages={messages} history={props.history} locale={locale} />
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.project)}>
+          <Projects messages={messages} history={props.history} locale={locale} />
+        </ScrollIntoViewIfNeeded>
       </ Container>
       </Box>
     </Box>

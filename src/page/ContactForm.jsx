@@ -8,7 +8,7 @@ import {
   Typography,
   makeStyles,
   } from '@material-ui/core';
-  import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { useForm, Controller } from "react-hook-form";
 import { defineMessages } from 'react-intl';
 
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 const ContactForm = ({messages, locale}) => {
     const classes = useStyles();
     const [complete, setComplete] = useState(false);
-    const [isSubmitting, setSubmitting] = useState(false)
+
     const [open, setOpen] = useState(false);
     const [captchaSuccess, setCaptchaSuccess] = useState(false);
     const { control, handleSubmit, formState: { errors } } = useForm();
@@ -62,7 +62,6 @@ const ContactForm = ({messages, locale}) => {
           if (email || name || phone || message || subject || !captchaSuccess ) {
             console.log(errors);
           } else {
-            setSubmitting(true)
             setOpen(!open);
             const contact  = await fetch(`${process.env.REACT_APP_API}/email/`, {
               method: 'POST',
@@ -84,7 +83,6 @@ const ContactForm = ({messages, locale}) => {
                 console.log(contact.message);
               }
               setOpen(false);
-              setSubmitting(false);
               setComplete(true);
             }
           }

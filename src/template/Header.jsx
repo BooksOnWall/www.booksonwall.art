@@ -22,16 +22,11 @@ import {
   } from '@material-ui/core';
 
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-
 import logo from '../assets/images/logo.svg';
 import LanguageSwitch from '../api/user/LanguageSwitch';
 import Login from '../api/user/Login';
 import Auth from '../api/user/Auth';
-
-
 import ProfileIcon from '@material-ui/icons/Face';
-
-
 
 const menuTraductions = defineMessages({
   home: {
@@ -57,6 +52,14 @@ const menuTraductions = defineMessages({
   story: {
     id: 'menu.story',
     defaultMessage: 'Story',
+  },
+  services: {
+    id: 'menu.services',
+    defaultMessage: 'Services',
+  },
+  service: {
+    id: 'menu.service',
+    defaultMessage: 'Service',
   },
   articles: {
     id: 'menu.articles',
@@ -121,6 +124,10 @@ const menuTraductions = defineMessages({
   connect: {
     id: 'menu.connect',
     defaultMessage: 'Connect',
+  },
+  register: {
+    id: 'menu.register',
+    defaultMessage: 'Register',
   },
   projects: {
     id: 'menu.projects',
