@@ -39,6 +39,8 @@ const Article = loadable(() => import('./page/articles/Article'));
 const Projects = loadable(() => import('./page/projects/Projects'));
 const Project = loadable(() => import('./page/projects/Project'));
 const Stories = loadable(() => import('./page/stories/stories'));
+const Services = loadable(() => import('./page/services/Services'));
+
 const Terms = loadable(() => import('./page/Terms'));
 
 const messages = {
@@ -105,6 +107,7 @@ const App = () => {
             <Route exact path={"/"+messages[locale].menu.story+"/:name"}><Story history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.community+"/"+messages[locale].menu.member+":name"} ><Member history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.terms} ><Terms history={history}/></Route>
+            <Route exact path={"/"+messages[locale].menu.services} ><Services history={history}/></Route>
             </Switch>
             </Layout>
           );
