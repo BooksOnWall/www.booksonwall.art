@@ -5,6 +5,7 @@ import {
     Typography,
     Card,
     Box,
+    Container,
     makeStyles
   } from '@material-ui/core';
 
@@ -14,26 +15,36 @@ import  ReactMarkdown from 'react-markdown';
 import ImageGallery from 'react-image-gallery';
 import Avatar from '../../assets/images/avatar/';
 
-
 const apiURL = process.env.REACT_APP_API;
 const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
+  card: {
+    maxWidth: 800,
+    minHeight: 300,
+    margin: 20,
   },
   media: {
     height: 140,
   },
+  cardContent:{
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignContent: 'center',
+    padding: '20px 60px',
+  },
+  body:{
+  }
 });
 const StoryHeader = ({story, md}) => {
+  const classes = useStyles();
+
   return (
-    <Card >
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {story.name}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          <ReactMarkdown children={story.story_header} />
-        </Typography>
+    <Card  className={classes.card}>
+      <CardContent className={classes.cardContent}>
+        <Typography color="primary" align="center" variant="h2"  component="h2">{story.name}</Typography>
+        <Typography color="textPrimary" align="center" variant="subtitle1" component="h2">Salto, Montevideo Uruguay</Typography>
+        <Typography color="textPrimary" align="center" variant="h6" component="h2">By BooksOnWall</Typography>
       </CardContent>
   </Card>
   );
@@ -48,6 +59,14 @@ const StoryGallery = ({gallery, apiURL}) => {
     <ImageGallery items={set} />
   )
 };
+
+const StoryBody = ({story}) => {
+const classes = useStyles();
+return (
+  <Box   className={classes.body}><ReactMarkdown children={story.story_content} /></Box>
+)
+};
+
 const Sponsors = ({sponsors}) => {
   const classes = useStyles();
   return (sponsors) ? sponsors.map((org, i) => (
@@ -83,17 +102,23 @@ const Participants = ({participants}) =>  {
 }
 
 
-const Credits = ({credits}) => (
+const Credits = ({credits}) => {
+const classes = useStyles();
+
+return (
   <Box>
-    <h5>Credits</h5>
+    <Typography gutterBottom align="center" variant="h4" component="h4">Credits</Typography>
     {(credits) ? credits.map((cred, i) => (
       <Box key={'cat'+i}>
-        <h6>{cred.category}</h6>
+        <Typography gutterBottom  align="center" variant="h5" component="h4">{cred.category}</Typography>
         <Participants participant={cred.participant} />
       </Box>
     )):''}
   </Box>
-);
+)
+};
+
+
 class Story extends Component {
   constructor(props) {
     super(props)
@@ -147,12 +172,20 @@ class Story extends Component {
     console.log(story);
     return (story) ?  (
       <Box className="main">
-        {story.header_image && <Image src={apiURL + story.header_image.formats.medium.url} />}
-        <StoryHeader story={story}/>
-        <StoryGallery gallery={story.gallery} story={story} apiURL={apiURL}/>
-        <Box><ReactMarkdown children={story.story_content} /></Box>
-        <Sponsors sponsors={story.sponsors} story={story}/>
-        <Credits credits={story.credits} story={story}/>
+      <Box className="story">
+        {story.header_image && <Image aspectRatio={2/1} src={apiURL + story.header_image.formats.medium.url} />}
+          <Box className="bodyStory">
+            <StoryHeader story={story}/>
+          </Box>
+          <StoryGallery gallery={story.gallery} story={story} apiURL={apiURL}/>
+          <Container maxWidth="xl" className="bodyStory">
+            <Container className="bodyStory">
+              <StoryBody storybody={story.content} story={story}/>
+            </Container>
+            <Sponsors sponsors={story.sponsors} story={story}/>
+            <Credits credits={story.credits} story={story}/>
+          </Container>
+      </Box>
       </Box>
     ) : '';
   }

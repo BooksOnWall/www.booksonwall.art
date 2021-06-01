@@ -207,18 +207,23 @@ flexDirection: 'row',
 justifyContent: 'space-around',
 alignItems: 'center',
 minHeight: '50vh',
-padding: 50
+padding: 80
 },
 poligons: {
   padding: 0,
+  minWidht: 300,
+  minHeight: 300,
+  flex: '2 1 10%',
+  alignSelf: 'flex-start',
+
 },
 poligons2:{
   flex: '2 1 16%',
   padding: '0',
   alignSelf: 'flex-end',
-  minWidht: 270,
-  minHeight: 270,
-  maxWidth: 320
+  minWidht: 450,
+  minHeight: 450,
+  maxWidth: 450
 },
 dividerShape: {
   left: 0,
@@ -464,9 +469,11 @@ class HomePage extends Component {
       <Box id='home' className="main" >
         <HomeHeaderBlock messages={messages}/>
         <WhoAreWe messages={messages} />
-        <Stories messages={messages} history={this.props.history}/>
         <Articles messages={messages} history={this.props.history}/>
+
         <PlaceholderBlock messages={messages} />
+        <Stories messages={messages} history={this.props.history}/>
+
     </Box>
     )
   }

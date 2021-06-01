@@ -63,8 +63,9 @@ body{
   flex-direction: column;
 }
 #home .HomeHeaderBlock .MuiBox-root{ width: 40vw; margin-bottom: 10vh;}
-
 #home .WhoAreWe{ padding: 10vh 0 20vh }
+.bodyStory{ padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.bodyStory p{}
 #contactForm{
   padding: 50px 60px 20px;
   background: linear-gradient(0deg,  rgba(190,66,81,.0)  0%, rgba(190,66,81,.5) 100%);
