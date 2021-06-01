@@ -86,6 +86,8 @@
     "title": "Login"
   },
   "menu": {
+    "application": "Application",
+    "applications": "Applications",
     "article": "Article",
     "articles": "Articles",
     "associate": "Associate",

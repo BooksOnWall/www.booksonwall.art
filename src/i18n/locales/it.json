@@ -86,8 +86,10 @@
     "title": "Accesso alla comunità"
   },
   "menu": {
-    "article": "",
-    "articles": "",
+    "application": "Applicazione",
+    "applications": "Applicazioni",
+    "article": "Articolo",
+    "articles": "Articoli",
     "associate": "Unisciti a noi",
     "collaborate": "Collaborare",
     "community": "Comunidad",

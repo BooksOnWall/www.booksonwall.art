@@ -86,6 +86,8 @@
     "title": "Acceso a la comunidad"
   },
   "menu": {
+    "application": "Aplicación",
+    "applications": "Aplicaciones",
     "article": "Articulos",
     "articles": "Articulo",
     "associate": "Asociate",

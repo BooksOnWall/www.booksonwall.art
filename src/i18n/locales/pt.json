@@ -86,6 +86,8 @@
     "title": "Acesso Comunitário"
   },
   "menu": {
+    "application": "Aplicação",
+    "applications": "Aplicações",
     "article": "Articulo",
     "articles": "Articulos",
     "associate": "Junte-se",

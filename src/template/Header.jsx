@@ -69,6 +69,14 @@ const menuTraductions = defineMessages({
     id: 'menu.article',
     defaultMessage: 'Article',
   },
+  applications: {
+    id: 'menu.applications',
+    defaultMessage: 'Applications',
+  },
+  application: {
+    id: 'menu.application',
+    defaultMessage: 'Application',
+  },
   faqs: {
     id: 'menu.faqs',
     defaultMessage: 'FAQs',

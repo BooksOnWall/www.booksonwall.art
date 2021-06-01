@@ -86,6 +86,8 @@
     "title": "Connexion à la communauté "
   },
   "menu": {
+    "application": "Application",
+    "applications": "Applications",
     "article": "Articles",
     "articles": "Article",
     "associate": "Rejoignez",
