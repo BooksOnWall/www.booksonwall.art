@@ -11,7 +11,7 @@ import {
 import { injectIntl, defineMessages } from 'react-intl';
 import ContactForm from './ContactForm';
 import Register from './Register'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Images } from './../assets/images/pages';
 
@@ -108,6 +108,7 @@ const Connect = (props) => {
   const classes = useStyles();
   const goTo = (e, b) => window.location.href = b.src;
   const {hash} = useLocation();
+  let history = useHistory();
   const { locale, messages, goToCommunity } = props.intl;
   return (
     <Box className={classes.connect}>
@@ -151,7 +152,7 @@ const Connect = (props) => {
             </Grid>
             <Grid item xs={12} md={4} xl={4} >
               <Typography gutterBottom color="textPrimary" variant='h2'> {messages.connect.register}</Typography>
-              <Button onClick={goToCommunity} size="large" className={classes.buton2} >{messages.create.meet_comunity}</Button>
+              <Button onClick={()=> history.push('/'+messages.menu.community)} size="large" className={classes.buton2} >{messages.create.meet_comunity}</Button>
             </Grid>
             <Grid item xs={12} md={6} xl={4} >
               <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.register)}>
