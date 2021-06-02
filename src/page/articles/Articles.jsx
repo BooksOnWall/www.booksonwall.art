@@ -139,7 +139,7 @@ class Articles extends Component {
   loadArticles = async (filter, rows, index, sort, order) => {
     console.log("load articles");
     const { apiURL, locale, insert, limit } = this.state;
-    const fetchURL = (insert) ? apiURL + '/articles?_limit='+parseInt(limit)+'&_sort=updated:desc&lang='+ locale: apiURL + '/articles?_limit=-1&_sort=updated:desc&lang='+ locale;
+    const fetchURL = (insert) ? apiURL + '/articles?_limit='+limit+'&_sort=updated_at:desc&lang='+ locale: apiURL + '/articles?_limit=-1&_sort=updated_at:desc&lang='+ locale;
     this.setState({loading: true});
     console.log("URL",fetchURL );
 
