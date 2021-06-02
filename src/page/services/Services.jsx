@@ -33,6 +33,7 @@ const Services = (props) => {
   const [unique, setUnique] = useState();
   const {locale, messages} = props.intl;
   const apiURL = process.env.REACT_APP_API;
+  const insert = props.insert;
   let history=useHistory();
   useEffect(() => {
     const getServices = async () => {
@@ -124,7 +125,7 @@ const Services = (props) => {
             </Grid>
           ))}
         </Grid>
-
+    {insert && <Button onClick={() => history.push("/"+messages.menu.services)} size="large" className={classes.button3}>See more</Button>}
   </Box>
   )
 }

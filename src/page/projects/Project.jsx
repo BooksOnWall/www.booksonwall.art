@@ -71,7 +71,7 @@ class Project extends Component {
     return (project) ? (
       <Box >
           <ScrollIntoViewIfNeeded active={true}>
-          {project.header_image && <Image src={apiURL + project.header_image.formats.small.url} />}
+            {project.header_image && <Image src={apiURL + project.header_image.formats.small.url} />}
           </ScrollIntoViewIfNeeded>
           <h5>{name}</h5>
           <ReactMarkdown children={project.description} />

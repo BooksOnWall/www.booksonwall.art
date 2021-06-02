@@ -307,6 +307,7 @@ return (
             <Button onClick={() => history.push("/"+messages.menu.service+"/"+s.name)} size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
           </Grid>
         ))}
+        <Button onClick={() => history.push("/"+messages.menu.services)} size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
       </Grid>
     </Container>
 
