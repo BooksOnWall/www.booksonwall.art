@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useLayoutEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import clsx from "clsx";
 import { ToastContainer } from 'react-toastify';
@@ -20,7 +20,21 @@ import { ReactComponent as FooterBg } from './../assets/images/svg/footer.svg';
 import  Bg from './../assets/images/bg_footer.png';
 import { ReactComponent as Principal } from './../assets/images/svg/principal.svg';
 
+const isBrowser = typeof window !== `undefined`;
+
+const  getScrollPosition = ({ element, useWindow }) => {
+  if (!isBrowser) return { x: 0, y: 0 }
+
+  const target = element ? element.current : document.body
+  const position = target.getBoundingClientRect()
+
+  return useWindow
+    ? { x: window.scrollX, y: window.scrollY }
+    : { x: position.left, y: position.top }
+}
+
 const Layout = ({ children, switchLang, locale, history, allMessages }) => {
+
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -147,7 +161,44 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
   }));
   const classes = useStyles();
   const [top, setTop] = useState(false);
-  const scrollToTop = () => setTop(!top);
+  const [hideOnScroll, setHideOnScroll] = useState(true);
+
+  const useScrollPosition = (effect, deps, element, useWindow, wait) => {
+    const position = useRef(getScrollPosition({ useWindow }))
+    let throttleTimeout = null
+
+    useLayoutEffect(() => {
+      const callBack = () => {
+        const currPos = getScrollPosition({ element, useWindow })
+        effect({ prevPos: position.current, currPos })
+        position.current = currPos
+        if(position.current.y === 0) setTop(false);
+        if(throttleTimeout) throttleTimeout.current = null;
+      }
+      const handleScroll = () => {
+
+        if (wait) {
+          if (throttleTimeout === null) {
+            throttleTimeout.current = setTimeout(callBack, wait);
+            console.log("throttleTimeout",throttleTimeout);
+          }
+        } else {
+          callBack();
+
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll)
+
+      return () => window.removeEventListener('scroll', handleScroll)
+    },[effect,element, throttleTimeout, useWindow, wait], deps)
+  }
+  useScrollPosition(({ prevPos, currPos }) => {
+    const isShow = currPos.y > prevPos.y
+    if (isShow !== hideOnScroll) setHideOnScroll(isShow)
+  }, [hideOnScroll]);
+  const scrollToTop = () => setTop(true);
+
   return (
     <ThemeProvider theme={theme}>
       <ToastContainer
@@ -164,7 +215,7 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
 
       <Box className={classes.root}>
         <CssBaseline />
-        <ScrollIntoViewIfNeeded active={top} options={{scrollMode: 'always'}}>
+        <ScrollIntoViewIfNeeded active={top} options={{behavior: 'smooth', scrollMode: 'if-needed'}}>
         <AppBar elevation={0}  color="transparent"  position="absolute" className={clsx(classes.appBar)}>
           <Toolbar variant="regular" disableGutters className={classes.toolbar}>
             <Header locale={locale} allMessages={allMessages} switchLang={switchLang} history={history}/>
@@ -181,10 +232,12 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
             <FooterBg className={classes.bg} />
           </Box>
         </main>
+        {!hideOnScroll &&
+          <IconButton className={classes.topBtn} fontSize="small"  onClick={() => scrollToTop()} aria-label="top">
+            <ArrowUpwardIcon fontSize='small' color="white" />
+          </IconButton>
+        }
 
-        <IconButton className={classes.topBtn} fontSize="small"  onClick={() => scrollToTop()} aria-label="top">
-          <ArrowUpwardIcon fontSize='small' color="white" />
-        </IconButton>
         <Footer locale={locale} switchLang={switchLang} history={history}/>
       </Box>
   </ThemeProvider >
