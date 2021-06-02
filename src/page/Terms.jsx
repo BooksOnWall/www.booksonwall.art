@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import {  Box, Container } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
@@ -41,7 +43,9 @@ const Terms = (props) => {
 
   return (
     <Box>
+      <ScrollIntoViewIfNeeded active={true}>
       {terms && terms.image_header && <Image aspectRatio={5/1} src={apiURL + terms.image_header.formats.medium.url} />}
+      </ScrollIntoViewIfNeeded>
       <Container>
       {terms && <h1>{terms.title}</h1>}
       {terms && terms.header && <ReactMarkdown children={terms.header} />}
