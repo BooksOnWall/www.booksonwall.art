@@ -206,6 +206,7 @@ class Articles extends Component {
             <News hasCategory={this.hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={this.goToArticle}/>
           </Grid>
           </Box>
+          {insert && <Button style={{float: 'right'}} onClick={()=> this.props.history.push('/'+messages.menu.articles)}>See more</Button>}
         </>
     )
   }

@@ -5,7 +5,8 @@ import {
   } from '@material-ui/core';
 
 import ToggleButton from '@material-ui/lab/ToggleButton';
-
+import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import Image from 'material-ui-image';
 import  ReactMarkdown from 'react-markdown';
 import ImageGallery from 'react-image-gallery';
@@ -82,9 +83,12 @@ class Article extends Component {
     const {messages} = this.props.intl;
     const images = (article) ? article.images : null;
     return (article) ? (
+
       <Box className="main" >
+      <ScrollIntoViewIfNeeded active={true}>
       {(article.header_image) ? <Image src={apiURL + article.header_image.formats.medium.url}  /> : ''}
-        <h5>{article.title}</h5>
+      </ScrollIntoViewIfNeeded>
+      <h5>{article.title}</h5>
         <Box>{article.updated_at}</Box>
         <Categories messages={messages} categories={article.categories}/>
         <Box placeholder>

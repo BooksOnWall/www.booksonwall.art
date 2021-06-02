@@ -121,9 +121,7 @@ const Connect = (props) => {
           <Grid container spacing={10} >
             <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.contact)}>
             <Grid item xs={12} md={4} xl={4} className={classes.contactGrid}>
-
                 <Typography gutterBottom color="textSecondary" variant='h2'> {messages.connect.keed_in_touch}</Typography>
-
                 <Typography gutterBottom color="textSecondary" variant='subtitle1'> {messages.connect.we_are}</Typography>
                 <Typography gutterBottom color="textSecondary" variant='subtitle1'> {messages.connect.addres}</Typography>
             </Grid>

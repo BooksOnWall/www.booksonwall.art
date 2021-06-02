@@ -12,6 +12,7 @@ import {
     makeStyles
   } from '@material-ui/core';
 import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
@@ -108,8 +109,9 @@ const Service = (props) => {
   }, [apiURL, locale, pathname, messages.menu]);
   return (
     <Box className={classes.connect}>
-
+    <ScrollIntoViewIfNeeded active={true}>
     {service && service.header_image && <Image src={apiURL+service.header_image.formats.small.url} />}
+    </ScrollIntoViewIfNeeded>
     <Box className={classes.homeHaderBg}>
     <Box className={classes.gradine}>
       {unique && service &&

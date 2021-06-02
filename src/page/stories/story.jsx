@@ -14,6 +14,8 @@ import Image from 'material-ui-image';
 import  ReactMarkdown from 'react-markdown';
 import ImageGallery from 'react-image-gallery';
 import Avatar from '../../assets/images/avatar/';
+import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 
 const apiURL = process.env.REACT_APP_API;
 const useStyles = makeStyles({
@@ -173,7 +175,9 @@ class Story extends Component {
     return (story) ?  (
       <Box className="main">
       <Box className="story">
+        <ScrollIntoViewIfNeeded active={true}>
         {story.header_image && <Image aspectRatio={2/1} src={apiURL + story.header_image.formats.medium.url} />}
+        </ScrollIntoViewIfNeeded>
           <Box className="bodyStory">
             <StoryHeader story={story}/>
           </Box>
