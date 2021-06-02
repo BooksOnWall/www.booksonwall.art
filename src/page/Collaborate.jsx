@@ -273,7 +273,7 @@ return (
             </Blob>
               <Typography gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.fund_a_story}</Typography>
               <Typography gutterBottom  variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.create_new_story}</Typography>
-              <Button size="large" className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
+              <Button onClick={() => history.push('/'+messages.menu.support)} size="large" className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
           </Grid>
           </ScrollIntoViewIfNeeded>
           <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.associate)}>
@@ -284,7 +284,7 @@ return (
                   <Typography align="right" gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.join_us}</Typography>
                   <Typography align="right" gutterBottom variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.strategic_partner}</Typography>
                   <Typography align="right" gutterBottom variant="subtitle1" className={classes.blobText}>{messages.collaborate.looking_for}</Typography>
-                  <Button size="large" className={classes.button2}>{messages.collaborate.how}</Button>
+                  <Button onClick={() => history.push('/'+messages.menu.partner)} size="large" className={classes.button2}>{messages.collaborate.how}</Button>
                 </Grid>
               </ScrollIntoViewIfNeeded>
           </Grid>
