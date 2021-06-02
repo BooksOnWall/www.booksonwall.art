@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
     Grid,
     Box,
@@ -14,6 +14,8 @@ import {
 
 import Image from 'material-ui-image';
 import loadable from '@loadable/component';
+import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl, defineMessages  } from 'react-intl';
 
 import {Images}  from '../assets/images/pages/index';
@@ -278,6 +280,7 @@ tileHead: {
 
 const HomeHeaderBlock = ({messages, theme}) => {
   const classes = useStyles();
+  let history = useHistory();
   return (
   <div className={classes.root}>
     <Box id="HomeHeaderBlock" className={classes.homeHader}>
@@ -311,7 +314,7 @@ const HomeHeaderBlock = ({messages, theme}) => {
                 <Typography gutterBottom variant="h4" >{messages.home.enjoy_the_experience}</Typography>
               </CardContent>
               <CardActions>
-                <Button href={messages.menu.explore+'#'+messages.menu.download_app} className={classes.button1}>{messages.home.download_app_btn}</Button>
+                <Button onClick={() => history.push('/'+messages.menu.explore+'#'+messages.menu.download_app)} className={classes.button1}>{messages.home.download_app_btn}</Button>
               </CardActions>
             </Card>
         </Grid>
@@ -452,31 +455,33 @@ return (
       </Container>
     </div>
 )};
-class HomePage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      trad: homeTraductions,
-      markdown: null
-    }
-  }
-  componentDidMount() {
-    // update authenticated state on logout
-  }
-  render() {
-    const {messages} = this.props.intl;
+const HomePage = (props) => {
+
+    const {messages} = props.intl;
+    const [activeScroll, setActiveScroll] = useState('top');
+
     return (
+      <>
+      <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
+      </ScrollIntoViewIfNeeded>
       <Box id='home' className="main" >
         <HomeHeaderBlock messages={messages}/>
+      <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.WhoAreWe)}>
         <WhoAreWe messages={messages} />
-        <Articles messages={messages} history={this.props.history}/>
-
+      </ScrollIntoViewIfNeeded>
+      <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.articles)}>
+        <Articles messages={messages} history={props.history} limit={10} insert/>
+      </ScrollIntoViewIfNeeded>
+        <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.block)}>
         <PlaceholderBlock messages={messages} />
-        <Stories messages={messages} history={this.props.history}/>
-
+      </ScrollIntoViewIfNeeded>
+      <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.stories)}>
+        <Stories messages={messages} history={props.history} limit={10} insert/>
+      </ScrollIntoViewIfNeeded>
     </Box>
+    </>
     )
-  }
+
 };
 
 export default injectIntl(HomePage);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import {
     Box,
     CardContent,
@@ -106,11 +107,19 @@ const StoriesList = ({stories, apiURL, goToStory, messages }) => {
     </Card>
   ));
 };
+const ScrollToTop = ({insert}) => {
+  return (
+    <ScrollIntoViewIfNeeded active={!insert}>
+    </ScrollIntoViewIfNeeded>
+  )
+}
 class Stories extends Component {
   constructor(props) {
     super(props)
     this.state = {
         stories: [],
+        insert: this.props.insert,
+        limit: this.props.limit,
         apiURL: apiURL,
         support: null,
         locale: this.props.intl.locale
@@ -123,11 +132,9 @@ class Stories extends Component {
   }
   loadStories = async (rows, index, sort, order) => {
     console.log("load stories");
-    const { apiURL, locale } = this.state;
-    const fetchURL = apiURL + '/stories?lang=' + locale;
+    const { apiURL, insert, locale, limit } = this.state;
+    const fetchURL = (insert) ? apiURL + '/stories?_limit='+limit+'&_sort=updated_at:desc&lang=' + locale: apiURL + '/stories?_limit=-1&_sort=updated_at:desc&lang=' + locale;
     this.setState({loading: true});
-    console.log("URL",fetchURL );
-
     await fetch(fetchURL, {
       crossDomain:true,
       headers: {'Content-Type':'application/json'},
@@ -159,9 +166,11 @@ class Stories extends Component {
     this.props.history.push('/' + url)
   }
   render() {
-    const { stories, apiURL } = this.state;
+    const { stories, apiURL, insert } = this.state;
     const { messages } = this.props.intl
     return (
+      <>
+      <ScrollToTop insert={insert} />
       <Box id={messages.menu.stories} className="stories">
       <Box id="storiesTitle">
         <Typography variant="h1" color="secondary" component="h2" style={{textTransform:'uppercase'}}> {messages.menu.stories}</Typography>
@@ -174,6 +183,7 @@ class Stories extends Component {
           <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
         </Box>
       </Box>
+      </>
     )
   }
 };

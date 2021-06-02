@@ -114,8 +114,6 @@ const App = () => {
             <Route exact path={"/"+messages[locale].menu.applications} ><Applications history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.partner} ><Partner history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.support} ><Support history={history}/></Route>
-
-
             <Route exact path={"/"+messages[locale].menu.service+"/:name"}><Service history={history}/></Route>
             </Switch>
             </Layout>

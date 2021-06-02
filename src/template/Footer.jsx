@@ -335,6 +335,10 @@ const Footer = ({intl}) => {
           selected={7 === activeIndex && activeItem === messages.menu.partner}
           onClick={(event) => handleMenuItemClick(event, 5, messages.menu.partner)}
           >{messages.menu.partner}</MenuItem>
+          <MenuItem
+          selected={8 === activeIndex && activeItem === messages.menu.stories}
+          onClick={(event) => handleMenuItemClick(event, 6, messages.menu.stories)}
+          >{messages.menu.stories}</MenuItem>
           </MenuList>
 
           <SpacingGrid  activeItem={activeItem} activeIndex={activeIndex} messages={messages} handleMenuItemClick={handleMenuItemClick}/>

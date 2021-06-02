@@ -92,9 +92,9 @@ const Categories = ({messages, categories, selectCategory, selected}) => {
     </>
   )
 };
-const ScrollToTop = () => {
+const ScrollToTop = ({insert}) => {
   return (
-    <ScrollIntoViewIfNeeded active={true}>
+    <ScrollIntoViewIfNeeded active={!insert}>
     </ScrollIntoViewIfNeeded>
   )
 }
@@ -105,6 +105,8 @@ class Articles extends Component {
 
     this.state = {
       apiURL: apiURL,
+      insert: this.props.insert,
+      limit: this.props.limit,
       lang: this.props.intl.locale,
       articles: null,
       categories: null,
@@ -136,8 +138,8 @@ class Articles extends Component {
   }
   loadArticles = async (filter, rows, index, sort, order) => {
     console.log("load articles");
-    const { apiURL, locale } = this.state;
-    const fetchURL = apiURL + '/Articles?lang='+ locale;
+    const { apiURL, locale, insert, limit } = this.state;
+    const fetchURL = (insert) ? apiURL + '/articles?_limit='+parseInt(limit)+'&_sort=updated:desc&lang='+ locale: apiURL + '/articles?_limit=-1&_sort=updated:desc&lang='+ locale;
     this.setState({loading: true});
     console.log("URL",fetchURL );
 
@@ -184,7 +186,7 @@ class Articles extends Component {
     }
   }
   render() {
-    const {articles, categories, selected} = this.state;
+    const {articles, categories, selected, insert} = this.state;
     const {messages} = this.props.intl;
     // date: '22 dec 2017',
     // title: 'BooksOnWall has started !',
@@ -195,7 +197,7 @@ class Articles extends Component {
     // images: [],
     return (
         <>
-          <ScrollToTop />
+          <ScrollToTop insert={insert}/>
           <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
             <Categories selected={selected} categories={categories} messages={messages} selectCategory={this.selectCategory}/>
           </Box>
