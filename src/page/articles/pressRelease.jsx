@@ -67,7 +67,7 @@ export default class PressRelease extends Component {
   render() {
     const {articles, categories} = this.state;
     return (
-      <Articles articles={articles} categories={categories}/>
+      <Articles articles={articles} categories={categories} insert limit={10}/>
     );
   }
 }

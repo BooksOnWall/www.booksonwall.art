@@ -118,6 +118,7 @@ const Connect = (props) => {
       <Box className={classes.contact}>
         <Container maxWidth="xl">
           <Grid container spacing={10} >
+            <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.contact)}>
             <Grid item xs={12} md={4} xl={4} className={classes.contactGrid}>
 
                 <Typography gutterBottom color="textSecondary" variant='h2'> {messages.connect.keed_in_touch}</Typography>
@@ -125,10 +126,9 @@ const Connect = (props) => {
                 <Typography gutterBottom color="textSecondary" variant='subtitle1'> {messages.connect.we_are}</Typography>
                 <Typography gutterBottom color="textSecondary" variant='subtitle1'> {messages.connect.addres}</Typography>
             </Grid>
+            </ScrollIntoViewIfNeeded>
             <Grid item xs={12} md={5} xl={5} className={classes.contactGrid}>
-              <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.connect)}>
                 <ContactForm messages={messages} locale={locale}/>
-              </ScrollIntoViewIfNeeded>
             </Grid>
             <Grid item xs={12} md={3} xl={3}>
               <Social tab goTo={goTo}/>
@@ -164,7 +164,7 @@ const Connect = (props) => {
 
       <Box className={classes.projects}>
       <Container maxWidth="xl">
-        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.project)}>
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.projects)}>
           <Projects messages={messages} history={props.history} locale={locale} />
         </ScrollIntoViewIfNeeded>
       </ Container>

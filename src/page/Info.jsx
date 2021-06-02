@@ -371,7 +371,7 @@ const Press =({goToArticle, history, messages}) => {
   <Box id={messages.menu.press} className={classes.press} >
       <Container maxWidth='false'>
         <Typography color='primary' align='center' className={classes.pressTitle} variant='h3'>{messages.menu.press}</Typography>
-        <Articles max={4} tags={['Press']} history={history}/>
+        <Articles insert limit={4} tags={['Press']} history={history}/>
         <Button primary  onClick={goToArticle} labelPosition='right' icon='arrow right' content={messages.info.more_articles}  />
       </Container>
   </Box>
@@ -384,8 +384,8 @@ const  Info = (props) => {
     return (
       <Box id={messages.menu.info} className="main" >
         <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.manifest)}>
-          <Manifest messages={messages} locale={locale}/>
         </ScrollIntoViewIfNeeded>
+        <Manifest messages={messages} locale={locale}/>
         <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.history)}>
           <History messages={messages} locale={locale} goToCommunity={goToCommunity}/>
         </ScrollIntoViewIfNeeded>

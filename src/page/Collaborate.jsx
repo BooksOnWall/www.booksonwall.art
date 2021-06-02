@@ -225,6 +225,7 @@ const SupportStory = ({messages, lang}) => {
   const [services, setServices] = useState([]);
   const apiURL = process.env.REACT_APP_API;
   let history = useHistory();
+  const {hash} = useLocation();
   useEffect(() => {
     const getServices = async () => {
       try {
@@ -263,7 +264,9 @@ return (
   <Box className={classes.root}>
   <Box>
     <Container className={classes.collaborate} maxWidth='false'>
+
       <Grid container spacing={8}>
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.support)}>
           <Grid item xs>
             <Blob className={classes.blob} size="530px">
                 <Blob size="500px" src={Images.image11.default} />
@@ -272,16 +275,19 @@ return (
               <Typography gutterBottom  variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.create_new_story}</Typography>
               <Button size="large" className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
           </Grid>
-          <Grid item xs className={classes.collaborateGrid2}>
-            <Blob  className={classes.blobB} size="380px">
-                <Blob size="330px" src={Images.image1.default} />
-            </Blob>
-              <Typography align="right" gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.join_us}</Typography>
-              <Typography align="right" gutterBottom variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.strategic_partner}</Typography>
-              <Typography align="right" gutterBottom variant="subtitle1" className={classes.blobText}>{messages.collaborate.looking_for}</Typography>
-              <Button size="large" className={classes.button2}>{messages.collaborate.how}</Button>
-            </Grid>
-        </Grid>
+          </ScrollIntoViewIfNeeded>
+          <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.associate)}>
+              <Grid item xs className={classes.collaborateGrid2}>
+                <Blob  className={classes.blobB} size="380px">
+                    <Blob size="330px" src={Images.image1.default} />
+                </Blob>
+                  <Typography align="right" gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.join_us}</Typography>
+                  <Typography align="right" gutterBottom variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.strategic_partner}</Typography>
+                  <Typography align="right" gutterBottom variant="subtitle1" className={classes.blobText}>{messages.collaborate.looking_for}</Typography>
+                  <Button size="large" className={classes.button2}>{messages.collaborate.how}</Button>
+                </Grid>
+              </ScrollIntoViewIfNeeded>
+          </Grid>
     </Container>
 <br /><br /><br />
     <Container maxWidth="xl" className={classes.servicesWrap}>
@@ -316,7 +322,7 @@ const Collaborate = (props) => {
         <ScrollIntoViewIfNeeded active={(!hash)}>
           <CollaborateHeader messages={messages}/>
         </ScrollIntoViewIfNeeded>
-        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.support)}>
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.develop)}>
           <SupportStory lang={locale} messages={messages} />
         </ScrollIntoViewIfNeeded>
      </Box>

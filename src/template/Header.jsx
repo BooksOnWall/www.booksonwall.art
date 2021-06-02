@@ -9,9 +9,6 @@ import {
     Paper,
     MenuList,
     Button,
-    List,
-    ListItem,
-    ListItemText,
     IconButton,
     Menu,
     ClickAwayListener,
@@ -97,6 +94,14 @@ const menuTraductions = defineMessages({
     id: 'menu.community',
     defaultMessage: 'Community',
   },
+  contact: {
+    id: 'menu.contact',
+    defaultMessage: 'Contact',
+  },
+  content: {
+    id: 'menu.content',
+    defaultMessage: 'Content',
+  },
   joinus: {
     id: 'menu.joinus',
     defaultMessage: 'Join us',
@@ -115,7 +120,7 @@ const menuTraductions = defineMessages({
   },
   develop: {
     id: 'menu.develop',
-    defaultMessage: 'Develop + innovate',
+    defaultMessage: 'Develop innovate',
   },
   info: {
     id: 'menu.info',
@@ -339,8 +344,9 @@ return (
   </div>
 );
 };
-const MainMenu = ({history, allMessages, switchLang, goTo,menuOptions, loadPage, activeIndex, activeItem,handleMenuItemClick,adminMenu, messages, exploreOptions, createOptions, collaborateOptions, infoOptions, langs, locale  }) => {
+const MainMenu = ({history, allMessages, switchLang, goTo,connectOptions, contentOptions, menuOptions, loadPage, activeIndex, activeItem,handleMenuItemClick,adminMenu, messages, exploreOptions, createOptions, collaborateOptions, infoOptions, langs, locale  }) => {
   const classes = useStyles();
+  const navigate = (event, index, primary, option) => history.push("/"+option);
   return (
     <>
     <AppBar elevation={0} id="appbar-mobile" color="transparent" >
@@ -354,7 +360,7 @@ const MainMenu = ({history, allMessages, switchLang, goTo,menuOptions, loadPage,
           secondary={menuOptions}
           activeIndex={activeIndex}
           activeItem={activeItem}
-          handleMenuItemClick={handleMenuItemClick}
+          handleMenuItemClick={(e) => history.push("/"+e.target.option)}
           />
 
           {Auth.isUserAuthenticated()
@@ -414,21 +420,20 @@ const MainMenu = ({history, allMessages, switchLang, goTo,menuOptions, loadPage,
           activeItem={activeItem}
           handleMenuItemClick={handleMenuItemClick}
         />
-        <List disablePadding component="nav" aria-label="Connect" className="nav">
-          <ListItem
-            button
-            className={classes.menuItemContact}
-            value="connect"
-            aria-haspopup="true"
-            aria-controls="connect"
-            aria-label="Connect"
-            onClick={(e) => loadPage('/'+messages.menu.connect)}
-            >
-            <ListItemText className={classes.menuItemContactText} color="primary">
-            <Typography variant="button">{messages.menu.connect}</Typography>
-            </ListItemText>
-          </ListItem>
-        </List>
+        <MenuBranch
+          primary={messages.menu.connect}
+          secondary={connectOptions}
+          activeIndex={activeIndex}
+          activeItem={activeItem}
+          handleMenuItemClick={handleMenuItemClick}
+        />
+        <MenuBranch
+          primary={messages.menu.content}
+          secondary={contentOptions}
+          activeIndex={activeIndex}
+          activeItem={activeItem}
+          handleMenuItemClick={navigate}
+        />
 
         <LanguageSwitch langs={langs} history={history} allMessages={allMessages} messages={messages} locale={locale} switchLang={switchLang} className={classes.lenguageSwitch} />
 
@@ -553,6 +558,21 @@ const TopMenu = ({intl, pathvalue, hash, authenticated, switchLang, locale , his
       messages.menu.community,
       messages.menu.press
     ];
+    const connectOptions = [
+      messages.menu.contact,
+      messages.menu.register,
+      messages.menu.projects,
+    ];
+    const contentOptions = [
+      messages.menu.articles,
+      messages.menu.stories,
+      messages.menu.projects,
+      messages.menu.applications,
+      messages.menu.services,
+      messages.menu.support,
+      messages.menu.partner,
+      messages.menu.terms,
+    ];
     return (
 
       <MainMenu
@@ -568,6 +588,8 @@ const TopMenu = ({intl, pathvalue, hash, authenticated, switchLang, locale , his
         createOptions={createOptions}
         collaborateOptions={collaborateOptions}
         infoOptions={infoOptions}
+        contentOptions={contentOptions}
+        connectOptions={connectOptions}
         allMessages={allMessages}
         langs={langs}
         loadPage={loadPage}
