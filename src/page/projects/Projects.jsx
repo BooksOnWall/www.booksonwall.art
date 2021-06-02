@@ -13,7 +13,8 @@ import {
   } from '@material-ui/core';
 
 import { injectIntl } from 'react-intl';
-
+import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 const apiURL = process.env.REACT_APP_API;
 const useStyles = makeStyles({
   root: {
@@ -100,7 +101,9 @@ class Projects extends Component {
 
     return (projects) ? (
       <>
+        <ScrollIntoViewIfNeeded active={true}>
         <Typography variant="h4" color='primary'>Projects</Typography>
+        </ScrollIntoViewIfNeeded>
         <Box style={{display: 'flex', justifyContent: 'space-around'}}>
           <Project  projects={projects} goToProject={this.goToProject} locale={locale}/>
         </Box>

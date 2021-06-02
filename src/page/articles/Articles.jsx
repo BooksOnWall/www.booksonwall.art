@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import {
     CardContent,
     CardActionArea,
@@ -90,6 +92,12 @@ const Categories = ({messages, categories, selectCategory, selected}) => {
     </>
   )
 };
+const ScrollToTop = () => {
+  return (
+    <ScrollIntoViewIfNeeded active={true}>
+    </ScrollIntoViewIfNeeded>
+  )
+}
 class Articles extends Component {
   constructor(props) {
     super(props)
@@ -187,6 +195,7 @@ class Articles extends Component {
     // images: [],
     return (
         <>
+          <ScrollToTop />
           <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
             <Categories selected={selected} categories={categories} messages={messages} selectCategory={this.selectCategory}/>
           </Box>

@@ -8,6 +8,7 @@ import {
     makeStyles
   } from '@material-ui/core';
 import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
@@ -24,6 +25,7 @@ const useStyles = makeStyles({
 const Applications = (props) => {
   const classes = useStyles();
   const [applications, setApplications] = useState([]);
+  const [activeScroll, setActiveScroll] = useState('top');
   const [unique, setUnique] = useState();
   const {locale, messages} = props.intl;
   const apiURL = process.env.REACT_APP_API;
@@ -96,10 +98,12 @@ const Applications = (props) => {
   return (
     <Box className={classes.root}>
     {unique &&
+      <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
       <Grid item xs sm >
       <h1>{unique.Name}</h1>
       <ReactMarkdown children={unique.header} />
       </Grid>
+      </ScrollIntoViewIfNeeded>
 
     }
     {unique && unique.image_header && <Image src={apiURL+unique.image_header} />}

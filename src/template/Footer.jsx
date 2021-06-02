@@ -309,33 +309,33 @@ const Footer = ({intl}) => {
             </Breadcrumbs>
           </Box>
 
-            <MenuList variant="selectedMenu">
-              <MenuItem
-                selected={0 === activeIndex && activeItem === messages.menu.articles}
-                onClick={(event) => handleMenuItemClick(event, 0, messages.menu.articles)}
-                >{messages.menu.articles}</MenuItem>
-              <MenuItem
-                selected={1 === activeIndex && activeItem === messages.menu.services}
-                onClick={(event) => handleMenuItemClick(event, 1, messages.menu.services)}>
-                {messages.menu.services}
-              </MenuItem>
-              <MenuItem
-                selected={3 === activeIndex && activeItem === messages.menu.support}
-                onClick={(event) => handleMenuItemClick(event, 2, messages.menu.support)}
-                >{messages.menu.support}</MenuItem>
-                <MenuItem
-                  selected={4 === activeIndex && activeItem === messages.menu.applications}
-                  onClick={(event) => handleMenuItemClick(event, 3, messages.menu.applications)}
-                  >{messages.menu.applications}</MenuItem>
-                  <MenuItem
-                    selected={5 === activeIndex && activeItem === messages.menu.projects}
-                    onClick={(event) => handleMenuItemClick(event, 4, messages.menu.projects)}
-                    >{messages.menu.projects}</MenuItem>
-                      <MenuItem
-                        selected={7 === activeIndex && activeItem === messages.menu.partner}
-                        onClick={(event) => handleMenuItemClick(event, 5, messages.menu.partner)}
-                        >{messages.menu.partner}</MenuItem>
-            </MenuList>
+          <MenuList variant="selectedMenu">
+          <MenuItem
+          selected={0 === activeIndex && activeItem === messages.menu.articles}
+          onClick={(event) => handleMenuItemClick(event, 0, messages.menu.articles)}
+          >{messages.menu.articles}</MenuItem>
+          <MenuItem
+          selected={1 === activeIndex && activeItem === messages.menu.services}
+          onClick={(event) => handleMenuItemClick(event, 1, messages.menu.services)}>
+          {messages.menu.services}
+          </MenuItem>
+          <MenuItem
+          selected={3 === activeIndex && activeItem === messages.menu.support}
+          onClick={(event) => handleMenuItemClick(event, 2, messages.menu.support)}
+          >{messages.menu.support}</MenuItem>
+          <MenuItem
+          selected={4 === activeIndex && activeItem === messages.menu.applications}
+          onClick={(event) => handleMenuItemClick(event, 3, messages.menu.applications)}
+          >{messages.menu.applications}</MenuItem>
+          <MenuItem
+          selected={5 === activeIndex && activeItem === messages.menu.projects}
+          onClick={(event) => handleMenuItemClick(event, 4, messages.menu.projects)}
+          >{messages.menu.projects}</MenuItem>
+          <MenuItem
+          selected={7 === activeIndex && activeItem === messages.menu.partner}
+          onClick={(event) => handleMenuItemClick(event, 5, messages.menu.partner)}
+          >{messages.menu.partner}</MenuItem>
+          </MenuList>
 
           <SpacingGrid  activeItem={activeItem} activeIndex={activeIndex} messages={messages} handleMenuItemClick={handleMenuItemClick}/>
       </Box>

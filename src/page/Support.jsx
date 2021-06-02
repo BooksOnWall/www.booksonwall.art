@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import {  Box, Container } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
@@ -7,6 +9,7 @@ const apiURL = process.env.REACT_APP_API;
 
 const Support = (props) => {
   const [support, setSupport] = useState();
+  const [activeScroll, setActiveScroll] = useState('top');
   const {messages, locale} = props.intl;
   useEffect(() => {
     const fetchURL = apiURL + '/uniques?type=support&lang=' + locale;
@@ -41,7 +44,9 @@ const Support = (props) => {
 
   return (
     <Box>
+    <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
       {support && support.image_header && <Image aspectRatio={5/1} src={apiURL + support.image_header.formats.medium.url} />}
+    </ScrollIntoViewIfNeeded>
       <Container>
       {support && <h1>{support.title}</h1>}
       {support && support.header && <ReactMarkdown children={support.header} />}
