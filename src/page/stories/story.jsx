@@ -6,6 +6,7 @@ import {
     Card,
     Box,
     Container,
+    Avatar,
     makeStyles
   } from '@material-ui/core';
 
@@ -13,7 +14,6 @@ import { injectIntl } from 'react-intl';
 import Image from 'material-ui-image';
 import  ReactMarkdown from 'react-markdown';
 import ImageGallery from 'react-image-gallery';
-import Avatar from '../../assets/images/avatar/';
 import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 
@@ -53,10 +53,13 @@ const StoryHeader = ({story, md}) => {
 }
 const StoryGallery = ({gallery, apiURL}) => {
   let set = [];
-  gallery.map((img,i) => set.push({
-    original : apiURL + img.formats.large.url,
-    thumbnail: apiURL + img.formats.thumbnail.url
-  }));
+  if (gallery) {
+    gallery.map((img,i) => set.push({
+      original : apiURL + img.formats.large.url,
+      thumbnail: apiURL + img.formats.thumbnail.url
+    }));
+  }
+
   return (
     <ImageGallery items={set} />
   )
@@ -89,13 +92,17 @@ const Sponsors = ({sponsors}) => {
 
 const Participants = ({participants}) =>  {
   const classes = useStyles();
+
   return (participants) ? participants.map((part, i) => (
         <Card key={i} >
-          <CardMedia
+          {/* }<CardMedia
             className={classes.media}
-            image={(!Avatar[part])? Avatar['default_avatar']: Avatar[part]}
+            image={(part.avatar) ? apiURL+part.avatar.formats.thumbnail.url: null}
             title={part}
-            />
+            /> */}
+            {part.avatar &&
+              <Avatar src={apiURL+part.avatar.formats.thumbnail.url} />
+            }
           <CardContent >
             {part}
           </CardContent>
@@ -113,7 +120,7 @@ return (
     {(credits) ? credits.map((cred, i) => (
       <Box key={'cat'+i}>
         <Typography gutterBottom  align="center" variant="h5" component="h4">{cred.category}</Typography>
-        <Participants participant={cred.participant} />
+        <Participants participants={cred.participant} />
       </Box>
     )):''}
   </Box>
@@ -142,7 +149,7 @@ class Story extends Component {
   }
   loadStory = async (rows, index, sort, order) => {
     const { apiURL, name, lang } = this.state;
-    const fetchURL = apiURL + '/stories?name='+name+'&lang='+lang;
+    const fetchURL = apiURL + '/stories?name='+encodeURIComponent(name)+'&lang='+lang;
     this.setState({loading: true});
 
     await fetch(fetchURL, {
@@ -156,7 +163,8 @@ class Story extends Component {
     })
     .then(data => {
         if(data) {
-          this.setState({loading: false, story: data[0]});
+          console.log(data);
+          this.setState({loading: false, story: data});
         } else {
           console.log('No Data received from the server');
         }
