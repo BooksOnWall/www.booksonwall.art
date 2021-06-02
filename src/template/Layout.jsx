@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import clsx from "clsx";
 import { ToastContainer } from 'react-toastify';
@@ -12,6 +12,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import './layout.css';
 import { ReactComponent as FooterBg } from './../assets/images/svg/footer.svg';
 import  Bg from './../assets/images/bg_footer.png';
@@ -143,6 +146,8 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
     }
   }));
   const classes = useStyles();
+  const [top, setTop] = useState(false);
+  const scrollToTop = () => setTop(!top);
   return (
     <ThemeProvider theme={theme}>
       <ToastContainer
@@ -159,11 +164,14 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
 
       <Box className={classes.root}>
         <CssBaseline />
+        <ScrollIntoViewIfNeeded active={top} options={{scrollMode: 'always'}}>
         <AppBar elevation={0}  color="transparent"  position="absolute" className={clsx(classes.appBar)}>
           <Toolbar variant="regular" disableGutters className={classes.toolbar}>
             <Header locale={locale} allMessages={allMessages} switchLang={switchLang} history={history}/>
           </Toolbar>
         </AppBar>
+        </ScrollIntoViewIfNeeded>
+
         <main className={classes.content}>
         <Box className={classes.footerBg}>
           <Box className={classes.wrapper} id="top">
@@ -173,6 +181,10 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
             <FooterBg className={classes.bg} />
           </Box>
         </main>
+
+        <IconButton className={classes.topBtn} fontSize="small"  onClick={() => scrollToTop()} aria-label="top">
+          <ArrowUpwardIcon fontSize='small' color="white" />
+        </IconButton>
         <Footer locale={locale} switchLang={switchLang} history={history}/>
       </Box>
   </ThemeProvider >
