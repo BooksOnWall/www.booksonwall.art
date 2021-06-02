@@ -564,6 +564,7 @@ const TopMenu = ({intl, pathvalue, hash, authenticated, switchLang, locale , his
       messages.menu.projects,
     ];
     const contentOptions = [
+      messages.menu.community,
       messages.menu.articles,
       messages.menu.stories,
       messages.menu.projects,

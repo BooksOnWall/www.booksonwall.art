@@ -275,7 +275,7 @@ const WorkShop = ({messages}) => {
             <Grid item xs={12} sm={6} className={classes.bottom}>
               <Typography gutterBottom color="white" align="right" variant="h2" >{messages.create.workshop_stories}</Typography>
               <Typography gutterBottom color="white" align="right" variant="h3" >{messages.create.workshop_by_step}</Typography>
-              <Button onClick={() => history.push("/"+messages.menu.services+"#"+messages.menu.story)} className={classes.buton3}>{messages.create.know_more}</Button>
+              <Button onClick={() => history.push("/"+messages.menu.service+"/"+messages.menu.story)} className={classes.buton3}>{messages.create.know_more}</Button>
             </Grid>
           </Grid>
         </Container>

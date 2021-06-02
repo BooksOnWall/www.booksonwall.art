@@ -12,6 +12,8 @@ import {
   } from '@material-ui/core';
 
 import ToggleButton from '@material-ui/lab/ToggleButton';
+import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 
 const apiURL = process.env.REACT_APP_API;
 
@@ -164,6 +166,7 @@ class Community extends Component {
     const {messages} = this.props.intl;
     return (members && members.length > 0) ? (
       <Box className="main" >
+        <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
         <CommunityMap members={members} selected={selected} hasSkill={this.hasSkill} history={this.props.history}/>
         <Typography variant="h2" color="primary" component="h2" style={{textTransform:'uppercase'}} >{messages.menu.community}</Typography>
         <Skills skills={skills} select={this.select} isSelected={this.isSelected} selected={selected}/>

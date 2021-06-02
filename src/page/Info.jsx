@@ -13,7 +13,7 @@ import { Images } from './../assets/images/pages';
 
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl, defineMessages  } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
@@ -315,6 +315,7 @@ const History =({messages, locale, historyFeed, goToCommunity}) => {
 const Community =({goToCommunity, messages, locale}) => {
   const classes = useStyles();
   const [community, setCommunity] = useState();
+  let history = useHistory();
   useEffect(() => {
     const fetchURL = apiURL + '/uniques?type=community&lang=' + locale;
     const getCommunity = async () => {
@@ -357,7 +358,7 @@ const Community =({goToCommunity, messages, locale}) => {
 
         <Grid item  xs={6}>
             {community && <ReactMarkdown children={community.header} /> }
-            <Button onClick={goToCommunity} size="large" className={classes.buton2} >{messages.create.meet_comunity}</Button>
+            <Button onClick={() => history.push('/'+messages.menu.community)} size="large" className={classes.buton2} >{messages.create.meet_comunity}</Button>
         </Grid>
       </Grid>
       </Container>
