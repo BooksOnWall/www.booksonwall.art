@@ -44,6 +44,7 @@ const Service = loadable(() => import('./page/services/Service'));
 const Applications = loadable(() => import('./page/applications/Applications'));
 const Terms = loadable(() => import('./page/Terms'));
 const Partner = loadable(() => import('./page/Partner'));
+const Support = loadable(() => import('./page/Support'));
 
 const messages = {
   'en': intlMessages_en,
@@ -112,6 +113,9 @@ const App = () => {
             <Route exact path={"/"+messages[locale].menu.services} ><Services history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.applications} ><Applications history={history}/></Route>
             <Route exact path={"/"+messages[locale].menu.partner} ><Partner history={history}/></Route>
+            <Route exact path={"/"+messages[locale].menu.support} ><Support history={history}/></Route>
+
+
             <Route exact path={"/"+messages[locale].menu.service+"/:name"}><Service history={history}/></Route>
             </Switch>
             </Layout>
