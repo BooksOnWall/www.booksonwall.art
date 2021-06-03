@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import {
-    Badge,
-    Card,
     Box,
     Backdrop,
     CircularProgress,
   } from '@material-ui/core';
-import { useLocation, useHistory } from 'react-router-dom';
+
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import Image from 'material-ui-image';
 import ReactMarkdown from 'react-markdown';

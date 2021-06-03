@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     Typography,
     Box,
@@ -12,8 +12,6 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Images } from './../assets/images/pages';
 import { injectIntl, defineMessages } from 'react-intl';
 import { Blob } from 'react-blob';
-import { ReactComponent as Svg1 } from '../assets/images/svg/fulviet/capitel-ninno.svg';
-import Bg from "../assets/images/pages/Bg-APP.png";
 
 const createTraductions = defineMessages({
   community: {

@@ -463,7 +463,6 @@ const TopMenu = ({intl, pathvalue, hash, authenticated, switchLang, locale , his
       const siteUrl = process.env.REACT_APP_URL;
       history.push(siteUrl+"/"+(target)? target: "");
     }
-    const pathName = (pathvalue) ? pathvalue.replace("/",""): null;
     hash = (hash) ? hash.replace("#",""): null;
     const langs = [
       {
@@ -490,21 +489,15 @@ const TopMenu = ({intl, pathvalue, hash, authenticated, switchLang, locale , his
   const [activeItem, setActiveItem] = useState();
   const [activeIndex, setActiveIndex] = useState();
   const loadPage = value => navigate(value);
-  const handleItemClick = (e, { value, anchor }) => {
-    if (anchor) {
-      //this.setState({ anchorMenu: null, anchorExplore: null, anchorCreate: null, activeItem: value, anchor: anchor });
-      goTo({history, content: value, hash: anchor});
-    } else {
-      //this.setState({ anchorMenu: null, activeItem: value });
-      goTo({history, content: value});
-    }
-  }
+
   const logout = () => {
     Auth.deauthenticateUser();
     navigate('/');
   }
   const handleMenuItemClick = (e, index, name, hash, history) => {
     if (hash) {
+      setActiveIndex(index);
+      setActiveItem(name);
     //  this.setState({ anchorEl: null, anchorInfo: null, anchorCreate: null, anchorExplore: null, anchorCollaborate: null, activeIndex: index , activeItem: name, anchor: hash });
       goTo({content: name,hash, history});
     } else {

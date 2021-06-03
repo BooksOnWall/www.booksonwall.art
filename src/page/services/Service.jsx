@@ -3,17 +3,13 @@ import React, { useState, useEffect } from 'react';
 import {
     Container,
     Grid,
-    CardMedia,
     Typography,
-    Card,
-    CardActions,
     Backdrop,
     CircularProgress,
     Box,
-    Button,
     makeStyles
   } from '@material-ui/core';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
@@ -46,7 +42,7 @@ const Service = (props) => {
   const [loading, setLoading] = useState(false);
   const {locale, messages} = props.intl;
   const apiURL = process.env.REACT_APP_API;
-  let history = useHistory();
+
   const {pathname} = useLocation();
   useEffect(() => {
     const name = pathname.replace("/"+messages.menu.service+"/", "");

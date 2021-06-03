@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import {  Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
@@ -29,6 +28,7 @@ const Terms = (props) => {
     const fetchURL = apiURL + '/uniques?type=terms&lang=' + locale;
     const getTerms = async () => {
       try {
+        setLoading(true);
         await fetch(fetchURL, {
           crossDomain:true,
           headers: {'Content-Type':'application/json'},
@@ -41,6 +41,7 @@ const Terms = (props) => {
         .then(data => {
             if(data) {
               setTerms(data[0]);
+              setLoading(false);
             } else {
               console.log('No Data received from the server');
             }

@@ -16,7 +16,6 @@ import { injectIntl } from 'react-intl';
 import Image from 'material-ui-image';
 import  ReactMarkdown from 'react-markdown';
 import ImageGallery from 'react-image-gallery';
-import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 
 const apiURL = process.env.REACT_APP_API;

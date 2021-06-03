@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Grid,
     Box,
@@ -14,7 +14,7 @@ import {
 
 import Image from 'material-ui-image';
 import loadable from '@loadable/component';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl, defineMessages  } from 'react-intl';
 

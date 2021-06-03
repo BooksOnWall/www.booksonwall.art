@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import {
     CardContent,
@@ -16,20 +15,13 @@ import {
     makeStyles
   } from '@material-ui/core';
 import ToggleButton from '@material-ui/lab/ToggleButton';
-import { injectIntl, defineMessages } from 'react-intl';
+import { injectIntl} from 'react-intl';
 
-// const articleTraductions = defineMessages({
-//   read_more_btn: {
-//     id: 'article.read_more_btn',
-//     defaultMessage: 'Read more'
-//   }
-// });
+
 
 const apiURL = process.env.REACT_APP_API;
 
-const replaceAll = (string, search, replace) =>  {
-  return string.split(search).join(replace);
-}
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 600,

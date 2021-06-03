@@ -13,7 +13,6 @@ import {
   } from '@material-ui/core';
 
 import ToggleButton from '@material-ui/lab/ToggleButton';
-import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import CircularProgress from '@material-ui/core/CircularProgress';
 

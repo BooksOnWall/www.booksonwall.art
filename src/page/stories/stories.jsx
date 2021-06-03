@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import {
     Box,

@@ -1,4 +1,4 @@
-import React, { Component, useRef,forwardRef, useEffect } from 'react';
+import React, { forwardRef } from 'react';
 
 import { injectIntl, defineMessages } from 'react-intl';
 import {

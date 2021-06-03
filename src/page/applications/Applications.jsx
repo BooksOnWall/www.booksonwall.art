@@ -9,7 +9,7 @@ import {
     Button,
     makeStyles
   } from '@material-ui/core';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';

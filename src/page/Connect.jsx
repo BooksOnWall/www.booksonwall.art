@@ -109,7 +109,7 @@ const Connect = (props) => {
   const goTo = (e, b) => window.location.href = b.src;
   const {hash} = useLocation();
   let history = useHistory();
-  const { locale, messages, goToCommunity } = props.intl;
+  const { locale, messages } = props.intl;
   return (
     <Box className={classes.connect}>
     <Box className={classes.homeHaderBg}>
@@ -164,7 +164,7 @@ const Connect = (props) => {
       <Box className={classes.projects}>
       <Container maxWidth="xl">
         <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.projects)}>
-          <Projects messages={messages} history={props.history} locale={locale} />
+          <Projects messages={messages} history={props.history} locale={locale} insert limit={10}/>
         </ScrollIntoViewIfNeeded>
       </ Container>
       </Box>
