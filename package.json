@@ -40,6 +40,7 @@
     "react-markdown": "^6.0.1",
     "react-phone-input-2": "^2.14.0",
     "react-router-dom": "^5.2.0",
+    "react-router-sitemap": "^1.2.0",
     "react-scripts": "4.0.3",
     "react-scroll-into-view-if-needed": "^3.0.0",
     "react-toastify": "^7.0.4",
@@ -52,6 +53,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "sitemap": "export NODE_ENV=development && node sitemap-builder.jsx",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "extract:messages": "export NODE_ENV=development && ./node_modules/.bin/extract-messages --locales=es,pt,en,fr,it --output src/i18n/locales/ 'src/**/*.jsx'"
   },
@@ -74,8 +76,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/register": "^7.13.16",
     "eslint": "^7.25.0",
     "extract-react-intl-messages": "^4.1.1"
   }

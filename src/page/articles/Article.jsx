@@ -93,7 +93,7 @@ class Article extends Component {
       {article &&
         <Box className="main" >
           <ScrollIntoViewIfNeeded active={true}>
-          {(article.header_image) ? <Image src={apiURL + article.header_image.formats.medium.url}  /> : ''}
+          {(article.header_image) ? <Image src={apiURL + article.header_image.formats.large.url}  /> : ''}
           </ScrollIntoViewIfNeeded>
           <h5>{article.title}</h5>
           <Box>{article.updated_at}</Box>
