@@ -71,7 +71,6 @@ const Terms = (props) => {
       <Container>
       {terms && <h1>{terms.title}</h1>}
       {terms && terms.header && <ReactMarkdown children={terms.header} />}
-
       </Container>
     </Box>
   }

@@ -169,6 +169,7 @@ class Stories extends Component {
   }
   render() {
     const { stories, apiURL, insert, loading } = this.state;
+    console.log('insert',insert);
     const { messages } = this.props.intl
     return (
       <>
@@ -178,11 +179,13 @@ class Stories extends Component {
       </Backdrop>
       {stories &&
         <Box id={messages.menu.stories} className="stories">
-          <Box id="storiesTitle">
-            <Typography variant="h1" color="secondary" component="h2" style={{textTransform:'uppercase'}}> {messages.menu.stories}</Typography>
-          </Box>
           <Box className='map' >{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}
           </Box>
+          {insert &&
+            <Box id="storiesTitle">
+              <Typography variant="h1" color="secondary" component="h2" style={{textTransform:'uppercase'}}> {messages.menu.stories}</Typography>
+            </Box>
+          }
           <Box className='mapbg'><Mapbg /></Box>
           <Box id="storyList">
             <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
