@@ -7,6 +7,8 @@ import {
     Typography,
     Card,
     CardActions,
+    Backdrop,
+    CircularProgress,
     Box,
     Button,
     makeStyles
@@ -17,20 +19,25 @@ import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
 
-const useStyles = makeStyles({
+const useStyles =  makeStyles((theme) => ({
   root: {
     maxWidth: '100vw',
   },
   media: {
     height: 140,
   },
-});
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#99FF44',
+  },
+}));
 
 const Services = (props) => {
   const classes = useStyles();
   const [services, setServices] = useState([]);
   const [activeScroll, setActiveScroll] = useState('top');
   const [unique, setUnique] = useState();
+  const [loading, setLoading] = useState(false);
   const {locale, messages} = props.intl;
   const apiURL = process.env.REACT_APP_API;
   const insert = props.insert;
@@ -38,7 +45,7 @@ const Services = (props) => {
   useEffect(() => {
     const getServices = async () => {
       try {
-
+        setLoading(true);
         const fetchURL = apiURL + '/services?_limit=-1&_sort=published_at:DESC&lang='+locale;
         await fetch(fetchURL, {
           method: "get",
@@ -55,6 +62,7 @@ const Services = (props) => {
         .then(data => {
             if(data) {
               setServices(data.map((c,i) => ({id: c.id, header: c.header, header_image: c.header_image, name:c.Name})));
+              setLoading(false);
             } else {
               console.log('No Data received from the server');
             }
@@ -69,6 +77,7 @@ const Services = (props) => {
     }
     const getUnique = async () => {
       try {
+        setLoading(true);
         const fetchURL = apiURL + '/uniques?type=services&lang='+locale;
         await fetch(fetchURL, {
           method: "get",
@@ -85,6 +94,7 @@ const Services = (props) => {
         .then(data => {
             if(data) {
               setUnique(data[0]);
+              setLoading(false);
             } else {
               console.log('No Data received from the server');
             }
@@ -101,6 +111,10 @@ const Services = (props) => {
     getServices();
   }, [apiURL, locale]);
   return (
+    <>
+    <Backdrop className={classes.backdrop} open={loading} >
+      <CircularProgress color="inherit" />
+    </Backdrop>
     <Box className={classes.root}>
     {unique &&
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
@@ -127,6 +141,7 @@ const Services = (props) => {
         </Grid>
     {insert && <Button onClick={() => history.push("/"+messages.menu.services)} size="large" className={classes.button3}>See more</Button>}
   </Box>
+  </>
   )
 }
 export default injectIntl(Services);

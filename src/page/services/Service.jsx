@@ -7,6 +7,8 @@ import {
     Typography,
     Card,
     CardActions,
+    Backdrop,
+    CircularProgress,
     Box,
     Button,
     makeStyles
@@ -17,7 +19,7 @@ import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
 import Gallery from "../../utils/Gallery";
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100vw',
   },
@@ -28,24 +30,29 @@ const useStyles = makeStyles({
     padding:0,
   },
   service:{
-
     minWidth: '100vw',
     minHeight: '90vh'
   },
-});
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#99FF44',
+  },
+}));
 
 const Service = (props) => {
   const classes = useStyles();
   const [unique, setUnique] = useState();
   const [service, setService] = useState();
+  const [loading, setLoading] = useState(false);
   const {locale, messages} = props.intl;
   const apiURL = process.env.REACT_APP_API;
-  let history=useHistory();
+  let history = useHistory();
   const {pathname} = useLocation();
   useEffect(() => {
     const name = pathname.replace("/"+messages.menu.service+"/", "");
     const getService = async () => {
       try {
+        setLoading(true);
         const fetchURL = apiURL + '/services?Name='+name+'&lang='+locale;
         await fetch(fetchURL, {
           method: "get",
@@ -62,6 +69,7 @@ const Service = (props) => {
         .then(data => {
             if(data) {
               setService(data[0]);
+              setLoading(false);
             } else {
               console.log('No Data received from the server');
             }
@@ -76,6 +84,7 @@ const Service = (props) => {
     }
     const getUnique = async () => {
       try {
+        setLoading(true);
         const fetchURL = apiURL + '/uniques?type=services&lang='+locale;
         await fetch(fetchURL, {
           method: "get",
@@ -92,6 +101,7 @@ const Service = (props) => {
         .then(data => {
             if(data) {
               setUnique(data[0]);
+              setLoading(false);
             } else {
               console.log('No Data received from the server');
             }
@@ -108,38 +118,47 @@ const Service = (props) => {
     getService();
   }, [apiURL, locale, pathname, messages.menu]);
   return (
-    <Box className={classes.connect}>
-    <ScrollIntoViewIfNeeded active={true}>
-    {service && service.header_image && <Image src={apiURL+service.header_image.formats.small.url} />}
-    </ScrollIntoViewIfNeeded>
-    <Box className={classes.homeHaderBg}>
-    <Box className={classes.gradine}>
-      {unique && service &&
-        <Container maxWidth="xl">
-        <Typography gutterBottom color="textSecondary" variant='h2'> {unique.Name}</Typography>
-          <Grid container spacing={10} >
-            <Grid item xs={12} md={3} xl={3}>
-              <ReactMarkdown children={unique.header} />
+    <>
+    <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
+    <Backdrop className={classes.backdrop}  open={loading} >
+      <CircularProgress color="inherit" />
+    </Backdrop>
+    {service &&
+      <Box className={classes.connect}>
+
+      {service && service.header_image && <Image src={apiURL+service.header_image.formats.small.url} />}
+
+      <Box className={classes.homeHaderBg}>
+      <Box className={classes.gradine}>
+        {unique && service &&
+          <Container maxWidth="xl">
+          <Typography gutterBottom color="textSecondary" variant='h2'> {unique.Name}</Typography>
+            <Grid container spacing={10} >
+              <Grid item xs={12} md={3} xl={3}>
+                <ReactMarkdown children={unique.header} />
+              </Grid>
+              <Grid item xs={12} md={3} xl={3}>
+                <ReactMarkdown children={service.header} />
+              </Grid>
+              <Grid item xs={12} md={3} xl={3}>
+                <ReactMarkdown children={service.activity} />
+              </Grid>
+              <Grid item xs={12} md={3} xl={3}>
+                <ReactMarkdown children={service.ressources} />
+              </Grid>
+              <Grid item xs={12} md={3} xl={3}>
+                <ReactMarkdown children={service.fullOptions} />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={3} xl={3}>
-              <ReactMarkdown children={service.header} />
-            </Grid>
-            <Grid item xs={12} md={3} xl={3}>
-              <ReactMarkdown children={service.activity} />
-            </Grid>
-            <Grid item xs={12} md={3} xl={3}>
-              <ReactMarkdown children={service.ressources} />
-            </Grid>
-            <Grid item xs={12} md={3} xl={3}>
-              <ReactMarkdown children={service.fullOptions} />
-            </Grid>
-          </Grid>
-          <Gallery images={service.images} />
-        </Container>
-      }
-    </Box>
-    </Box>
-    </Box>
+            <Gallery images={service.images} />
+          </Container>
+        }
+      </Box>
+      </Box>
+      </Box>
+    }
+
+    </>
   )
 }
 export default injectIntl(Service);

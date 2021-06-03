@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import {
     Badge,
     Card,
-    Box
+    Box,
+    Backdrop,
+    CircularProgress,
   } from '@material-ui/core';
-  import { useLocation, useHistory } from 'react-router-dom';
-  import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
+import { useLocation, useHistory } from 'react-router-dom';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import Image from 'material-ui-image';
 import ReactMarkdown from 'react-markdown';
 import { injectIntl } from 'react-intl';
@@ -20,6 +22,7 @@ class Project extends Component {
     this.state = {
         project: null,
         name: name,
+        loading: false,
         locale: locale,
         apiURL: apiURL,
       }
@@ -67,16 +70,23 @@ class Project extends Component {
     await this.loadProject();
   }
   render() {
-    const {project, name, apiURL} = this.state;
-    return (project) ? (
-      <Box >
-          <ScrollIntoViewIfNeeded active={true}>
-            {project.header_image && <Image src={apiURL + project.header_image.formats.small.url} />}
-          </ScrollIntoViewIfNeeded>
-          <h5>{name}</h5>
-          <ReactMarkdown children={project.description} />
-      </Box>
-    ) : '';
+    const {project, name, apiURL, loading} = this.state;
+    return (
+      <>
+      <Backdrop styles={{zIndex: 1003, color: '#99FF44'}} open={loading} >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      {project &&
+        <Box >
+            <ScrollIntoViewIfNeeded active={true}>
+              {project.header_image && <Image src={apiURL + project.header_image.formats.small.url} />}
+            </ScrollIntoViewIfNeeded>
+            <h5>{name}</h5>
+            <ReactMarkdown children={project.description} />
+        </Box>
+      }
+      </>
+    )
   }
 }
 export default injectIntl(Project)

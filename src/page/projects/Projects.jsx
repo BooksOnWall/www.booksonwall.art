@@ -9,6 +9,8 @@ import {
     CardActions,
     Box,
     Button,
+    Backdrop,
+    CircularProgress,
     makeStyles
   } from '@material-ui/core';
 
@@ -57,6 +59,8 @@ class Projects extends Component {
     this.state = {
         projects: null,
         apiURL: apiURL,
+        insert: this.props.insert,
+        loading: false,
         messages: this.props.intl.messages,
         locale: (this.props.intl && this.props.intl.locale) ? this.props.intl.locale : this.props.locale,
     };
@@ -97,19 +101,27 @@ class Projects extends Component {
     this.props.history.push('/'+messages.menu.project+'/'+name)
   }
   render() {
-    const {projects, locale,} = this.state;
+    const {projects, locale,insert, loading} = this.state;
 
-    return (projects) ? (
+    return (
       <>
-        <ScrollIntoViewIfNeeded active={true}>
+      <Backdrop styles={{zIndex: 1003, color: '#99FF44'}} open={loading} >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      {projects &&
+        <>
+        <ScrollIntoViewIfNeeded active={(insert)}>
         <Typography variant="h4" color='primary'>Projects</Typography>
         </ScrollIntoViewIfNeeded>
         <Box style={{display: 'flex', justifyContent: 'space-around'}}>
           <Project  projects={projects} goToProject={this.goToProject} locale={locale}/>
         </Box>
+        </>
+      }
+
 
       </>
-    ) : '';
+    )
   }
 }
 export default injectIntl(Projects);

@@ -8,6 +8,8 @@ import {
     Typography,
     Card,
     CardActions,
+    Backdrop,
+    CircularProgress,
     Button,
     makeStyles
   } from '@material-ui/core';
@@ -122,6 +124,7 @@ class Stories extends Component {
         limit: this.props.limit,
         apiURL: apiURL,
         support: null,
+        loading: false,
         locale: this.props.intl.locale
       }
   }
@@ -166,23 +169,27 @@ class Stories extends Component {
     this.props.history.push('/' + url)
   }
   render() {
-    const { stories, apiURL, insert } = this.state;
+    const { stories, apiURL, insert, loading } = this.state;
     const { messages } = this.props.intl
     return (
       <>
       <ScrollToTop insert={insert} />
-      <Box id={messages.menu.stories} className="stories">
-      <Box id="storiesTitle">
-        <Typography variant="h1" color="secondary" component="h2" style={{textTransform:'uppercase'}}> {messages.menu.stories}</Typography>
-      </Box>
-        <Box className='map' >{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}
+      <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      {stories &&
+        <Box id={messages.menu.stories} className="stories">
+          <Box id="storiesTitle">
+            <Typography variant="h1" color="secondary" component="h2" style={{textTransform:'uppercase'}}> {messages.menu.stories}</Typography>
+          </Box>
+          <Box className='map' >{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}
+          </Box>
+          <Box className='mapbg'><Mapbg /></Box>
+          <Box id="storyList">
+            <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
+          </Box>
         </Box>
-        <Box className='mapbg'><Mapbg /></Box>
-
-        <Box id="storyList">
-          <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
-        </Box>
-      </Box>
+      }
       </>
     )
   }

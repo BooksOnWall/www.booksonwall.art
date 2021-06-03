@@ -74,7 +74,7 @@ const homeTraductions = defineMessages({
   },
   download_app: {
     id: 'home.download_app',
-    defaultMessage: "Donwaload Booksonwall AR"
+    defaultMessage: "Download Booksonwall AR"
   },
   download_app_btn: {
     id: 'home.download_app_btn',
@@ -328,6 +328,7 @@ const HomeHeaderBlock = ({messages, theme}) => {
 
 const WhoAreWe = ({messages}) => {
   const classes = useStyles();
+  let history = useHistory();
 return (
   <div className={classes.root}>
   <Box  className={classes.poligon}>
@@ -346,8 +347,8 @@ return (
               <Typography gutterBottom color="textPrimary" variant="h4" >{messages.home.we_connect}</Typography>
             </CardContent>
             <CardActions>
-              <Button href={messages.menu.connect} className={classes.button4}>{messages.home.join_btn}</Button>
-              <Button href={messages.menu.create+'#'+messages.menu.community} className={classes.button2} color="primary">{messages.home.know_btn}</Button>
+              <Button onClick={() => history.push('/'+messages.menu.connect+"#"+messages.menu.register)} className={classes.button4}>{messages.home.join_btn}</Button>
+              <Button onClick={() => history.push('/'+messages.menu.create+'#'+messages.menu.community)} className={classes.button2} color="primary">{messages.home.know_btn}</Button>
             </CardActions>
           </Card>
         </Grid>
@@ -364,6 +365,7 @@ return (
 )};
 const PlaceholderBlock = ({messages}) => {
   const classes = useStyles();
+  let history = useHistory();
   const tileData2 = [
  {
      img: Images.image4,
@@ -432,13 +434,13 @@ return (
             <Grid item xs={12} md={6}>
               <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg4})` }} >
                 <Typography gutterBottom align="center" color="textSecondary" variant="h3">{messages.home.download_app}</Typography>
-                <Button href={"/"+messages.menu.explore+"#"+messages.menu.download_app} className={classes.button3} variant="outlined" color="primary">{messages.home.enjoy_btn}</Button>
+                <Button onClick={()=> history.push("/"+messages.menu.explore+"#"+messages.menu.download_app)} className={classes.button3} variant="outlined" color="primary">{messages.home.enjoy_btn}</Button>
               </Paper>
             </Grid>
             <Grid item xs={12} md={6}>
              <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg5})` }} >
                <Typography gutterBottom align="center" color="textSecondary" variant="h3">{messages.home.create_togheter}</Typography>
-               <Button href={"/"+messages.menu.collaborate+"#"+messages.menu.support} className={classes.button3}  variant="outlined" color="primary">{messages.home.support_a_story_btn}</Button>
+               <Button onClick={() => history.push("/"+messages.menu.collaborate+"#"+messages.menu.support)} className={classes.button3}  variant="outlined" color="primary">{messages.home.support_a_story_btn}</Button>
              </Paper>
             </Grid>
          </Grid>

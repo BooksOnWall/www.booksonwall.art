@@ -4,6 +4,8 @@ import {
     Grid,
     Typography,
     Box,
+    Backdrop,
+    CircularProgress,
     Button,
     makeStyles
   } from '@material-ui/core';
@@ -13,19 +15,24 @@ import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100vw',
   },
   media: {
     height: 140,
   },
-});
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#99FF44',
+  },
+}));
 
 const Applications = (props) => {
   const classes = useStyles();
   const [applications, setApplications] = useState([]);
   const [activeScroll, setActiveScroll] = useState('top');
+  const [loading, setLoading] = useState(false);
   const [unique, setUnique] = useState();
   const {locale, messages} = props.intl;
   const apiURL = process.env.REACT_APP_API;
@@ -33,7 +40,7 @@ const Applications = (props) => {
   useEffect(() => {
     const getApplications = async () => {
       try {
-
+        setLoading(true);
         const fetchURL = apiURL + '/applications?_limit=-1&_sort=published_at:DESC&lang='+locale;
         await fetch(fetchURL, {
           method: "get",
@@ -50,6 +57,7 @@ const Applications = (props) => {
         .then(data => {
             if(data) {
               setApplications(data.map((c,i) => ({id: c.id, header: c.header, header_image: c.header_image, name:c.Name})));
+              setLoading(false);
             } else {
               console.log('No Data received from the server');
             }
@@ -64,6 +72,7 @@ const Applications = (props) => {
     }
     const getUnique = async () => {
       try {
+        setLoading(true);
         const fetchURL = apiURL + '/uniques?type=applications&lang='+locale;
         await fetch(fetchURL, {
           method: "get",
@@ -80,6 +89,7 @@ const Applications = (props) => {
         .then(data => {
             if(data) {
               setUnique(data[0]);
+              setLoading(false);
             } else {
               console.log('No Data received from the server');
             }
@@ -96,6 +106,10 @@ const Applications = (props) => {
     getApplications();
   }, [apiURL, locale]);
   return (
+    <>
+    <Backdrop className={classes.backdrop} open={loading} >
+      <CircularProgress color="inherit" />
+    </Backdrop>
     <Box className={classes.root}>
     {unique &&
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
@@ -121,6 +135,7 @@ const Applications = (props) => {
         </Grid>
 
   </Box>
+  </>
   )
 }
 export default injectIntl(Applications);

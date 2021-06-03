@@ -6,6 +6,8 @@ import {
     Card,
     Box,
     Container,
+    Backdrop,
+    CircularProgress,
     Avatar,
     makeStyles
   } from '@material-ui/core';
@@ -100,6 +102,7 @@ const Participants = ({participants}) =>  {
              image={apiURL+part.avatar.formats.thumbnail.url}
              title={part}
              />
+
            }
 
           <CardContent >
@@ -141,6 +144,7 @@ class Story extends Component {
       apiURL:apiURL,
       name: name,
       lang: locale,
+      loading: false,
       stories: null,
         story: null,
         credits: null,
@@ -180,27 +184,36 @@ class Story extends Component {
     await this.loadStory();
   }
   render() {
-    const {story, apiURL} = this.state;
-    return (story) ?  (
-      <Box className="main">
-      <Box className="story">
-        <ScrollIntoViewIfNeeded active={true}>
-        {story.header_image && <Image aspectRatio={2/1} src={apiURL + story.header_image.formats.medium.url} />}
-        </ScrollIntoViewIfNeeded>
-          <Box className="bodyStory">
-            <StoryHeader story={story}/>
-          </Box>
-          <StoryGallery gallery={story.gallery} story={story} apiURL={apiURL}/>
-          <Container maxWidth="xl" className="bodyStory">
-            <Container className="bodyStory">
-              <StoryBody storybody={story.content} story={story}/>
+    const {story, apiURL, loading} = this.state;
+    return (
+      <>
+      <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
+      <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      {story &&
+        <Box className="main">
+        <Box className="story">
+
+          {story.header_image && <Image aspectRatio={2/1} src={apiURL + story.header_image.formats.medium.url} />}
+
+            <Box className="bodyStory">
+              <StoryHeader story={story}/>
+            </Box>
+            <StoryGallery gallery={story.gallery} story={story} apiURL={apiURL}/>
+            <Container maxWidth="xl" className="bodyStory">
+              <Container className="bodyStory">
+                <StoryBody storybody={story.content} story={story}/>
+              </Container>
+              <Sponsors sponsors={story.sponsors} story={story}/>
+              <Credits credits={story.credits} story={story}/>
             </Container>
-            <Sponsors sponsors={story.sponsors} story={story}/>
-            <Credits credits={story.credits} story={story}/>
-          </Container>
-      </Box>
-      </Box>
-    ) : '';
+        </Box>
+        </Box>
+      }
+
+      </>
+    )
   }
 }
 export default injectIntl(Story);

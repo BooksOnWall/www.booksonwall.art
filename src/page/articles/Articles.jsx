@@ -11,6 +11,8 @@ import {
     Box,
     Button,
     Grid,
+    Backdrop,
+    CircularProgress,
     makeStyles
   } from '@material-ui/core';
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -28,7 +30,7 @@ const apiURL = process.env.REACT_APP_API;
 const replaceAll = (string, search, replace) =>  {
   return string.split(search).join(replace);
 }
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 600,
     minWidth: 180,
@@ -53,8 +55,12 @@ const useStyles = makeStyles({
     '&:hover': {
       background: 'transparent'
     }
-  }
-});
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#99FF44',
+  },
+}));
 const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
   const classes = useStyles();
   if(articles) console.log(articles[0]);
@@ -110,6 +116,7 @@ class Articles extends Component {
       lang: this.props.intl.locale,
       articles: null,
       categories: null,
+      loading: false,
       locale: this.props.intl.locale,
       selected: [],
     }
@@ -186,7 +193,7 @@ class Articles extends Component {
     }
   }
   render() {
-    const {articles, categories, selected, insert} = this.state;
+    const {articles, categories, selected, insert, loading} = this.state;
     const {messages} = this.props.intl;
     // date: '22 dec 2017',
     // title: 'BooksOnWall has started !',
@@ -197,16 +204,24 @@ class Articles extends Component {
     // images: [],
     return (
         <>
-          <ScrollToTop insert={insert}/>
-          <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
-            <Categories selected={selected} categories={categories} messages={messages} selectCategory={this.selectCategory}/>
-          </Box>
-          <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 20px 40px'}}>
-          <Grid container spacing={3}>
-            <News hasCategory={this.hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={this.goToArticle}/>
-          </Grid>
-          </Box>
-          {insert && <Button style={{float: 'right'}} onClick={()=> this.props.history.push('/'+messages.menu.articles)}>See more</Button>}
+          <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+          {articles &&
+            <>
+            <ScrollToTop insert={insert}/>
+            <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
+              <Categories selected={selected} categories={categories} messages={messages} selectCategory={this.selectCategory}/>
+            </Box>
+            <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 20px 40px'}}>
+            <Grid container spacing={3}>
+              <News hasCategory={this.hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={this.goToArticle}/>
+            </Grid>
+            </Box>
+            {insert && <Button style={{float: 'right'}} onClick={()=> this.props.history.push('/'+messages.menu.articles)}>See more</Button>}
+            </>
+          }
+
         </>
     )
   }

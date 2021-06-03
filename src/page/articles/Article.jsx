@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import {
-    Box
+    Box,
+    Backdrop,
+    CircularProgress,
   } from '@material-ui/core';
 
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -42,6 +44,7 @@ class Article extends Component {
     this.state = {
       name: name,
       article: null,
+      loading: false,
       apiURL: apiURL,
       locale: locale,
     }
@@ -79,27 +82,33 @@ class Article extends Component {
     await this.loadArticle();
   }
   render() {
-    const {article, apiURL} = this.state;
+    const {article, apiURL, loading} = this.state;
     const {messages} = this.props.intl;
     const images = (article) ? article.images : null;
-    return (article) ? (
-
-      <Box className="main" >
-      <ScrollIntoViewIfNeeded active={true}>
-      {(article.header_image) ? <Image src={apiURL + article.header_image.formats.medium.url}  /> : ''}
-      </ScrollIntoViewIfNeeded>
-      <h5>{article.title}</h5>
-        <Box>{article.updated_at}</Box>
-        <Categories messages={messages} categories={article.categories}/>
-        <Box placeholder>
-            <ReactMarkdown children={article.header} />
+    return (
+      <>
+      <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      {article &&
+        <Box className="main" >
+          <ScrollIntoViewIfNeeded active={true}>
+          {(article.header_image) ? <Image src={apiURL + article.header_image.formats.medium.url}  /> : ''}
+          </ScrollIntoViewIfNeeded>
+          <h5>{article.title}</h5>
+          <Box>{article.updated_at}</Box>
+          <Categories messages={messages} categories={article.categories}/>
+          <Box placeholder>
+              <ReactMarkdown children={article.header} />
+          </Box>
+          <ImgGallery images={images} apiURL={apiURL}/>
+          <Box placeholder>
+            <ReactMarkdown children={article.content} />
+          </Box>
         </Box>
-        <ImgGallery images={images} apiURL={apiURL}/>
-        <Box placeholder>
-          <ReactMarkdown children={article.content} />
-        </Box>
-      </Box>
-    ) : null
+      }
+    </>
+    )
   }
 }
 export default injectIntl(Article);

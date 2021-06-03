@@ -7,6 +7,7 @@ import {
     Card,
     CardMedia,
     CardContent,
+    Backdrop,
     Breadcrumbs,
     makeStyles
   } from '@material-ui/core';
@@ -14,6 +15,7 @@ import {
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const apiURL = process.env.REACT_APP_API;
 
@@ -86,10 +88,12 @@ const Members = ({ style, members, selected, hasSkill,goToMember, apiURL}) => {
 
 
 class Community extends Component {
+
   constructor(props) {
     super(props)
-    this.state = { apiURL: apiURL, skills: null , selected: [], members: null, locale: this.props.intl.locale }
+    this.state = { loading: false, insert: this.props.insert ,apiURL: apiURL, skills: null , selected: [], members: null, locale: this.props.intl.locale }
   }
+
   componentDidMount = async () => {
     // update authenticated state on logout
     await this.loadMembers();
@@ -162,25 +166,34 @@ class Community extends Component {
     });
   }
   render() {
-    const {skills, selected, members, apiURL} = this.state;
+    const {skills, selected, members, apiURL, insert, loading} = this.state;
     const {messages} = this.props.intl;
-    return (members && members.length > 0) ? (
+    return (
+      <>
+      <Backdrop styles={{zIndex: 1003, color: '#99FF44'}} open={loading} >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Box className="main" >
-        <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
-        <CommunityMap members={members} selected={selected} hasSkill={this.hasSkill} history={this.props.history}/>
-        <Typography variant="h2" color="primary" component="h2" style={{textTransform:'uppercase'}} >{messages.menu.community}</Typography>
-        <Skills skills={skills} select={this.select} isSelected={this.isSelected} selected={selected}/>
-        <Box style={{
-            display: 'flex',
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            alignContent : 'space-between',
-            justifyContent: 'center'
-             }}>
-           <Members  selected={selected} members={members} hasSkill={this.hasSkill} goToMember={this.goToMember} apiURL={apiURL}/>
-        </Box>
+        <ScrollIntoViewIfNeeded active={(!insert)}></ScrollIntoViewIfNeeded>
+        {members &&
+          <>
+          <CommunityMap members={members} selected={selected} hasSkill={this.hasSkill} history={this.props.history}/>
+          <Typography variant="h2" color="primary" component="h2" style={{textTransform:'uppercase'}} >{messages.menu.community}</Typography>
+          <Skills skills={skills} select={this.select} isSelected={this.isSelected} selected={selected}/>
+          <Box style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              alignContent : 'space-between',
+              justifyContent: 'center'
+               }}>
+             <Members  selected={selected} members={members} hasSkill={this.hasSkill} goToMember={this.goToMember} apiURL={apiURL}/>
+          </Box>
+          </>
+        }
       </Box>
-  ) : '';
+      </>
+    )
   }
 };
 

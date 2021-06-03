@@ -1,14 +1,29 @@
 import React, {useState, useEffect} from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
-import {  Box, Container } from '@material-ui/core';
+import {  Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
 import { injectIntl } from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: '100vw',
+  },
+  media: {
+    height: 140,
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#99FF44',
+  },
+}));
+
 const Terms = (props) => {
+  const classes = useStyles();
   const [terms, setTerms] = useState();
+  const [loading, setLoading] = useState(false);
   const {messages, locale} = props.intl;
   useEffect(() => {
     const fetchURL = apiURL + '/uniques?type=terms&lang=' + locale;
@@ -42,15 +57,24 @@ const Terms = (props) => {
   }, [locale]);
 
   return (
-    <Box>
-      <ScrollIntoViewIfNeeded active={true}>
-      {terms && terms.image_header && <Image aspectRatio={5/1} src={apiURL + terms.image_header.formats.medium.url} />}
-      </ScrollIntoViewIfNeeded>
-      <Container>
-      {terms && <h1>{terms.title}</h1>}
-      {terms && terms.header && <ReactMarkdown children={terms.header} />}
-      </Container>
-    </Box>
+    <>
+    <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
+    <Backdrop className={classes.backdrop} open={loading} >
+      <CircularProgress color="inherit" />
+    </Backdrop>
+    {terms &&
+      <>
+      <Box>
+        {terms && terms.image_header && <Image aspectRatio={5/1} src={apiURL + terms.image_header.formats.medium.url} />}
+        <Container>
+        {terms && <h1>{terms.title}</h1>}
+        {terms && terms.header && <ReactMarkdown children={terms.header} />}
+        </Container>
+      </Box>
+      </>
+    }
+
+    </>
   )
 }
 export default injectIntl(Terms);
