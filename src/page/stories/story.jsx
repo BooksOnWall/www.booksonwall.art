@@ -100,7 +100,6 @@ const Participants = ({participants}) =>  {
              image={apiURL+part.avatar.formats.thumbnail.url}
              title={part}
              />
-
            }
 
           <CardContent >
