@@ -92,7 +92,6 @@ const Sponsors = ({sponsors}) => {
 
 const Participants = ({participants}) =>  {
   const classes = useStyles();
-  console.log('participants', participants)
   return (participants) ? participants.map((part, i) => (
         <Card key={i} >
           {/* }<CardMedia
