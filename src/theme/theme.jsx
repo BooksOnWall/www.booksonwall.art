@@ -1,5 +1,12 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
+import "@fontsource/roboto"
+import "@fontsource/roboto-condensed"
+import "@fontsource/roboto-condensed/700.css"
+import "@fontsource/roboto-condensed/400.css"
+import "@fontsource/source-sans-pro"
+import "@fontsource/roboto-mono"
+
 let theme = createMuiTheme({
 type: 'light',
 palette: {
@@ -54,75 +61,79 @@ palette: {
   },
 },
   typography: {
-  fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',
+  fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
   fontSize: 15,
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightBold: 700,
   letterSpacing: 'normal',
   body:{
-    fontFamily: '"Roboto", Helvetica, Arial, sans-serif',
+    fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
     fontSize: "1.4rem",
     lineHeight: 1.2,
   },
   body1:{
-    fontFamily: '"Roboto", Helvetica, Arial, sans-serif',
-    fontSize: "1.3rem",
-    lineHeight: 1.2,
+    fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
+    fontSize: "1.44rem",
+    lineHeight: 1.44,
   },
   body2:{
-    fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',
+    fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
     fontSize: "1.2rem",
-    lineHeight: 1.2,
+    lineHeight: 1.35,
   },
   h1: {
     fontWeight: 700,
-    fontSize: "4.3rem",
+    fontSize: "4.44rem",
     lineHeight: .98,
-    fontFamily: '"RobotoCondensed-Bold", Helvetica, Arial, sans-serif',
+    fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
   },
   h2: {
     fontWeight: 700,
-    fontSize: "3rem",
+    fontSize: "3.8rem",
     lineHeight: 1,
-    fontFamily: '"RobotoCondensed-Bold", Helvetica, Arial, sans-serif',
+    fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
     letterSpacing: -.2
   },
   h3: {
-    fontWeight: 700,
-    fontSize: "2.33rem",
+    fontWeight: 400,
+    fontSize: "3.33rem",
     lineHeight: 1.2,
-    fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',
+    fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
     letterSpacing: -.1
   },
   h4: {
     fontWeight: 400,
-    fontSize: "2rem",
+    fontSize: "2.22rem",
     lineHeight: 1.2,
-    fontFamily: '"RobotoCondensed-regular", Helvetica, Arial, sans-serif',
+    fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
   },
   h5: {
-    fontWeight: 400,
-    fontSize: "1.8rem",
-    fontFamily: '"RobotoCondensed-Bold", Helvetica, Arial, sans-serif',
+    fontWeight: 700,
+    fontSize: "1.5rem",
+    fontFamily: '"Roboto Mono", Helvetica, Arial, sans-serif',
     lineHeight: 1.1,
+    textTransform: "uppercase",
   },
   h6: {
     fontWeight: 700,
-    fontSize: "1.1rem",
-    fontFamily: '"RobotoCondensed-Bold", Helvetica, Arial, sans-serif',
+    fontSize: "1.4rem",
+    fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
     textTransform: "uppercase",
   },
   subtitle1:{
-    fontSize: "1.5em",
-    lineHeight: 1.3,
-    fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',
+    fontSize: "1.5rem",
+    lineHeight: 1.4,
+    fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
   },
   subtitle2:{
-    fontFamily: '"RobotoCondensed-Regular", Helvetica, Arial, sans-serif',
+    fontSize: "1.3rem",
+    lineHeight: 1.33,
+    fontFamily: '"Roboto Mono", Helvetica, Arial, sans-serif',
   },
   button:{
-    fontFamily: '"RobotoCondensed-Bold", Helvetica, Arial, sans-serif',
+    fontWeight: 700,
+    fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
     textTransform: "uppercase",
     letterSpacing: "0.02877em",
   },
