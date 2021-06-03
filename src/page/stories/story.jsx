@@ -94,11 +94,14 @@ const Participants = ({participants}) =>  {
   const classes = useStyles();
   return (participants) ? participants.map((part, i) => (
         <Card key={i} >
-          {/* }<CardMedia
-            className={classes.media}
-            image={(part.avatar) ? apiURL+part.avatar.formats.thumbnail.url: null}
-            title={part}
-            /> */}
+          {part.avatar &&
+            <CardMedia
+             className={classes.media}
+             image={apiURL+part.avatar.formats.thumbnail.url}
+             title={part}
+             />
+
+           }
 
           <CardContent >
             {part.avatar &&
