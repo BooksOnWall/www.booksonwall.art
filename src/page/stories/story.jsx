@@ -92,7 +92,7 @@ const Sponsors = ({sponsors}) => {
 
 const Participants = ({participants}) =>  {
   const classes = useStyles();
-
+  console.log('participants', participants)
   return (participants) ? participants.map((part, i) => (
         <Card key={i} >
           {/* }<CardMedia
@@ -100,11 +100,12 @@ const Participants = ({participants}) =>  {
             image={(part.avatar) ? apiURL+part.avatar.formats.thumbnail.url: null}
             title={part}
             /> */}
+
+          <CardContent >
             {part.avatar &&
               <Avatar src={apiURL+part.avatar.formats.thumbnail.url} />
             }
-          <CardContent >
-            {part}
+            {(part.name) ? part.name : ''}
           </CardContent>
         </Card>
       )) : '' ;
@@ -164,7 +165,7 @@ class Story extends Component {
     .then(data => {
         if(data) {
           console.log(data);
-          this.setState({loading: false, story: data});
+          this.setState({loading: false, story: data[0]});
         } else {
           console.log('No Data received from the server');
         }
@@ -179,7 +180,6 @@ class Story extends Component {
   }
   render() {
     const {story, apiURL} = this.state;
-    console.log(story);
     return (story) ?  (
       <Box className="main">
       <Box className="story">
