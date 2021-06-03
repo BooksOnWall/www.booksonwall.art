@@ -7,6 +7,12 @@ import {
 import { IntlProvider } from "react-intl";
 import loadable from '@loadable/component';
 
+import "@fontsource/roboto"; // Defaults to weight 400.
+import "@fontsource/roboto-condensed"
+import "@fontsource/roboto-condensed/700.css"
+import "@fontsource/roboto-condensed/400.css"
+import "@fontsource/source-sans-pro"
+
 import 'react-toastify/dist/ReactToastify.css';
 
 import intlMessages_en from './i18n/locales/en.json';

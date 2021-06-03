@@ -1272,6 +1272,26 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/roboto-condensed@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto-condensed/-/roboto-condensed-4.4.2.tgz#8bb6a695f658b98b7b004557ccf44ac183a5a851"
+  integrity sha512-RRK8LBCMSm2giM2sWPBwmM9iK73Q4XfbR9nyHbzuX4FFc1eiOybylL8Q0/9BRowHWygJJKfwDDUAtDVj7BefSQ==
+
+"@fontsource/roboto-mono@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto-mono/-/roboto-mono-4.4.2.tgz#f6d60edda979469f87e825f768774eb4cb968edd"
+  integrity sha512-9BVfHVAxSw6jo3CA3o3JODC5okG7Lx3w1qMoMelvm4QA3YUi3QkDKuRBTjNdYSvsJUiuwrCcbYETIFsdBMVC7A==
+
+"@fontsource/roboto@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.4.2.tgz#538425f02a13baf545eb26de5f104f6697e19542"
+  integrity sha512-sLuV0jwNirm+3QigxDHZC3GQAJks717AHKl2tEHSYfkQh82gc7t3naaELs+Jgz8CpuEfcC7VKlWaCFWm7Qe82w==
+
+"@fontsource/source-sans-pro@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/source-sans-pro/-/source-sans-pro-4.4.2.tgz#3fc42b2512c12f2e305a807804f8e194f205ea33"
+  integrity sha512-tvC3so7mWEoNeIxJbcGOpc5Gdhr30Fip056mRBmBO/F96AfleP8CjLiKRRjoMpzq9XExUB9TDKF8ayCbdsFYFw==
+
 "@formatjs/ecma402-abstract@1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.4.0.tgz#ac6c17a8fffac43c6d68c849a7b732626d32654c"
