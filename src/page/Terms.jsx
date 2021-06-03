@@ -1,10 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
-<<<<<<< Updated upstream
-import {  Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
-=======
-import {  Box, Container, Typography } from '@material-ui/core';
->>>>>>> Stashed changes
+import { Typography,  Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
 import { injectIntl } from 'react-intl';
@@ -62,26 +58,12 @@ const Terms = (props) => {
   }, [locale]);
 
   return (
-<<<<<<< Updated upstream
     <>
-    <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
-    <Backdrop className={classes.backdrop} open={loading} >
-      <CircularProgress color="inherit" />
-    </Backdrop>
-    {terms &&
-      <>
-      <Box>
-        {terms && terms.image_header && <Image aspectRatio={5/1} src={apiURL + terms.image_header.formats.medium.url} />}
-        <Container>
-        {terms && <h1>{terms.title}</h1>}
-        {terms && terms.header && <ReactMarkdown children={terms.header} />}
-        </Container>
-      </Box>
-      </>
-    }
-
-    </>
-=======
+  <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
+  <Backdrop className={classes.backdrop} open={loading} >
+    <CircularProgress color="inherit" />
+  </Backdrop>
+  {terms &&
     <Box>
       <ScrollIntoViewIfNeeded active={true}>
       {terms && terms.image_header && <Image aspectRatio={5/1} src={apiURL + terms.image_header.formats.medium.url} />}
@@ -138,7 +120,8 @@ const Terms = (props) => {
 
       </Container>
     </Box>
->>>>>>> Stashed changes
+  }
+  </>
   )
 }
 export default injectIntl(Terms);
