@@ -33,7 +33,7 @@ const Members = ({lines, members, selected, centerMap, goToMember}) => {
           latitude={parseFloat(member.geometry.coordinates[1])}
           >
           {(member.avatar) ? <Avatar onClick={() => goToMember(member.name)} src={apiURL + member.avatar.formats.thumbnail.url} size="small" /> : ''}
-          <Badge color="primary">{member.name}</Badge>
+          <Badge>{member.name}</Badge>
         </Marker>
 
       ): ''});
@@ -53,11 +53,9 @@ export default class CommunityMap extends Component {
     let viewport = {
       latitude:   center.geometry.coordinates[1],
       longitude: center.geometry.coordinates[0],
-      zoom: 1.92,
-      altitude: 1.5,
-
-      bearing:  -1.4082113938641867, // bearing in degrees
-      pitch: 58  // pitch in degrees
+      zoom: 1.5,
+      bearing:  0, // bearing in degrees
+      pitch: 0  // pitch in degrees
     };
 
     this.state = { mapStyle: (theme) ? 'mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8' : 'mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8',lines: lines, members: members, selected: selected, viewport: viewport }
@@ -118,7 +116,7 @@ export default class CommunityMap extends Component {
       <StaticMap
         {...viewport}
         width="inherit"
-        height="42vh"
+        height="45vh"
         className= "mapBox"
         fitBounds={lines}
         mapStyle={mapStyle}

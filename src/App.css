@@ -31,7 +31,7 @@ body{
 .bg2 svg{ top: 110vh; max-width: 45vw; opacity: .08;}
 .bg3 svg{ right: 0px;   top: 105vh;}
 .map{width: 100vw}
-.mapBox{ }
+.mapBox{ padding: 0}
 
 .storytellingMap {
     top:0;

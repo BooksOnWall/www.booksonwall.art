@@ -177,7 +177,7 @@ class Community extends Component {
         {members &&
           <>
           <CommunityMap members={members} selected={selected} hasSkill={this.hasSkill} history={this.props.history}/>
-          <Typography variant="h2" color="primary" component="h2" style={{textTransform:'uppercase'}} >{messages.menu.community}</Typography>
+          <Typography variant="h2" align="center" color="primary" component="h2" style={{textTransform:'uppercase'}} >{messages.menu.community}</Typography>
           <Skills skills={skills} select={this.select} isSelected={this.isSelected} selected={selected}/>
           <Box style={{
               display: 'flex',
