@@ -114,7 +114,7 @@ const Explore = (props) => {
           <ExploreHeader  id={messages.menu.download_app} messages={messages} />
         </ScrollIntoViewIfNeeded>
         <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.stories)}>
-          <Stories  id={messages.menu.stories} history={props.history} />
+          <Stories  id={messages.menu.stories} history={props.history} insert limit={10}/>
         </ScrollIntoViewIfNeeded>
         <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.faqs)}>
           <Faqs  id={messages.menu.faqs} messages={messages} />

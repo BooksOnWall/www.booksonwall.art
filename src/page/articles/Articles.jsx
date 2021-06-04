@@ -95,10 +95,13 @@ const ScrollToTop = ({insert}) => {
     <ScrollIntoViewIfNeeded active={!insert}></ScrollIntoViewIfNeeded>
   )
 }
-const ArticleList = ({messages, history, articles, categories, selected, insert, goToArticle,hasCategory,selectCategory }) => {
+const ArticleList = ({loading, messages, history, articles, categories, selected, insert, goToArticle,hasCategory,selectCategory }) => {
   const classes = useStyles();
   return (
     <>
+    <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
+      <CircularProgress color="inherit" />
+    </Backdrop>
     {articles &&
       <>
       <ScrollToTop insert={insert}/>
@@ -215,11 +218,10 @@ class Articles extends Component {
     // author: 'Tom Bouillut',
     // images: [],
     return (
-        <Box className="articles">
-          <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
-            <CircularProgress color="inherit" />
-          </Backdrop>
+        <>
+
           <ArticleList
+            loading={loading}
             articles={articles}
             messages={messages}
             history={this.props.history}
@@ -230,7 +232,7 @@ class Articles extends Component {
             hasCategory={this.hasCategory}
             selectCategory={this.selectCategory}
           />
-        </Box>
+        </>
     )
   }
 }
