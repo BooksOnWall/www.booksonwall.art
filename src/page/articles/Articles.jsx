@@ -92,9 +92,29 @@ const Categories = ({messages, categories, selectCategory, selected}) => {
 };
 const ScrollToTop = ({insert}) => {
   return (
-    <ScrollIntoViewIfNeeded active={!insert}>
-    </ScrollIntoViewIfNeeded>
+    <ScrollIntoViewIfNeeded active={!insert}></ScrollIntoViewIfNeeded>
   )
+}
+const ArticleList = ({messages, history, articles, categories, selected, insert, goToArticle,hasCategory,selectCategory }) => {
+  const classes = useStyles();
+  return (
+    <>
+    {articles &&
+      <>
+      <ScrollToTop insert={insert}/>
+      <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
+        <Categories selected={selected} categories={categories} messages={messages} selectCategory={selectCategory}/>
+      </Box>
+      <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 20px 40px'}}>
+      <Grid container spacing={3}>
+        <News hasCategory={hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={goToArticle}/>
+      </Grid>
+      </Box>
+      {insert && <Button style={{float: 'right'}} onClick={()=> history.push('/'+messages.menu.articles)}>See more</Button>}
+      </>
+    }
+    </>
+  );
 }
 class Articles extends Component {
   constructor(props) {
@@ -199,20 +219,18 @@ class Articles extends Component {
           <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
             <CircularProgress color="inherit" />
           </Backdrop>
-          {articles &&
-            <>
-            <ScrollToTop insert={insert}/>
-            <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
-              <Categories selected={selected} categories={categories} messages={messages} selectCategory={this.selectCategory}/>
-            </Box>
-            <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 20px 40px'}}>
-            <Grid container spacing={3}>
-              <News hasCategory={this.hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={this.goToArticle}/>
-            </Grid>
-            </Box>
-            {insert && <Button style={{float: 'right'}} onClick={()=> this.props.history.push('/'+messages.menu.articles)}>See more</Button>}
-            </>
-          }
+          <ArticleList
+            articles={articles}
+            messages={messages}
+            history={this.props.history}
+            categories={categories}
+            selected={selected}
+            insert={insert}
+            goToArticle={this.goToArticle}
+            hasCategory={this.hasCategory}
+            selectCategory={this.selectCategory}
+          />
+
 
         </>
     )
