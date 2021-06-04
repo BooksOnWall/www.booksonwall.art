@@ -58,7 +58,7 @@ const Support = (props) => {
     }
     getSupport();
   }, [locale]);
-
+console.log('support',support);
   return (
     <>
     <Backdrop className={classes.backdrop} open={loading} >

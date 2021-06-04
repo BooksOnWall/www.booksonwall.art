@@ -282,6 +282,7 @@ const HomeHeaderBlock = ({messages, theme}) => {
   const classes = useStyles();
   let history = useHistory();
   return (
+    <>
   <div className={classes.root}>
     <Box id="HomeHeaderBlock" className={classes.homeHader}>
       <Container maxWidth='xs' className={classes.tileHead}>
@@ -324,12 +325,14 @@ const HomeHeaderBlock = ({messages, theme}) => {
       </Box>
       </Container>
     </div>
+    </>
 )};
 
 const WhoAreWe = ({messages}) => {
   const classes = useStyles();
   let history = useHistory();
 return (
+  <>
   <div className={classes.root}>
   <Box  className={classes.poligon}>
       <Svg1 className={classes.poligons2} />  <Svg2 className={classes.poligons}  /> <Svg3 className={classes.poligons2}  /> <Svg4 className={classes.poligons}  />   <Svg5 className={classes.poligons2}  /> <Svg6 className={classes.poligons}  />
@@ -362,6 +365,7 @@ return (
       </Box>
       </Container>
     </div>
+    </>
 )};
 const PlaceholderBlock = ({messages}) => {
   const classes = useStyles();
@@ -472,7 +476,7 @@ const HomePage = (props) => {
         <WhoAreWe messages={messages} />
       </ScrollIntoViewIfNeeded>
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.articles)}>
-        <Box> <Articles messages={messages} history={props.history} limit={4} insert/> </Box>
+        <Box> <Articles messages={messages} history={props.history} limit={3} insert/> </Box>
       </ScrollIntoViewIfNeeded>
         <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.block)}>
         <Box style={{padding:' 80px 40px'}}> <PlaceholderBlock messages={messages} /> </Box>

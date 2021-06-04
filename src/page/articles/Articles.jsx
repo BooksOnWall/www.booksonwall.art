@@ -14,23 +14,20 @@ import {
     CircularProgress,
     makeStyles
   } from '@material-ui/core';
+import Carousel from 'react-material-ui-carousel'
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import { injectIntl} from 'react-intl';
-
-
-
 const apiURL = process.env.REACT_APP_API;
 
-
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 800,
-    minWidth: 180,
+  card: {
+    maxWidth: 400,
+    minWidth: 320,
     background: 'transparent',
     borderRadius: 10,
   },
   media: {
-    height: 340,
+    height: 300,
     borderRadius: 10,
   },
   CardContent: {
@@ -53,12 +50,22 @@ const useStyles = makeStyles((theme) => ({
     color: '#99FF44',
   },
 }));
-const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
+const News = ({messages, insert, articles, goToArticle, selected , hasCategory }) => {
   const classes = useStyles();
+
   if(articles) console.log(articles[0]);
-  return  (articles) ? articles.map((article, i) => (
-    <Grid item xs>
-    <Card className={classes.root} elevation={0} key={'article'+i}>
+
+  return  (
+    <>
+    {insert &&
+      <Carousel className="carou"
+      autoPlay={false}
+      >
+    <Grid container spacing={0} className="BannerGrid">
+
+    {articles.map((article, i) => (
+    <Grid item xs={12/3} key={'gg'+i}>
+    <Card className={classes.card} elevation={0} key={'article'+i}>
     <CardActionArea className={classes.CardActionArea}>
        <CardMedia
          onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
@@ -81,7 +88,43 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
     </Card>
     </Grid>
 
-  )) : '';
+  ))}
+ </Grid>
+  </Carousel>
+
+  }
+  {!insert &&
+    <>
+    {articles.map((article, i) => (
+    <Grid item xs>
+    <Card className={classes.card} elevation={0} key={'article'+i}>
+    <CardActionArea className={classes.CardActionArea}>
+       <CardMedia
+         onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
+         className={classes.media}
+         image={apiURL + article.header_image.formats.medium.url}
+         title={article.title}
+       />
+       <CardContent className={classes.CardContent} >
+         <Typography gutterBottom variant="h3" component="h3">
+           {article.title}
+         </Typography>
+         <Typography variant="body2" color="textSecondary" component="p">
+           {article.article_header}
+         </Typography>
+       </CardContent>
+     </CardActionArea>
+     <CardActions className={classes.CardActions}>
+      <Button variant='outlined' color="primary" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
+     </CardActions>
+    </Card>
+    </Grid>
+
+  ))}
+  </>
+  }
+  </>
+  )
 };
 const Categories = ({messages, categories, selectCategory, selected}) => {
   return (
@@ -102,19 +145,26 @@ const ArticleList = ({loading, messages, history, articles, categories, selected
     <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
       <CircularProgress color="inherit" />
     </Backdrop>
-    {articles &&
-      <>
+
+    {articles && !insert &&
+      <Box className={classes.articles}>
+
       <ScrollToTop insert={insert}/>
       {!insert && <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
         <Categories selected={selected} categories={categories} messages={messages} selectCategory={selectCategory}/>
       </Box>}
       <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 20px 40px'}}>
         <Grid container spacing={3}>
+
           <News hasCategory={hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={goToArticle}/>
+
         </Grid>
       </Box>
-      {insert && <Button style={{float: 'right'}} onClick={()=> history.push('/'+messages.menu.articles)}>See more</Button>}
-      </>
+      {insert && <Button onClick={()=> history.push('/'+messages.menu.articles)}>See more</Button>}
+      </Box>
+    }
+    {articles && insert &&
+        <News hasCategory={hasCategory} insert={insert} selected={selected} articles={articles} messages={messages} goToArticle={goToArticle}/>
     }
     </>
   );
@@ -122,8 +172,6 @@ const ArticleList = ({loading, messages, history, articles, categories, selected
 class Articles extends Component {
   constructor(props) {
     super(props)
-
-
     this.state = {
       apiURL: apiURL,
       insert: this.props.insert,
@@ -219,7 +267,6 @@ class Articles extends Component {
     // images: [],
     return (
         <>
-
           <ArticleList
             loading={loading}
             articles={articles}

@@ -31,7 +31,7 @@ body{
 .bg2 svg{ top: 110vh; max-width: 45vw; opacity: .08;}
 .bg3 svg{ right: 0px;   top: 105vh;}
 .map{width: 100vw}
-.mapBox{ padding: 0}
+.mapBox{ }
 
 .storytellingMap {
     top:0;
@@ -695,3 +695,117 @@ div.public-DraftEditor-content {
 
 .footerBg {position: relative}
 .footerBg svg{}
+
+
+
+      .BannerGrid{
+          height: 100%;
+          position: relative;
+      }
+      .Banner{
+          height: 400px;
+          position: relative;
+        }
+      .carou{ width: 100vw}
+
+
+
+
+
+
+.Banner
+{
+height: 400px;
+position: relative;
+}
+.Media
+{
+background-color: white;
+height: 100%;
+overflow: hidden;
+
+position: relative;
+}
+.MediaCaption
+{
+text-overflow: ellipsis;
+
+position: absolute;
+bottom: 0;
+
+padding: 15px;
+
+background-color: black;
+color: white;
+opacity: 0.6;
+
+width: 100%;
+height: 10%;
+
+font-size: 20px;
+font-weight: 200;
+
+transition: 300ms;
+cursor: pointer;
+}
+.MediaCaption:hover
+{
+opacity: 0.8;
+}
+
+
+.BannerGrid
+{
+height: 100%;
+position: relative;
+}
+
+.Content
+{
+color: white;
+background-color: $dark-red;
+height: 100%;
+
+position: relative;
+
+cursor: pointer;
+
+padding: 30px;
+
+transition: 300ms;
+}
+.Content:hover, .Content:active
+{
+background-color: $dark-red-active;
+}
+
+.ViewButton
+{
+background-color: $almost-white;
+color: $dark-red
+}
+
+
+.Title
+{
+font-size: $huge-font-size;
+font-weight: 500;
+}
+
+.Caption
+{
+margin-top: 10px;
+font-size: $bigger-font-size;
+}
+
+.ViewButton
+{
+margin-top: 40px;
+color: white;
+
+font-size: $header-font-size;
+border: 3px solid white;
+text-transform: capitalize;
+
+transition: 200ms;
+}
