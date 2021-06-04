@@ -1,30 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1864px" height="1160px" viewBox="0 0 1864 1160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Rectangle 2</title>
-    <defs>
-        <rect id="Rectangle 2--path-1" x="-1.66681017e-13" y="0" width="1861.66526" height="1158"></rect>
-    </defs>
-    <g id="Rectangle 2--simbolos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Rectangle 2--Group" transform="translate(1.000000, 1.000000)">
-            <g id="Rectangle 2--path6-+-Mask4-+-path4-+-Mask6-Mask">
-                <mask id="Rectangle 2--mask-2" fill="white">
-                    <use xlink:href="#Rectangle 2--path-1"></use>
-                </mask>
-                <use id="Rectangle 2--Mask" fill="#AB514E" xlink:href="#Rectangle 2--path-1"></use>
-                <g id="Rectangle 2--Group" mask="url(#Rectangle 2--mask-2)">
-                    <g transform="translate(-227.251969, -90.881013)" id="Rectangle 2--path6">
-                        <path d="M1292.74132,1119.6891 C966.346402,1251.80858 561.780555,1329.1291 137.366136,1392.53165 C32.7693869,1031.73282 5.66316586,550.791091 -5.65433297e-13,36.6291935 C343.191975,-6.40967555 703.373447,-9.53825146 1076.14584,16.9010083 C1190.04833,353.264819 1258.2125,723.882346 1292.74132,1119.6891 Z" id="Rectangle 2--Mask4" fill="#E0A103"></path>
-                    </g>
-                </g>
-                <path d="M1401.2358,347.200492 C1074.84089,479.319973 670.275043,556.640492 245.860624,620.043038 C141.263875,259.244211 114.157654,-221.697517 108.494488,-735.859414 C451.686463,-778.898283 811.867935,-782.026859 1184.64033,-755.587599 C1298.54281,-419.223788 1366.70699,-48.6062615 1401.2358,347.200492 Z" id="Rectangle 2--Mask4" stroke="#FFFFFF" fill-opacity="0" fill="#FFFFFF" opacity="0.699242001" mask="url(#Rectangle 2--mask-2)"></path>
-                <g id="Rectangle 2--Group" mask="url(#Rectangle 2--mask-2)">
-                    <g transform="translate(1127.462992, -61.564557)" id="Rectangle 2--path4">
-                        <path d="M8.36996689,1258.35248 C-25.1424051,1091.19759 50.5774414,496.719352 84.0898134,172.02775 L357.322637,0 C622.173664,68.3539478 1118.01068,295.522174 1482.63371,550.504125 C1519.32522,658.453058 1548.55984,781.683584 1548.55984,929.414729 C1473.56248,1041.86333 944.194868,1363.21519 733.915399,1363.21519 L8.36996689,1258.35248 Z" id="Rectangle 2--Mask6" fill="#893E4E"></path>
-                    </g>
-                </g>
-                <path d="M1486.24083,1337.50691 C1452.72846,1170.35202 1528.44831,575.873782 1561.96068,251.18218 L1835.1935,79.1544304 C2100.04453,147.508378 2595.88155,374.676604 2960.50458,629.658555 C2997.19609,737.607489 3026.43071,860.838014 3026.43071,1008.56916 C2951.43335,1121.01776 2422.06573,1442.36962 2211.78627,1442.36962 L1486.24083,1337.50691 Z" id="Rectangle 2--Mask6" stroke-opacity="0.477873689" stroke="#FFFFFF" mask="url(#Rectangle 2--mask-2)"></path>
-            </g>
-            <rect id="Rectangle 2--Rectangle" stroke="#979797" x="0" y="0" width="1861.66526" height="1158"></rect>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1864 1160" style="enable-background:new 0 0 1864 1160;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#AB514E;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#E0A103;}
+	
+		.st2{opacity:0.6992;fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;fill-opacity:0;stroke:#FFFFFF;stroke-width:1.0368;enable-background:new    ;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#893E4E;}
+	.st4{fill:none;stroke:#FFFFFF;stroke-width:1.0368;stroke-opacity:0.4779;}
+</style>
+<g id="Rectangle_2--simbolos">
+	<g id="Rectangle_2--Group_2_" transform="translate(1.000000, 1.000000)">
+		<g id="Rectangle_2--path6-_x2B_-Mask4-_x2B_-path4-_x2B_-Mask6-Mask">
+			<g id="Rectangle_2--Mask">
+				<rect id="Rectangle_2--path-1_1_" x="-51.5" y="-12.3" class="st0" width="1930.2" height="1200.6"/>
+			</g>
+			<g id="Rectangle_2--Group">
+				<g id="Rectangle_2--path6" transform="translate(-227.251969, -90.881013)">
+					<path id="Rectangle_2--Mask4" class="st1" d="M1280.4,1145.2c-338.4,137-757.9,217.1-1197.9,282.8
+						C-25.9,1054-54,555.4-59.9,22.3C295.9-22.3,669.4-25.6,1055.8,1.8C1173.9,350.6,1244.6,734.9,1280.4,1145.2z"/>
+				</g>
+			</g>
+			<path id="Rectangle_2--Mask4_1_" class="st2" d="M1401.3,347.7c-338.4,137-757.8,217.1-1197.8,282.8
+				C95,256.4,66.9-242.2,61-775.3c355.8-44.6,729.3-47.9,1115.7-20.4C1294.8-447,1365.5-62.7,1401.3,347.7z"/>
+			<g id="Rectangle_2--Group_1_">
+				<g id="Rectangle_2--path4" transform="translate(1127.462992, -61.564557)">
+					<path id="Rectangle_2--Mask6" class="st3" d="M-1.3,1290.1C-36,1116.8,42.4,500.4,77.2,163.7L360.4-14.6
+						c274.7,70.9,788.7,306.4,1166.7,570.8c38.1,111.9,68.3,239.7,68.3,392.9c-77.8,116.5-626.7,449.8-844.6,449.8L-1.3,1290.1z"/>
+				</g>
+			</g>
+			<path id="Rectangle_2--Mask6_1_" class="st4" d="M1489.4,1374.4c-34.7-173.4,43.8-789.6,78.5-1126.3l283.3-178.3
+				c274.7,70.9,788.7,306.4,1166.7,570.8c38.1,111.9,68.3,239.7,68.3,392.9c-77.8,116.5-626.7,449.8-844.6,449.8L1489.4,1374.4z"/>
+		</g>
+	</g>
+</g>
 </svg>

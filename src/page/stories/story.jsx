@@ -36,7 +36,11 @@ const useStyles = makeStyles({
     alignContent: 'center',
     padding: '20px 60px',
   },
-  body:{
+  bodyMarkdown:{
+    fontSize: '1.33rem',
+    lineHeight: '1.66rem',
+    '& li':{
+    }
   }
 });
 const StoryHeader = ({story, md}) => {
@@ -69,7 +73,7 @@ const StoryGallery = ({gallery, apiURL}) => {
 const StoryBody = ({story}) => {
 const classes = useStyles();
 return (
-  <Box   className={classes.body}><ReactMarkdown children={story.story_content} /></Box>
+  <Box  ><ReactMarkdown className={classes.bodyMarkdown} children={story.story_content} /></Box>
 )
 };
 

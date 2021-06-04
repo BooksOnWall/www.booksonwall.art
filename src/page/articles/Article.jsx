@@ -4,6 +4,9 @@ import {
     Box,
     Backdrop,
     CircularProgress,
+    Typography,
+    Container,
+    makeStyles
   } from '@material-ui/core';
 
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -15,6 +18,18 @@ import ImageGallery from 'react-image-gallery';
 
 import { injectIntl } from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
+
+const useStyles = makeStyles((theme) => ({
+  category:{
+    color: '#fff',
+    padding: '3px 8px',
+    margin: 5,
+    background:theme.palette.secondary.main,
+    "&:hover":{
+      background:theme.palette.secondary.dark,
+    }
+  }
+}));
 
 const ImgGallery = ({images, apiURL, setImages}) => {
   let set = [];
@@ -32,8 +47,8 @@ const ImgGallery = ({images, apiURL, setImages}) => {
   return (set.length === 0) ? '' : <ImageGallery items={set} setImages={setImages}/> ;
 };
 const Categories = ({messages, categories}) => {
-  return categories.map((cat,i) => <ToggleButton key={'cat'+i}>{cat}</ToggleButton>)
-
+  const classes = useStyles();
+  return categories.map((cat,i) => <ToggleButton  className={classes.category} key={'cat'+i}>{cat}</ToggleButton>)
 }
 class Article extends Component {
   constructor(props) {
@@ -93,17 +108,21 @@ class Article extends Component {
       {article &&
         <Box className="main" >
           <ScrollIntoViewIfNeeded active={true}>
-          {(article.header_image) ? <Image src={apiURL + article.header_image.formats.large.url}  /> : ''}
+          {(article.header_image) ? <Image aspectRatio={2/1} src={apiURL + article.header_image.formats.large.url}  /> : ''}
           </ScrollIntoViewIfNeeded>
-          <h5>{article.title}</h5>
-          <Box>{article.updated_at}</Box>
-          <Categories messages={messages} categories={article.categories}/>
+          <Box>
+              <Typography variant='h1' Component="h1">{article.title}</Typography>
+              <Typography variant='h6' color="primary" Component="p">{article.updated_at}</Typography>
+              <Categories messages={messages} categories={article.categories}/>
+          </Box>
+          <Box>
           <Box placeholder>
               <ReactMarkdown children={article.header} />
           </Box>
           <ImgGallery images={images} apiURL={apiURL}/>
           <Box placeholder>
             <ReactMarkdown children={article.content} />
+          </Box>
           </Box>
         </Box>
       }

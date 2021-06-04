@@ -126,7 +126,7 @@ bgRight:{
 paperGallery: {
   padding: theme.spacing(0),
   background: '#EEEFEC',
-  borderRadius: 8,
+  borderRadius: 0,
   overflow: 'hidden'
 },
 card:{
@@ -146,11 +146,11 @@ tile: {
   flexDirection: 'column',
   justifyContent:'center',
   color: 'white',
-  minHeight: 340,
+  minHeight: 400,
   padding: '30px',
   backgroundSize: 'cover',
-  borderRadius: 8,
-  margin: '25px 0',
+  borderRadius: 0,
+  margin: 0,
 
 },
 blob: {
@@ -420,8 +420,8 @@ const PlaceholderBlock = ({messages}) => {
  ];
 return (
   <div>
-  <Container className={classes.placeholderBlock} maxWidth="xl" >
-          <Grid container justify="center" spacing={6}>
+  <Container className={classes.placeholderBlock} maxWidth="false" >
+          <Grid container justify="center" spacing={0}>
             {tileData.map((tile,i) => (
               <Grid key={i} item xs={6} md={3}>
                 <Paper className={classes.paperGallery} >
@@ -430,7 +430,7 @@ return (
               </Grid>
             ))}
           </Grid>
-          <Grid container justify="center" spacing={6}>
+          <Grid container justify="center" spacing={0}>
             <Grid item xs={12} md={6}>
               <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg4})` }} >
                 <Typography gutterBottom align="center" color="textSecondary" variant="h3">{messages.home.download_app}</Typography>
@@ -445,7 +445,7 @@ return (
             </Grid>
          </Grid>
 
-          <Grid container justify="center" spacing={6}>
+          <Grid container justify="center" spacing={0}>
             {tileData2.map((tile,i) => (
               <Grid key={i} item xs={6} md={3}>
                <Paper className={classes.paperGallery} >
