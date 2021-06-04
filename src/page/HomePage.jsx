@@ -433,14 +433,14 @@ return (
           <Grid container justify="center" spacing={0}>
             <Grid item xs={12} md={6}>
               <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg4})` }} >
-                <Typography gutterBottom align="center" color="textSecondary" variant="h3">{messages.home.download_app}</Typography>
-                <Button onClick={()=> history.push("/"+messages.menu.explore+"#"+messages.menu.download_app)} className={classes.button3} variant="outlined" color="primary">{messages.home.enjoy_btn}</Button>
+                <Typography gutterBottom align="center" color="textSecondary" variant="h2">{messages.home.download_app}</Typography>
+                <Button size="large" onClick={()=> history.push("/"+messages.menu.explore+"#"+messages.menu.download_app)} className={classes.button3} variant="outlined">{messages.home.enjoy_btn}</Button>
               </Paper>
             </Grid>
             <Grid item xs={12} md={6}>
              <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg5})` }} >
-               <Typography gutterBottom align="center" color="textSecondary" variant="h3">{messages.home.create_togheter}</Typography>
-               <Button onClick={() => history.push("/"+messages.menu.collaborate+"#"+messages.menu.support)} className={classes.button3}  variant="outlined" color="primary">{messages.home.support_a_story_btn}</Button>
+               <Typography gutterBottom align="center" color="textSecondary" variant="h2">{messages.home.create_togheter}</Typography>
+               <Button size="large"  onClick={() => history.push("/"+messages.menu.collaborate+"#"+messages.menu.support)} className={classes.button3}  variant="outlined">{messages.home.support_a_story_btn}</Button>
              </Paper>
             </Grid>
          </Grid>
@@ -472,13 +472,13 @@ const HomePage = (props) => {
         <WhoAreWe messages={messages} />
       </ScrollIntoViewIfNeeded>
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.articles)}>
-        <Articles messages={messages} history={props.history} limit={10} insert/>
+        <Box> <Articles messages={messages} history={props.history} limit={4} insert/> </Box>
       </ScrollIntoViewIfNeeded>
         <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.block)}>
-        <PlaceholderBlock messages={messages} />
+        <Box style={{padding:' 80px 40px'}}> <PlaceholderBlock messages={messages} /> </Box>
       </ScrollIntoViewIfNeeded>
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.stories)}>
-        <Stories messages={messages} history={props.history} limit={10} insert/>
+        <Box  style={{padding:' 80px 40px'}}><Stories messages={messages} history={props.history} limit={4} insert/> </Box>
       </ScrollIntoViewIfNeeded>
     </Box>
     </>

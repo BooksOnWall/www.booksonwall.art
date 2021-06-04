@@ -24,25 +24,25 @@ const apiURL = process.env.REACT_APP_API;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 600,
+    maxWidth: 800,
     minWidth: 180,
     background: 'transparent',
-    borderRadius: 20,
+    borderRadius: 10,
   },
   media: {
     height: 340,
-    borderRadius: 20,
+    borderRadius: 10,
   },
   CardContent: {
-    padding: '30px 40px 10px',
+    padding: '30px 20px 10px',
     background: 'transparent',
   },
   CardActions:{
-    padding: '10px 40px 20px',
+    padding: '10px 20px 20px',
     background: 'transparent'
   },
   CardActionArea:{
-    borderRadius: 20,
+    borderRadius: 10,
     background: 'transparent',
     '&:hover': {
       background: 'transparent'
@@ -67,7 +67,7 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
          title={article.title}
        />
        <CardContent className={classes.CardContent} >
-         <Typography gutterBottom variant="h4" component="h3">
+         <Typography gutterBottom variant="h3" component="h3">
            {article.title}
          </Typography>
          <Typography variant="body2" color="textSecondary" component="p">
@@ -76,7 +76,7 @@ const News = ({messages, articles, goToArticle, selected , hasCategory }) => {
        </CardContent>
      </CardActionArea>
      <CardActions className={classes.CardActions}>
-      <Button size="small" color="primary" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
+      <Button variant='outlined' color="primary" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
      </CardActions>
     </Card>
     </Grid>
@@ -195,26 +195,27 @@ class Articles extends Component {
     // author: 'Tom Bouillut',
     // images: [],
     return (
-        <>
+        <Box className="articles">
           <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
             <CircularProgress color="inherit" />
           </Backdrop>
           {articles &&
             <>
             <ScrollToTop insert={insert}/>
-            <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
+            <Typography variant="h6" component="h2">{messages.menu.articles}</Typography>
+            {!insert && <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
               <Categories selected={selected} categories={categories} messages={messages} selectCategory={this.selectCategory}/>
-            </Box>
+            </Box>}
             <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 20px 40px'}}>
             <Grid container spacing={3}>
               <News hasCategory={this.hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={this.goToArticle}/>
             </Grid>
             </Box>
-            {insert && <Button style={{float: 'right'}} onClick={()=> this.props.history.push('/'+messages.menu.articles)}>See more</Button>}
+            {insert && <Button onClick={()=> this.props.history.push('/'+messages.menu.articles)}>See more</Button>}
             </>
           }
 
-        </>
+        </Box>
     )
   }
 }

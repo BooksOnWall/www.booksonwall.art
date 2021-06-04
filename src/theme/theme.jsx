@@ -97,16 +97,17 @@ palette: {
   },
   h3: {
     fontWeight: 400,
-    fontSize: "3.33rem",
+    fontSize: "2.6rem",
     lineHeight: 1.2,
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
     letterSpacing: -.1
   },
   h4: {
-    fontWeight: 400,
-    fontSize: "2.22rem",
+    fontWeight: 700,
+    fontSize: "2rem",
     lineHeight: 1.2,
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
+    letterSpacing: 'normal',
   },
   h5: {
     fontWeight: 700,
