@@ -3,6 +3,7 @@ import {
     Box,
     Backdrop,
     CircularProgress,
+    Typography
   } from '@material-ui/core';
 
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
@@ -77,9 +78,9 @@ class Project extends Component {
       {project &&
         <Box >
             <ScrollIntoViewIfNeeded active={true}>
-              {project.header_image && <Image src={apiURL + project.header_image.formats.small.url} />}
+              {project.header_image && <Image  aspectRatio={4/2} src={apiURL + project.header_image.formats.small.url} />}
             </ScrollIntoViewIfNeeded>
-            <h5>{name}</h5>
+            <Typography variant="h1" component='h1'>{name}</Typography>
             <ReactMarkdown children={project.description} />
         </Box>
       }

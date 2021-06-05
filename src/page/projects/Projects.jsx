@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {
+    Container,
     CardContent,
     CardActionArea,
     CardMedia,
@@ -11,26 +12,110 @@ import {
     Button,
     Backdrop,
     CircularProgress,
+    Divider,
     makeStyles
   } from '@material-ui/core';
-
-import { injectIntl } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
+
+import Home from "../../assets/images/pages/home.jpg";
+
 const apiURL = process.env.REACT_APP_API;
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
+
+const useStyles = makeStyles((theme) => ({
+  card: {
+    minWidht: 600,
+    maxWidth: 2160,
+    background: 'transparent',
+  },
+  CardActionArea:{
+    display: 'flex',
+    flexDirection: 'row',
+    background: 'transparent',
+    justifyContent: 'space-between',
+    padding: '30px 50px 30px'
+
   },
   media: {
-    height: 140,
+    height: 250,
+    minWidth: 250,
+    borderRadius: 400,
   },
+  homeHader:{
+    backgroundColor: '#ccc',
+    color: 'white',
+    backgroundSize: 'cover',
+    backgroundPositionY: 'center',
+    backgroundImage: `url(${Home})`,
+    padding: 0,
+    margin: '0 0 80px 0'
+  },
+  homeHaderGradient:{
+    display: 'flex',
+    flexFlow: 'column wrap',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    background: theme.palette.primary.mainGradient,
+    minHeight: '30vh',
+    minWidth: '100vw'
+  },
+  dividerShape: {
+    left: 0,
+    width: '100%',
+    overflow: 'hidden',
+    lineHeight: 0,
+    transform: 'rotate(0deg)',
+  },
+  shapeFill: {
+   fill: '#fafafa',
+  },
+  dividerSvg: {
+    position: 'relative',
+    display: 'block',
+    width: 'calc(100% + 1.3px)',
+    height: '110px',
+  },
+  button: {
+    margin: '30px 0',
+    color: theme.palette.primary.main,
+    border: '2px #D9D2C6 solid',
+    padding: '10px 20px',
+    '&:hover': {
+        background: theme.palette.primary.main,
+        color: 'white',
+          border: '2px solid',
+          borderColor: theme.palette.primary.main,
+      }
+    },
+    tileHead:{
+      paddingBottom: 50,
+    }
+}));
+
+const projectsTraductions = defineMessages({
+  complete: {
+    id: 'projects.complete',
+    defaultMessage: "Complete"
+  },
+  started: {
+    id: 'projects.started',
+    defaultMessage: "Started"
+  },
+  project_stage: {
+    id: 'projects.project_stage',
+    defaultMessage: "Project stage"
+  },
+  read_more: {
+    id: 'projects.read_more',
+    defaultMessage: "Read more"
+  }
 });
 
-const Project = ({projects, goToProject}) => {
+const Project = ({projects, goToProject, messages}) => {
   const classes = useStyles();
   return projects.map((proj, i) => (
-    <Card className={classes.root} key={'proj'+i}>
-    <CardActionArea>
+    <Card elevation={0} className={classes.card} key={'proj'+i}>
+    <CardActionArea className={classes.CardActionArea} >
        <CardMedia
          onClick={(e) => goToProject(proj.name)}
          className={classes.media}
@@ -38,20 +123,41 @@ const Project = ({projects, goToProject}) => {
          title={proj.name}
        />
        <CardContent>
-         <Typography gutterBottom variant="h5" component="h2">
+         <Typography align='left' variant="h2" component="h2">
            {proj.name}
          </Typography>
-
        </CardContent>
-       <CardContent>Started:{proj.start_date} Complete:{proj.end_date} </CardContent>
-       <CardContent>Project stage:{proj.project_step} </CardContent>
+       <CardContent>
+        <Typography  variant="subtitle1"><b>{messages.projects.started}:</b> {proj.start_date} <br/> <b>{messages.projects.complete}:</b>{proj.end_date} </Typography>
+        <Typography  variant="subtitle1"><b>{messages.projects.project_stage}:</b> {proj.project_step} </Typography>
+      </CardContent>
+      <CardActions>
+       <Button className={classes.button} size="small" color="primary" bgcolor="primary" onClick={(e) => goToProject(proj.name)} >{messages.projects.read_more}</Button>
+      </CardActions>
      </CardActionArea>
-     <CardActions>
-      <Button size="small" color="primary" bgcolor="primary" onClick={(e) => goToProject(proj.name)} >Read More</Button>
-     </CardActions>
+     <Divider />
     </Card>
   ));
 };
+
+const ProjectHeader = ({messages}) => {
+  const classes = useStyles();
+  return (
+    <Box className={classes.homeHader}>
+    <Box className={classes.homeHaderGradient}>
+      <Container maxWidth='xs' className={classes.tileHead}>
+        <Typography gutterBottom color="textSecondary" variant="h1" >{messages.menu.projects}</Typography>
+      </Container>
+      <Box className={classes.dividerShape}>
+        <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 130" preserveAspectRatio="none">
+            <path d="M0,63 C0,63 63,0 209,0 C355,0 358.5,63 466,63 C573.5,63 588,23 684,23 C780,23 797,68 972,68 C1147,68 1200,63 1200,63 L1200,136 L0,136 L0,63 Z" className={classes.shapeFill}></path>
+        </svg>
+      </Box>
+    </Box>
+    </Box>
+  )
+};
+
 class Projects extends Component {
   constructor(props) {
     super(props);
@@ -101,7 +207,7 @@ class Projects extends Component {
   }
   render() {
     const {projects, locale,insert, loading} = this.state;
-
+    const {messages} = this.props.intl;
     return (
       <>
       <ScrollIntoViewIfNeeded active={(!insert)}></ScrollIntoViewIfNeeded>
@@ -110,15 +216,16 @@ class Projects extends Component {
       </Backdrop>
       {projects &&
         <>
-        <Typography variant="h4" color='primary'>Projects</Typography>
-
-        <Box style={{display: 'flex', justifyContent: 'space-around'}}>
-          <Project  projects={projects} goToProject={this.goToProject} locale={locale}/>
+        <Box >
+          <ProjectHeader messages={messages}/>
+          <Box style={{display: 'flex', flexDirection:'column'}}>
+            <Container maxWidth='xl'>
+              <Project messages={messages} projects={projects} goToProject={this.goToProject} locale={locale}/>
+            </Container>
+          </Box>
         </Box>
         </>
       }
-
-
       </>
     )
   }

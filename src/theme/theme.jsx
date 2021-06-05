@@ -67,15 +67,11 @@ palette: {
   fontWeightRegular: 400,
   fontWeightBold: 700,
   letterSpacing: 'normal',
-  body:{
-    fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
-    fontSize: "1.4rem",
-    lineHeight: 1.2,
-  },
   body1:{
     fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
-    fontSize: "1.44rem",
+    fontSize: "1.66rem",
     lineHeight: 1.44,
+    maxWidth: 800
   },
   body2:{
     fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
@@ -121,9 +117,10 @@ palette: {
     fontSize: "1.4rem",
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
     textTransform: "uppercase",
+    lineHeight: 1.2,
   },
   subtitle1:{
-    fontSize: "1.5rem",
+    fontSize: "1.66rem",
     lineHeight: 1.4,
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
   },
