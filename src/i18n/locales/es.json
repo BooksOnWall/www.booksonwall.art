@@ -126,6 +126,12 @@
     "press_title": "Marca y comunicado de prensa",
     "presskit": "kit de prensa"
   },
+  "projects": {
+    "complete": "Finalización",
+    "project_stage": "Estado",
+    "read_more": "Leer más",
+    "started": "Comienzo"
+  },
   "register": {
     "register": "¡Animate y registrate!",
     "send": "Enviar"

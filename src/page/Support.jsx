@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
-import {  Box, Container,  Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
+import {  Button, Box, Container,  Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
 import { injectIntl } from 'react-intl';
@@ -18,6 +18,47 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     color: '#99FF44',
   },
+  bodyMarkdown:{
+    '& p': {
+      fontSize: theme.typography.body1.fontSize,
+      fontFamily: theme.typography.body1.fontFamily,
+      maxWidth: theme.typography.body1.maxWidth,
+      lineHeight: theme.typography.body1.lineHeight
+    },
+    '& h2':{
+      fontFamily: theme.typography.h2.fontFamily,
+      fontSize: theme.typography.h2.fontSize,
+      conlo: theme.palette.primary.main
+    },
+    '& h3':{
+      fontFamily: theme.typography.h3fontFamily,
+      fontSize: theme.typography.h3.fontSize,
+    },
+    '& h4':{
+      fontFamily: theme.typography.h4.fontFamily,
+      fontSize: theme.typography.h4.fontSize,
+    },
+    '& h5':{
+      fontFamily: theme.typography.h5.fontFamily,
+      fontSize: theme.typography.h5.fontSize,
+    },
+    '& h6':{
+      fontFamily: theme.typography.h6.fontFamily,
+      fontSize: theme.typography.h6.fontSize,
+    }
+  },
+  button: {
+    margin: '30px 0',
+    color: theme.palette.primary.main,
+    border: '2px #D9D2C6 solid',
+    padding: '10px 20px',
+    '&:hover': {
+        background: theme.palette.primary.main,
+        color: 'white',
+          border: '2px solid',
+          borderColor: theme.palette.primary.main,
+      }
+    },
 }));
 
 const Support = (props) => {
@@ -71,7 +112,8 @@ console.log('support',support);
       </ScrollIntoViewIfNeeded>
         <Container>
         {support && <h1>{support.title}</h1>}
-        {support && support.header && <ReactMarkdown children={support.header} />}
+        {support && support.header && <ReactMarkdown className={classes.bodyMarkdown} children={support.header} />}
+        <Button className={classes.button} color="primary">{messages.menu.connect}</Button>
         </Container>
       </Box>
     }

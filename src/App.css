@@ -152,6 +152,14 @@ body{
     overflow: hidden;
     line-height: 0;
 }
+.custom-shape-divider-bottom-1622908862 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
 #join-us{ min-height: 10vh}
 #storyList{ min-height: 40vh; padding: 8vh 40px 300px; margin: 0 !important; display: flex; justify-Content:space-evenly; width: 100vw; flex-grow: 1; flex-wrap: wrap}
 .stories{ padding-top: 0; min-height: 110vh; display: flex; align-items: center; flex-direction: column}
@@ -697,21 +705,7 @@ div.public-DraftEditor-content {
 .footerBg svg{}
 
 
-
-      .BannerGrid{
-          height: 100%;
-          position: relative;
-      }
-      .Banner{
-          height: 400px;
-          position: relative;
-        }
-      .carou{ width: 100vw}
-
-
-
-
-
+/*-------carousel ---- */
 
 .Banner
 {

@@ -126,6 +126,12 @@
     "press_title": "Branding et communiqué de presse",
     "presskit": "Kit à télécharger"
   },
+  "projects": {
+    "complete": "Complet",
+    "project_stage": "Status",
+    "read_more": "Lire plus",
+    "started": "Début"
+  },
   "register": {
     "register": "Enregistrez-vous !",
     "send": "Envoyer"

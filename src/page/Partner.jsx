@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
-import {  Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
+import { Button, Box, Container, Typography, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
 import { injectIntl } from 'react-intl';
@@ -17,6 +17,54 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     color: '#99FF44',
   },
+  partner:{
+
+  },
+  partnerHeader:{
+    minHeight: '10h',
+    marginBottom: 100
+  },
+  bodyMarkdown:{
+    '& p': {
+      fontSize: theme.typography.body1.fontSize,
+      fontFamily: theme.typography.body1.fontFamily,
+      maxWidth: theme.typography.body1.maxWidth,
+      lineHeight: theme.typography.body1.lineHeight
+    },
+    '& h2':{
+      fontFamily: theme.typography.h2.fontFamily,
+      fontSize: theme.typography.h2.fontSize,
+      color: theme.palette.primary.main
+    },
+    '& h3':{
+      fontFamily: theme.typography.h3fontFamily,
+      fontSize: theme.typography.h3.fontSize,
+    },
+    '& h4':{
+      fontFamily: theme.typography.h4.fontFamily,
+      fontSize: theme.typography.h4.fontSize,
+    },
+    '& h5':{
+      fontFamily: theme.typography.h5.fontFamily,
+      fontSize: theme.typography.h5.fontSize,
+    },
+    '& h6':{
+      fontFamily: theme.typography.h6.fontFamily,
+      fontSize: theme.typography.h6.fontSize,
+    }
+  },
+  button: {
+    margin: '30px 0',
+    color: theme.palette.primary.main,
+    border: '2px #D9D2C6 solid',
+    padding: '10px 20px',
+    '&:hover': {
+        background: theme.palette.primary.main,
+        color: 'white',
+          border: '2px solid',
+          borderColor: theme.palette.primary.main,
+      }
+    },
 }));
 
 const Partner = (props) => {
@@ -65,14 +113,18 @@ const Partner = (props) => {
       <CircularProgress color="inherit" />
     </Backdrop>
     {partner &&
-      <Box>
+      <Box className={classes.partner}>
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
-        {partner && partner.image_header && <Image aspectRatio={5/1} src={apiURL + partner.image_header.formats.medium.url} />}
+        <Box className={classes.partnerHeader} >
+          {partner && partner.image_header && <Image aspectRatio={5/1} src={apiURL + partner.image_header.formats.medium.url} />}
+        </Box>
       </ScrollIntoViewIfNeeded>
       <Container>
-        {partner && <h1>{partner.title}</h1>}
-        {partner && partner.header && <ReactMarkdown children={partner.header} />}
-        </Container>
+        {partner && <Typography variant="h1" component="h1">{partner.title}</Typography>}
+        {partner && partner.header && <ReactMarkdown className={classes.bodyMarkdown} children={partner.header} />}
+        <Button className={classes.button} color="primary">{messages.menu.connect}</Button>
+      </Container>
+
       </Box>
     }
     </>

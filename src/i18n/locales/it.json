@@ -126,6 +126,12 @@
     "press_title": "Branding e Press realease",
     "presskit": "presskit"
   },
+  "projects": {
+    "complete": "Completa",
+    "project_stage": "Fase del progetto",
+    "read_more": "Leggere di più",
+    "started": "Avviato"
+  },
   "register": {
     "register": "Iscriviti e registrati!",
     "send": "inviare"

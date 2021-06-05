@@ -12,22 +12,31 @@ import {
     Grid,
     Backdrop,
     CircularProgress,
+    Container,
     makeStyles
   } from '@material-ui/core';
 import Carousel from 'react-material-ui-carousel'
 import ToggleButton from '@material-ui/lab/ToggleButton';
+
+import Home from "../../assets/images/pages/home.jpg";
+
 import { injectIntl} from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
 
 const useStyles = makeStyles((theme) => ({
+  articles:{
+    padding: '80px 40px'
+  },
   card: {
-    maxWidth: 400,
-    minWidth: 320,
+    minWidth: 420,
+    maxWidth: 620,
     background: 'transparent',
     borderRadius: 10,
+    flexGrow: 2,
+    margin: 20
   },
   media: {
-    height: 300,
+    height: 360,
     borderRadius: 10,
   },
   CardContent: {
@@ -49,7 +58,73 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     color: '#99FF44',
   },
+  homeHader:{
+    backgroundColor: '#ccc',
+    color: 'white',
+    backgroundSize: 'cover',
+    backgroundPositionY: 'center',
+    backgroundImage: `url(${Home})`,
+    padding: 0,
+    margin: '0 0 80px 0'
+  },
+  homeHaderGradient:{
+    display: 'flex',
+    flexFlow: 'column wrap',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    background: theme.palette.secondary.mainGradient,
+    minHeight: '30vh',
+    minWidth: '100vw'
+  },
+  dividerShape: {
+    left: 0,
+    width: '100%',
+    overflow: 'hidden',
+    lineHeight: 0,
+    transform: 'rotate(0deg)',
+    bottom: 0
+  },
+  shapeFill: {
+   fill: '#fafafa',
+  },
+  dividerSvg: {
+    position: 'relative',
+    display: 'block',
+    width: 'calc(101% + 1.3px)',
+    height: '35px',
+  },
+  button: {
+    margin: '20px 0',
+    border: '0px #D9D2C6 solid',
+    padding: '10px 20px',
+    '&:hover': {
+        background: theme.palette.secondary.dark,
+        color: 'white',
+          border: '0px solid',
+          borderColor: theme.palette.secondary.main,
+      }
+    },
 }));
+
+
+const ArticlesHeader = ({messages}) => {
+  const classes = useStyles();
+  return (
+    <Box className={classes.homeHader}>
+    <Box className={classes.homeHaderGradient}>
+      <Container maxWidth='xs' className={classes.tileHead}>
+        <Typography gutterBottom color="textSecondary" variant="h1" >{messages.menu.articles}</Typography>
+      </Container>
+      <Box className={classes.dividerShape}>
+        <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+             <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className={classes.shapeFill}></path>
+         </svg>
+      </Box>
+    </Box>
+    </Box>
+  )
+};
+
 const News = ({messages, insert, articles, goToArticle, selected , hasCategory }) => {
   const classes = useStyles();
 
@@ -69,9 +144,8 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
         prev={() => prev()}
       >
     <Grid container spacing={0} className="BannerGrid">
-
     {articles.map((article, i) => (
-    <Grid item xs={12/3} key={'gg'+i}>
+    <Grid item xs={12/4} key={'gg'+i}>
     <Card className={classes.card} elevation={0} key={'article'+i}>
     <CardActionArea className={classes.CardActionArea}>
        <CardMedia
@@ -81,7 +155,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
          title={article.title}
        />
        <CardContent className={classes.CardContent} >
-         <Typography gutterBottom variant="h3" component="h3">
+         <Typography gutterBottom variant="h6" component="h3">
            {article.title}
          </Typography>
          <Typography variant="body2" color="textSecondary" component="p">
@@ -90,11 +164,10 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
        </CardContent>
      </CardActionArea>
      <CardActions className={classes.CardActions}>
-      <Button variant='outlined' color="primary" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
+      <Button className={classes.button} variant='contained' size="small" color="secondary" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
      </CardActions>
     </Card>
     </Grid>
-
   ))}
  </Grid>
   </Carousel>
@@ -113,7 +186,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
          title={article.title}
        />
        <CardContent className={classes.CardContent} >
-         <Typography gutterBottom variant="h3" component="h3">
+         <Typography gutterBottom variant="h6" component="h3">
            {article.title}
          </Typography>
          <Typography variant="body2" color="textSecondary" component="p">
@@ -122,7 +195,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
        </CardContent>
      </CardActionArea>
      <CardActions className={classes.CardActions}>
-      <Button variant='outlined' color="primary" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
+     <Button className={classes.button} variant='contained' size="small" color="secondary" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
      </CardActions>
     </Card>
     </Grid>
@@ -277,6 +350,7 @@ class Articles extends Component {
     // images: [],
     return (
         <>
+          {!insert && <ArticlesHeader messages={messages} /> }
           <ArticleList
             loading={loading}
             articles={articles}
