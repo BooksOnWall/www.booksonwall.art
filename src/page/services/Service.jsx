@@ -9,12 +9,14 @@ import {
     Box,
     makeStyles
   } from '@material-ui/core';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
 import Gallery from "../../utils/Gallery";
+import Projects from "../projects/Projects";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100vw',
@@ -42,7 +44,7 @@ const Service = (props) => {
   const [loading, setLoading] = useState(false);
   const {locale, messages} = props.intl;
   const apiURL = process.env.REACT_APP_API;
-
+  let history = useHistory();
   const {pathname} = useLocation();
   useEffect(() => {
     const name = pathname.replace("/"+messages.menu.service+"/", "");
@@ -153,7 +155,7 @@ const Service = (props) => {
       </Box>
       </Box>
     }
-
+    {service && <Projects history={history} service={service} insert limit={10}/>}
     </>
   )
 }
