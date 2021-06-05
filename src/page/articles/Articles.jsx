@@ -129,12 +129,19 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
   const classes = useStyles();
 
   if(articles) console.log(articles[0]);
+  const next = () => {
 
+  }
+  const prev = () => {
+
+  }
   return  (
     <>
     {insert &&
       <Carousel className="carou"
-      autoPlay={false}
+        autoPlay={false}
+        next={() => next()}
+        prev={() => prev()}
       >
     <Grid container spacing={0} className="BannerGrid">
     {articles.map((article, i) => (
@@ -223,9 +230,9 @@ const ArticleList = ({loading, messages, history, articles, categories, selected
       <Box className={classes.articles}>
 
       <ScrollToTop insert={insert}/>
-      {!insert && <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
-        <Categories selected={selected} categories={categories} messages={messages} selectCategory={selectCategory}/>
-      </Box>}
+        <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
+          <Categories selected={selected} categories={categories} messages={messages} selectCategory={selectCategory}/>
+        </Box>
       <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 20px 40px'}}>
         <Grid container spacing={3}>
 
@@ -237,7 +244,7 @@ const ArticleList = ({loading, messages, history, articles, categories, selected
       </Box>
     }
     {articles && insert &&
-        <News hasCategory={hasCategory} insert={insert} selected={selected} articles={articles} messages={messages} goToArticle={goToArticle}/>
+      <News hasCategory={hasCategory} insert={insert} selected={selected} articles={articles} messages={messages} goToArticle={goToArticle}/>
     }
     </>
   );
@@ -250,6 +257,8 @@ class Articles extends Component {
       insert: this.props.insert,
       limit: this.props.limit,
       lang: this.props.intl.locale,
+      index: 0,
+      sort: 'updated_at:desc',
       articles: null,
       categories: null,
       loading: false,
@@ -282,7 +291,8 @@ class Articles extends Component {
   loadArticles = async (filter, rows, index, sort, order) => {
     console.log("load articles");
     const { apiURL, locale, insert, limit } = this.state;
-    const fetchURL = (insert) ? apiURL + '/articles?_limit='+limit+'&_sort=updated_at:desc&lang='+ locale: apiURL + '/articles?_limit=-1&_sort=updated_at:desc&lang='+ locale;
+    if(!sort) sort = this.state.sort;
+    const fetchURL = (insert) ? apiURL + '/articles?_limit='+limit+'&_sort='+sort+'&lang='+ locale: apiURL + '/articles?_limit=-1&_sort='+sort+'&lang='+ locale;
     this.setState({loading: true});
     console.log("URL",fetchURL );
 
@@ -329,7 +339,7 @@ class Articles extends Component {
     }
   }
   render() {
-    const {articles, categories, selected, insert, loading} = this.state;
+    const {articles, categories, selected, insert, loading, index, maxItems} = this.state;
     const {messages} = this.props.intl;
     // date: '22 dec 2017',
     // title: 'BooksOnWall has started !',

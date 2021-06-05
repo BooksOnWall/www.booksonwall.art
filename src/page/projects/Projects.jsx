@@ -165,7 +165,9 @@ class Projects extends Component {
         projects: null,
         apiURL: apiURL,
         insert: this.props.insert,
+        limit: this.props.limit,
         loading: false,
+        service: this.props.service,
         messages: this.props.intl.messages,
         locale: (this.props.intl && this.props.intl.locale) ? this.props.intl.locale : this.props.locale,
     };
@@ -176,8 +178,9 @@ class Projects extends Component {
   }
   loadProjects = async (filter, rows, index, sort, order) => {
     console.log("load projects");
-    const { apiURL, locale } = this.state;
-    const fetchURL = apiURL + '/Projects?public=true&lang='+locale;
+    const { apiURL, locale, service, insert, limit } = this.state;
+    console.log('service',service);
+    const fetchURL = (insert && limit) ? apiURL + '/projects?_limit='+limit+'&_sort=updated_at:desc&public=true&lang='+locale :  apiURL + '/projects?_limit=-1&_sort=updated_at:desc&public=true&lang='+locale;
     this.setState({loading: true});
 
     await fetch(fetchURL, {
@@ -191,7 +194,7 @@ class Projects extends Component {
     })
     .then(data => {
         if(data) {
-          this.setState({projects: data, loading: false});
+          this.setState({projects: (service) ? data.filter((o) => (o.service && o.service.id === service.id)): data, loading: false});
         } else {
           console.log('No Data received from the server');
         }
