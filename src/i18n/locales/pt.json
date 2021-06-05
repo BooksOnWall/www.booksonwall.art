@@ -126,6 +126,12 @@
     "press_title": "Branding e imprensa realease",
     "presskit": "kit de imprensa"
   },
+  "projects": {
+    "complete": "",
+    "project_stage": "",
+    "read_more": "",
+    "started": ""
+  },
   "register": {
     "register": "Inscreva-se e registe-se!",
     "send": "enviar"
