@@ -127,10 +127,10 @@
     "presskit": "presskit"
   },
   "projects": {
-    "complete": "",
-    "project_stage": "",
-    "read_more": "",
-    "started": ""
+    "complete": "Completa",
+    "project_stage": "Fase del progetto",
+    "read_more": "Leggere di più",
+    "started": "Avviato"
   },
   "register": {
     "register": "Iscriviti e registrati!",
