@@ -71,9 +71,7 @@ class Projects extends Component {
     await this.loadProjects();
   }
   loadProjects = async (filter, rows, index, sort, order) => {
-    console.log("load projects");
     const { apiURL, locale, service, insert, limit } = this.state;
-    console.log('service',service);
     const fetchURL = (insert && limit) ? apiURL + '/projects?_limit='+limit+'&_sort=updated_at:desc&public=true&lang='+locale :  apiURL + '/projects?_limit=-1&_sort=updated_at:desc&public=true&lang='+locale;
     this.setState({loading: true});
 
