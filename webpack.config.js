@@ -1,12 +1,4 @@
-
 module.exports = {
-  use: {
-    loader: 'babel-loader',
-    options: {
-      presets: ['mapbox'],
-      ignore: [ './node_modules/mapbox-gl/dist/mapbox-gl.js' ]
-    }
-  },
   module: {
     rules: [
       {
