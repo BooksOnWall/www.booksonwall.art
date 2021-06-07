@@ -15,7 +15,7 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import Image from 'material-ui-image';
 import  ReactMarkdown from 'react-markdown';
 import ImageGallery from 'react-image-gallery';
-
+import {useReactive} from "../../utils/reactive";
 import { injectIntl } from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
 
@@ -33,13 +33,15 @@ const useStyles = makeStyles((theme) => ({
 
 const ImgGallery = ({images, apiURL, setImages}) => {
   let set = [];
+  const { isLarge, isMedium, isSmall, isTyny } = useReactive();
+  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
   if(images.length > 0) {
     images.map((img,i) => {
       let imgs = img;
       set.push({
-        original: apiURL + imgs.formats.medium.url,
+        original: apiURL + imgs.formats[format].url,
         thumbnail: apiURL + imgs.formats.thumbnail.url,
-        fullscreen: apiURL + imgs.formats.large.url,
+        fullscreen: apiURL + imgs.formats[format].url,
       });
       return true;
     });
@@ -49,6 +51,31 @@ const ImgGallery = ({images, apiURL, setImages}) => {
 const Categories = ({messages, categories}) => {
   const classes = useStyles();
   return categories.map((cat,i) => <ToggleButton  className={classes.category} key={'cat'+i}>{cat}</ToggleButton>)
+}
+const ArticlePage = ({article, messages, locale, history, images}) => {
+  const { isLarge, isMedium, isSmall, isTyny } = useReactive();
+  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
+  return (
+    <Box className="main" >
+      <ScrollIntoViewIfNeeded active={true}>
+      {(article.header_image) ? <Image aspectRatio={2/1} src={apiURL + article.header_image.formats[format].url}  /> : ''}
+      </ScrollIntoViewIfNeeded>
+      <Box>
+          <Typography variant='h1' Component="h1">{article.title}</Typography>
+          <Typography variant='h6' color="primary" Component="p">{article.updated_at}</Typography>
+          <Categories messages={messages} categories={article.categories}/>
+      </Box>
+      <Box>
+      <Box placeholder>
+          <ReactMarkdown children={article.header} />
+      </Box>
+      <ImgGallery images={images} apiURL={apiURL}/>
+      <Box placeholder>
+        <ReactMarkdown children={article.content} />
+      </Box>
+      </Box>
+    </Box>
+  )
 }
 class Article extends Component {
   constructor(props) {
@@ -98,33 +125,15 @@ class Article extends Component {
   }
   render() {
     const {article, apiURL, loading} = this.state;
-    const {messages} = this.props.intl;
+    const {messages, locale} = this.props.intl;
     const images = (article) ? article.images : null;
     return (
       <>
       <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
         <CircularProgress color="inherit" />
       </Backdrop>
-      {article &&
-        <Box className="main" >
-          <ScrollIntoViewIfNeeded active={true}>
-          {(article.header_image) ? <Image aspectRatio={2/1} src={apiURL + article.header_image.formats.large.url}  /> : ''}
-          </ScrollIntoViewIfNeeded>
-          <Box>
-              <Typography variant='h1' Component="h1">{article.title}</Typography>
-              <Typography variant='h6' color="primary" Component="p">{article.updated_at}</Typography>
-              <Categories messages={messages} categories={article.categories}/>
-          </Box>
-          <Box>
-          <Box placeholder>
-              <ReactMarkdown children={article.header} />
-          </Box>
-          <ImgGallery images={images} apiURL={apiURL}/>
-          <Box placeholder>
-            <ReactMarkdown children={article.content} />
-          </Box>
-          </Box>
-        </Box>
+      {article && <ArticlePage images={images} messages={messages} history={this.props.history} article={article} locale={locale} />
+
       }
     </>
     )

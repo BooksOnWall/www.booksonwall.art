@@ -12,6 +12,7 @@ import {
 import { useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
+import {useReactive} from "../../utils/reactive";
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
 
@@ -31,6 +32,9 @@ const useStyles =  makeStyles((theme) => ({
 const Services = (props) => {
   const classes = useStyles();
   const [services, setServices] = useState([]);
+  const { isLarge, isMedium } = useReactive();
+  const formatHeader = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
+  const format = 'thumbnail';
   const [activeScroll, setActiveScroll] = useState('top');
   const [unique, setUnique] = useState();
   const [loading, setLoading] = useState(false);
@@ -113,20 +117,22 @@ const Services = (props) => {
     </Backdrop>
     <Box className={classes.root}>
     {unique &&
+      <>
+      {unique && unique.image_header && <Image src={apiURL+unique.image_header.formats[formatHeader].url} />}
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
       <Grid item xs sm >
       <h1>{unique.Name}</h1>
       <ReactMarkdown children={unique.header} />
       </Grid>
       </ScrollIntoViewIfNeeded>
+      </>
 
     }
-      {unique && unique.image_header && <Image src={apiURL+unique.image_header} />}
-    <Grid container spacing={3}>
 
+    <Grid container spacing={3}>
           {services && services.map((s,i) => (
             <Grid item xs sm key={"s"+i}>
-              {s.header_image && <Image className={classes.serviceImage}  src={apiURL+s.header_image.formats.small.url}/>}
+              {s.header_image && <Image className={classes.serviceImage}  src={apiURL+s.header_image.formats[format].url}/>}
               <br />
               <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
               <Typography  variant="body1" ><ReactMarkdown children={s.header} /></Typography>

@@ -14,6 +14,7 @@ import { Images } from './../assets/images/pages';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 import { useLocation, useHistory } from 'react-router-dom';
+import {useReactive} from "../utils/reactive";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl, defineMessages  } from 'react-intl';
 import ReactMarkdown from 'react-markdown';

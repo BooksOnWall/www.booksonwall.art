@@ -11,6 +11,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Images } from './../assets/images/pages';
 import { injectIntl, defineMessages } from 'react-intl';
+import {useReactive} from "../utils/reactive";
 import { Blob } from 'react-blob';
 
 const createTraductions = defineMessages({

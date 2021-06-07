@@ -10,6 +10,7 @@ import {
     makeStyles
   } from '@material-ui/core';
 import { useLocation, useHistory } from 'react-router-dom';
+import {useReactive} from "../../utils/reactive";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
@@ -42,6 +43,8 @@ const Service = (props) => {
   const [unique, setUnique] = useState();
   const [service, setService] = useState();
   const [loading, setLoading] = useState(false);
+  const { isLarge, isMedium } = useReactive();
+  const format = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
   const {locale, messages} = props.intl;
   const apiURL = process.env.REACT_APP_API;
   let history = useHistory();
@@ -124,7 +127,7 @@ const Service = (props) => {
     {service &&
       <Box className={classes.connect}>
 
-      {service && service.header_image && <Image src={apiURL+service.header_image.formats.small.url} />}
+      {service && service.header_image && <Image src={apiURL+service.header_image.formats[format].url} />}
 
       <Box className={classes.homeHaderBg}>
       <Box className={classes.gradine}>

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Typography,  Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
+import {useReactive} from "../utils/reactive";
 import Image from 'material-ui-image';
 import { injectIntl } from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
@@ -23,6 +24,8 @@ const Terms = (props) => {
   const classes = useStyles();
   const [terms, setTerms] = useState();
   const [loading, setLoading] = useState(false);
+  const { isLarge, isMedium } = useReactive();
+  const format = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
   const {messages, locale} = props.intl;
   useEffect(() => {
     const fetchURL = apiURL + '/uniques?type=terms&lang=' + locale;
@@ -66,7 +69,7 @@ const Terms = (props) => {
   {terms &&
     <Box>
       <ScrollIntoViewIfNeeded active={true}>
-      {terms && terms.image_header && <Image aspectRatio={5/1} src={apiURL + terms.image_header.formats.medium.url} />}
+      {terms && terms.image_header && <Image aspectRatio={5/1} src={apiURL + terms.image_header.formats[format].url} />}
       </ScrollIntoViewIfNeeded>
       <Container>
       {terms && <h1>{terms.title}</h1>}

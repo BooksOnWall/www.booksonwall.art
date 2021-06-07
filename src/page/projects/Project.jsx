@@ -10,8 +10,22 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import Image from 'material-ui-image';
 import ReactMarkdown from 'react-markdown';
 import { injectIntl } from 'react-intl';
+import {useReactive} from "../../utils/reactive";
 const apiURL = process.env.REACT_APP_API;
 
+const ProjectPage = ({project, history, messages, locale, name}) => {
+  const { isLarge, isMedium, isSmall } = useReactive();
+  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
+  return (
+    <Box >
+        <ScrollIntoViewIfNeeded active={true}>
+          {project.header_image && <Image  aspectRatio={4/2} src={apiURL + project.header_image.formats[format].url} />}
+        </ScrollIntoViewIfNeeded>
+        <Typography variant="h1" component='h1'>{name}</Typography>
+        <ReactMarkdown children={project.description} />
+    </Box>
+  )
+}
 class Project extends Component {
   constructor(props) {
     super(props)
@@ -70,20 +84,13 @@ class Project extends Component {
   }
   render() {
     const {project, name, apiURL, loading} = this.state;
+    const {messages, locale} = this.props.intl;
     return (
       <>
       <Backdrop styles={{zIndex: 1003, color: '#99FF44'}} open={loading} >
         <CircularProgress color="inherit" />
       </Backdrop>
-      {project &&
-        <Box >
-            <ScrollIntoViewIfNeeded active={true}>
-              {project.header_image && <Image  aspectRatio={4/2} src={apiURL + project.header_image.formats.small.url} />}
-            </ScrollIntoViewIfNeeded>
-            <Typography variant="h1" component='h1'>{name}</Typography>
-            <ReactMarkdown children={project.description} />
-        </Box>
-      }
+      {project && <ProjectPage name={name} project={project} history={this.props.history} messages={messages} locale={locale} />}
       </>
     )
   }

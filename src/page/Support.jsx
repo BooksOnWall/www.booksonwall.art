@@ -3,6 +3,7 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import {  Button, Box, Container,  Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
+import {useReactive} from "../utils/reactive";
 import { injectIntl } from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
 
@@ -66,6 +67,8 @@ const Support = (props) => {
   const [support, setSupport] = useState();
   const [activeScroll, setActiveScroll] = useState('top');
   const [loading, setLoading] = useState(false);
+  const { isLarge, isMedium } = useReactive();
+  const format = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
   const {messages, locale} = props.intl;
   useEffect(() => {
     const fetchURL = apiURL + '/uniques?type=support&lang=' + locale;
@@ -99,7 +102,6 @@ const Support = (props) => {
     }
     getSupport();
   }, [locale]);
-console.log('support',support);
   return (
     <>
     <Backdrop className={classes.backdrop} open={loading} >
@@ -108,12 +110,12 @@ console.log('support',support);
     {support &&
       <Box>
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
-        {support && support.image_header && <Image aspectRatio={5/1} src={apiURL + support.image_header.formats.medium.url} />}
+        {support && support.image_header && <Image aspectRatio={5/1} src={apiURL + support.image_header.formats[format].url} />}
       </ScrollIntoViewIfNeeded>
         <Container>
         {support && <h1>{support.title}</h1>}
         {support && support.header && <ReactMarkdown className={classes.bodyMarkdown} children={support.header} />}
-        <Button className={classes.button} color="primary">{messages.menu.connect}</Button>
+        <Button onClick={() => props.history.push('/'+messages.menu.connect)} className={classes.button} color="primary">{messages.menu.connect}</Button>
         </Container>
       </Box>
     }

@@ -15,6 +15,8 @@ import {
     Container,
     makeStyles
   } from '@material-ui/core';
+
+import { useReactive, MediaQuery } from '../../utils/reactive';
 import Carousel from 'react-material-ui-carousel'
 import ToggleButton from '@material-ui/lab/ToggleButton';
 
@@ -127,7 +129,8 @@ const ArticlesHeader = ({messages}) => {
 
 const News = ({messages, insert, articles, goToArticle, selected , hasCategory }) => {
   const classes = useStyles();
-
+  const { isLarge, isMedium, isSmall, isTyny } = useReactive();
+  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
   if(articles) console.log(articles[0]);
   const next = () => {
 
@@ -151,7 +154,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
        <CardMedia
          onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
          className={classes.media}
-         image={apiURL + article.header_image.formats.medium.url}
+         image={apiURL + article.header_image.formats[format].url}
          title={article.title}
        />
        <CardContent className={classes.CardContent} >
@@ -182,7 +185,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
        <CardMedia
          onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
          className={classes.media}
-         image={apiURL + article.header_image.formats.medium.url}
+         image={apiURL + article.header_image.formats[format].url}
          title={article.title}
        />
        <CardContent className={classes.CardContent} >

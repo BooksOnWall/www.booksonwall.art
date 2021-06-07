@@ -17,7 +17,7 @@ import {
   } from '@material-ui/core';
 import { injectIntl, defineMessages } from 'react-intl';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
-
+import {useReactive} from "../../utils/reactive";
 import Home from "../../assets/images/pages/home.jpg";
 
 const apiURL = process.env.REACT_APP_API;
@@ -113,13 +113,15 @@ const projectsTraductions = defineMessages({
 
 const Project = ({projects, goToProject, messages}) => {
   const classes = useStyles();
+  const { isLarge } = useReactive();
+  const format = (isLarge) ? 'small': 'thumbnail';
   return projects.map((proj, i) => (
     <Card elevation={0} className={classes.card} key={'proj'+i}>
     <CardActionArea className={classes.CardActionArea} >
        <CardMedia
          onClick={(e) => goToProject(proj.name)}
          className={classes.media}
-         image={(proj.header_image && proj.header_image.formats && proj.header_image.formats.thumbnail ) ? apiURL + proj.header_image.formats.thumbnail.url : null}
+         image={(proj.header_image && proj.header_image.formats && proj.header_image[format] ) ? apiURL + proj.header_image.formats[format].url : null}
          title={proj.name}
        />
        <CardContent>

@@ -12,6 +12,7 @@ import {
     Button,
     makeStyles
   } from '@material-ui/core';
+import {useReactive} from "../../utils/reactive";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { injectIntl, defineMessages  } from 'react-intl';
 
@@ -84,12 +85,14 @@ const useStyles = makeStyles((theme) => ({
 
 const StoriesList = ({stories, apiURL, goToStory, messages }) => {
   const classes = useStyles();
+  const { isLarge, isMedium, isSmall, isTyny } = useReactive();
+  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
   return stories.map((story, i) => (
     <Card elevation={1} className={classes.card} key={'story'+i}>
        <CardMedia
          onClick={() => goToStory(messages.menu.story+'/'+story.name)}
          className={classes.media}
-         image={apiURL + story.header_image.formats.medium.url}
+         image={apiURL + story.header_image.formats[format].url}
          title={story.name}
        >
        <CardContent className={classes.content}>

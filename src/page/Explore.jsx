@@ -10,6 +10,7 @@ import {
     makeStyles
   } from '@material-ui/core';
 import { useLocation } from 'react-router-dom';
+import {useReactive} from "../utils/reactive";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 
 import { Images } from '../assets/images/pages';

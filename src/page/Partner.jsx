@@ -3,6 +3,7 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Button, Box, Container, Typography, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
+import {useReactive} from "../utils/reactive";
 import { injectIntl } from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
 
@@ -71,6 +72,8 @@ const Partner = (props) => {
   const classes = useStyles();
   const [partner, setPartner] = useState();
   const [activeScroll, setActiveScroll] = useState('top');
+  const { isLarge, isMedium } = useReactive();
+  const format = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
   const [loading, setLoading] = useState(false);
   const {messages, locale} = props.intl;
 
@@ -116,13 +119,13 @@ const Partner = (props) => {
       <Box className={classes.partner}>
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
         <Box className={classes.partnerHeader} >
-          {partner && partner.image_header && <Image aspectRatio={5/1} src={apiURL + partner.image_header.formats.medium.url} />}
+          {partner && partner.image_header && <Image aspectRatio={5/1} src={apiURL + partner.image_header.formats[format].url} />}
         </Box>
       </ScrollIntoViewIfNeeded>
       <Container>
         {partner && <Typography variant="h1" component="h1">{partner.title}</Typography>}
         {partner && partner.header && <ReactMarkdown className={classes.bodyMarkdown} children={partner.header} />}
-        <Button className={classes.button} color="primary">{messages.menu.connect}</Button>
+        <Button onClick={() => props.history.push('/'+messages.menu.connect)} className={classes.button} color="primary">{messages.menu.connect}</Button>
       </Container>
 
       </Box>

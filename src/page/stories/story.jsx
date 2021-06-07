@@ -13,6 +13,7 @@ import {
   } from '@material-ui/core';
 
 import { injectIntl } from 'react-intl';
+import {useReactive} from "../../utils/reactive";
 import Image from 'material-ui-image';
 import  ReactMarkdown from 'react-markdown';
 import ImageGallery from 'react-image-gallery';
@@ -58,9 +59,11 @@ const StoryHeader = ({story, md}) => {
 }
 const StoryGallery = ({gallery, apiURL}) => {
   let set = [];
+  const { isLarge, isMedium, isSmall } = useReactive();
+  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
   if (gallery) {
     gallery.map((img,i) => set.push({
-      original : apiURL + img.formats.large.url,
+      original : apiURL + img.formats[format].url,
       thumbnail: apiURL + img.formats.thumbnail.url
     }));
   }
@@ -135,7 +138,30 @@ return (
 )
 };
 
+const StoryPage = ({story, messages, locale, history}) => {
+  const { isLarge, isMedium, isSmall } = useReactive();
+  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
+  return (
+    <Box className="main">
+    <Box className="story">
 
+      {story.header_image && <Image aspectRatio={2/1} src={apiURL + story.header_image.formats[format].url} />}
+
+        <Box className="bodyStory">
+          <StoryHeader story={story}/>
+        </Box>
+        <StoryGallery gallery={story.gallery} story={story} apiURL={apiURL}/>
+        <Container maxWidth="xl" className="bodyStory">
+          <Container className="bodyStory">
+            <StoryBody storybody={story.content} story={story}/>
+          </Container>
+          <Sponsors sponsors={story.sponsors} story={story}/>
+          <Credits credits={story.credits} story={story}/>
+        </Container>
+    </Box>
+    </Box>
+  )
+}
 class Story extends Component {
   constructor(props) {
     super(props)
@@ -187,33 +213,14 @@ class Story extends Component {
     await this.loadStory();
   }
   render() {
-    const {story, apiURL, loading} = this.state;
+    const {story, apiURL, loading, locale, messages} = this.state;
     return (
       <>
       <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
       <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
         <CircularProgress color="inherit" />
       </Backdrop>
-      {story &&
-        <Box className="main">
-        <Box className="story">
-
-          {story.header_image && <Image aspectRatio={2/1} src={apiURL + story.header_image.formats.medium.url} />}
-
-            <Box className="bodyStory">
-              <StoryHeader story={story}/>
-            </Box>
-            <StoryGallery gallery={story.gallery} story={story} apiURL={apiURL}/>
-            <Container maxWidth="xl" className="bodyStory">
-              <Container className="bodyStory">
-                <StoryBody storybody={story.content} story={story}/>
-              </Container>
-              <Sponsors sponsors={story.sponsors} story={story}/>
-              <Credits credits={story.credits} story={story}/>
-            </Container>
-        </Box>
-        </Box>
-      }
+      {story && <StoryPage story={story} history={this.props.history} messages={messages} locale={locale} />}
 
       </>
     )

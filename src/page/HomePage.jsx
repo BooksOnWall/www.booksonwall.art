@@ -11,7 +11,7 @@ import {
     Button,
     makeStyles
   } from '@material-ui/core';
-
+import { useReactive, MediaQuery } from '../utils/reactive';
 import Image from 'material-ui-image';
 import loadable from '@loadable/component';
 import { useHistory } from 'react-router-dom';
@@ -462,7 +462,8 @@ return (
     </div>
 )};
 const HomePage = (props) => {
-
+    const reactive = useReactive();
+    console.log('reactive', reactive);
     const {messages} = props.intl;
     const [activeScroll, setActiveScroll] = useState('top');
 
@@ -476,13 +477,13 @@ const HomePage = (props) => {
         <WhoAreWe messages={messages} />
       </ScrollIntoViewIfNeeded>
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.articles)}>
-        <Box> <Articles messages={messages} history={props.history} limit={3} insert/> </Box>
+        <Box> <Articles messages={messages} history={props.history} limit={(reactive.isLarge) ? 12 : (reactive.isMedium) ? 8 :  3} insert/> </Box>
       </ScrollIntoViewIfNeeded>
         <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.block)}>
         <Box style={{padding:' 80px 40px'}}> <PlaceholderBlock messages={messages} /> </Box>
       </ScrollIntoViewIfNeeded>
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.stories)}>
-        <Box  style={{padding:' 80px 40px'}}><Stories messages={messages} history={props.history} limit={4} insert/> </Box>
+        <Box  style={{padding:' 80px 40px'}}><Stories messages={messages} history={props.history} limit={(reactive.isLarge) ? 12 : (reactive.isMedium) ? 8 :  3} insert/> </Box>
       </ScrollIntoViewIfNeeded>
     </Box>
     </>
