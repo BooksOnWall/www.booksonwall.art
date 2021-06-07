@@ -6,11 +6,12 @@ import {
 } from '@material-ui/core';
 
 import MapGL, {Marker, StaticMap, GeoJSONLayer, Layer, Source } from 'react-map-gl';
-import mapboxgl from "!mapbox-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
+import mapboxgl from 'mapbox-gl';
 import circle from '../../assets/images/info/history/point.png';
-// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
-mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
 let MapboxAccessToken = process.env.REACT_APP_MAT;
 
 const Articles =({articles, goToArticle, onHover}) => {

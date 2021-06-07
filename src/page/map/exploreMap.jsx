@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { StaticMap, Layer, Source } from 'react-map-gl';
-import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-StaticMap.workerClass = MapboxWorker;
+import mapboxgl from 'mapbox-gl';
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
 
 let MapboxAccessToken = process.env.REACT_APP_MAT;
 
