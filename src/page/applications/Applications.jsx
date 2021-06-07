@@ -41,7 +41,7 @@ const Applications = (props) => {
     const getApplications = async () => {
       try {
         setLoading(true);
-        const fetchURL = apiURL + '/applications?_limit=-1&_sort=published_at:DESC&lang='+locale;
+        const fetchURL = apiURL + '/projects?_limit=-1&_sort=updated_at:desc&lang='+locale;
         await fetch(fetchURL, {
           method: "get",
           headers: {
@@ -56,7 +56,7 @@ const Applications = (props) => {
         })
         .then(data => {
             if(data) {
-              setApplications(data.map((c,i) => ({id: c.id, header: c.header, header_image: c.header_image, name:c.Name})));
+              setApplications(data.filter((o) => (o.service && o.service.Name === 'Applications')).map((c,i) => ({id: c.id, header: c.header, header_image: c.header_image, name:c.name})));
               setLoading(false);
             } else {
               console.log('No Data received from the server');
@@ -105,6 +105,7 @@ const Applications = (props) => {
     getUnique();
     getApplications();
   }, [apiURL, locale]);
+  console.log('applications',applications)
   return (
     <>
     <Backdrop className={classes.backdrop} open={loading} >
