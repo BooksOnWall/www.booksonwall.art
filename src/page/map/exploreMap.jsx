@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { StaticMap, Layer, Source } from 'react-map-gl';
+import mapboxgl from "mapbox-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
+
 
 let MapboxAccessToken = process.env.REACT_APP_MAT;
 

@@ -6,8 +6,10 @@ import {
 } from '@material-ui/core';
 
 import MapGL, {Marker, StaticMap, GeoJSONLayer, Layer, Source } from 'react-map-gl';
+import mapboxgl from "mapbox-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import circle from '../../assets/images/info/history/point.png';
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 let MapboxAccessToken = process.env.REACT_APP_MAT;
 
