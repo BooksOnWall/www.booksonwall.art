@@ -3,6 +3,8 @@ import { makeStyles, Grid, Button,  Typography, Container, Box } from '@material
 import ReactMarkdown from 'react-markdown';
 import { injectIntl, defineMessages  } from 'react-intl';
 import { useLocation, useHistory } from 'react-router-dom';
+import { useReactive, MediaQuery } from '../utils/reactive';
+import clsx from 'clsx';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Blob } from 'react-blob';
 
@@ -44,9 +46,16 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     backgroundSize: 'cover',
     backgroundPosition: 'center right',
+  },
+  bgLarge: {
     backgroundImage: `url(${Images.image22.default})`,
   },
-
+  bgMedium:{
+    backgroundImage: `url(${Images.image19.default})`, //cambiar
+  },
+  bgSmall:{
+    backgroundImage: `url(${Images.image20.default})`, //cambar
+  },
   button1: {
     margin: '30px 0',
     color: '#186858',
@@ -205,9 +214,11 @@ we_are:{
 
 const CollaborateHeader = ({messages}) => {
   const classes = useStyles();
+  const {isLarge, isMedium , isSmall} = useReactive();
+  const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
 
 return (
-  <Box className={classes.collaborateHader}>
+  <Box className={clsx(classes.collaborateHader, classes[bg])}>
     <Box className={classes.gradient}>
     <Container maxWidth="false">
       <Typography className={classes.titleTop} gutterBottom variant="h2" component="h1"> {messages.collaborate.title}</Typography>

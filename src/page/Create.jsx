@@ -11,7 +11,8 @@ import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Images } from './../assets/images/pages';
 import { injectIntl, defineMessages } from 'react-intl';
-import {useReactive} from "../utils/reactive";
+import {useReactive, MediaQuery} from "../utils/reactive";
+import clsx from 'clsx';
 import { Blob } from 'react-blob';
 
 const createTraductions = defineMessages({
@@ -77,7 +78,15 @@ bgHeader:{
   backgroundSize: 'contain',
   backgroundPositionY: 'top',
   backgroundPositionX: 'right',
+},
+bgLarge: {
   backgroundImage: `url(${Images.image23.default})`,
+},
+bgMedium:{
+  backgroundImage: `url(${Images.image19.default})`, //cambiar
+},
+bgSmall:{
+  backgroundImage: `url(${Images.image20.default})`, //cambiar
 },
 wrapper: {
   display: 'flex',
@@ -112,6 +121,9 @@ weAre: {
   flexDirection: 'column',
   justifyContent:'space-between',
   color: 'white',
+  backgroundSize: 'cover',
+  backgroundPositionY: 'top',
+  backgroundPositionX: 'right',
 },
 weAreBg: {
   background:theme.palette.primary.mainGradient ,
@@ -119,6 +131,15 @@ weAreBg: {
   minHeight: '80vh',
   flexDirection: 'column',
   justifyContent:'space-between',
+},
+weAreBgLarge: {
+  backgroundImage: `url(${Images.image17.default})`, //cambiar
+},
+weAreBgMedium:{
+  backgroundImage: `url(${Images.image19.default})`, //cambiar
+},
+weAreBgSmall:{
+  backgroundImage: `url(${Images.image20.default})`, //cambiar
 },
 container: {
     display: 'flex',
@@ -245,10 +266,12 @@ poligons2:{
 const WorkShop = ({messages}) => {
   const classes = useStyles();
   let history= useHistory();
+  const {isLarge, isMedium , isSmall} = useReactive();
+  const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
   return (
   <>
     <Box className={classes.root}>
-    <Box className={classes.bgHeader} >
+    <Box className={clsx(classes.bgHeader, classes[bg])} >
     <Box id={messages.create.workshop} >
       <Container className={classes.stories} maxWidth="xl">
           <Grid container spacing={8} >
@@ -286,8 +309,11 @@ const WorkShop = ({messages}) => {
 )};
 const Community = ({history, messages}) => {
   const classes = useStyles();
+  const {isLarge, isMedium , isSmall} = useReactive();
+  const bg = (isLarge) ? 'weAreBgLarge' : (isMedium) ? 'weAreBgMedium' : 'weAreBgSmall';
+
   return (
-    <Box id={messages.create.community} className={classes.weAre} >
+    <Box id={messages.create.community} className={clsx(classes.weAre, classes[bg])}  >
       <Box className={classes.weAreBg} >
       <Box className={classes.dividerShape2} >
         <svg className={classes.dividerSvg2} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">

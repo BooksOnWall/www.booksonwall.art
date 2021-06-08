@@ -14,9 +14,10 @@ import { Images } from './../assets/images/pages';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 import { useLocation, useHistory } from 'react-router-dom';
-import {useReactive} from "../utils/reactive";
+import {useReactive, MediaQuery} from "../utils/reactive";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl, defineMessages  } from 'react-intl';
+import clsx from 'clsx';
 import ReactMarkdown from 'react-markdown';
 import ContactForm from './ContactForm';
 import Articles from './articles/Articles';
@@ -72,7 +73,9 @@ manifest: {
   maxWidth: 1280
 },
 history:{
-  margin: '4vw 32vw 6vh 53px',
+  padding: '8vh 8vh',
+  paddingTop: '12vh',
+  maxWidth: 1280
 },
 tileHead: {
     margin: 0,
@@ -84,7 +87,15 @@ tileHead: {
     color: 'white',
     backgroundSize: 'cover',
     backgroundPositionY: 'top',
+  },
+  bgLarge:{
     backgroundImage: `url(${Images.image5.default})`,
+  },
+  bgMedium:{
+    backgroundImage: `url(${Images.image4.default})`, // falta imagen
+  },
+  bgSmall:{
+    backgroundImage: `url(${Images.image3.default})`, // falta imagen
   },
   homeHaderBg: {
     background: theme.palette.secondary.mainGradient,
@@ -98,9 +109,17 @@ tileHead: {
 community:{
   backgroundSize: 'cover',
   backgroundPositionY: 'center',
-  backgroundImage: `url(${Images.image12.default})`,
   minHeight: '60vh',
   color: '#fff',
+},
+communitybgLarge:{
+  backgroundImage: `url(${Images.image12.default})`,
+},
+communitybgMedium:{
+  backgroundImage: `url(${Images.image11.default})`, // falta imagen
+},
+communitybgSmall:{
+  backgroundImage: `url(${Images.image10.default})`, // falta imagen
 },
 communityContainer:{
   display: 'flex',
@@ -237,9 +256,13 @@ const Manifest = ({messages, locale}) => {
     }
     getManifest();
   }, [locale]);
+
+  const {isLarge, isMedium , isSmall} = useReactive();
+  const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
+
   return (
     <>
-    <Box className={classes.homeHader}>
+    <Box className={clsx(classes.homeHader, classes[bg])}>
       <Box className={classes.homeHaderBg}>
       <Container maxWidth='false' >
         <Typography className={classes.tileHead} variant="h1" gutterBottom>{messages.info.we_are}</Typography>
@@ -304,7 +327,7 @@ const History =({messages, locale, historyFeed, goToCommunity}) => {
   const classes = useStyles();
   return (
   <Box id={messages.menu.history} className={classes.history}>
-    <Container maxWidth='md'>
+    <Container maxWidth='false'>
     {history && <ReactMarkdown children={history.header} />}
       <Button primary  onClick={goToCommunity} labelPosition='right' icon='down arrow' content={messages.create.meet_comunity} />
     </Container>
@@ -348,13 +371,17 @@ const Community =({goToCommunity, messages, locale}) => {
     getCommunity();
   }, [locale]);
 
+    const {isLarge, isMedium , isSmall} = useReactive();
+    const bg = (isLarge) ? 'communitybgLarge' : (isMedium) ? 'communitybgMedium' : 'communitybgSmall';
+
   return (
-    <Box id={messages.menu.community} className={classes.community}>
+    <Box id={messages.menu.community} className={clsx(classes.community, classes[bg])}>
     <Box className={classes.communityBg}>
     <Container className={classes.communityContainer}>
       <Grid container spacing={8}  className={classes.communityGrid}>
         <Grid item  xs={6}>
-            <ContactForm style={{textAlign: 'left'}} messages={messages} />
+          <Typography variant='h3' complement='h2'> Comunity is... </Typography>
+          <Typography variant='body2' complement='p'> Cloud TAGS</Typography>
         </Grid>
 
         <Grid item  xs={6}>
@@ -372,7 +399,7 @@ const Press =({goToArticle, history, messages}) => {
   return (
   <Box id={messages.menu.press} className={classes.press} >
       <Container maxWidth='false'>
-        <Typography color='primary' align='center' className={classes.pressTitle} variant='h3'>{messages.menu.press}</Typography>
+        <Typography gutterBottom color='primary' align='center' className={classes.pressTitle} variant='h3'>{messages.menu.press}</Typography>
         <Articles insert limit={4} tags={['Press']} history={history}/>
         <Button primary  onClick={goToArticle} labelPosition='right' icon='arrow right' content={messages.info.more_articles}  />
       </Container>

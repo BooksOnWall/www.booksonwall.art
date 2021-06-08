@@ -10,7 +10,8 @@ import {
     makeStyles
   } from '@material-ui/core';
 import { useLocation } from 'react-router-dom';
-import {useReactive} from "../utils/reactive";
+import {useReactive, MediaQuery} from "../utils/reactive";
+import clsx from "clsx";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 
 import { Images } from '../assets/images/pages';
@@ -52,7 +53,15 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     backgroundSize: 'cover',
     backgroundPosition: 'right ',
-    backgroundImage: `url(${Images.image12.default})`,
+  },
+  bgLarge: {
+        backgroundImage: `url(${Images.image12.default})`,
+  },
+  bgMedium: {
+        backgroundImage: `url(${Images.image10.default})`, //cambiar
+  },
+  bgSmall: {
+        backgroundImage: `url(${Images.image8.default})`, //cambiar
   },
   titleWrapper: {
     margin: '200px 0 0',
@@ -90,21 +99,23 @@ dividerSvg: {
 
 const ExploreHeader = forwardRef(({ onBackClick,messages }, ref) => {
   const classes = useStyles();
-  return (
+  const {isLarge, isMedium , isSmall} = useReactive();
+  const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
 
-<Box ref={ref} className={classes.exploreHader}>
-  <Box className={classes.titleWrapper} >
-    <Typography className={classes.title} gutterBottom variant="h1" >{messages.explore.header}</Typography>
-    <Typography className={classes.title} gutterBottom variant="h4" component="h2">{messages.explore.subheader}</Typography>
-    <br />
-    <Box>
-      <ButtonGroup>
-        <Button href="/download/app/BooksOnWall.0.99.105.apk" size="large" className={classes.button} startIcon={<GetAppIcon />}>{messages.explore.downloadDirect}</Button>
-      </ButtonGroup>
+  return (
+  <Box ref={ref} className={clsx(classes.exploreHader, classes[bg])}>
+    <Box className={classes.titleWrapper} >
+      <Typography className={classes.title} gutterBottom variant="h1" >{messages.explore.header}</Typography>
+      <Typography className={classes.title} gutterBottom variant="h4" component="h2">{messages.explore.subheader}</Typography>
+      <br />
+      <Box>
+        <ButtonGroup>
+          <Button href="/download/app/BooksOnWall.0.99.105.apk" size="large" className={classes.button} startIcon={<GetAppIcon />}>{messages.explore.downloadDirect}</Button>
+        </ButtonGroup>
+      </Box>
     </Box>
   </Box>
-</Box>
-);
+  );
 });
 const Explore = (props) => {
     const {messages} = props.intl;

@@ -274,10 +274,10 @@ bgLarge:{
   backgroundImage: `url(${Home})`,
 },
 bgMedium:{
-  backgroundImage: `url(${Blob1})`,
+  backgroundImage: `url(${Blob1})`, // falta imagen
 },
 bgSmall:{
-  backgroundImage: `url(${Blob2})`,
+  backgroundImage: `url(${Blob2})`, // falta imagen
 },
 tileHead: {
     margin: 0,
