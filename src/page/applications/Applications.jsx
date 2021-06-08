@@ -105,7 +105,6 @@ const Applications = (props) => {
     getUnique();
     getApplications();
   }, [apiURL, locale]);
-  console.log('applications',applications)
   return (
     <>
     <Backdrop className={classes.backdrop} open={loading} >
@@ -130,7 +129,7 @@ const Applications = (props) => {
               <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
               <Typography  variant="body1" ><ReactMarkdown children={s.header} /></Typography>
               <br />
-              <Button onClick={() => history.push("/"+messages.menu.applications+"/"+s.name) } size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
+              <Button onClick={() => history.push("/"+messages.menu.projects+"/"+s.name) } size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
             </Grid>
           ))}
         </Grid>

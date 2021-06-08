@@ -139,7 +139,9 @@ logoSmall:{
   },
   gridMenuContainer:{
     flex:1,
-    minWidth: 400
+    minWidth: 400,
+    justifyContent: 'space-evenly',
+    maxWidth: 1080,
   },
   menuList:{
     flex: 1,
@@ -329,23 +331,6 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
 
     </Grid>
 
-    {bottomReactive === 'Large' &&
-      <>
-      <Divider light className={clsx(classes.dividerH, classes.[menu])} />
-      <Grid container className={classes.bottom} spacing={1}>
-        <Grid item xs={4}>
-          <Logo className={classes.logo} alt="logo" />
-        </Grid>
-        <Grid item xs={8}>
-          <Grid className={classes.menuBottom} >
-            <Button className={classes.button} color="default" startIcon={<Heart color='secondary' />}>{messages.footer.thx_for_support_us}</Button>
-            <Button className={classes.button} onClick={() => history.push("/"+messages.menu.terms)} startIcon={<Cc color='primary' />}>{messages.footer.terms}</Button>
-          </Grid>
-        </Grid>
-      </Grid>
-      </>
-    }
-    {bottomReactive === 'Medium' && 'Small' &&
       <>
       <Divider light className={clsx(classes.dividerH, classes.[menu])} />
       <Grid container className={classes.bottom} spacing={1}>
@@ -360,8 +345,6 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
         </Grid>
       </Grid>
       </>
-    }
-
     </Container>
     </Box>
     </>

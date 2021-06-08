@@ -17,6 +17,8 @@ import {
   } from '@material-ui/core';
 
 import { useReactive, MediaQuery } from '../../utils/reactive';
+import loadable from '@loadable/component';
+
 import Carousel from 'react-material-ui-carousel'
 import ToggleButton from '@material-ui/lab/ToggleButton';
 
@@ -24,6 +26,8 @@ import Home from "../../assets/images/pages/home.jpg";
 
 import { injectIntl} from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
+
+const ArticlesMap = loadable(() => import('../map/articlesMap'));
 
 const useStyles = makeStyles((theme) => ({
   articles:{
@@ -129,8 +133,8 @@ const ArticlesHeader = ({messages}) => {
 
 const News = ({messages, insert, articles, goToArticle, selected , hasCategory }) => {
   const classes = useStyles();
-  const { isSmall } = useReactive();
-  const format = (isSmall) ? 'small' : 'thumbnail';
+  const { isLarge, isMedium, isSmall } = useReactive();
+  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
   if(articles) console.log(articles[0]);
   const next = () => {
 
@@ -178,6 +182,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
   }
   {!insert &&
     <>
+
     {articles.map((article, i) => (
     <Grid item xs>
     <Card className={classes.card} elevation={0} key={'article'+i}>
@@ -353,6 +358,7 @@ class Articles extends Component {
     // images: [],
     return (
         <>
+          {!insert && <ArticlesMap articles={articles} mode={"Light"}/>}
           {!insert && <ArticlesHeader messages={messages} /> }
           <ArticleList
             loading={loading}
