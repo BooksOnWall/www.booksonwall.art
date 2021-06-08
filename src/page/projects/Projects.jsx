@@ -18,10 +18,11 @@ import {
 import { injectIntl, defineMessages } from 'react-intl';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import {useReactive} from "../../utils/reactive";
+import loadable from '@loadable/component';
 import Home from "../../assets/images/pages/home.jpg";
 
 const apiURL = process.env.REACT_APP_API;
-
+const ProjectsMap = loadable(() => import('../map/projectsMap'));
 const useStyles = makeStyles((theme) => ({
   card: {
     minWidht: 600,
@@ -219,6 +220,7 @@ class Projects extends Component {
       </Backdrop>
       {projects &&
         <>
+        <ProjectsMap projects={projects} mode={"Light"}/>
         <Box >
           <ProjectHeader messages={messages}/>
           <Box style={{display: 'flex', flexDirection:'column'}}>
