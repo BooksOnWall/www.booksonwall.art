@@ -17,7 +17,7 @@ import loadable from '@loadable/component';
 import { useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl, defineMessages  } from 'react-intl';
-
+import clsx from 'clsx';
 import {Images}  from '../assets/images/pages/index';
 
 import { Blob } from 'react-blob';
@@ -267,9 +267,17 @@ homeHader:{
   color: 'white',
   backgroundSize: 'cover',
   backgroundPositionY: 'center',
-  backgroundImage: `url(${Home})`,
   padding: 0,
   margin: 0
+},
+bgLarge:{
+  backgroundImage: `url(${Home})`,
+},
+bgMedium:{
+  backgroundImage: `url(${Blob1})`,
+},
+bgSmall:{
+  backgroundImage: `url(${Blob2})`,
 },
 tileHead: {
     margin: 0,
@@ -281,10 +289,13 @@ tileHead: {
 const HomeHeaderBlock = ({messages, theme}) => {
   const classes = useStyles();
   let history = useHistory();
+  const {isLarge, isMedium , isSmall} = useReactive();
+  const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
+  // cslx(classes.bgLeft, classes[bg])
   return (
     <>
   <div className={classes.root}>
-    <Box id="HomeHeaderBlock" className={classes.homeHader}>
+    <Box id="HomeHeaderBlock" className={clsx(classes.homeHader, classes[bg])}>
       <Container maxWidth='xs' className={classes.tileHead}>
             <Typography gutterBottom color="textSecondary" variant="h1" >{messages.home.title}</Typography>
       </Container>
