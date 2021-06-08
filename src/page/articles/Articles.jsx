@@ -129,8 +129,8 @@ const ArticlesHeader = ({messages}) => {
 
 const News = ({messages, insert, articles, goToArticle, selected , hasCategory }) => {
   const classes = useStyles();
-  const { isLarge, isMedium, isSmall, isTyny } = useReactive();
-  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
+  const { isSmall } = useReactive();
+  const format = (isSmall) ? 'small' : 'thumbnail';
   if(articles) console.log(articles[0]);
   const next = () => {
 

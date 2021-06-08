@@ -130,6 +130,7 @@ palette: {
     fontFamily: '"Roboto Mono", Helvetica, Arial, sans-serif',
   },
   button:{
+    fontSize: "1rem",
     fontWeight: 700,
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
     textTransform: "uppercase",
