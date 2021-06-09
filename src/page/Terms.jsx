@@ -62,10 +62,11 @@ const Terms = (props) => {
 
   return (
     <>
-  <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
-  <Backdrop className={classes.backdrop} open={loading} >
-    <CircularProgress color="inherit" />
-  </Backdrop>
+  <ScrollIntoViewIfNeeded active={true}>
+    <Backdrop className={classes.backdrop} open={loading} >
+      <CircularProgress color="inherit" />
+    </Backdrop>
+  </ScrollIntoViewIfNeeded>
   {terms &&
     <Box>
       <ScrollIntoViewIfNeeded active={true}>

@@ -65,7 +65,6 @@ const useStyles = makeStyles((theme) => ({
 const Support = (props) => {
   const classes = useStyles();
   const [support, setSupport] = useState();
-  const [activeScroll, setActiveScroll] = useState('top');
   const [loading, setLoading] = useState(false);
   const { isLarge, isMedium } = useReactive();
   const format = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
@@ -109,7 +108,7 @@ const Support = (props) => {
     </Backdrop>
     {support &&
       <Box>
-      <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
+      <ScrollIntoViewIfNeeded active={true}>
         {support && support.image_header && <Image aspectRatio={5/1} src={apiURL + support.image_header.formats[format].url} />}
       </ScrollIntoViewIfNeeded>
         <Container>
