@@ -56,7 +56,7 @@ const Applications = (props) => {
         })
         .then(data => {
             if(data) {
-              setApplications(data.filter((o) => (o.service && o.service.Name === 'Applications')).map((c,i) => ({id: c.id, header: c.header, header_image: c.header_image, name:c.name})));
+              setApplications(data.filter((o) => (o.service && o.service.Name === messages.menu.applications)).map((c,i) => ({id: c.id, header: c.header, header_image: c.header_image, name:c.name})));
               setLoading(false);
             } else {
               console.log('No Data received from the server');
@@ -104,7 +104,7 @@ const Applications = (props) => {
     }
     getUnique();
     getApplications();
-  }, [apiURL, locale]);
+  }, [apiURL, locale, messages]);
   return (
     <>
     <Backdrop className={classes.backdrop} open={loading} >
