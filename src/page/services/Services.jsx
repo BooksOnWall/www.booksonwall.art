@@ -118,7 +118,7 @@ const Services = (props) => {
     <Box className={classes.root}>
     {unique &&
       <>
-      {unique && unique.image_header && <Image src={apiURL+unique.image_header.formats[formatHeader].url} />}
+      {unique && unique.image_header && <Image aspectRatio={5/1} src={apiURL+unique.image_header.formats[formatHeader].url} />}
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
       <Grid item xs sm >
       <h1>{unique.Name}</h1>

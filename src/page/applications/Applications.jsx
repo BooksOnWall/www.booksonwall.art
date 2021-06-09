@@ -14,7 +14,7 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
-
+import {useReactive} from "../../utils/reactive";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100vw',
@@ -32,6 +32,8 @@ const Applications = (props) => {
   const classes = useStyles();
   const [applications, setApplications] = useState([]);
   const [activeScroll, setActiveScroll] = useState('top');
+  const { isLarge, isMedium } = useReactive();
+  const format = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
   const [loading, setLoading] = useState(false);
   const [unique, setUnique] = useState();
   const {locale, messages} = props.intl;
@@ -112,14 +114,16 @@ const Applications = (props) => {
     </Backdrop>
     <Box className={classes.root}>
     {unique &&
+      <>
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
+      <Image aspectRatio={5/3} src={apiURL+unique.image_header.formats[format].url} />
+      </ScrollIntoViewIfNeeded>
       <Grid item xs sm >
       <h1>{unique.Name}</h1>
       <ReactMarkdown children={unique.header} />
       </Grid>
-      </ScrollIntoViewIfNeeded>
+      </>
     }
-    {unique && unique.image_header && <Image src={apiURL+unique.image_header} />}
     <Grid container spacing={3}>
           {applications && applications.map((s,i) => (
             <Grid item xs sm key={"s"+i}>
