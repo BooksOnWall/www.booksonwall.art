@@ -17,6 +17,7 @@ import {
   } from '@material-ui/core';
 import { injectIntl, defineMessages } from 'react-intl';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
+import ReactMarkdown from 'react-markdown';
 import {useReactive} from "../../utils/reactive";
 import loadable from '@loadable/component';
 import Home from "../../assets/images/pages/home.jpg";
@@ -129,6 +130,9 @@ const Project = ({projects, goToProject, messages}) => {
          <Typography align='left' variant="h2" component="h2">
            {proj.name}
          </Typography>
+          </CardContent>
+        <CardContent>
+         <ReactMarkdown children={proj.header} />
        </CardContent>
        <CardContent>
         <Typography  variant="subtitle1"><b>{messages.projects.started}:</b> {proj.start_date} <br/> <b>{messages.projects.complete}:</b>{proj.end_date} </Typography>

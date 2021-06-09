@@ -118,7 +118,6 @@ const Applications = (props) => {
       <ReactMarkdown children={unique.header} />
       </Grid>
       </ScrollIntoViewIfNeeded>
-
     }
     {unique && unique.image_header && <Image src={apiURL+unique.image_header} />}
     <Grid container spacing={3}>

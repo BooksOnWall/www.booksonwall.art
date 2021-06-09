@@ -22,6 +22,7 @@ const ProjectPage = ({project, history, messages, locale, name}) => {
           {project.header_image && <Image  aspectRatio={4/2} src={apiURL + project.header_image.formats[format].url} />}
         </ScrollIntoViewIfNeeded>
         <Typography variant="h1" component='h1'>{name}</Typography>
+        <ReactMarkdown children={project.header} />
         <ReactMarkdown children={project.description} />
     </Box>
   )
