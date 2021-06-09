@@ -207,6 +207,7 @@ class Projects extends Component {
   }
   goToProject = (name) => {
     const {messages} = this.props.intl;
+    console.log('menu', messages.menu.project);
     this.props.history.push('/'+messages.menu.project+'/'+name)
   }
   render() {
