@@ -119,9 +119,9 @@ const Project = ({projects, goToProject, messages}) => {
   const format = (isLarge) ? 'small': 'thumbnail';
   return projects.map((proj, i) => (
     <Card elevation={0} className={classes.card} key={'proj'+i}>
-    <CardActionArea className={classes.CardActionArea} >
+    <CardActionArea className={classes.CardActionArea} onClick={(e) => goToProject(proj.name)}>
        <CardMedia
-         onClick={(e) => goToProject(proj.name)}
+
          className={classes.media}
          image={(proj.header_image && proj.header_image.formats && proj.header_image[format] ) ? apiURL + proj.header_image.formats[format].url : null}
          title={proj.name}
