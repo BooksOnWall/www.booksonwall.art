@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
 const Applications = (props) => {
   const classes = useStyles();
   const [applications, setApplications] = useState([]);
-  const [activeScroll, setActiveScroll] = useState('top');
   const { isLarge, isMedium } = useReactive();
   const format = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
   const [loading, setLoading] = useState(false);
@@ -115,7 +114,7 @@ const Applications = (props) => {
     <Box className={classes.root}>
     {unique &&
       <>
-      <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
+      <ScrollIntoViewIfNeeded active={true}>
       <Image aspectRatio={5/3} src={apiURL+unique.image_header.formats[format].url} />
       </ScrollIntoViewIfNeeded>
       <Grid item xs sm >
