@@ -115,7 +115,7 @@ const Applications = (props) => {
     {unique &&
       <>
       <ScrollIntoViewIfNeeded active={true}>
-      <Image aspectRatio={5/3} src={apiURL+unique.image_header.formats[format].url} />
+      <Image aspectRatio={5/2} src={apiURL+unique.image_header.formats[format].url} />
       </ScrollIntoViewIfNeeded>
       <Grid item xs sm >
       <h1>{unique.Name}</h1>
