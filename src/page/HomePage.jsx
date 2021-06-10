@@ -100,17 +100,6 @@ root: {
   with: '100vw',
   overflow: 'hidden'
 },
-wrapperBlob:{
-  minHeight: '70vh',
-  display: 'flex',
-  alignItems: 'center',
-},
-wrapperGrid: {
-  display: 'flex',
-  zIndex: 999,
-  minWidht: '50%',
-  padding: 50
-},
 bgLeft:{
   backgroundImage: `url(${Bg1})`,
   backgroundRepeat: 'repeat',
@@ -153,10 +142,7 @@ tile: {
   margin: 0,
 
 },
-blob: {
-  padding: '120px 30px 30px',
-  overflow: 'hidden'
-},
+
 button1: {
   margin: 10,
   color: theme.palette.primary.main,
@@ -172,18 +158,17 @@ button2: {
   margin: 10,
   color: theme.palette.secondary.main,
   border: '2px #D9D2C6 solid',
-  padding: '10px 20px',
   '&:hover': {
       background: theme.palette.secondary.main,
       color: 'white',
-        border: '2px #186858 solid',
+      border: '2px solid',
+      borderColor: theme.palette.secondary.main
     }
   },
 button3: {
   margin: 10,
   color: '#EEEFEC',
   border: '2px #D9D2C6 solid',
-  padding: '10px 20px',
   '&:hover': {
       background: '#EEEFEC',
       color: '#333',
@@ -194,14 +179,13 @@ button4: {
   margin: 10,
   color: theme.palette.secondary.light,
   border: '2px #D9D2C6 solid',
-  padding: '10px 20px',
   '&:hover': {
       background: theme.palette.secondary.light,
       color: 'white',
-        border: '2px #009999 solid',
+      border: '2px solid',
+      borderColor: theme.palette.secondary.light
     }
 },
-
 poligon: {
 display: 'flex',
 flexGrow: 1,
@@ -217,7 +201,6 @@ poligons: {
   minHeight: 300,
   flex: '2 1 10%',
   alignSelf: 'flex-start',
-
 },
 poligons2:{
   flex: '2 1 16%',
@@ -243,19 +226,46 @@ dividerSvg: {
   width: 'calc(100% + 1.3px)',
   height: '110px',
 },
+wrapperBlob:{
+  minHeight: '0vh',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingBottom: 20
+},
+wrapperGrid: {
+  display: 'flex',
+  zIndex: 999,
+  minWidht: '50%',
+  padding: '10px 50px'
+},
+gridBlob:{
+  marginTop: 50,
+  display: 'flex',
+  justifyContent: 'center',
+  minHeight: '65vh',
+},
 blobA: {
    zIndex: 1,
-   backgroundColor: '#E18C23',
+   backgroundColor: theme.palette.primary.main,
    background: theme.palette.primary.mainGradient,
-   maxWidth: '850px',
-   maxHeight: '850px'
+   maxWidth: '1080px',
+   maxHeight: '1080px',
+   padding: 15
 },
 blobB: {
    zIndex: 1,
-   backgroundColor: '#E18C23',
+   backgroundColor: theme.palette.secondary.main,
    background: theme.palette.secondary.mainGradient,
-   maxWidth: '850px',
-   maxHeight: '850px'
+   maxWidth: '1080px',
+   maxHeight: '1080px'
+},
+blobIn:{
+  maxWidth: '1040px',
+  maxHeight: '1040px',
+  with: '88%',
+  height: '88%',
+  padding: 20
 },
 homeHader:{
   display: 'flex',
@@ -284,6 +294,9 @@ tileHead: {
     maxWidth: '850px',
     padding: '0 8vh 10vh',
   },
+placeholderBlock:{
+  marginTop: 150,
+}
 }));
 
 const HomeHeaderBlock = ({messages, theme}) => {
@@ -291,10 +304,11 @@ const HomeHeaderBlock = ({messages, theme}) => {
   let history = useHistory();
   const {isLarge, isMedium , isSmall} = useReactive();
   const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
-  // cslx(classes.bgLeft, classes[bg])
+  const btnSmall = (isSmall) ? true : false ;
   return (
     <>
   <div className={classes.root}>
+
     <Box id="HomeHeaderBlock" className={clsx(classes.homeHader, classes[bg])}>
       <Container maxWidth='xs' className={classes.tileHead}>
             <Typography gutterBottom color="textSecondary" variant="h1" >{messages.home.title}</Typography>
@@ -305,28 +319,30 @@ const HomeHeaderBlock = ({messages, theme}) => {
         </svg>
       </Box>
     </Box>
+
     <Box className='bg1'><Bg1 /></Box>
     <Box className='bg2'><Bg2 /></Box>
     <Box className='bg3'><Bg3 /></Box>
-    <Container maxWidth="xl" className={classes.wrapperBlob}>
-    <Box>
 
+    <Container maxWidth="false" className={classes.wrapperBlob}>
+    <Box>
       <Grid container spacing={8}>
 
-        <Grid item  xs={6}>
-          <Blob className={classes.blobA} size="50vw" >
-            <Blob size="88%" src={Blob1} />
+        <Grid item  xs={12} md={6} className={classes.gridBlob}>
+          <Blob className={classes.blobA} >
+            <Blob className={classes.blobIn} src={Blob1} />
           </Blob>
         </Grid>
-
-        <Grid item xs={6} className={classes.wrapperGrid}>
+        <Grid item xs={12} md={6} className={classes.wrapperGrid}>
             <Card elevation={0} className={classes.card}>
               <CardContent>
-                <Typography  gutterBottom variant="h2" >{messages.home.take_a_tour}</Typography>
-                <Typography gutterBottom variant="h4" >{messages.home.enjoy_the_experience}</Typography>
+                <Typography  gutterBottom variant="h2" component="h2" >{messages.home.take_a_tour}</Typography>
+                <Typography gutterBottom variant="subtitle1" >{messages.home.enjoy_the_experience}</Typography>
               </CardContent>
               <CardActions>
-                <Button onClick={() => history.push('/'+messages.menu.explore+'#'+messages.menu.download_app)} className={classes.button1}>{messages.home.download_app_btn}</Button>
+
+              <Button size={(btnSmall) ? 'small' : 'large'} onClick={() => history.push('/'+messages.menu.explore+'#'+messages.menu.download_app)} className={classes.button1}>{messages.home.download_app_btn}</Button>
+
               </CardActions>
             </Card>
         </Grid>
@@ -342,37 +358,53 @@ const HomeHeaderBlock = ({messages, theme}) => {
 const WhoAreWe = ({messages}) => {
   const classes = useStyles();
   let history = useHistory();
+  const {isLarge, isMedium , isSmall} = useReactive();
+  const blobDistribution = (isSmall) ? true : false ;
+  const poligonsDistribution = (isSmall) ? true : false ;
+  const btnSmall = (isSmall) ? true : false ;
+
 return (
   <>
   <div className={classes.root}>
-  <Box  className={classes.poligon}>
+  {!poligonsDistribution &&
+    <Box  className={classes.poligon}>
       <Svg1 className={classes.poligons2} />  <Svg2 className={classes.poligons}  /> <Svg3 className={classes.poligons2}  /> <Svg4 className={classes.poligons}  />   <Svg5 className={classes.poligons2}  /> <Svg6 className={classes.poligons}  />
     </Box>
-
+    }
     <Container maxWidth="xl" className={classes.wrapperBlob}>
     <Box>
 
     <Grid container spacing={8}>
 
-        <Grid item xs={6} >
+        {blobDistribution &&
+          <Grid item  xs={12} md={6} className={classes.gridBlob}>
+            <Blob className={classes.blobB}>
+              <Blob className={classes.blobIn} src={Blob2} />
+            </Blob>
+          </Grid>
+        }
+        <Grid item xs={12} md={6} className={classes.wrapperGrid}>
           <Card elevation={0} className={classes.card}>
             <CardContent>
               <Typography gutterBottom color="textPrimary" variant="h2" >{messages.home.we_are}</Typography>
-              <Typography gutterBottom color="textPrimary" variant="h4" >{messages.home.we_connect}</Typography>
+              <Typography gutterBottom color="textPrimary" variant="subtitle1" >{messages.home.we_connect}</Typography>
             </CardContent>
             <CardActions>
-              <Button onClick={() => history.push('/'+messages.menu.connect+"#"+messages.menu.register)} className={classes.button4}>{messages.home.join_btn}</Button>
-              <Button onClick={() => history.push('/'+messages.menu.create+'#'+messages.menu.community)} className={classes.button2} color="primary">{messages.home.know_btn}</Button>
+              <Button size={(btnSmall) ? 'small' : 'large'} onClick={() => history.push('/'+messages.menu.connect+"#"+messages.menu.register)} className={classes.button4}>{messages.home.join_btn}</Button>
+              <Button size={(btnSmall) ? 'small' : 'large'} onClick={() => history.push('/'+messages.menu.create+'#'+messages.menu.community)} className={classes.button2} color="primary">{messages.home.know_btn}</Button>
             </CardActions>
           </Card>
         </Grid>
 
-        <Grid item  xs={6} className={classes.wrapperGrid}>
-          <Blob className={classes.blobB} size="50vw">
-            <Blob size="88%" src={Blob2} />
-          </Blob>
-        </Grid>
+        {!blobDistribution &&
+          <Grid item  xs={12} md={6} className={classes.gridBlob}>
+            <Blob className={classes.blobB}>
+              <Blob className={classes.blobIn} src={Blob2} />
+            </Blob>
+          </Grid>
+        }
       </Grid>
+
       </Box>
       </Container>
     </div>
@@ -433,9 +465,13 @@ const PlaceholderBlock = ({messages}) => {
        cols: 1,
      },
  ];
+ const {isLarge, isMedium , isSmall} = useReactive();
+ const btnSmall = (isSmall) ? true : false ;
+
 return (
   <div>
-  <Container className={classes.placeholderBlock} maxWidth="false" >
+  <Box className={classes.placeholderBlock} >
+
           <Grid container justify="center" spacing={0}>
             {tileData.map((tile,i) => (
               <Grid key={i} item xs={6} md={3}>
@@ -449,13 +485,13 @@ return (
             <Grid item xs={12} md={6}>
               <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg4})` }} >
                 <Typography gutterBottom align="center" color="textSecondary" variant="h2">{messages.home.download_app}</Typography>
-                <Button size="large" onClick={()=> history.push("/"+messages.menu.explore+"#"+messages.menu.download_app)} className={classes.button3} variant="outlined">{messages.home.enjoy_btn}</Button>
+                <Button  size={(btnSmall) ? 'small' : 'large'} onClick={()=> history.push("/"+messages.menu.explore+"#"+messages.menu.download_app)} className={classes.button3} variant="outlined">{messages.home.enjoy_btn}</Button>
               </Paper>
             </Grid>
             <Grid item xs={12} md={6}>
              <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg5})` }} >
                <Typography gutterBottom align="center" color="textSecondary" variant="h2">{messages.home.create_togheter}</Typography>
-               <Button size="large"  onClick={() => history.push("/"+messages.menu.collaborate+"#"+messages.menu.support)} className={classes.button3}  variant="outlined">{messages.home.support_a_story_btn}</Button>
+               <Button size={(btnSmall) ? 'small' : 'large'} size="large"  onClick={() => history.push("/"+messages.menu.collaborate+"#"+messages.menu.support)} className={classes.button3}  variant="outlined">{messages.home.support_a_story_btn}</Button>
              </Paper>
             </Grid>
          </Grid>
@@ -469,7 +505,7 @@ return (
               </Grid>
           ))}
           </Grid>
-      </Container>
+      </Box>
     </div>
 )};
 const HomePage = (props) => {
@@ -477,7 +513,6 @@ const HomePage = (props) => {
     console.log('reactive', reactive);
     const {messages} = props.intl;
     const [activeScroll, setActiveScroll] = useState('top');
-
     return (
       <>
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
@@ -491,10 +526,10 @@ const HomePage = (props) => {
         <Box> <Articles messages={messages} history={props.history} limit={(reactive.isLarge) ? 12 : (reactive.isMedium) ? 8 :  3} insert/> </Box>
       </ScrollIntoViewIfNeeded>
         <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.block)}>
-        <Box style={{padding:' 80px 40px'}}> <PlaceholderBlock messages={messages} /> </Box>
+        <Box> <PlaceholderBlock messages={messages} /> </Box>
       </ScrollIntoViewIfNeeded>
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.stories)}>
-        <Box  style={{padding:' 80px 40px'}}><Stories messages={messages} history={props.history} limit={(reactive.isLarge) ? 12 : (reactive.isMedium) ? 8 :  3} insert/> </Box>
+        <Box><Stories messages={messages} history={props.history} limit={(reactive.isLarge) ? 12 : (reactive.isMedium) ? 8 :  3} insert/> </Box>
       </ScrollIntoViewIfNeeded>
     </Box>
     </>

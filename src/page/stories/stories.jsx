@@ -26,21 +26,25 @@ const storiesTraductions = defineMessages({
     id: 'stories.read_more_btn',
     defaultMessage: 'Read more'
   },
+  story_about:{
+    id: 'stories.story_about',
+    defineMessages: 'BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one?'
+  }
 });
 
 const useStyles = makeStyles((theme) => ({
   card: {
     background: 'transparent',
     alignItems: 'center',
-    margin: 30,
-    maxWidth: 1000,
+    maxWidth: 560,
     minWidth: 320,
-    borderRadius: 21,
+    borderRadius: 18,
+    margin: 20,
   },
   actionArea:{
     },
   media: {
-    minHeight: 500,
+    minHeight:"100%",
     display: 'flex',
     flexDirection: 'column',
   },
@@ -87,6 +91,8 @@ const StoriesList = ({stories, apiURL, goToStory, messages }) => {
   const classes = useStyles();
   const { isLarge, isMedium, isSmall, isTyny } = useReactive();
   const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
+  const hideText = (isSmall) ? true : false ;
+
   return stories.map((story, i) => (
     <Card elevation={1} className={classes.card} key={'story'+i}>
        <CardMedia
@@ -97,11 +103,12 @@ const StoriesList = ({stories, apiURL, goToStory, messages }) => {
        >
        <CardContent className={classes.content}>
         <Box className={classes.title}>
-         <Typography  color="textSecondary" variant="h2" align="center" component="h2">{story.name}</Typography>
-         <Typography gutterBottom color="textSecondary" align="center" variant="subtitle1" component="subtitle1">Salto, Montevideo Uruguay</Typography>
+         <Typography gutterBottom color="textSecondary" variant="h2" align="center" component="h2">{story.name}</Typography>
          <Typography  color="textSecondary" variant="h6" align="center" component="h2">By BooksOnWall</Typography>
          </Box>
-         <Typography className={classes.paragraph} variant="body1" align="center" color="textSecondary" component="p">{story.story_header}</Typography>
+         {!hideText &&
+         <Typography className={classes.paragraph} variant="subtitle1" align="center" color="textSecondary" component="p">{story.story_header}</Typography>
+         }
          <CardActions className={classes.actions}>
           <Button className={classes.storyBtn} elevation={0} variant="outlined" color="primary" size="large" onClick={() => goToStory(messages.menu.story+'/'+story.name)} endIcon={<ChevronRightIcon/ >}>{messages.stories.read_more_btn}</Button>
          </CardActions>
@@ -186,7 +193,8 @@ class Stories extends Component {
           </Box>
           {insert &&
             <Box id="storiesTitle">
-              <Typography variant="h1" color="secondary" component="h2" style={{textTransform:'uppercase'}}> {messages.menu.stories}</Typography>
+              <Typography variant="h2" color="secondary" component="h1" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.menu.stories}</Typography>
+              <Typography variant="subtitle1" color="secondary" component="h1" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.stories.story_about}</Typography>
             </Box>
           }
           <Box className='mapbg'><Mapbg /></Box>

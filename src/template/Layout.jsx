@@ -5,14 +5,14 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import Header from './Header';
 import Footer from './Footer';
-import { makeStyles } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/core/styles';
-import {theme} from '../theme/theme';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { theme } from '../theme/theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
+import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import './layout.css';
@@ -142,21 +142,17 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
       zIndex: 999999,
     },
     topBtn:{
-      background: theme.palette.secondary.main,
-      height: 24,
-      width: 24,
-      borderRadius: 80,
-      padding: '20px 20px',
-      color:  theme.palette.common.white,
+      padding: '0',
       position: 'fixed',
-      bottom: '8vh',
-      right: '2vw',
+      bottom: '14vh',
+      right: '8vw',
       boxShadow: '3px 3px 5px rgba(0,0,0, .3)',
-      '&:hover': {
-        background: theme.palette.primary.dark,
-        color:  theme.palette.common.white,
-      },
-      marginRight: 30,
+  },
+    topBtnIcon:{
+      padding: 0,
+      height: 40,
+      width: 40,
+      margin: 0,
     }
   }));
   const classes = useStyles();
@@ -234,7 +230,7 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
         </main>
         {!hideOnScroll &&
           <IconButton className={classes.topBtn} fontSize="small"  onClick={() => scrollToTop()} aria-label="top">
-            <ArrowUpwardIcon fontSize='small' color="white" />
+            <ArrowUpwardIcon  className={classes.topBtnIcon} fontSize='medium' color="primary" />
           </IconButton>
         }
 
