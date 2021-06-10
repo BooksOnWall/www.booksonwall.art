@@ -121,9 +121,9 @@ body{
   outline: none;
 }
 #registerForm .MuiFormControl-root, #contactForm .MuiFormControl-root{}
-#contactForm .react-tel-input .form-control{padding:30px 74px; border: 0; border-radius: 6px 6px 0 0; border-bottom: 1px solid rgba(0, 0, 0, 0.42); background: rgba(0, 0, 0, 0.09); color: #fff;}
-#contactForm .react-tel-input .selected-flag{ border: 0; background: transparent; padding: 0 44px 0 20px !important;}
-.react-tel-input .flag-dropdown{ border: 0px solid #cacaca !important; border-radius: 6px 0 0 0; background-color: rgba(0, 0, 0, 0.42) !important}
+#contactForm .react-tel-input .form-control, #registerForm .react-tel-input .form-control{padding:30px 74px; border: 0; border-radius: 6px 6px 0 0; border-bottom: 1px solid rgba(0, 0, 0, 0.42); background: rgba(0, 0, 0, 0.09); color: #fff;}
+#contactForm .react-tel-input .selected-flag, #registerForm .react-tel-input .selected-flag{ border: 0; background: transparent; padding: 0 44px 0 20px !important;}
+.react-tel-input .flag-dropdown{ border: 0px solid #cacaca !important; border-radius: 6px 0 0 0; background-color: rgba(0, 0, 0, 0.20) !important}
 .react-tel-input .flag-dropdown.open{ background: rgba(0, 0, 0, 0.6);}
 .react-tel-input .country-list{ border-radius: 0 0 6px 6px; top: 61px;  left: 1px; background-color: rgba(0, 0, 0, 0.42) !important; border: 0 !important}
 .react-tel-input .country-list li.country{padding:15px 22px; background: rgba(0, 0, 0, 0.6); color: #fff  }
@@ -131,7 +131,13 @@ body{
 .react-tel-input .selected-flag .arrow{border-top: 4px solid #fff; margin-left: 5px}
 .react-tel-input .selected-flag .arrow.up {border-bottom: 4px solid #fff !important; margin-left: 5px}
 .react-tel-input .country-list .country.highlight{ background: rgba(0, 0, 0, .9) !important;}
-#contactForm .MuiInputBase-input, #registerForm .MuiInputBase-input{margin: 20px 0 0; color: #fff}
+.react-tel-input .flag{ width: 15px;
+height: 10px;}
+.hLCrav{ margin-top: 40px; }
+#contactForm  .hLCrav .rnc-input, #registerForm .hLCrav .rnc-input{ padding: 18px 12px }
+#registerForm .hLCrav .rnc-canvas,  #contactForm .hLCrav .rnc-canvas{ background: rgba(255,255,255, 0.2);}
+#registerForm .react-tel-input .selected-flag .arrow.up, #contactForm .react-tel-input .selected-flag .arrow.up {border-top: 0px solid #fff; border-bottom: 4px solid #fff !important;}
+#contactForm .MuiInputBase-input, #registerForm .MuiInputBase-input{margin: 20px 0 0; color: #fff; }
 #contactForm .formImput .MuiFormLabel-root.Mui-focused, #registerForm .formImput .MuiFormLabel-root.Mui-focused{color: #fff; font-weight: bold;}
 #registerForm .formImput .MuiInput-underline::after { border-color: rgb(56,100,60)}
 #contactForm .formImput .MuiInput-underline::before, #registerForm .formImput .MuiInput-underline::before {

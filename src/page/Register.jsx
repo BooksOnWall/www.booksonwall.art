@@ -10,7 +10,7 @@ import {
   } from '@material-ui/core';
   import CircularProgress from '@material-ui/core/CircularProgress';
   import { useForm, Controller } from "react-hook-form";
-  import { defineMessages } from 'react-intl';
+  import { injectIntl, defineMessages } from 'react-intl';
   import Captcha from "demos-react-captcha";
   import PhoneInput from 'react-phone-input-2';
   import 'react-phone-input-2/lib/plain.css';
@@ -30,6 +30,9 @@ import {
       zIndex: theme.zIndex.drawer + 1,
       color: '#99FF44',
     },
+    input:{
+      fontFamily: theme.typography.button.fontFamily
+    }
   }));
 const Register = ({messages, locale}) => {
 
@@ -95,17 +98,18 @@ const Register = ({messages, locale}) => {
             <Controller
               name="name"
               control={control}
+              className={classes.input}
               defaultValue=""
               rules={{ required: 'name required' }}
               render={({ field: { onChange, value }, fieldState: { error }  }) => (
                 <TextField
                   fullWidth
-                  className="formImput"
                   label={messages.contact.name}
                   placeholder={messages.contact.name}
                   autoFocus={true}
                   type="text"
                   variant="filled"
+                  color="secondary"
                   error={!!error}
                   helperText={error ? error.message : null}
                   value={value}
@@ -127,6 +131,7 @@ const Register = ({messages, locale}) => {
                   placeholder={messages.contact.email}
                   variant="filled"
                   value={value}
+                  color="secondary"
                   onChange={onChange}
                   error={!!error}
                   helperText={error ? error.message : null}

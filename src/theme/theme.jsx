@@ -146,6 +146,18 @@ overrides: {
   MuiDivider: {
     backgroundColor: "#FEFEFE"
   },
+  MuiInputLabel:{
+    formControl:{
+          fontSize: '1.3rem',
+          fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
+    }
+  },
+  MuiInputBase: {
+    formControl:{
+      fontSize: '1.3rem',
+      fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
+    }
+  }
 },
 shape:{
   borderRadius: 4

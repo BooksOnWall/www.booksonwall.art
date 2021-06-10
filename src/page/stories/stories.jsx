@@ -24,12 +24,12 @@ const apiURL = process.env.REACT_APP_API;
 const storiesTraductions = defineMessages({
   read_more_btn: {
     id: 'stories.read_more_btn',
-    defaultMessage: 'Read more'
+    defaultMessage: "Read more"
   },
   story_about:{
     id: 'stories.story_about',
-    defineMessages: 'BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one?'
-  }
+    defineMessages: "BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one? "
+  },
 });
 
 const useStyles = makeStyles((theme) => ({

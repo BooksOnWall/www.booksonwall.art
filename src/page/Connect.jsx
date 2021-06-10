@@ -118,21 +118,21 @@ const Connect = (props) => {
 
       <Box className={classes.contact}>
         <Container maxWidth="xl">
+        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.contact)}>
           <Grid container spacing={10} >
-            <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.contact)}>
-            <Grid item xs={12} md={4} xl={4} className={classes.contactGrid}>
+            <Grid item xs={12} md={8} xl={4} className={classes.contactGrid}>
                 <Typography gutterBottom color="textSecondary" variant='h2'> {messages.connect.keed_in_touch}</Typography>
                 <Typography gutterBottom color="textSecondary" variant='subtitle1'> {messages.connect.we_are}</Typography>
                 <Typography gutterBottom color="textSecondary" variant='subtitle1'> {messages.connect.addres}</Typography>
             </Grid>
-            </ScrollIntoViewIfNeeded>
-            <Grid item xs={12} md={5} xl={5} className={classes.contactGrid}>
+            <Grid item xs={12} md={8} xl={5} className={classes.contactGrid}>
                 <ContactForm messages={messages} locale={locale}/>
             </Grid>
-            <Grid item xs={12} md={3} xl={3}>
+            <Grid item xs={12} md={4} xl={3}>
               <Social tab goTo={goTo}/>
             </Grid>
           </Grid>
+          </ScrollIntoViewIfNeeded>
         </Container>
       </Box>
       <Box className={classes.dividerShape}>
@@ -146,28 +146,21 @@ const Connect = (props) => {
       <Box className={classes.register}>
         <Container maxWidth="xl">
           <Grid container spacing={10} >
-            <Grid item xs={12} md={1} xl={3} >
-            </Grid>
-            <Grid item xs={12} md={4} xl={4} >
+            <Grid item xs={12} md={8} xl={4} >
               <Typography gutterBottom color="textPrimary" variant='h2'> {messages.connect.register}</Typography>
               <Button onClick={()=> history.push('/'+messages.menu.community)} size="large" className={classes.buton2} >{messages.create.meet_comunity}</Button>
             </Grid>
-            <Grid item xs={12} md={6} xl={4} >
+            <Grid item xs={12} md={8} xl={5} >
               <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.register)}>
                 <Register messages={messages} locale={locale}/>
               </ScrollIntoViewIfNeeded>
+            </Grid>
+            <Grid item xs={12} md={4} xl={3} >
             </Grid>
           </Grid>
         </ Container>
       </Box>
 
-      <Box className={classes.projects}>
-      <Container maxWidth="xl">
-        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.projects)}>
-          <Projects messages={messages} history={props.history} locale={locale} insert limit={10}/>
-        </ScrollIntoViewIfNeeded>
-      </ Container>
-      </Box>
     </Box>
   );
 }
