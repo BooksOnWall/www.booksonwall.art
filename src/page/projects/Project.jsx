@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
     Box,
+    Container,
     Backdrop,
     CircularProgress,
     Typography
@@ -21,9 +22,11 @@ const ProjectPage = ({project, history, messages, locale, name}) => {
         <ScrollIntoViewIfNeeded active={true}>
           {project.header_image && <Image  aspectRatio={4/2} src={apiURL + project.header_image.formats[format].url} />}
         </ScrollIntoViewIfNeeded>
+        <Container>
         <Typography variant="h1" component='h1'>{name}</Typography>
         <ReactMarkdown children={project.header} />
         <ReactMarkdown children={project.description} />
+        </Container>
     </Box>
   )
 }

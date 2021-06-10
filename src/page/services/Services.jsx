@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import {
     Grid,
+    Container,
     Typography,
     Backdrop,
     CircularProgress,
@@ -120,10 +121,10 @@ const Services = (props) => {
       <>
       {unique && unique.image_header && <Image aspectRatio={5/1} src={apiURL+unique.image_header.formats[formatHeader].url} />}
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
-      <Grid item xs sm >
+      <Container>
       <h1>{unique.Name}</h1>
       <ReactMarkdown children={unique.header} />
-      </Grid>
+      </Container>
       </ScrollIntoViewIfNeeded>
       </>
 
