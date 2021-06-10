@@ -1,14 +1,14 @@
 {
-  "presets": ["react-app"],
+  "presets": ["react-app", ["@babel/preset-env", { "targets": "defaults" }]],
   "plugins": [
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-transform-runtime",
+    "@babel/preset-env",
     [
-      "@babel/preset-env",
+      "react-intl-auto",
       {
-        "targets": {
-          "esmodules": true
-        }
+        "removePrefix": "src/",
+        "filebase": false
       }
     ]
   ]

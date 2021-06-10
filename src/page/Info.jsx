@@ -4,6 +4,7 @@ import {
     Container,
     ButtonGroup,
     Grid,
+    Chip,
     Box,
     Button,
     makeStyles
@@ -257,7 +258,7 @@ const Manifest = ({messages, locale}) => {
     getManifest();
   }, [locale]);
 
-  const {isLarge, isMedium , isSmall} = useReactive();
+  const {isLarge, isMedium } = useReactive();
   const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
 
   return (
@@ -335,10 +336,12 @@ const History =({messages, locale, historyFeed, goToCommunity}) => {
 )
 };
 
-
+const Tags = ({skills}) => skills.map((skill,i) => (<Chip variant="outlined" key={'m'+i} label={skill} />));
 const Community =({goToCommunity, messages, locale}) => {
   const classes = useStyles();
   const [community, setCommunity] = useState();
+  const [members, setMembers] = useState([]);
+  const [skills, setSkills] = useState([]);
   let history = useHistory();
   useEffect(() => {
     const fetchURL = apiURL + '/uniques?type=community&lang=' + locale;
@@ -368,10 +371,53 @@ const Community =({goToCommunity, messages, locale}) => {
         console.log(e.message);
       }
     }
+    const getMembers = async () => {
+      try {
+        const fetchMembers = apiURL+'/members?_limit=-1&lang='+locale;
+        await fetch(fetchMembers, {
+          crossDomain:true,
+          headers: {'Content-Type':'application/json'},
+          method: "get"
+        })
+        .then(response => {
+          if (response && !response.ok) { throw new Error(response.statusText);}
+          return response.json();
+        })
+        .then(data => {
+            if(data) {
+              setMembers(data.map((m) =>({id: m.id, aka: m.aka, avatar: m.avatar, name: m.name, skills: m.skills})));
+            } else {
+              console.log('No Data received from the server');
+            }
+        })
+        .catch((error) => {
+          // Your error is here!
+          if(error) console.log(JSON.stringify(error));
+        });
+      } catch(e) {
+        console.log(e.message);
+      }
+    }
     getCommunity();
+    getMembers();
   }, [locale]);
 
-    const {isLarge, isMedium , isSmall} = useReactive();
+    useEffect(() => {
+      let sk = skills;
+      members.map((m,i) => {
+        if(m.skills) {
+          m.skills.map((skill, i) => {
+            sk = (!sk[skill]) ? [...sk,skill]: sk;
+            return skill;
+          });
+        }
+        return m;
+      });
+      setSkills(sk);
+
+    },[members]);
+
+    const {isLarge, isMedium} = useReactive();
     const bg = (isLarge) ? 'communitybgLarge' : (isMedium) ? 'communitybgMedium' : 'communitybgSmall';
 
   return (
@@ -381,7 +427,7 @@ const Community =({goToCommunity, messages, locale}) => {
       <Grid container spacing={8}  className={classes.communityGrid}>
         <Grid item  xs={6}>
           <Typography variant='h3' complement='h2'> Comunity is... </Typography>
-          <Typography variant='body2' complement='p'> Cloud TAGS</Typography>
+          <Typography variant='body2' complement='p'><Tags skills={skills} /></Typography>
         </Grid>
 
         <Grid item  xs={6}>

@@ -129,21 +129,17 @@ const Service = (props) => {
 
       {service && service.header_image && <Image src={apiURL+service.header_image.formats[format].url} />}
         {unique && service &&
+          <>
           <Container maxWidth="xl">
-          <Typography gutterBottom color="textSecondary" variant='h2'> {unique.name}</Typography>
-
-          <ReactMarkdown children={unique.header} />
-
-          <ReactMarkdown children={service.header} />
-
-          <ReactMarkdown children={service.activity} />
-
-          <ReactMarkdown children={service.ressources} />
-
-          <ReactMarkdown children={service.fullOptions} />
-
-          <Gallery images={service.images} />
+            <Typography gutterBottom color="textSecondary" variant='h2'> {unique.name}</Typography>
+            <ReactMarkdown children={unique.header} />
+            <ReactMarkdown children={service.header} />
+            <ReactMarkdown children={service.activity} />
+            <ReactMarkdown children={service.ressources} />
+            <ReactMarkdown children={service.fullOptions} />
           </Container>
+          <Gallery images={service.images} />
+          </>
         }
       </Box>
     }
