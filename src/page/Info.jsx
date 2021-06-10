@@ -336,7 +336,7 @@ const History =({messages, locale, historyFeed, goToCommunity}) => {
 )
 };
 
-const Tags = ({skills}) => skills.map((skill,i) => (<Chip key={'m'+i}label={skill} />));
+const Tags = ({skills}) => skills.map((skill,i) => (<Chip variant="outlined" key={'m'+i} label={skill} />));
 const Community =({goToCommunity, messages, locale}) => {
   const classes = useStyles();
   const [community, setCommunity] = useState();
