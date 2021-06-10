@@ -81,7 +81,7 @@
   "login": {
     "cancel": "Annuler",
     "email": "e-mail",
-    "login": "Allez-y !",
+    "login": "Allez-y!",
     "password": "Mot de passe",
     "title": "Connexion à la communauté "
   },
@@ -98,7 +98,7 @@
     "content": "Contenu",
     "create": "Créez",
     "develop": "Developer + innover",
-    "download_app": "Téléchargez BookSonWall APP",
+    "download_app": "Téléchargez BookSonWall AR",
     "explore": "Explorer",
     "faqs": "FAQ",
     "history": "Contes",
@@ -133,7 +133,7 @@
     "started": "Début"
   },
   "register": {
-    "register": "Enregistrez-vous !",
+    "register": "Enregistrez-vous!",
     "send": "Envoyer"
   },
   "stories": {
