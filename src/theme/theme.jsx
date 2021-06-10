@@ -20,7 +20,7 @@ palette: {
   },
   text: {
     light: '#131413',
-     dark: '#FEFEFE',
+    dark: '#FEFEFE',
     primary: '#131413',
     secondary: '#FEFEFE',
     disabled: '#FF9999',
