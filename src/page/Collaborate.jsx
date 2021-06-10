@@ -183,9 +183,9 @@ const collaborateTraductions = defineMessages({
     defaultMessage: "Let's create a new story together in your city. Help us finance a BooksOnWall story and promote culture, heritage, territorial identity and technological innovation."
   },
   join_us: {
-  id: 'collaborate.join_us',
-  defaultMessage: 'Be a partner'
-},
+    id: 'collaborate.join_us',
+    defaultMessage: 'Be a partner'
+  },
   strategic_partner: {
     id: 'collaborate.strategic_partner',
     defaultMessage: 'We are looking for strategic partners who want to participate and contribute to the growth of BooksOnWall.'
@@ -197,19 +197,19 @@ const collaborateTraductions = defineMessages({
   read_more_btn:{
   id: 'collaborate.read_more_btn',
   defaultMessage: 'Read More',
-},
-how: {
-  id: 'collaborate.how',
-  defaultMessage: 'How to become a partner'
-},
-we_produce:{
-  id: 'collaborate.we_produce',
-  defaultMessage: 'We produce, direct and manage extended reality proyect.'
-},
-we_are:{
-  id: 'collaborate.we_are',
-  defaultMessage: 'We are a community of expert in art, media and contemporary technologies'
-}
+  },
+  how: {
+    id: 'collaborate.how',
+    defaultMessage: 'How to become a partner'
+  },
+  we_produce:{
+    id: 'collaborate.we_produce',
+    defaultMessage: 'We produce, direct and manage extended reality proyect.'
+  },
+  we_are:{
+    id: 'collaborate.we_are',
+    defaultMessage: 'We are a community of expert in art, media and contemporary technologies'
+  }
 });
 
 const CollaborateHeader = ({messages}) => {

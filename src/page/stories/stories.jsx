@@ -12,9 +12,11 @@ import {
     Button,
     makeStyles
   } from '@material-ui/core';
+
+import { injectIntl, defineMessages  } from 'react-intl';
+
 import {useReactive} from "../../utils/reactive";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { injectIntl, defineMessages  } from 'react-intl';
 
 import ExploreMap from '../map/exploreMap';
 import { ReactComponent as Mapbg } from './../../assets/images/svg/map.svg';
@@ -26,10 +28,14 @@ const storiesTraductions = defineMessages({
     id: 'stories.read_more_btn',
     defaultMessage: "Read more"
   },
-  story_about:{
+  story_about: {
     id: 'stories.story_about',
-    defineMessages: "BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one? "
+    defaultMessage: "BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one?"
   },
+  by_booksonwall: {
+    id: 'stories.by_booksonwall',
+    defaultMessage:  'By BooksOnWall'
+  }
 });
 
 const useStyles = makeStyles((theme) => ({
@@ -104,7 +110,7 @@ const StoriesList = ({stories, apiURL, goToStory, messages }) => {
        <CardContent className={classes.content}>
         <Box className={classes.title}>
          <Typography gutterBottom color="textSecondary" variant="h2" align="center" component="h2">{story.name}</Typography>
-         <Typography  color="textSecondary" variant="h6" align="center" component="h2">By BooksOnWall</Typography>
+         <Typography  color="textSecondary" variant="h6" align="center" component="h2">{messages.stories.by_booksonwall}</Typography>
          </Box>
          {!hideText &&
          <Typography className={classes.paragraph} variant="subtitle1" align="center" color="textSecondary" component="p">{story.story_header}</Typography>

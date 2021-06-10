@@ -12,7 +12,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
-import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import './layout.css';

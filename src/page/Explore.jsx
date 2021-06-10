@@ -34,7 +34,7 @@ const exploreTraductions = defineMessages({
   },
   downloadDirect: {
     id: 'explore.downloadDirect',
-    defaultMessage: "Download Booksonwall-AR.APK v.0.99.2"
+    defaultMessage: "Download Booksonwall-AR for Android"
   }
 });
 

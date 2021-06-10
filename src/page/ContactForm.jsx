@@ -39,7 +39,7 @@ const contactTraductions = defineMessages({
   },
   contactUs: {
     id: 'contact.contactUs',
-    defaultMessage: "Let's talk?",
+    defaultMessage: "Let's talk?"
   }
 });
 const useStyles = makeStyles((theme) => ({

@@ -23,7 +23,7 @@ import {
     send: {
       id: 'register.send',
       defaultMessage: 'Send'
-    },
+    }
   });
   const useStyles = makeStyles((theme) => ({
     backdrop: {

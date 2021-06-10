@@ -22,7 +22,8 @@ import { ReactComponent as Logo }   from './../assets/images/svg/logo_extended.s
 import { ReactComponent as LogoIcon }   from './../assets/images/logo.svg';
 
 import { injectIntl, defineMessages } from 'react-intl';
-const createTraductions = defineMessages({
+
+const footerTraductions = defineMessages({
   thx_for_support_us: {
     id: 'footer.thx_for_support_us',
     defaultMessage: "Thx for supporting us"
