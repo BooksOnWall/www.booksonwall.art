@@ -4,6 +4,7 @@ import {
     Grid,
     Typography,
     Box,
+    Container,
     Backdrop,
     CircularProgress,
     Button,
@@ -112,30 +113,30 @@ const Applications = (props) => {
       <CircularProgress color="inherit" />
     </Backdrop>
     <Box className={classes.root}>
-    {unique &&
-      <>
-      <ScrollIntoViewIfNeeded active={true}>
-      <Image aspectRatio={5/2} src={apiURL+unique.image_header.formats[format].url} />
-      </ScrollIntoViewIfNeeded>
-      <Grid item xs sm >
-      <h1>{unique.Name}</h1>
-      <ReactMarkdown children={unique.header} />
-      </Grid>
-      </>
-    }
-    <Grid container spacing={3}>
-          {applications && applications.map((s,i) => (
-            <Grid item xs sm key={"s"+i}>
-              {s.header_image && <Image className={classes.applicationImage}  src={apiURL+s.header_image.formats.small.url}/>}
-              <br />
-              <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
-              <Typography  variant="body1" ><ReactMarkdown children={s.header} /></Typography>
-              <br />
-              <Button onClick={() => history.push("/"+messages.menu.project+"/"+s.name) } size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
-            </Grid>
-          ))}
-        </Grid>
+      {unique &&
+        <>
+        <ScrollIntoViewIfNeeded active={true}>
+        <Image aspectRatio={5/2} src={apiURL+unique.image_header.formats[format].url} />
+        </ScrollIntoViewIfNeeded>
+        <Container>
 
+        <h1>{unique.Name}</h1>
+        <ReactMarkdown children={unique.header} />
+      </Container>
+      </>
+      }
+      <Grid container spacing={3}>
+        {applications && applications.map((s,i) => (
+          <Grid item xs sm key={"s"+i}>
+          {s.header_image && <Image className={classes.applicationImage}  src={apiURL+s.header_image.formats.small.url}/>}
+          <br />
+          <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
+          <Typography  variant="body1" ><ReactMarkdown children={s.header} /></Typography>
+          <br />
+          <Button onClick={() => history.push("/"+messages.menu.project+"/"+s.name) } size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
+          </Grid>
+        ))}
+      </Grid>
   </Box>
   </>
   )

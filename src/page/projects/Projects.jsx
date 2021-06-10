@@ -219,13 +219,15 @@ class Projects extends Component {
     const {messages} = this.props.intl;
     return (
       <>
-      <ScrollIntoViewIfNeeded active={(!insert)}></ScrollIntoViewIfNeeded>
+
       <Backdrop styles={{zIndex: 1003, color: '#99FF44'}} open={loading} >
         <CircularProgress color="inherit" />
       </Backdrop>
       {projects &&
         <>
-        <ProjectsMap projects={projects} mode={"Light"}/>
+        <ScrollIntoViewIfNeeded active={(!insert)}>
+          <ProjectsMap projects={projects} mode={"Light"}/>
+        </ScrollIntoViewIfNeeded>
         <Box >
           <ProjectHeader messages={messages}/>
           <Box style={{display: 'flex', flexDirection:'column'}}>

@@ -128,34 +128,23 @@ const Service = (props) => {
       <Box className={classes.connect}>
 
       {service && service.header_image && <Image src={apiURL+service.header_image.formats[format].url} />}
-
-      <Box className={classes.homeHaderBg}>
-      <Box className={classes.gradine}>
         {unique && service &&
           <Container maxWidth="xl">
-          <Typography gutterBottom color="textSecondary" variant='h2'> {unique.Name}</Typography>
-            <Grid container spacing={10} >
-              <Grid item xs={12} md={3} xl={3}>
-                <ReactMarkdown children={unique.header} />
-              </Grid>
-              <Grid item xs={12} md={3} xl={3}>
-                <ReactMarkdown children={service.header} />
-              </Grid>
-              <Grid item xs={12} md={3} xl={3}>
-                <ReactMarkdown children={service.activity} />
-              </Grid>
-              <Grid item xs={12} md={3} xl={3}>
-                <ReactMarkdown children={service.ressources} />
-              </Grid>
-              <Grid item xs={12} md={3} xl={3}>
-                <ReactMarkdown children={service.fullOptions} />
-              </Grid>
-            </Grid>
-            <Gallery images={service.images} />
+          <Typography gutterBottom color="textSecondary" variant='h2'> {unique.name}</Typography>
+
+          <ReactMarkdown children={unique.header} />
+
+          <ReactMarkdown children={service.header} />
+
+          <ReactMarkdown children={service.activity} />
+
+          <ReactMarkdown children={service.ressources} />
+
+          <ReactMarkdown children={service.fullOptions} />
+
+          <Gallery images={service.images} />
           </Container>
         }
-      </Box>
-      </Box>
       </Box>
     }
     {service && <Projects history={history} service={service} insert limit={10}/>}
