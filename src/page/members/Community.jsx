@@ -8,27 +8,129 @@ import {
     CardMedia,
     CardContent,
     Backdrop,
+    Container,
     Breadcrumbs,
+    Button,
+    Divider,
+    Avatar,
     makeStyles
   } from '@material-ui/core';
-
+import { theme } from '../../theme/theme';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import Patrick from "../../assets/images/avatar/patrick 3.png";
+
+
 const apiURL = process.env.REACT_APP_API;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flex: 1,
+    maxWidth: '180px',
+    minWidth: '180px',
+    margin: '20px 10px',
+    background: 'transparent'
+  },
+  media: {
+    display: 'flex',
+    justifyContent:'center',
+    alignItems: 'center',
+  },
+  avatar:{
+    height: 150,
+    width: 150,
+  },
+  patrick:{
+    opacity: .3,
+    height: 150,
+    width: 150,
+  },
+  memberName:{
+    fontFamily: theme.typography.button.fontFamily,
+    fontSize: theme.typography.body2.fontSize,
+  },
+  skills:{
+    padding: '70px 10vw',
+    maxWidth: '100vw',
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+    '& ol':{
+      justifyContent: 'center'
+    }
+  },
+  skill:{
+    padding: '5px 13px',
+    background: theme.palette.primary.dark,
+    color: theme.palette.common.white,
+    marginTop: 8,
+    borderRadius:30,
+    '&:hover': {
+      background: theme.palette.secondary.main,
+    },
+    '$selected':{
+      color: theme.palette.common.white,
+      background: theme.palette.secondary.main,
+    }
+  },
+  overrides: {
+
+  },
+  button1: {
+    margin: 10,
+    color: theme.palette.primary.main,
+    border: '2px #D9D2C6 solid',
+    padding: '10px 20px',
+    '&:hover': {
+        background: '#C33949',
+        color: 'white',
+          border: '2px #C33949 solid',
+      }
+  },
+  button2: {
+    margin: 10,
+    color: theme.palette.secondary.main,
+    border: '2px #D9D2C6 solid',
+    '&:hover': {
+        background: theme.palette.secondary.main,
+        color: 'white',
+        border: '2px solid',
+        borderColor: theme.palette.secondary.main
+      }
+    },
+}));
+const CommunityHeader =({messages, theme}) => {
+  const classes = useStyles();
+  return(
+    <Box>
+    <Container maxWidht="xl"  style={{display:'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <Typography variant="h2" align='center' color="textPrimary" component="h1" style={{textTransform:'uppercase', paddingTop: '8vh'}}> {messages.menu.community}</Typography>
+      <Typography gutterBottom variant="h3" align='center' color="primary" component="p"> {messages.create.community_we_are}</Typography>
+      <Typography variant="subtitle1" align='center' color="textPrimary" component="p"> {messages.create.community_we_create}</Typography>
+      <Box style={{ padding: 40, display: 'flex', justifyContent: 'space-around', width:'80%', maxWidth:600, minWidth:320}}>
+        <Button className={classes.button2} size="large" >{messages.menu.manifest}</Button>
+        <Button className={classes.button2} size="large" >{messages.menu.joinus}</Button>
+        <Button className={classes.button2} size="large" >{messages.menu.projects}</Button>
+      </Box>
+    </Container>
+    <Divider/>
+    </Box>
+  )
+};
 
 const Skills = ({skills, select, isSelected, selected}) => {
+  const classes = useStyles();
   return (
-    <Breadcrumbs className="skills">
+    <Breadcrumbs className={classes.skills}>
       {(skills) ? skills.map((skill, i)=> (
         <ToggleButton
           value={skill}
           selected={isSelected(skill)}
           variant="contained"
-          color="primary"
           key={'tag'+i}
           onClick={select}
+          className={classes.skill}
           >
           {skill}
         </ToggleButton>
@@ -36,17 +138,6 @@ const Skills = ({skills, select, isSelected, selected}) => {
     </Breadcrumbs>
   );
 };
-const useStyles = makeStyles({
-  root: {
-    flex: 1,
-    maxWidth: '180px',
-    minWidth: '180px',
-    margin: '5px',
-  },
-  media: {
-    height: 180,
-  },
-});
 const Members = ({ style, members, selected, hasSkill,goToMember, apiURL}) => {
   const classes = useStyles();
   return (selected && selected.length > 0)
@@ -54,14 +145,14 @@ const Members = ({ style, members, selected, hasSkill,goToMember, apiURL}) => {
     // return filtered map of members
     (members) ? members.map((member,i) => (
       (hasSkill(member)) ?
-      <Card className={classes.root} color="primary" key={i} >
-        {(member.avatar) ? <CardMedia
-          className={classes.media}
-          image={apiURL + member.avatar.formats.thumbnail.url}
-          title={member.name}
-        /> : ''}
+      <Card className={classes.root} elevation={0} key={i} >
+          <CardMedia  className={classes.media}>
+              {(member.avatar) ?
+                <Avatar className={classes.avatar} title={member.name} src={apiURL + member.avatar.formats.thumbnail.url} /> : <Avatar className={classes.patrick}  src={Patrick} />
+              }
+          </CardMedia>
           <CardContent onClick={(e) => goToMember('/Community/Member/'+ member.name)}>
-            {member.name}
+            <Typography className={classes.memberName}  align='center'>{member.name}</Typography>
           </CardContent>
       </Card>
       : ''
@@ -70,14 +161,12 @@ const Members = ({ style, members, selected, hasSkill,goToMember, apiURL}) => {
   ) :(
     // return all
     (members) ? members.map((member, i) => (
-      <Card className={classes.root} key={i} >
-        {(member.avatar) ? <CardMedia
-          className={classes.media}
-          image={apiURL + member.avatar.formats.thumbnail.url}
-          title={member.name}
-        /> : ''}
+      <Card className={classes.root} elevation={0}  key={i} >
+        <CardMedia  className={classes.media}>
+        {(member.avatar) ?
+        <Avatar className={classes.avatar} title={member.name} src={apiURL + member.avatar.formats.thumbnail.url} /> : <Avatar className={classes.patrick}  src={Patrick} /> }</CardMedia>
         <CardContent onClick={(e) => goToMember('/Community/Member/'+ member.name)}>
-          {member.name}
+          <Typography className={classes.memberName}  align='center'>{member.name}</Typography>
         </CardContent>
       </Card>
     )) : ''
@@ -177,14 +266,17 @@ class Community extends Component {
         {members &&
           <>
           <CommunityMap members={members} selected={selected} hasSkill={this.hasSkill} history={this.props.history}/>
-          <Typography variant="h2" align="center" color="primary" component="h2" style={{textTransform:'uppercase'}} >{messages.menu.community}</Typography>
+          <CommunityHeader messages={messages} members={members} selected={selected}/>
           <Skills skills={skills} select={this.select} isSelected={this.isSelected} selected={selected}/>
+          <Divider/>
+
           <Box style={{
               display: 'flex',
               flexDirection: 'row',
               flexWrap: 'wrap',
               alignContent : 'space-between',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              padding: '4vh 5vw',
                }}>
              <Members  selected={selected} members={members} hasSkill={this.hasSkill} goToMember={this.goToMember} apiURL={apiURL}/>
           </Box>

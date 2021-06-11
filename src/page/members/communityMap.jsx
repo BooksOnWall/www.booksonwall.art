@@ -32,8 +32,7 @@ const Members = ({lines, members, selected, centerMap, goToMember}) => {
           longitude={parseFloat(member.geometry.coordinates[0])}
           latitude={parseFloat(member.geometry.coordinates[1])}
           >
-          {(member.avatar) ? <Avatar onClick={() => goToMember(member.name)} src={apiURL + member.avatar.formats.thumbnail.url} size="small" /> : ''}
-          <Badge>{member.name}</Badge>
+          {(member.avatar) ? <Avatar style={{border:'2px solid #fff'}} onClick={() => goToMember(member.name)} src={apiURL + member.avatar.formats.thumbnail.url} /> : ''}
         </Marker>
 
       ): ''});
@@ -44,21 +43,21 @@ const Members = ({lines, members, selected, centerMap, goToMember}) => {
 export default class CommunityMap extends Component {
   constructor(props) {
     super(props)
-    const {members, selected, theme} = this.props;
+    const {members, selected, theme, mode} = this.props;
     let lines = [];
     console.log(theme);
     lines = members.map(member => turf.point(member.geometry.coordinates));
     var features = turf.featureCollection(lines);
     var center = turf.center(features);
     let viewport = {
-      latitude:   center.geometry.coordinates[1],
+      latitude:   center.geometry.coordinates[0],
       longitude: center.geometry.coordinates[0],
-      zoom: 1.5,
+      zoom: 1.8,
       bearing:  0, // bearing in degrees
       pitch: 0  // pitch in degrees
     };
 
-    this.state = { mapStyle: (theme) ? 'mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8' : 'mapbox://styles/cseverin/ck1whcg93983n1cq9u4kxz5p8',lines: lines, members: members, selected: selected, viewport: viewport }
+    this.state = { mapStyle: (mode && mode === "Light") ? 'mapbox://styles/cseverin/ckp6acbwt08hj17o3shq8bmgw' : 'mapbox://styles/cseverin/ckp6acbwt08hj17o3shq8bmgw', lines: lines, members: members, selected: selected, viewport: viewport }
   }
   onViewportChange = (viewport) => this.setState({viewport})
   goToViewport = (coordinates) => {
