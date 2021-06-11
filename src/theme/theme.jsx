@@ -69,14 +69,15 @@ palette: {
   letterSpacing: 'normal',
   body1:{
     fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
-    fontSize: "1.44rem",
-    lineHeight: 1.34,
-    maxWidth: 800
+    fontSize: "1.54rem",
+    lineHeight: 1.598,
+    maxWidth: 800,
+    marginTop: 40,
   },
   body2:{
     fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
-    fontSize: "1.2rem",
-    lineHeight: 1.35,
+    fontSize: "1.1rem",
+    lineHeight: 1.45,
   },
   body3:{
     fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
@@ -89,13 +90,14 @@ palette: {
     fontSize: "4.44rem",
     lineHeight: .98,
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
+    maxWidth: 800
   },
   h2: {
     fontWeight: 700,
     fontSize: "3.8rem",
     lineHeight: 1,
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
-    letterSpacing: -.2
+    maxWidth: 800
   },
   h3: {
     fontWeight: 400,
@@ -113,14 +115,14 @@ palette: {
   },
   h5: {
     fontWeight: 700,
-    fontSize: "1.5rem",
-    fontFamily: '"Roboto Mono", Helvetica, Arial, sans-serif',
+    fontSize: "2rem",
+    fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
     lineHeight: 1.1,
     textTransform: "uppercase",
   },
   h6: {
     fontWeight: 700,
-    fontSize: "1.4rem",
+    fontSize: "1.3rem",
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
     textTransform: "uppercase",
     lineHeight: 1.2,
