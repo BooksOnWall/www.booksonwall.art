@@ -270,7 +270,7 @@ blobIn:{
 homeHader:{
   display: 'flex',
   flexFlow: 'column wrap',
-  minHeight: '90vh',
+  minHeight: '70vh',
   justifyContent: 'flex-end',
   alignItems: 'flex-start',
   backgroundColor: '#ccc',
@@ -523,7 +523,7 @@ const HomePage = (props) => {
         <WhoAreWe messages={messages} />
       </ScrollIntoViewIfNeeded>
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.articles)}>
-        <Box> <Articles messages={messages} history={props.history} limit={(reactive.isLarge) ? 12 : (reactive.isMedium) ? 8 :  3} insert/> </Box>
+        <Box> <Articles messages={messages} history={props.history} limit={(reactive.isLarge) ? 4 : (reactive.isMedium) ? 4 :  3} insert/> </Box>
       </ScrollIntoViewIfNeeded>
         <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.block)}>
         <Box> <PlaceholderBlock messages={messages} /> </Box>

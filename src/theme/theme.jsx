@@ -27,15 +27,15 @@ palette: {
     hint: '#339395'
   },
   primary: {
-    light: '#AB514E', //will be calculated from palette.primary.main,
+    light: '#cc6649', //will be calculated from palette.primary.main,
     main: '#91201F',
     dark: '#893E4E', //will be calculated from palette.primary.main,
     contrastText: '#FEFEFE', //will be calculated to contrast with palette.primary.main
     mainGradient: 'linear-gradient(0deg, rgba(190,66,81,.8) 0%, rgba(224,161,3,.8) 100%)',
-    darkGradient: 'linear-gradient(0deg, rgba(20, 0, 100, .88) 0%, rgba(190,66,81,.88) 100%)'
+    darkGradient: 'linear-gradient(0deg, rgba(20, 0, 100, .88) 0%, rgba(190,66,81,.88) 100%)',
   },
   secondary: {
-    light: '#009999',
+    light: '#34729e',
     main: '#186858',
     dark: '#424675', //will be calculated from palette.secondary.main,
     contrastText: '#FEFEFE',

@@ -34,12 +34,12 @@ const useStyles = makeStyles((theme) => ({
     padding: '80px 40px'
   },
   card: {
-    minWidth: 420,
+    minWidth: 400,
     maxWidth: 620,
     background: 'transparent',
     borderRadius: 10,
     flexGrow: 2,
-    margin: 20
+    margin: 25
   },
   media: {
     height: 360,

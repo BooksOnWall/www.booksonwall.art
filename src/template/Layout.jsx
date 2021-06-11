@@ -106,7 +106,7 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
       backgroundPosition: 'bottom center',
       display: 'flex',
       flexDirection: 'column',
-      minHeight: '80vh',
+      minHeight: '100vh',
       margin: 0,
       overflow: 'hidden',
       alignItems: 'center',
@@ -123,7 +123,7 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
       zIndex: 98,
       width: '100vw',
       height: 'auto',
-      marginTop: 130
+      marginTop: 130,
     },
     paper: {
       padding: theme.spacing(2),

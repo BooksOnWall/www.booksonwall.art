@@ -258,8 +258,12 @@ class Community extends Component {
     const {messages} = this.props.intl;
     return (
       <>
-      <Backdrop styles={{zIndex: 1003, color: '#99FF44'}} open={loading} >
-        <CircularProgress color="inherit" />
+      <Backdrop open={loading} >
+        <CircularProgress
+        size={60}
+        thickness={8}
+        className="CircularProgress"
+        />
       </Backdrop>
       <Box className="main" >
         <ScrollIntoViewIfNeeded active={(!insert)}></ScrollIntoViewIfNeeded>
