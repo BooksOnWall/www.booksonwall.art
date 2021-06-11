@@ -67,7 +67,7 @@ class ArticlesMap extends Component {
     const {articles, mode} = this.props;
     console.log(articles);
     this.state = {
-      mapStyle: (mode && mode === "Dark") ? "mapbox://styles/croll/ckc3vw1zm03w91inw353d7jn9" : "mapbox://styles/mapbox/light-v9",
+      mapStyle: (mode && mode === "Dark") ? "mapbox://styles/cseverin/ckp6acbwt08hj17o3shq8bmgw" : "mapbox://styles/cseverin/ckp6acbwt08hj17o3shq8bmgw",
       viewport: viewport,
       articles: articles
     }
