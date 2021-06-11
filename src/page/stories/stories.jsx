@@ -34,7 +34,7 @@ const storiesTraductions = defineMessages({
   },
   by_booksonwall: {
     id: 'stories.by_booksonwall',
-    defaultMessage:  'By BooksOnWall'
+    defaultMessage: "By BooksOnWall"
   }
 });
 
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const StoriesList = ({stories, apiURL, goToStory, messages }) => {
+const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
   const classes = useStyles();
   const { isLarge, isMedium, isSmall, isTyny } = useReactive();
   const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
@@ -186,7 +186,7 @@ class Stories extends Component {
   render() {
     const { stories, apiURL, insert, loading } = this.state;
     console.log('insert',insert);
-    const { messages } = this.props.intl
+    const { messages } = this.props.intl;
     return (
       <>
       <ScrollToTop insert={insert} />
@@ -200,7 +200,7 @@ class Stories extends Component {
           {insert &&
             <Box id="storiesTitle">
               <Typography variant="h2" color="secondary" component="h1" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.menu.stories}</Typography>
-              <Typography variant="subtitle1" color="secondary" component="h1" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.stories.story_about}</Typography>
+              <Typography variant="subtitle1" color="secondary" component="body" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.stories.story_about}</Typography>
             </Box>
           }
           <Box className='mapbg'><Mapbg /></Box>

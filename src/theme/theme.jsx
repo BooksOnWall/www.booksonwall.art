@@ -69,14 +69,20 @@ palette: {
   letterSpacing: 'normal',
   body1:{
     fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
-    fontSize: "1.66rem",
-    lineHeight: 1.44,
+    fontSize: "1.44rem",
+    lineHeight: 1.34,
     maxWidth: 800
   },
   body2:{
     fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
     fontSize: "1.2rem",
     lineHeight: 1.35,
+  },
+  body3:{
+    fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
+    fontSize: "1rem",
+    lineHeight: 1.2,
+    maxWidth: 800
   },
   h1: {
     fontWeight: 700,
