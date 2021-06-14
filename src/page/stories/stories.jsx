@@ -26,15 +26,21 @@ const apiURL = process.env.REACT_APP_API;
 const storiesTraductions = defineMessages({
   read_more_btn: {
     id: 'stories.read_more_btn',
-    defaultMessage: "Read more"
+    defaultMessage: 'Read more'
   },
+<<<<<<< Updated upstream
   story_about: {
     id: 'stories.story_about',
-    defaultMessage: "BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one?"
+    defaultMessage: 'BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one'
   },
   by_booksonwall: {
     id: 'stories.by_booksonwall',
-    defaultMessage: "By BooksOnWall"
+    defaultMessage: 'By BooksOnWall'
+=======
+  story_about:{
+    id: 'stories.story_about',
+    defineMessages: 'BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one?'
+>>>>>>> Stashed changes
   }
 });
 
@@ -110,7 +116,11 @@ const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
        <CardContent className={classes.content}>
         <Box className={classes.title}>
          <Typography gutterBottom color="textSecondary" variant="h2" align="center" component="h2">{story.name}</Typography>
+<<<<<<< Updated upstream
          <Typography  color="textSecondary" variant="h6" align="center" component="h2">{messages.stories.by_booksonwall}</Typography>
+=======
+         <Typography  color="textSecondary" variant="h6" align="center" component="h2">By BooksOnWall</Typography>
+>>>>>>> Stashed changes
          </Box>
          {!hideText &&
          <Typography className={classes.paragraph} variant="subtitle1" align="center" color="textSecondary" component="p">{story.story_header}</Typography>
@@ -197,10 +207,15 @@ class Stories extends Component {
         <Box id={messages.menu.stories} className="stories">
           <Box className='map' >{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}
           </Box>
-          {insert &&
+          {!insert &&
             <Box id="storiesTitle">
-              <Typography variant="h2" color="secondary" component="h1" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.menu.stories}</Typography>
+<<<<<<< Updated upstream
+              <Typography variant="h2" color="textPrimary" component="h1" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.menu.stories}</Typography>
               <Typography variant="subtitle1" color="secondary" component="body" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.stories.story_about}</Typography>
+=======
+              <Typography variant="h2" color="secondary" component="h1" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.menu.stories}</Typography>
+              <Typography variant="subtitle1" color="secondary" component="h1" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.stories.story_about}</Typography>
+>>>>>>> Stashed changes
             </Box>
           }
           <Box className='mapbg'><Mapbg /></Box>

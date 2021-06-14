@@ -32,6 +32,17 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: theme.typography.body1.maxWidth,
       lineHeight: theme.typography.body1.lineHeight
     },
+    '& li': {
+      fontSize: theme.typography.body1.fontSize,
+      fontFamily: theme.typography.body1.fontFamily,
+      maxWidth: theme.typography.body1.maxWidth,
+      lineHeight: theme.typography.body1.lineHeight
+    },
+    '& h1':{
+      fontFamily: theme.typography.h1.fontFamily,
+      fontSize: theme.typography.h1.fontSize,
+      color: theme.palette.primary.main
+    },
     '& h2':{
       fontFamily: theme.typography.h2.fontFamily,
       fontSize: theme.typography.h2.fontSize,
