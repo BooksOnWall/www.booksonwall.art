@@ -232,11 +232,7 @@ wrapperBlob:{
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-<<<<<<< Updated upstream
   paddingBottom: 50
-=======
-  paddingBottom: 20
->>>>>>> Stashed changes
 },
 wrapperGrid: {
   display: 'flex',
@@ -536,14 +532,9 @@ const HomePage = (props) => {
         <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.block)}>
         <Box> <PlaceholderBlock messages={messages} /> </Box>
       </ScrollIntoViewIfNeeded>
-<<<<<<< Updated upstream
-
+      
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.articles)}>
         <Box> <Articles messages={messages} history={props.history} limit={(reactive.isLarge) ? 4 : (reactive.isMedium) ? 4 :  3} insert/> </Box>
-=======
-      <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.stories)}>
-        <Box><Stories messages={messages} history={props.history} limit={(reactive.isLarge) ? 12 : (reactive.isMedium) ? 8 :  3} insert/> </Box>
->>>>>>> Stashed changes
       </ScrollIntoViewIfNeeded>
       <Divider />
     </Box>
