@@ -39,7 +39,6 @@
     "workshop_stories": "Workshops to create a BooksOnWall Story",
     "your_place": "The community of BooksOnWall is your place!"
   },
-  "d4411": "Meet the community",
   "explore": {
     "downloadDirect": "Download Booksonwall-AR for Android",
     "header": "Come and live a story through urban art and new technologies!",
@@ -120,6 +119,9 @@
     "terms": "Terms",
     "workshop": "Workshop"
   },
+  "page": {
+    "meet_the_comunity": "Meet the community"
+  },
   "press": {
     "branding": "Branding",
     "presentation": "presentation",
@@ -137,6 +139,8 @@
     "send": "Send"
   },
   "stories": {
-    "read_more_btn": "Read more"
+    "by_booksonwall": "By BooksOnWall",
+    "read_more_btn": "Read more",
+    "story_about": "BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one?"
   }
 }

@@ -39,7 +39,6 @@
     "workshop_stories": "Ateliers pour créer un conte BooksOnWall",
     "your_place": "La communauté de BooksOnWall est votre place !"
   },
-  "d4411": "Rencontrer la communauté",
   "explore": {
     "downloadDirect": "Booksonwall-AR - Android",
     "header": "\"Vivez une histoire à travers l'art urbain et les nouvelles technologies!",
@@ -120,6 +119,9 @@
     "terms": "Conditions d'utilisation",
     "workshop": "Atelier"
   },
+  "page": {
+    "meet_the_comunity": ""
+  },
   "press": {
     "branding": "logotypes",
     "presentation": "presentation",
@@ -137,6 +139,8 @@
     "send": "Envoyer"
   },
   "stories": {
-    "read_more_btn": "En savoir plus"
+    "by_booksonwall": "",
+    "read_more_btn": "En savoir plus",
+    "story_about": ""
   }
 }

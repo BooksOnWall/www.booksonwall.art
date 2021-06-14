@@ -39,7 +39,6 @@
     "workshop_stories": "Workshop per creare una storia",
     "your_place": "La comunità di BooksOnWall è il tuo posto!"
   },
-  "d4411": "Incontrare la comunità",
   "explore": {
     "downloadDirect": "Booksonwall-AR - Android",
     "header": "Vieni a vivere una storia attraverso l'arte urbana e le nuove tecnologie!",
@@ -120,6 +119,9 @@
     "terms": "Termini e condizioni",
     "workshop": "Workshop"
   },
+  "page": {
+    "meet_the_comunity": ""
+  },
   "press": {
     "branding": "logotipi",
     "presentation": "presentazione",
@@ -137,6 +139,8 @@
     "send": "inviare"
   },
   "stories": {
-    "read_more_btn": "Leggi di più"
+    "by_booksonwall": "",
+    "read_more_btn": "Leggi di più",
+    "story_about": ""
   }
 }

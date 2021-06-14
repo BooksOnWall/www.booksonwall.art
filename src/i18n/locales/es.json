@@ -39,7 +39,6 @@
     "workshop_stories": "Talleres para crear un cuento",
     "your_place": "¡BooksOnWall es tu lugar!"
   },
-  "d4411": "Conozca a la comunidad",
   "explore": {
     "downloadDirect": "Booksonwall-AR - Android",
     "header": "¡Viví un cuento a través del arte urbano y nuevas tecnologías!",
@@ -120,6 +119,9 @@
     "terms": "Terminos y condiciones",
     "workshop": "Talleres"
   },
+  "page": {
+    "meet_the_comunity": ""
+  },
   "press": {
     "branding": "Logotipos",
     "presentation": "Presentación",
@@ -137,6 +139,8 @@
     "send": "Enviar"
   },
   "stories": {
-    "read_more_btn": "Leer más"
+    "by_booksonwall": "",
+    "read_more_btn": "Leer más",
+    "story_about": ""
   }
 }

@@ -1,9 +1,8 @@
 {
-  "presets": ["react-app", ["@babel/preset-env", { "targets": "defaults" }]],
+  "presets": ["react-app", ["@babel/preset-env", { "targets": {"node": "current"}}], "@babel/preset-react"],
   "plugins": [
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-transform-runtime",
-    "@babel/preset-env",
     [
       "react-intl-auto",
       {
