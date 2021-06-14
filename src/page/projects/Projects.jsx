@@ -26,22 +26,33 @@ const apiURL = process.env.REACT_APP_API;
 const ProjectsMap = loadable(() => import('../map/projectsMap'));
 const useStyles = makeStyles((theme) => ({
   card: {
-    minWidht: 600,
-    maxWidth: 2160,
     background: 'transparent',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
   CardActionArea:{
     display: 'flex',
+    flexGrow: 1,
     flexDirection: 'row',
     background: 'transparent',
     justifyContent: 'space-between',
-    padding: '30px 50px 30px'
-
+    alignItems: 'flex-start',
+    padding: '30px 70px 30px'
   },
   media: {
     height: 250,
     minWidth: 250,
     borderRadius: 400,
+  },
+  cardContent:{
+    flexGrow: '2 1 20%'
+  },
+  cardActions: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    minWidth: '30%',
+    padding: '30px 70px 30px'
   },
   homeHader:{
     backgroundColor: '#ccc',
@@ -80,12 +91,10 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: '30px 0',
     color: theme.palette.primary.main,
-    border: '2px #D9D2C6 solid',
     padding: '10px 20px',
     '&:hover': {
         background: theme.palette.primary.main,
         color: 'white',
-          border: '2px solid',
           borderColor: theme.palette.primary.main,
       }
     },
@@ -121,25 +130,22 @@ const Project = ({projects, goToProject, messages}) => {
     <Card elevation={0} className={classes.card} key={'proj'+i}>
     <CardActionArea className={classes.CardActionArea} onClick={(e) => goToProject(proj.name)}>
        <CardMedia
-
          className={classes.media}
          image={(proj.header_image && proj.header_image.formats && proj.header_image[format] ) ? apiURL + proj.header_image.formats[format].url : null}
          title={proj.name}
        />
-       <CardContent>
-         <Typography align='left' variant="h2" component="h2">
+       <CardContent className={classes.cardContent}>
+         <Typography align='left' variant="h5" component="h2">
            {proj.name}
          </Typography>
-          </CardContent>
-        <CardContent>
          <ReactMarkdown children={proj.header} />
        </CardContent>
-       <CardContent>
-        <Typography  variant="subtitle1"><b>{messages.projects.started}:</b> {proj.start_date} <br/> <b>{messages.projects.complete}:</b>{proj.end_date} </Typography>
-        <Typography  variant="subtitle1"><b>{messages.projects.project_stage}:</b> {proj.project_step} </Typography>
-      </CardContent>
-      <CardActions>
-       <Button className={classes.button} size="small" color="primary" bgcolor="primary" onClick={(e) => goToProject(proj.name)} >{messages.projects.read_more}</Button>
+
+      <CardActions className={classes.cardActions}>
+       <Typography  variant="Button1" component="p"><b>{messages.projects.started}:</b> {proj.start_date}</Typography>
+       <Typography  variant="button1" component="p"><b>{messages.projects.complete}:</b>{proj.end_date} </Typography>
+       <Typography  variant="button1" component="p"><b>{messages.projects.project_stage}:</b> {proj.project_step} </Typography>
+       <Button className={classes.button} size="small" onClick={(e) => goToProject(proj.name)} >{messages.projects.read_more}</Button>
       </CardActions>
      </CardActionArea>
      <Divider />

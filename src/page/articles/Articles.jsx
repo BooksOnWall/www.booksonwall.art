@@ -13,13 +13,13 @@ import {
     Backdrop,
     CircularProgress,
     Container,
+    Divider,
     makeStyles
   } from '@material-ui/core';
 
 import { useReactive, MediaQuery } from '../../utils/reactive';
 import loadable from '@loadable/component';
 
-import Carousel from 'react-material-ui-carousel'
 import ToggleButton from '@material-ui/lab/ToggleButton';
 
 import Home from "../../assets/images/pages/home.jpg";
@@ -31,19 +31,17 @@ const ArticlesMap = loadable(() => import('../map/articlesMap'));
 
 const useStyles = makeStyles((theme) => ({
   articles:{
-    padding: '80px 40px'
+    padding: 'px 0px'
   },
   card: {
-    minWidth: 400,
-    maxWidth: 620,
     background: 'transparent',
     borderRadius: 10,
-    flexGrow: 2,
-    margin: 25
+    flexGrow: '2 1 25%',
   },
   media: {
-    height: 360,
-    borderRadius: 10,
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+    borderRadius: 10
   },
   CardContent: {
     padding: '30px 20px 10px',
@@ -60,27 +58,23 @@ const useStyles = makeStyles((theme) => ({
       background: 'transparent'
     }
   },
+  dividerCard:{ margin: '20px 0'},
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
     color: '#99FF44',
   },
   homeHader:{
-    backgroundColor: '#ccc',
     color: 'white',
-    backgroundSize: 'cover',
-    backgroundPositionY: 'center',
-    backgroundImage: `url(${Home})`,
     padding: 0,
-    margin: '0 0 80px 0'
   },
   homeHaderGradient:{
     display: 'flex',
     flexFlow: 'column wrap',
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
-    background: theme.palette.secondary.mainGradient,
-    minHeight: '30vh',
-    minWidth: '100vw'
+    minHeight: '10vh',
+    minWidth: '100vw',
+    padding: '80px 40px',
   },
   dividerShape: {
     left: 0,
@@ -100,32 +94,42 @@ const useStyles = makeStyles((theme) => ({
     height: '35px',
   },
   button: {
-    margin: '20px 0',
+    margin: '0',
     border: '0px #D9D2C6 solid',
-    padding: '10px 20px',
+    padding: '8px 15px',
+    color: theme.palette.primary.main,
     '&:hover': {
-        background: theme.palette.secondary.dark,
+        background: theme.palette.primary.main,
         color: 'white',
           border: '0px solid',
           borderColor: theme.palette.secondary.main,
       }
     },
+  bannerGrid:{
+    display: 'flex'
+  },
+  category:{
+    color: '#fff',
+    padding: '3px 12px',
+    margin: 5,
+    borderRadius: 20,
+    background:theme.palette.secondary.main,
+    "&:hover":{
+      background:theme.palette.secondary.dark,
+    }
+  },
 }));
 
 
-const ArticlesHeader = ({messages}) => {
+const ArticlesHeader = ({messages, insert, articles}) => {
   const classes = useStyles();
   return (
     <Box className={classes.homeHader}>
+    {!insert && <ArticlesMap articles={articles} mode={"Light"}/>}
     <Box className={classes.homeHaderGradient}>
-      <Container maxWidth='xs' className={classes.tileHead}>
-        <Typography gutterBottom color="textSecondary" variant="h1" >{messages.menu.articles}</Typography>
+      <Container maxWidth='false' className={classes.tileHead}>
+        <Typography color="textPrimary" variant="h5" component="h1">{messages.menu.articles}</Typography>
       </Container>
-      <Box className={classes.dividerShape}>
-        <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-             <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className={classes.shapeFill}></path>
-         </svg>
-      </Box>
     </Box>
     </Box>
   )
@@ -136,23 +140,13 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
   const { isLarge, isMedium, isSmall } = useReactive();
   const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
   if(articles) console.log(articles[0]);
-  const next = () => {
 
-  }
-  const prev = () => {
-
-  }
   return  (
     <>
     {insert &&
-      <Carousel className="carou"
-        autoPlay={false}
-        next={() => next()}
-        prev={() => prev()}
-      >
-    <Grid container spacing={0} className="BannerGrid">
+    <Grid container spacing={4} style={{padding:40}}>
     {articles.map((article, i) => (
-    <Grid item xs={12/4} key={'gg'+i}>
+    <Grid item xs={12/1} md={12/2} xl={12/4} key={'gg'+i}>
     <Card className={classes.card} elevation={0} key={'article'+i}>
     <CardActionArea className={classes.CardActionArea}>
        <CardMedia
@@ -162,62 +156,61 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
          title={article.title}
        />
        <CardContent className={classes.CardContent} >
-         <Typography gutterBottom variant="h6" component="h3">
+         <Typography gutterBottom variant="h4" component="h3">
            {article.title}
-         </Typography>
-         <Typography variant="body2" color="textSecondary" component="p">
-           {article.article_header}
          </Typography>
        </CardContent>
      </CardActionArea>
      <CardActions className={classes.CardActions}>
-      <Button className={classes.button} variant='contained' size="small" color="secondary" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
+      <Button className={classes.button} size="small" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
      </CardActions>
     </Card>
     </Grid>
   ))}
  </Grid>
-  </Carousel>
-
   }
   {!insert &&
     <>
+    <Grid container spacing={4} style={{padding:40}}>
 
     {articles.map((article, i) => (
-    <Grid item xs>
-    <Card className={classes.card} elevation={0} key={'article'+i}>
-    <CardActionArea className={classes.CardActionArea}>
-       <CardMedia
-         onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
-         className={classes.media}
-         image={apiURL + article.header_image.formats[format].url}
-         title={article.title}
-       />
-       <CardContent className={classes.CardContent} >
-         <Typography gutterBottom variant="h6" component="h3">
-           {article.title}
-         </Typography>
-         <Typography variant="body2" color="textSecondary" component="p">
-           {article.article_header}
-         </Typography>
-       </CardContent>
-     </CardActionArea>
-     <CardActions className={classes.CardActions}>
-     <Button className={classes.button} variant='contained' size="small" color="secondary" onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
-     </CardActions>
-    </Card>
+      <Grid item xs={12/1} md={12/3} xl={12/6} key={'gg'+i}>
+      <Card className={classes.card} elevation={0} key={'article'+i}>
+        <CardActionArea className={classes.CardActionArea}>
+           <CardMedia
+             onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
+             className={classes.media}
+             image={apiURL + article.header_image.formats[format].url}
+             title={article.title}
+           />
+           <CardContent className={classes.CardContent} >
+             <Typography gutterBottom variant="h6" component="h3">
+               {article.title}
+             </Typography>
+             <Typography gutterBottom variant="body2" color="textPrimary" component="p">
+               {article.header}
+             </Typography>
+           </CardContent>
+         </CardActionArea>
+         <CardActions className={classes.CardActions}>
+            <Button className={classes.button} size="small"  onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >{messages.stories.read_more_btn}</Button>
+         </CardActions>
+      </Card>
     </Grid>
 
   ))}
+  </Grid>
   </>
   }
   </>
   )
 };
 const Categories = ({messages, categories, selectCategory, selected}) => {
+  const classes = useStyles();
   return (
     <>
-        {(categories) ? categories.map((cat, i) => <ToggleButton key={'cat'+i} onClick={(e) => selectCategory(e)}  style={{margin: '7px'}} color="primary" name={cat} >{cat}</ToggleButton>): ''}
+        {(categories) ? categories.map((cat, i) => <ToggleButton className={classes.category} key={'cat'+i} onClick={(e) => selectCategory(e)}  style={{margin: '7px'}} color="primary" name={cat} >{cat}</ToggleButton>): ''}
+
     </>
   )
 };
@@ -230,18 +223,26 @@ const ArticleList = ({loading, messages, history, articles, categories, selected
   const classes = useStyles();
   return (
     <>
-    <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
-      <CircularProgress color="inherit" />
+    <Backdrop open={loading} >
+      <CircularProgress
+      size={60}
+      thickness={8}
+      className="CircularProgress"
+      />
     </Backdrop>
 
     {articles && !insert &&
       <Box className={classes.articles}>
 
       <ScrollToTop insert={insert}/>
-        <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 80px 40px'}}>
+
+        <Divider/>
+        <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 40px 40px 40px',}}>
           <Categories selected={selected} categories={categories} messages={messages} selectCategory={selectCategory}/>
         </Box>
-      <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 20px 40px'}}>
+        <Divider/>
+
+      <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 60px 40px'}}>
         <Grid container spacing={3}>
 
           <News hasCategory={hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={goToArticle}/>
@@ -358,8 +359,7 @@ class Articles extends Component {
     // images: [],
     return (
         <>
-          {!insert && <ArticlesMap articles={articles} mode={"Light"}/>}
-          {!insert && <ArticlesHeader messages={messages} /> }
+          <ArticlesHeader messages={messages} insert={insert}/>
           <ArticleList
             loading={loading}
             articles={articles}

@@ -8,7 +8,6 @@ import "@fontsource/source-sans-pro"
 import "@fontsource/roboto-mono"
 
 let theme = createMuiTheme({
-type: 'light',
 palette: {
   common: {
     white: '#FEFEFE',
@@ -54,7 +53,7 @@ palette: {
     contrastText: '#FEFEFE',
   },
   info: {
-    light: '#0066ff',
+    light: '#C33949',
     main: '#2577BB',
     dark: '#000055', //will be calculated from palette.secondary.main,
     contrastText: '#FEFEFE',

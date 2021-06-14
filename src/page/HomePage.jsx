@@ -9,6 +9,7 @@ import {
     Card,
     CardActions,
     Button,
+    Divider,
     makeStyles
   } from '@material-ui/core';
 import { useReactive, MediaQuery } from '../utils/reactive';
@@ -231,7 +232,7 @@ wrapperBlob:{
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  paddingBottom: 20
+  paddingBottom: 50
 },
 wrapperGrid: {
   display: 'flex',
@@ -519,18 +520,23 @@ const HomePage = (props) => {
       </ScrollIntoViewIfNeeded>
       <Box id='home' className="main" >
         <HomeHeaderBlock messages={messages}/>
+
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.WhoAreWe)}>
         <WhoAreWe messages={messages} />
       </ScrollIntoViewIfNeeded>
-      <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.articles)}>
-        <Box> <Articles messages={messages} history={props.history} limit={(reactive.isLarge) ? 4 : (reactive.isMedium) ? 4 :  3} insert/> </Box>
-      </ScrollIntoViewIfNeeded>
-        <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.block)}>
-        <Box> <PlaceholderBlock messages={messages} /> </Box>
-      </ScrollIntoViewIfNeeded>
+
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.stories)}>
         <Box><Stories messages={messages} history={props.history} limit={(reactive.isLarge) ? 12 : (reactive.isMedium) ? 8 :  3} insert/> </Box>
       </ScrollIntoViewIfNeeded>
+
+        <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.block)}>
+        <Box> <PlaceholderBlock messages={messages} /> </Box>
+      </ScrollIntoViewIfNeeded>
+      
+      <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.articles)}>
+        <Box> <Articles messages={messages} history={props.history} limit={(reactive.isLarge) ? 4 : (reactive.isMedium) ? 4 :  3} insert/> </Box>
+      </ScrollIntoViewIfNeeded>
+      <Divider />
     </Box>
     </>
     )
