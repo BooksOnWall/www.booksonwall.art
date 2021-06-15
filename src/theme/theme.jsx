@@ -71,7 +71,6 @@ palette: {
     fontSize: "1.54rem",
     lineHeight: 1.598,
     maxWidth: 800,
-    marginTop: 40,
   },
   body2:{
     fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',

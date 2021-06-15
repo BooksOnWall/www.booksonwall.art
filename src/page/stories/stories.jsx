@@ -30,7 +30,7 @@ const storiesTraductions = defineMessages({
   },
   story_about: {
     id: 'stories.story_about',
-    defaultMessage: 'BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one'
+    defaultMessage: 'BooksOnWall Ar is a library of stories, tales or immersive narratives that happen around the world and here are some of them that you can experience with the application. We also hope to be able to tell a story in your city soon. Would you like to create one?'
   },
   by_booksonwall: {
     id: 'stories.by_booksonwall',
@@ -197,13 +197,10 @@ class Stories extends Component {
         <Box id={messages.menu.stories} className="stories">
           <Box className='map' >{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}
           </Box>
-          {!insert &&
             <Box id="storiesTitle">
               <Typography variant="h2" color="textPrimary" component="h1" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.menu.stories}</Typography>
               <Typography variant="subtitle1" color="secondary" component="body" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.stories.story_about}</Typography>
-
             </Box>
-          }
           <Box className='mapbg'><Mapbg /></Box>
           <Box id="storyList">
             <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
