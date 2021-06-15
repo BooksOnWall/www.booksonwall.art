@@ -312,13 +312,13 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
                 selected={activeItem === messages.menu.connect}
                 onClick={(event) => handleMenuItemClick(event, 0, messages.menu.connect, messages.menu.email)}
               >{messages.menu.email}</MenuItem>
-            <Link href={'https://wwww.facebook.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem} >
+            <Link href={'https://www.facebook.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem} >
               <FacebookIcon />  Facebook</MenuItem></Link>
-            <Link href={'https://wwww.instagram.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem} >
+            <Link href={'https://www.instagram.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem} >
               <InstagramIcon />  Instagram</MenuItem></Link>
-            <Link href={'https://wwww.twitter.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem}>
+            <Link href={'https://www.twitter.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem}>
                 <TwitterIcon />  Twitter</MenuItem></Link>
-              <Link href={'https://wwww.linkedin.com/company/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem}  >
+              <Link href={'https://www.linkedin.com/company/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem}  >
                 <LinkedInIcon />  Linkedin</MenuItem></Link>
               <Link href={'https://www.youtube.com/channel/UCNWiz7RDGgoM3HHgoYPAS3w'} className={classes.link} ><MenuItem className={classes.menuItem} >
                 <YouTubeIcon />  Youtube</MenuItem></Link>
