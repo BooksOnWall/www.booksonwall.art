@@ -120,7 +120,7 @@
     "workshop": "Talleres"
   },
   "page": {
-    "meet_the_comunity": ""
+    "meet_the_comunity": "Conoce la comunidad"
   },
   "press": {
     "branding": "Logotipos",
@@ -140,7 +140,10 @@
   },
   "stories": {
     "by_booksonwall": " por BooksOnWall",
+    "inmersive_storytelling": "Narraciones inmersivas a través de la ciudad y el arte urbano.",
+    "learn_how": "Aprende cómo",
     "read_more_btn": "Leer más",
+    "see_all": "Ver Todos",
     "story_about": "BooksOnWall Ar es una biblioteca de historias, cuentos o narraciones inmersivas que ocurren alrededor del mundo y aquí están algunas de ellas que puedes experimentar con la aplicación. También esperamos poder contar pronto una historia en tu ciudad. ¿Te gustaría crear una?"
   }
 }
