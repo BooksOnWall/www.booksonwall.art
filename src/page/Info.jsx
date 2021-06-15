@@ -11,7 +11,7 @@ import {
   } from '@material-ui/core';
 
 import { Images } from './../assets/images/pages';
-
+import {Helmet} from "react-helmet";
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 import { useLocation, useHistory } from 'react-router-dom';
@@ -473,6 +473,13 @@ const  Info = (props) => {
   const {messages, locale} = props.intl;
   const {hash} = useLocation();
     return (
+      <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{messages.menu.info}</title>
+        <meta name="description" content="This is info page" />
+        <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.info} />
+      </Helmet>
       <Box id={messages.menu.info} className="main" >
         <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.manifest)}>
         </ScrollIntoViewIfNeeded>
@@ -487,6 +494,7 @@ const  Info = (props) => {
           <Press messages={messages} history={props.history}/>
         </ScrollIntoViewIfNeeded>
       </Box>
+      </>
     );
 };
 

@@ -9,6 +9,7 @@ import {
   } from '@material-ui/core';
 
 import { injectIntl, defineMessages } from 'react-intl';
+import {Helmet} from "react-helmet";
 import ContactForm from './ContactForm';
 import Register from './Register'
 import { useLocation, useHistory } from 'react-router-dom';
@@ -111,6 +112,13 @@ const Connect = (props) => {
   let history = useHistory();
   const { locale, messages } = props.intl;
   return (
+    <>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>{messages.menu.connect}</title>
+      <meta name="description" content="This is connect page" />
+      <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.connect} />
+    </Helmet>
     <Box className={classes.connect}>
     <Box className={classes.homeHaderBg}>
     <Box className={classes.gradine}>
@@ -162,6 +170,7 @@ const Connect = (props) => {
       </Box>
 
     </Box>
+    </>
   );
 }
 

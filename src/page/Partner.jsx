@@ -3,6 +3,7 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Button, Box, Container, Typography, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
+import {Helmet} from "react-helmet";
 import {useReactive} from "../utils/reactive";
 import { injectIntl } from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
@@ -123,6 +124,12 @@ const Partner = (props) => {
 
   return (
     <>
+    <Helmet>
+       <meta charset="utf-8" />
+       <title>{messages.menu.partner}</title>
+       <meta name="description" content="This is partner page" />
+       <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.partner} />
+    </Helmet>
     <Backdrop className={classes.backdrop} open={loading} >
       <CircularProgress color="inherit" />
     </Backdrop>

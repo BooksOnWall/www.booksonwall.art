@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import {Helmet} from "react-helmet";
 import {
     Grid,
     Container,
@@ -113,6 +113,12 @@ const Services = (props) => {
   }, [apiURL, locale]);
   return (
     <>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>{messages.menu.services}</title>
+      <meta name="description" content="This is service page" />
+      <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.services} />
+    </Helmet>
     <Backdrop className={classes.backdrop} open={loading} >
       <CircularProgress color="inherit" />
     </Backdrop>

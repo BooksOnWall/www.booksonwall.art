@@ -12,7 +12,8 @@ import {
     Divider,
     makeStyles
   } from '@material-ui/core';
-import { useReactive, MediaQuery } from '../utils/reactive';
+import {Helmet} from "react-helmet";
+import { useReactive} from '../utils/reactive';
 import Image from 'material-ui-image';
 import loadable from '@loadable/component';
 import { useHistory } from 'react-router-dom';
@@ -511,11 +512,16 @@ return (
 )};
 const HomePage = (props) => {
     const reactive = useReactive();
-    console.log('reactive', reactive);
     const {messages} = props.intl;
     const [activeScroll, setActiveScroll] = useState('top');
     return (
       <>
+      <Helmet>
+         <meta charset="utf-8" />
+         <title>BooksOnWall</title>
+         <meta name="description" content="This is home page" />
+         <link rel="canonical" href={"https://www.booksonwall.art"} />
+      </Helmet>
       <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
       </ScrollIntoViewIfNeeded>
       <Box id='home' className="main" >
@@ -532,7 +538,7 @@ const HomePage = (props) => {
         <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.block)}>
         <Box> <PlaceholderBlock messages={messages} /> </Box>
       </ScrollIntoViewIfNeeded>
-      
+
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.articles)}>
         <Box> <Articles messages={messages} history={props.history} limit={(reactive.isLarge) ? 4 : (reactive.isMedium) ? 4 :  3} insert/> </Box>
       </ScrollIntoViewIfNeeded>

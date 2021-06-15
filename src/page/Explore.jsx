@@ -9,6 +9,7 @@ import {
     Button,
     makeStyles
   } from '@material-ui/core';
+import {Helmet} from "react-helmet";
 import { useLocation } from 'react-router-dom';
 import {useReactive, MediaQuery} from "../utils/reactive";
 import clsx from "clsx";
@@ -121,6 +122,13 @@ const Explore = (props) => {
     const {messages} = props.intl;
     const {hash} = useLocation();
     return (
+      <>
+      <Helmet>
+         <meta charset="utf-8" />
+         <title>{messages.menu.explore}</title>
+         <meta name="description" content="This is explore page" />
+         <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.explore} />
+      </Helmet>
       <Box className="main" >
         <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.download_app)}>
           <ExploreHeader  id={messages.menu.download_app} messages={messages} />
@@ -132,6 +140,7 @@ const Explore = (props) => {
           <Faqs  id={messages.menu.faqs} messages={messages} />
         </ScrollIntoViewIfNeeded>
       </Box>
+      </>
     )
 };
 

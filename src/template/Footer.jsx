@@ -152,6 +152,9 @@ logoSmall:{
     flexWrap: 'wrap',
     minWidth: 150
   },
+  link: {
+     color:'white',textDecoration: 'none', display: 'block'
+  },
   menuItem:{
     fontFamily: theme.typography.button.fontFamily,
     fontSize: theme.typography.body2.fontSize,
@@ -309,22 +312,22 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
                 selected={activeItem === messages.menu.connect}
                 onClick={(event) => handleMenuItemClick(event, 0, messages.menu.connect, messages.menu.email)}
               >{messages.menu.email}</MenuItem>
-            <MenuItem className={classes.menuItem}  onClick={(event) => handleMenuItemClick(event, 1, messages.menu.connect, "Facebook")}
-              ><FacebookIcon />  Facebook</MenuItem>
-            <MenuItem className={classes.menuItem}  onClick={(event) => handleMenuItemClick(event, 2, messages.menu.connect, "Instagram")}
-              ><InstagramIcon />  Instagram</MenuItem>
-            <MenuItem className={classes.menuItem}  onClick={(event) => handleMenuItemClick(event, 3, messages.menu.connect, "Tweeter")}
-                ><TwitterIcon />  Twitter</MenuItem>
-              <MenuItem className={classes.menuItem}  onClick={(event) => handleMenuItemClick(event, 5, messages.menu.connect, "Linkedin")}
-                ><LinkedInIcon />  Linkedin</MenuItem>
-              <MenuItem className={classes.menuItem}  onClick={(event) => handleMenuItemClick(event, 6, messages.menu.connect, "Youtube")}
-                ><YouTubeIcon />  Youtube</MenuItem>
-              <MenuItem className={classes.menuItem}  onClick={(event) => handleMenuItemClick(event, 7, messages.menu.connect, "Cloud")}
-                ><CloudIcon />  Cloud</MenuItem>
-              <MenuItem className={classes.menuItem}  onClick={(event) => handleMenuItemClick(event, 8, messages.menu.connect, "Github")}
-                ><GitHubIcon />  Github</MenuItem>
-              <MenuItem className={classes.menuItem}  onClick={(event) => handleMenuItemClick(event, 9, messages.menu.connect, "Telegram")}
-                ><TelegramIcon />  Telegram</MenuItem>
+            <Link href={'https://www.facebook.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem} >
+              <FacebookIcon />  Facebook</MenuItem></Link>
+            <Link href={'https://www.instagram.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem} >
+              <InstagramIcon />  Instagram</MenuItem></Link>
+            <Link href={'https://www.twitter.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem}>
+                <TwitterIcon />  Twitter</MenuItem></Link>
+              <Link href={'https://www.linkedin.com/company/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem}  >
+                <LinkedInIcon />  Linkedin</MenuItem></Link>
+              <Link href={'https://www.youtube.com/channel/UCNWiz7RDGgoM3HHgoYPAS3w'} className={classes.link} ><MenuItem className={classes.menuItem} >
+                <YouTubeIcon />  Youtube</MenuItem></Link>
+              <Link href={'https://cloud.booksonwall.art'} className={classes.link} ><MenuItem className={classes.menuItem} >
+                <CloudIcon />  Cloud</MenuItem></Link>
+              <Link href={'https://github.com/BooksOnWall'} className={classes.link} ><MenuItem className={classes.menuItem} >
+                <GitHubIcon />  Github</MenuItem></Link>
+              <Link href={'https://t.me/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem} >
+                <TelegramIcon />  Telegram</MenuItem></Link>
             </MenuList>
           </Paper>
         </Grid>

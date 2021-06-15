@@ -15,6 +15,7 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import Image from 'material-ui-image';
+import {Helmet} from "react-helmet";
 import {useReactive} from "../../utils/reactive";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -109,6 +110,12 @@ const Applications = (props) => {
   }, [apiURL, locale, messages]);
   return (
     <>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>{messages.menu.applications}</title>
+      <meta name="description" content="This is applications page" />
+      <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.applications} />
+    </Helmet>
     <Backdrop className={classes.backdrop} open={loading} >
       <CircularProgress color="inherit" />
     </Backdrop>
