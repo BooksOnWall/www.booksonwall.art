@@ -317,7 +317,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
             <Link href={'https://wwww.instagram.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem} >
               <InstagramIcon />  Instagram</MenuItem></Link>
             <Link href={'https://wwww.twitter.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem}>
-                ><TwitterIcon />  Twitter</MenuItem></Link>
+                <TwitterIcon />  Twitter</MenuItem></Link>
               <Link href={'https://wwww.linkedin.com/company/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem}  >
                 <LinkedInIcon />  Linkedin</MenuItem></Link>
               <Link href={'https://www.youtube.com/channel/UCNWiz7RDGgoM3HHgoYPAS3w'} className={classes.link} ><MenuItem className={classes.menuItem} >
