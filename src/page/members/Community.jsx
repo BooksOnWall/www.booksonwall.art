@@ -1,6 +1,5 @@
 import React, { Component  } from 'react';
 import { injectIntl } from 'react-intl';
-import CommunityMap from './communityMap';
 import {
     Box,
     Typography,
@@ -16,12 +15,13 @@ import {
     makeStyles
   } from '@material-ui/core';
 import { theme } from '../../theme/theme';
+
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import Patrick from "../../assets/images/avatar/patrick 3.png";
-
+import CommunityMap from './communityMap';
 
 const apiURL = process.env.REACT_APP_API;
 const useStyles = makeStyles((theme) => ({
@@ -119,11 +119,17 @@ const CommunityHeader =({messages, theme}) => {
   )
 };
 
-const Skills = ({skills, select, isSelected, selected}) => {
+const Skills = ({skills, select, isSelected, selected, locale}) => {
   const classes = useStyles();
+  const tagTranslations = require('../../i18n/locales/skills-'+locale+'.json');
+
   return (
     <Breadcrumbs className={classes.skills}>
-      {(skills) ? skills.map((skill, i)=> (
+      {(skills) ? skills.map((skill, i)=> {
+        let index = skill.replace(/\s/g, '_');
+        index = index.toLowerCase();
+        console.log('index', index);
+        return (
         <ToggleButton
           value={skill}
           selected={isSelected(skill)}
@@ -132,9 +138,9 @@ const Skills = ({skills, select, isSelected, selected}) => {
           onClick={select}
           className={classes.skill}
           >
-          {skill}
+          {tagTranslations[index]}
         </ToggleButton>
-        )): ''}
+      )}): ''}
     </Breadcrumbs>
   );
 };
@@ -204,6 +210,7 @@ class Community extends Component {
   }
   hasSkill = (e) => {
     const {selected} = this.state;
+    console.log('selected', selected);
     let skills = e.skills;
     let hasIt = false;
     if (skills && skills.length > 0) {
@@ -215,11 +222,9 @@ class Community extends Component {
     this.props.history.push(b.src)
   }
   loadMembers = async (filter, rows, index, sort, order) => {
-    console.log("load members");
     const { apiURL } = this.state;
     const fetchURL = apiURL + '/members?_limit=-1&_sort=created_at:desc&lang=en';
     this.setState({loading: true});
-    console.log("URL",fetchURL );
 
     await fetch(fetchURL, {
       crossDomain:true,
@@ -255,7 +260,8 @@ class Community extends Component {
   }
   render() {
     const {skills, selected, members, apiURL, insert, loading} = this.state;
-    const {messages} = this.props.intl;
+    const {messages, locale} = this.props.intl;
+    console.log('selected', selected);
     return (
       <>
       <Backdrop open={loading} >
@@ -271,7 +277,7 @@ class Community extends Component {
           <>
           <CommunityMap members={members} selected={selected} hasSkill={this.hasSkill} history={this.props.history}/>
           <CommunityHeader messages={messages} members={members} selected={selected}/>
-          <Skills skills={skills} select={this.select} isSelected={this.isSelected} selected={selected}/>
+          <Skills locale={locale} skills={skills} select={this.select} isSelected={this.isSelected} selected={selected}/>
           <Divider/>
 
           <Box style={{
