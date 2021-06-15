@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Typography,  Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
+import {Helmet} from "react-helmet";
 import {useReactive} from "../utils/reactive";
 import Image from 'material-ui-image';
 import { injectIntl } from 'react-intl';
@@ -62,6 +63,12 @@ const Terms = (props) => {
 
   return (
     <>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>{messages.menu.terms}</title>
+      <meta name="description" content="This is terms page" />
+      <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.terms} />
+    </Helmet>
   <ScrollIntoViewIfNeeded active={true}>
     <Backdrop className={classes.backdrop} open={loading} >
       <CircularProgress color="inherit" />

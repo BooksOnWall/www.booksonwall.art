@@ -11,6 +11,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Images } from './../assets/images/pages';
 import { injectIntl, defineMessages } from 'react-intl';
+import {Helmet} from "react-helmet";
 import {useReactive, MediaQuery} from "../utils/reactive";
 import clsx from 'clsx';
 import { Blob } from 'react-blob';
@@ -350,6 +351,13 @@ const Create = (props) => {
     const {messages} = props.intl;
     const {hash} = useLocation();
     return (
+      <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{messages.menu.create}</title>
+        <meta name="description" content="This is create page" />
+        <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.create} />
+      </Helmet>
       <Box id="create" className="main" >
       <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.workshop)}>
         <WorkShop messages={messages} history={props.history}/>
@@ -361,6 +369,7 @@ const Create = (props) => {
         <JoinUs messages={messages} history={props.history}/>
       </ScrollIntoViewIfNeeded>
       </Box>
+      </>
     )
 };
 

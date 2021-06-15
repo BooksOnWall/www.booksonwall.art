@@ -16,6 +16,7 @@ import {
     makeStyles
   } from '@material-ui/core';
 import { injectIntl, defineMessages } from 'react-intl';
+import {Helmet} from "react-helmet";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import ReactMarkdown from 'react-markdown';
 import {useReactive} from "../../utils/reactive";
@@ -225,7 +226,14 @@ class Projects extends Component {
     const {messages} = this.props.intl;
     return (
       <>
-
+      {!insert &&
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{messages.menu.projects}</title>
+          <meta name="description" content="This is projects page" />
+          <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.projects} />
+        </Helmet>
+      }
       <Backdrop styles={{zIndex: 1003, color: '#99FF44'}} open={loading} >
         <CircularProgress color="inherit" />
       </Backdrop>

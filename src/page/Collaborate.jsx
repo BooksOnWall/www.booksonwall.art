@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles, Grid, Button,  Typography, Container, Box } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import { injectIntl, defineMessages  } from 'react-intl';
+import {Helmet} from "react-helmet";
 import { useLocation, useHistory } from 'react-router-dom';
 import { useReactive, MediaQuery } from '../utils/reactive';
 import clsx from 'clsx';
@@ -330,6 +331,13 @@ const Collaborate = (props) => {
     const {messages, locale} = props.intl;
     const {hash} = useLocation();
     return (
+      <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{messages.menu.collaborate}</title>
+        <meta name="description" content="This is collaborate page" />
+        <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.collaborate} />
+      </Helmet>
       <Box id="collabora">
         <ScrollIntoViewIfNeeded active={(!hash)}>
           <CollaborateHeader messages={messages}/>
@@ -338,6 +346,7 @@ const Collaborate = (props) => {
           <SupportStory lang={locale} messages={messages} />
         </ScrollIntoViewIfNeeded>
      </Box>
+     </>
     )
 };
 

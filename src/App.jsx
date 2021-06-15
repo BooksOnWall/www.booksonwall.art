@@ -4,7 +4,6 @@ import {
   Route
 } from "react-router-dom";
 import { IntlProvider } from "react-intl";
-
 import loadable from '@loadable/component';
 
 import "@fontsource/roboto"; // Defaults to weight 400.

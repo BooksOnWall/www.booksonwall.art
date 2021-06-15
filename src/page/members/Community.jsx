@@ -19,7 +19,7 @@ import { useHistory } from 'react-router-dom';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import {Helmet} from "react-helmet";
 import Patrick from "../../assets/images/avatar/patrick 3.png";
 import CommunityMap from './communityMap';
 
@@ -265,6 +265,14 @@ class Community extends Component {
     console.log('selected', selected);
     return (
       <>
+      {!insert &&
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{messages.menu.community}</title>
+          <meta name="description" content="This is community page" />
+          <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.community} />
+        </Helmet>
+      }
       <Backdrop open={loading} >
         <CircularProgress
         size={60}

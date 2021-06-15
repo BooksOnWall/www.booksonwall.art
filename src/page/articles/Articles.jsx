@@ -19,7 +19,7 @@ import {
 
 import { useReactive, MediaQuery } from '../../utils/reactive';
 import loadable from '@loadable/component';
-
+import {Helmet} from "react-helmet";
 import ToggleButton from '@material-ui/lab/ToggleButton';
 
 import Home from "../../assets/images/pages/home.jpg";
@@ -359,6 +359,14 @@ class Articles extends Component {
     // images: [],
     return (
         <>
+          {!insert &&
+            <Helmet>
+              <meta charSet="utf-8" />
+              <title>{messages.menu.articles}</title>
+              <meta name="description" content="This is articles page" />
+              <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.articles} />
+            </Helmet>
+          }
           <ArticlesHeader messages={messages} insert={insert}/>
           <ArticleList
             loading={loading}
