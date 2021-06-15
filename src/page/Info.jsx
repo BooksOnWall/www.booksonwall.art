@@ -20,7 +20,7 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl, defineMessages  } from 'react-intl';
 import clsx from 'clsx';
 import ReactMarkdown from 'react-markdown';
-import ContactForm from './ContactForm';
+
 import Articles from './articles/Articles';
 
 const infoTraductions = defineMessages({
@@ -336,13 +336,22 @@ const History =({messages, locale, historyFeed, goToCommunity}) => {
 )
 };
 
-const Tags = ({skills}) => skills.map((skill,i) => (<Chip variant="outlined" key={'m'+i} label={skill} />));
+const Tags = ({skills, translateTag}) => skills.map((skill,i) => (<Chip variant="outlined" key={'m'+i} label={skill} />));
 const Community =({goToCommunity, messages, locale}) => {
   const classes = useStyles();
   const [community, setCommunity] = useState();
   const [members, setMembers] = useState([]);
   const [skills, setSkills] = useState([]);
+  const tagTranslations = require('../i18n/locales/skills-'+locale+'.json');
   let history = useHistory();
+
+  const translateTag = (tag) => {
+    console.log('tag');
+    let index = tag.replace(/\s/g, '_');
+    index = index.toLowerCase();
+    console.log('index', index);
+    return tagTranslations[index];
+  }
   useEffect(() => {
     const fetchURL = apiURL + '/uniques?type=community&lang=' + locale;
     const getCommunity = async () => {
@@ -407,15 +416,22 @@ const Community =({goToCommunity, messages, locale}) => {
       members.map((m,i) => {
         if(m.skills) {
           m.skills.map((skill, i) => {
-            sk = (!sk[skill]) ? [...sk,skill]: sk;
+            let index = skill.replace(/\s/g, '_');
+            index = index.toLowerCase();
+            console.log('index', index);
+            console.log('value', tagTranslations[index]);
+            const tag = tagTranslations[index];
+            sk = (!sk[index]) ? [...sk,tag]: sk;
             return skill;
           });
         }
         return m;
       });
+
       setSkills(sk);
 
     },[members]);
+
 
     const {isLarge, isMedium} = useReactive();
     const bg = (isLarge) ? 'communitybgLarge' : (isMedium) ? 'communitybgMedium' : 'communitybgSmall';
@@ -427,7 +443,7 @@ const Community =({goToCommunity, messages, locale}) => {
       <Grid container spacing={8}  className={classes.communityGrid}>
         <Grid item  xs={6}>
           <Typography variant='h3' complement='h2'> Comunity is... </Typography>
-          <Typography variant='body2' complement='p'><Tags skills={skills} /></Typography>
+          <Typography variant='body2' complement='p'><Tags translateTag={translateTag} skills={skills} /></Typography>
         </Grid>
 
         <Grid item  xs={6}>
