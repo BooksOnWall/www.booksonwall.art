@@ -35,10 +35,49 @@ const storiesTraductions = defineMessages({
   by_booksonwall: {
     id: 'stories.by_booksonwall',
     defaultMessage: 'By BooksOnWall'
+  },
+  see_all: {
+    id: 'stories.see_all',
+    defaultMessage: 'See All'
+  },
+  inmersive_storytelling: {
+    id: 'stories.inmersive_storytelling',
+    defaultMessage: 'Immersive storytelling through the city, urban art and culture.',
+  },
+  learn_how: {
+    id: 'stories.learn_how',
+    defaultMessage: 'Learn How',
   }
 });
 
 const useStyles = makeStyles((theme) => ({
+  storiesTitleWrap:{
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: 'auto',
+    maxWidth: '1280px',
+    alignItems: 'center',
+    padding: 40
+  },
+  storiesTitle:{
+    textTransform:'uppercase',
+    paddingTop: '8vh'
+  },
+  storiesSubTitle:{
+  },
+  storiesBtnWarp:{
+    display: 'flex',
+    justifyContent: 'space-around',
+    maxWidth: 800,
+    margin: 30
+  },
+  storiesBtn:{
+    margin: 10
+  },
+  storiesAbout:{
+    paddingTop: 20
+  },
   card: {
     background: 'transparent',
     alignItems: 'center',
@@ -65,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100%',
     justifyContent: 'center'
   },
-  title:{
+  cardTitle:{
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -108,9 +147,9 @@ const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
          title={story.name}
        >
        <CardContent className={classes.content}>
-        <Box className={classes.title}>
+        <Box className={classes.cardTitle}>
          <Typography gutterBottom color="textSecondary" variant="h2" align="center" component="h2">{story.name}</Typography>
-         <Typography  color="textSecondary" variant="h6" align="center" component="h2">{messages.stories.by_booksonwall}</Typography>
+         <Typography color="textSecondary" variant="h6" align="center" component="h2">{messages.stories.by_booksonwall}</Typography>
          </Box>
          {!hideText &&
          <Typography className={classes.paragraph} variant="subtitle1" align="center" color="textSecondary" component="p">{story.story_header}</Typography>
@@ -130,6 +169,23 @@ const ScrollToTop = ({insert}) => {
     </ScrollIntoViewIfNeeded>
   )
 }
+
+const  StoriesTitle =({messages, insert}) => {
+  const classes = useStyles();
+  return(
+      <Box className={classes.storiesTitleWrap}>
+        <Typography className={classes.storiesTitle} variant="h2" color="textPrimary" component="h1" align="center" > {messages.menu.stories}</Typography>
+        <Typography gutterBottom className={classes.storiesSubTitle} variant="h3" color="secondary" component="h2" align="center" > {messages.stories.inmersive_storytelling}</Typography>
+        <Typography gutterBottom className={classes.storiesAbout} variant="subtitle1" color="textPrimary" component="body" align="center"> {messages.stories.story_about}</Typography>
+        <Box className={classes.storiesBtnWarp}>
+          {insert && <Button className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.see_all}</Button>}
+          <Button className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.menu.support}</Button>
+          <Button className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.learn_how}</Button>
+        </Box>
+      </Box>
+  )
+}
+
 class Stories extends Component {
   constructor(props) {
     super(props)
@@ -197,10 +253,7 @@ class Stories extends Component {
         <Box id={messages.menu.stories} className="stories">
           <Box className='map' >{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}
           </Box>
-            <Box id="storiesTitle">
-              <Typography variant="h2" color="textPrimary" component="h1" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.menu.stories}</Typography>
-              <Typography variant="subtitle1" color="secondary" component="body" style={{textTransform:'uppercase', paddingTop: '10vh'}}> {messages.stories.story_about}</Typography>
-            </Box>
+          <StoriesTitle messages={messages} insert={insert} />
           <Box className='mapbg'><Mapbg /></Box>
           <Box id="storyList">
             <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
