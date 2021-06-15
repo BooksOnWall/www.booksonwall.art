@@ -207,9 +207,12 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
 };
 const Categories = ({messages, categories, selectCategory, selected}) => {
   const classes = useStyles();
+  const isSelected = (cat) => {
+    return (selected.length > 0 && selected[0] === cat) ? true : false;
+  }
   return (
     <>
-        {(categories) ? categories.map((cat, i) => <ToggleButton className={classes.category} key={'cat'+i} onClick={(e) => selectCategory(e)}  style={{margin: '7px'}} color="primary" name={cat} >{cat}</ToggleButton>): ''}
+        {(categories) ? categories.map((cat, i) => <ToggleButton selected={isSelected(cat)} className={classes.category} key={'cat'+i} onClick={(e) => selectCategory(cat)}  style={{margin: '7px'}} color="primary" name={cat} >{cat}</ToggleButton>): ''}
 
     </>
   )
@@ -221,6 +224,7 @@ const ScrollToTop = ({insert}) => {
 }
 const ArticleList = ({loading, messages, history, articles, categories, selected, insert, goToArticle,hasCategory,selectCategory }) => {
   const classes = useStyles();
+  console.log('selected',selected);
   return (
     <>
     <Backdrop open={loading} >
@@ -288,22 +292,22 @@ class Articles extends Component {
     }
     return hasIt;
   }
-  selectCategory = (b) => {
-    const cat = b.name;
+  selectCategory = (cat) => {
     let {selected} = this.state;
     selected = (selected.indexOf(cat) === 0) ?  selected.filter(item => (item !== cat)) : [cat];
     this.setState({selected: selected});
+    const filter = (selected && selected.length >0) ? '&categories_contains='+selected[0] : null;
+    this.loadArticles(filter);
   }
   goToArticle = (url) => {
     this.props.history.push('/'+ url);
   }
   loadArticles = async (filter, rows, index, sort, order) => {
-    console.log("load articles");
-    const { apiURL, locale, insert, limit } = this.state;
+    const { apiURL, locale, insert, limit, selected } = this.state;
     if(!sort) sort = this.state.sort;
-    const fetchURL = (insert) ? apiURL + '/articles?_limit='+limit+'&_sort='+sort+'&lang='+ locale: apiURL + '/articles?_limit=-1&_sort='+sort+'&lang='+ locale;
+    let fetchURL = (insert) ? apiURL + '/articles?_limit='+limit+'&_sort='+sort+'&lang='+ locale: apiURL + '/articles?_limit=-1&_sort='+sort+'&lang='+ locale;
+    fetchURL = (filter) ? fetchURL+filter : fetchURL;
     this.setState({loading: true});
-    console.log("URL",fetchURL );
 
     await fetch(fetchURL, {
       crossDomain:true,
