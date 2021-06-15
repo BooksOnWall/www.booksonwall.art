@@ -139,8 +139,8 @@
     "send": "Envoyer"
   },
   "stories": {
-    "by_booksonwall": "",
+    "by_booksonwall": "Par BooksOnWall",
     "read_more_btn": "En savoir plus",
-    "story_about": ""
+    "story_about":  "BooksOnWall Ar est une bibliothèque d'histoires, de contes ou de récits immersifs qui se produisent dans le monde entier et en voici quelques-uns que vous pouvez expérimenter avec l'application. Nous espérons également pouvoir bientôt raconter une histoire dans votre ville. Voulez-vous en créer une ?"
   }
 }
