@@ -322,7 +322,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
                 <LinkedInIcon />  Linkedin</MenuItem></Link>
               <Link href={'https://www.youtube.com/channel/UCNWiz7RDGgoM3HHgoYPAS3w'} className={classes.link} ><MenuItem className={classes.menuItem} >
                 <YouTubeIcon />  Youtube</MenuItem></Link>
-              <Link href={'https://cloud.booksonwall.artl'} className={classes.link} ><MenuItem className={classes.menuItem} >
+              <Link href={'https://cloud.booksonwall.art'} className={classes.link} ><MenuItem className={classes.menuItem} >
                 <CloudIcon />  Cloud</MenuItem></Link>
               <Link href={'https://github.com/BooksOnWall'} className={classes.link} ><MenuItem className={classes.menuItem} >
                 <GitHubIcon />  Github</MenuItem></Link>
