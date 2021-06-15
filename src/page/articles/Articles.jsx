@@ -303,7 +303,7 @@ class Articles extends Component {
     this.props.history.push('/'+ url);
   }
   loadArticles = async (filter, rows, index, sort, order) => {
-    const { apiURL, locale, insert, limit, selected } = this.state;
+    const { apiURL, locale, insert, limit, selected, categories } = this.state;
     if(!sort) sort = this.state.sort;
     let fetchURL = (insert) ? apiURL + '/articles?_limit='+limit+'&_sort='+sort+'&lang='+ locale: apiURL + '/articles?_limit=-1&_sort='+sort+'&lang='+ locale;
     fetchURL = (filter) ? fetchURL+filter : fetchURL;
@@ -321,19 +321,23 @@ class Articles extends Component {
     .then(data => {
         if(data) {
           console.log(data);
-          const categories = [];
-          data.map((art,i) => {
-            art.categories.map(cat => {
-              const exist = categories.filter(ct =>(ct === cat))[0];
-              if(exist === undefined) {
-                categories.push(cat);
-              }
-              return cat;
-            })
-            return art.categories;
-          });
-          console.log(categories);
-          this.setState({articles: data, categories: categories, loading: false});
+          console.log('categories', categories);
+          const cats = [];
+          if(!categories || categories.length === 0) {
+            data.map((art,i) => {
+              art.categories.map(cat => {
+                const exist = cats.filter(ct =>(ct === cat))[0];
+                if(exist === undefined) {
+                  cats.push(cat);
+                }
+                return cat;
+              })
+              return art.categories;
+            });
+            console.log('cats',cats);
+          }
+
+          this.setState({articles: data, categories: (!categories || categories.length === 0 ) ? cats: categories, loading: false});
         } else {
           console.log('No Data received from the server');
         }
