@@ -15,7 +15,7 @@ import {
     makeStyles
   } from '@material-ui/core';
 import { theme } from '../../theme/theme';
-
+import { useHistory } from 'react-router-dom';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -102,6 +102,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const CommunityHeader =({messages, theme}) => {
   const classes = useStyles();
+  let history = useHistory();
   return(
     <Box>
     <Container maxWidht="xl"  style={{display:'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -109,9 +110,9 @@ const CommunityHeader =({messages, theme}) => {
       <Typography gutterBottom variant="h3" align='center' color="primary" component="p"> {messages.create.community_we_are}</Typography>
       <Typography variant="subtitle1" align='center' color="textPrimary" component="p"> {messages.create.community_we_create}</Typography>
       <Box style={{ padding: 40, display: 'flex', justifyContent: 'space-around', width:'80%', maxWidth:600, minWidth:320}}>
-        <Button className={classes.button2} size="large" >{messages.menu.manifest}</Button>
-        <Button className={classes.button2} size="large" >{messages.menu.joinus}</Button>
-        <Button className={classes.button2} size="large" >{messages.menu.projects}</Button>
+        <Button onClick={() => history.push('/'+messages.menu.info+'#'+messages.menu.manifest)} className={classes.button2} size="large" >{messages.menu.manifest}</Button>
+        <Button onClick={() => history.push('/'+messages.menu.connect+'#'+messages.menu.register)} className={classes.button2} size="large" >{messages.menu.joinus}</Button>
+        <Button onClick={() => history.push('/'+messages.menu.projects)} className={classes.button2} size="large" >{messages.menu.projects}</Button>
       </Box>
     </Container>
     <Divider/>
