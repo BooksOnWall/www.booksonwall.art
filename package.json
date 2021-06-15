@@ -93,6 +93,7 @@
     "@babel/register": "^7.13.16",
     "eslint": "^7.25.0",
     "extract-react-intl-messages": "^4.1.1",
+    "node-fetch": "^2.6.1",
     "sitemap": "^7.0.0"
   }
 }
