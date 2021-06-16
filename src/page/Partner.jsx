@@ -83,7 +83,6 @@ const useStyles = makeStyles((theme) => ({
 const Partner = (props) => {
   const classes = useStyles();
   const [partner, setPartner] = useState();
-  const [activeScroll, setActiveScroll] = useState('top');
   const { isLarge, isMedium } = useReactive();
   const format = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
   const [loading, setLoading] = useState(false);
@@ -135,7 +134,7 @@ const Partner = (props) => {
     </Backdrop>
     {partner &&
       <Box className={classes.partner}>
-      <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
+      <ScrollIntoViewIfNeeded active={true}>
         <Box className={classes.partnerHeader} >
           {partner && partner.image_header && <Image aspectRatio={5/1} src={apiURL + partner.image_header.formats[format].url} />}
         </Box>

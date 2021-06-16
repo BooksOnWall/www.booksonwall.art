@@ -15,7 +15,7 @@ import {Helmet} from "react-helmet";
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 import { useLocation, useHistory } from 'react-router-dom';
-import {useReactive, MediaQuery} from "../utils/reactive";
+import {useReactive} from "../utils/reactive";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl, defineMessages  } from 'react-intl';
 import clsx from 'clsx';

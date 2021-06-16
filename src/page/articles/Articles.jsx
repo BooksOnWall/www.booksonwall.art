@@ -17,12 +17,10 @@ import {
     makeStyles
   } from '@material-ui/core';
 
-import { useReactive, MediaQuery } from '../../utils/reactive';
+import { useReactive } from '../../utils/reactive';
 import loadable from '@loadable/component';
 import {Helmet} from "react-helmet";
 import ToggleButton from '@material-ui/lab/ToggleButton';
-
-import Home from "../../assets/images/pages/home.jpg";
 
 import { injectIntl} from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
@@ -358,7 +356,7 @@ class Articles extends Component {
     }
   }
   render() {
-    const {articles, lang, categories, selected, insert, loading, index, maxItems} = this.state;
+    const {articles, lang, categories, selected, insert, loading} = this.state;
     const {messages} = this.props.intl;
     // date: '22 dec 2017',
     // title: 'BooksOnWall has started !',
