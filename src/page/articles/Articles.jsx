@@ -139,8 +139,6 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
   const classes = useStyles();
   const { isLarge, isMedium, isSmall } = useReactive();
   const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
-  if(articles) console.log(articles[0]);
-
   return  (
     <>
     {insert &&
@@ -205,14 +203,18 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
   </>
   )
 };
-const Categories = ({messages, categories, selectCategory, selected}) => {
+const Categories = ({messages, categories, selectCategory, selected, lang}) => {
   const classes = useStyles();
-  const isSelected = (cat) => {
-    return (selected.length > 0 && selected[0] === cat) ? true : false;
+  const isSelected = (cat) => (selected.length > 0 && selected[0] === cat) ? true : false;
+  const categoryTranslations = require('../../i18n/locales/categories-'+lang+'.json');
+  const translate = (cat) => {
+    let index = cat.replace(/\s/g, '_');
+    index = index.toLowerCase();
+    return (categoryTranslations[index]) ? categoryTranslations[index] : cat;
   }
   return (
     <>
-        {(categories) ? categories.map((cat, i) => <ToggleButton selected={isSelected(cat)} className={classes.category} key={'cat'+i} onClick={(e) => selectCategory(cat)}  style={{margin: '7px'}} color="primary" name={cat} >{cat}</ToggleButton>): ''}
+        {(categories) ? categories.map((cat, i) => <ToggleButton selected={isSelected(cat)} className={classes.category} key={'cat'+i} onClick={(e) => selectCategory(cat)}  style={{margin: '7px'}} color="primary" name={cat} >{translate(cat)}</ToggleButton>): ''}
 
     </>
   )
@@ -222,9 +224,9 @@ const ScrollToTop = ({insert}) => {
     <ScrollIntoViewIfNeeded active={!insert}></ScrollIntoViewIfNeeded>
   )
 }
-const ArticleList = ({loading, messages, history, articles, categories, selected, insert, goToArticle,hasCategory,selectCategory }) => {
+const ArticleList = ({loading, lang, messages, history, articles, categories, selected, insert, goToArticle,hasCategory,selectCategory }) => {
   const classes = useStyles();
-  console.log('selected',selected);
+
   return (
     <>
     <Backdrop open={loading} >
@@ -242,7 +244,7 @@ const ArticleList = ({loading, messages, history, articles, categories, selected
 
         <Divider/>
         <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 40px 40px 40px',}}>
-          <Categories selected={selected} categories={categories} messages={messages} selectCategory={selectCategory}/>
+          <Categories lang={lang} selected={selected} categories={categories} messages={messages} selectCategory={selectCategory}/>
         </Box>
         <Divider/>
 
@@ -303,7 +305,7 @@ class Articles extends Component {
     this.props.history.push('/'+ url);
   }
   loadArticles = async (filter, rows, index, sort, order) => {
-    const { apiURL, locale, insert, limit, selected, categories } = this.state;
+    const { apiURL, locale, insert, limit, categories } = this.state;
     if(!sort) sort = this.state.sort;
     let fetchURL = (insert) ? apiURL + '/articles?_limit='+limit+'&_sort='+sort+'&lang='+ locale: apiURL + '/articles?_limit=-1&_sort='+sort+'&lang='+ locale;
     fetchURL = (filter) ? fetchURL+filter : fetchURL;
@@ -320,8 +322,6 @@ class Articles extends Component {
     })
     .then(data => {
         if(data) {
-          console.log(data);
-          console.log('categories', categories);
           const cats = [];
           if(!categories || categories.length === 0) {
             data.map((art,i) => {
@@ -334,7 +334,6 @@ class Articles extends Component {
               })
               return art.categories;
             });
-            console.log('cats',cats);
           }
 
           this.setState({articles: data, categories: (!categories || categories.length === 0 ) ? cats: categories, loading: false});
@@ -356,7 +355,7 @@ class Articles extends Component {
     }
   }
   render() {
-    const {articles, categories, selected, insert, loading, index, maxItems} = this.state;
+    const {articles, lang, categories, selected, insert, loading, index, maxItems} = this.state;
     const {messages} = this.props.intl;
     // date: '22 dec 2017',
     // title: 'BooksOnWall has started !',
@@ -380,6 +379,7 @@ class Articles extends Component {
             loading={loading}
             articles={articles}
             messages={messages}
+            lang={lang}
             history={this.props.history}
             categories={categories}
             selected={selected}
