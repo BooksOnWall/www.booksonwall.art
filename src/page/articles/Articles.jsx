@@ -63,11 +63,11 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     color: '#99FF44',
   },
-  homeHader:{
+  homeHeader:{
     color: 'white',
     padding: 0,
   },
-  homeHaderGradient:{
+  homeHeaderGradient:{
     display: 'flex',
     flexFlow: 'column wrap',
     justifyContent: 'flex-end',
@@ -124,13 +124,17 @@ const useStyles = makeStyles((theme) => ({
 const ArticlesHeader = ({messages, insert, articles}) => {
   const classes = useStyles();
   return (
-    <Box className={classes.homeHader}>
-    {!insert && <ArticlesMap articles={articles} mode={"Light"}/>}
-    <Box className={classes.homeHaderGradient}>
-      <Container maxWidth='false' className={classes.tileHead}>
-        <Typography color="textPrimary" variant="h5" component="h1">{messages.menu.articles}</Typography>
-      </Container>
-    </Box>
+    <Box className={classes.homeHeader}>
+    {!insert &&
+      <>
+       <ArticlesMap articles={articles} mode={"Light"}/>
+       <Box className={classes.homeHeaderGradient}>
+         <Container maxWidth='false' className={classes.tileHead}>
+           <Typography color="textPrimary" variant="h5" component="h1">{messages.menu.articles}</Typography>
+         </Container>
+       </Box>
+      </>
+    }
     </Box>
   )
 };
@@ -274,6 +278,7 @@ class Articles extends Component {
       lang: this.props.intl.locale,
       index: 0,
       sort: 'updated_at:desc',
+      filter: this.props.filter,
       articles: null,
       categories: null,
       loading: false,
@@ -297,17 +302,17 @@ class Articles extends Component {
   selectCategory = (cat) => {
     let {selected} = this.state;
     selected = (selected.indexOf(cat) === 0) ?  selected.filter(item => (item !== cat)) : [cat];
-    this.setState({selected: selected});
     const filter = (selected && selected.length >0) ? '&categories_contains='+selected[0] : null;
-    this.loadArticles(filter);
+    this.setState({selected: selected, filter: filter});
+    this.loadArticles();
   }
   goToArticle = (url) => {
     this.props.history.push('/'+ url);
   }
-  loadArticles = async (filter, rows, index, sort, order) => {
-    const { apiURL, locale, insert, limit, categories } = this.state;
-    if(!sort) sort = this.state.sort;
+  loadArticles = async () => {
+    const { apiURL, filter, sort, locale, insert, limit, categories } = this.state;
     let fetchURL = (insert) ? apiURL + '/articles?_limit='+limit+'&_sort='+sort+'&lang='+ locale: apiURL + '/articles?_limit=-1&_sort='+sort+'&lang='+ locale;
+    console.log(filter);
     fetchURL = (filter) ? fetchURL+filter : fetchURL;
     this.setState({loading: true});
 

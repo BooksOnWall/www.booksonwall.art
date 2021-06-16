@@ -21,7 +21,7 @@ import { injectIntl, defineMessages  } from 'react-intl';
 import clsx from 'clsx';
 import ReactMarkdown from 'react-markdown';
 
-import Articles from './articles/Articles';
+import PressReleases from './articles/pressRelease';
 
 const infoTraductions = defineMessages({
   we_are: {
@@ -346,11 +346,9 @@ const Community =({goToCommunity, messages, locale}) => {
   let history = useHistory();
 
   const translateTag = (tag) => {
-    console.log('tag');
     let index = tag.replace(/\s/g, '_');
     index = index.toLowerCase();
-    console.log('index', index);
-    return tagTranslations[index];
+    return (tagTranslations[index]) ? tagTranslations[index] : tag;
   }
   useEffect(() => {
     const fetchURL = apiURL + '/uniques?type=community&lang=' + locale;
@@ -431,8 +429,6 @@ const Community =({goToCommunity, messages, locale}) => {
       setSkills(sk);
 
     },[members]);
-
-
     const {isLarge, isMedium} = useReactive();
     const bg = (isLarge) ? 'communitybgLarge' : (isMedium) ? 'communitybgMedium' : 'communitybgSmall';
 
@@ -462,7 +458,7 @@ const Press =({goToArticle, history, messages}) => {
   <Box id={messages.menu.press} className={classes.press} >
       <Container maxWidth='false'>
         <Typography gutterBottom color='primary' align='center' className={classes.pressTitle} variant='h3'>{messages.menu.press}</Typography>
-        <Articles insert limit={4} tags={['Press']} history={history}/>
+        <PressReleases insert limit={4} history={history}/>
         <Button primary  onClick={goToArticle} labelPosition='right' icon='arrow right' content={messages.info.more_articles}  />
       </Container>
   </Box>
