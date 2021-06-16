@@ -12,7 +12,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
-import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import './layout.css';
@@ -146,6 +145,7 @@ const Layout = ({ children, switchLang, locale, history, allMessages }) => {
       position: 'fixed',
       bottom: '14vh',
       right: '8vw',
+      zIndex: '1001',
       boxShadow: '3px 3px 5px rgba(0,0,0, .3)',
   },
     topBtnIcon:{
