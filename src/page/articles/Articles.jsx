@@ -254,9 +254,7 @@ const ArticleList = ({loading, lang, messages, history, articles, categories, se
 
       <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 60px 40px'}}>
         <Grid container spacing={3}>
-
           <News hasCategory={hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={goToArticle}/>
-
         </Grid>
       </Box>
       {insert && <Button onClick={()=> history.push('/'+messages.menu.articles)}>See more</Button>}
