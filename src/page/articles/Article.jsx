@@ -15,10 +15,43 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 
 import  ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
+
+
+
 import ImageGallery from 'react-image-gallery';
 import {useReactive} from "../../utils/reactive";
 import { injectIntl } from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
+const unified = require('unified')
+const remarkParse = require('remark-parse');
+const stringify = require('rehype-stringify');
+const remark2rehype = require('remark-rehype');
+const remarkIframe = require('remark-iframes');
+var processor = unified()
+  .use(remarkParse)
+  .use(remarkIframe, {
+    // this key corresponds to the hostname: !(http://hostname/foo)
+    // the config associated to this hostname will apply to any iframe
+    // with a matching hostname
+   'www.youtube.com': {
+      tag: 'iframe',
+      width: 560,
+      height: 315,
+      disabled: false,
+      replace: [
+        ['watch?v=', 'embed/'],
+        ['http://', 'https://'],
+      ],
+      thumbnail: {
+        format: 'http://img.youtube.com/vi/{id}/0.jpg',
+        id: '.+/(.+)$'
+      },
+      removeAfter: '&'
+    }
+  })
+  .use(remark2rehype)
+  .use(stringify);
 
 const useStyles = makeStyles((theme) => ({
   category:{
@@ -142,10 +175,37 @@ const Categories = ({messages, categories}) => {
   const classes = useStyles();
   return categories.map((cat,i) => <ToggleButton  className={classes.category} key={'cat'+i}>{cat}</ToggleButton>)
 }
+
 const ArticlePage = ({article, messages, locale, history, images}) => {
   const classes = useStyles();
   const { isLarge, isMedium, isSmall } = useReactive();
   const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
+
+
+  const config = {
+    // Youtube RegEx example
+    'www.youtube.com': {
+      tag: 'iframe',
+      width: 560,
+      height: 315,
+      disabled: false,
+      replace: [
+        ['watch?v=', 'embed/'],
+        ['http://', 'https://'],
+      ],
+      thumbnail: {
+        format: 'http://img.youtube.com/vi/{id}/0.jpg',
+        id: '.+/(.+)$'
+      },
+      removeAfter: '&'
+    },
+    'youtu.be': {
+      width: 560,
+      height: 315,
+      disabled: false,
+      oembed: 'https://www.youtube.com/oembed'
+    }
+  };
   return (
     <Box className="main" >
       <ScrollIntoViewIfNeeded active={true}>
@@ -162,7 +222,7 @@ const ArticlePage = ({article, messages, locale, history, images}) => {
       <Box>
           <Typography gutterBottom variant='h1' Component="h1">{article.title}</Typography>
           <Box placeholder>
-            <ReactMarkdown className={classes.bodyMarkdown} children={article.header} />
+            <ReactMarkdown remarkPlugins={[gfm]}  escapeHtml={true} skipHtml={false}  className={classes.bodyMarkdown} children={article.header} />
           </Box>
           <Typography gutterBottom variant='h6' color="primary" Component="p">{article.updated_at}</Typography>
           <Divider />
@@ -172,7 +232,7 @@ const ArticlePage = ({article, messages, locale, history, images}) => {
       <ImgGallery className={classes.ImgGallery}  images={images} apiURL={apiURL}/>
       </Box>
       <Box placeholder>
-        <ReactMarkdown className={classes.bodyMarkdown} children={article.content} />
+        <ReactMarkdown remarkPlugins={[gfm]} allowDangerousHtml={true} escapeHtml={false} skipHtml={false} className={classes.bodyMarkdown} children={article.content} />
       </Box>
       </Box>
       <Divider />

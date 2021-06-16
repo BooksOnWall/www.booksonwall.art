@@ -13,6 +13,7 @@ import {useReactive} from "../../utils/reactive";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import Image from 'material-ui-image';
 import Gallery from "../../utils/Gallery";
 import Projects from "../projects/Projects";
@@ -131,11 +132,11 @@ const Service = (props) => {
           <>
           <Container maxWidth="xl">
             <Typography gutterBottom color="textSecondary" variant='h2'> {unique.name}</Typography>
-            <ReactMarkdown children={unique.header} />
-            <ReactMarkdown children={service.header} />
-            <ReactMarkdown children={service.activity} />
-            <ReactMarkdown children={service.ressources} />
-            <ReactMarkdown children={service.fullOptions} />
+            <ReactMarkdown  escapeHtml={false} remarkPlugins={[gfm]} children={unique.header} />
+            <ReactMarkdown  escapeHtml={false} remarkPlugins={[gfm]} children={service.header} />
+            <ReactMarkdown  escapeHtml={false} remarkPlugins={[gfm]} children={service.activity} />
+            <ReactMarkdown  escapeHtml={false} remarkPlugins={[gfm]} children={service.ressources} />
+            <ReactMarkdown  escapeHtml={false} remarkPlugins={[gfm]} children={service.fullOptions} />
           </Container>
           <Gallery images={service.images} />
           </>

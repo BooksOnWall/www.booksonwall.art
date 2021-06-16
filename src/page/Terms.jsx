@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import {Helmet} from "react-helmet";
 import {useReactive} from "../utils/reactive";
 import Image from 'material-ui-image';
@@ -81,7 +82,7 @@ const Terms = (props) => {
       </ScrollIntoViewIfNeeded>
       <Container>
       {terms && <h1>{terms.title}</h1>}
-      {terms && terms.header && <ReactMarkdown children={terms.header} />}
+      {terms && terms.header && <ReactMarkdown remarkPlugins={[gfm]} children={terms.header} />}
       </Container>
     </Box>
   }

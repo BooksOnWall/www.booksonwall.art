@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Button, Box, Container, Typography, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import Image from 'material-ui-image';
 import {Helmet} from "react-helmet";
 import {useReactive} from "../utils/reactive";
@@ -141,7 +142,7 @@ const Partner = (props) => {
       </ScrollIntoViewIfNeeded>
       <Container>
         {partner && <Typography variant="h1" component="h1">{partner.title}</Typography>}
-        {partner && partner.header && <ReactMarkdown className={classes.bodyMarkdown} children={partner.header} />}
+        {partner && partner.header && <ReactMarkdown remarkPlugins={[gfm]} className={classes.bodyMarkdown} children={partner.header} />}
         <Button onClick={() => props.history.push('/'+messages.menu.connect)} className={classes.button} color="primary">{messages.menu.connect}</Button>
       </Container>
 
