@@ -35,14 +35,18 @@ const Routes = ({messages, history, locale}) => (
       <Route exact path={"/"+messages[locale].menu.connect}> <Connect history={history} /> </Route>
       <Route exact path={"/"+messages[locale].menu.community}> <Community history={history} /> </Route>
       <Route exact path={"/"+messages[locale].menu.projects} > <Projects history={history} /> </Route>
+      <Route exact path={"/"+messages[locale].menu.project} > <Projects history={history} /> </Route>
       <Route exact path={"/"+messages[locale].menu.project+"/:name"}> <Project history={history} /> </Route>
       <Route exact path={"/"+messages[locale].menu.articles}><Articles history={history}/> </Route>
+      <Route exact path={"/"+messages[locale].menu.article}><Articles history={history}/> </Route>
       <Route exact path={"/"+messages[locale].menu.article+"/:name"}><Article history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.stories}><Stories history={history}/></Route>
+      <Route exact path={"/"+messages[locale].menu.story}><Stories history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.story+"/:name"}><Story history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.community+"/"+messages[locale].menu.member+":name"} ><Member history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.terms} ><Terms history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.services} ><Services history={history}/></Route>
+      <Route exact path={"/"+messages[locale].menu.service} ><Services history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.applications} ><Applications history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.partner} ><Partner history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.support} ><Support history={history}/></Route>

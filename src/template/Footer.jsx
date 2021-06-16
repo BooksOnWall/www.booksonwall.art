@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //import {  Box, Menu, Grid, Icon, Breadcrumb, Divider } from 'semantic-ui-react';
 import {Paper,MenuList, Button,  makeStyles, Container,  Link, Box, Typography, Breadcrumbs, MenuItem, Grid, Divider} from '@material-ui/core';
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useReactive } from '../utils/reactive';
 import clsx from 'clsx';
 import Heart from '@material-ui/icons/Favorite';
@@ -166,6 +166,7 @@ logoSmall:{
 const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) => {
   const classes = useStyles();
   let history = useHistory();
+
   const {isLarge, isMedium } = useReactive();
   const menu = (isLarge) ? 'menuLarge' : (isMedium) ? 'menuMedium' : 'menuSmall';
   const bottomReactive = (isLarge) ? 'Large' : (isMedium) ? 'Medium' : 'Small';
@@ -352,8 +353,14 @@ const Footer = ({intl}) => {
   let history = useHistory();
   const [activeItem, setActiveItem] = useState();
   const [activeIndex, setActiveIndex] = useState();
+  const apiURL = process.env.REACT_APP_URL;
   const [anchor, setAnchor] = useState();
   const {messages} = intl;
+  const {pathname, hash} = useLocation();
+  const feed = pathname.split('/');
+  console.log('feed',feed)
+  console.log('path', pathname);
+  console.log('hash', hash);
   const page = (activeItem) ? activeItem.charAt(0).toUpperCase() + activeItem.slice(1): activeItem;
   const subPage = (anchor) ? anchor.charAt(0).toUpperCase()+ anchor.slice(1): anchor;
   const handleItem = item => setActiveItem(item);
@@ -379,16 +386,23 @@ const Footer = ({intl}) => {
       goTo(name);
     }
   }
-  const handleClick = (event) => {
-    event.preventDefault();
-    console.info('You clicked a breadcrumb.');
+  const makePath = (feed, path, index) => {
+    let pathname = "";
+    feed.filter((f,i) =>(i <= index)).map((f,i) => pathname += f+((i !== index) ? '/' : ''));
+    return pathname;
+  }
+  const handleClick = (e, pathname) => {
+    e.preventDefault();
+    history.push(pathname);
   };
     return (<>
       <Box className="footer" >
           <Box className="footerBreadcrumb">
             <Breadcrumbs aria-label="breadcrumb">
-              <Link name={"Home"} href="/" onClick={handleClick}><Typography variant="button" name={subPage} >{messages.menu.home}</Typography></Link>
-              <Link name={page} href={"/"+page} onClick={handleClick}><Typography variant="button" name={subPage} >{page}</Typography></Link>
+              {feed && feed.length > 0 && feed.map((f,i) => (i === 0)
+                ? <Link key={"breadcrumb"+i} name={"Home"} href="/" onClick={(e) => handleClick(e, '/')}><Typography variant="button" name={subPage} >{messages.menu.home}</Typography></Link>
+                : <Link key={"breadcrumb"+i} name={f}  href={makePath(feed, f,i)} onClick={(e) => handleClick(e,makePath(feed, f,i))}><Typography variant="button" name={f} >{f}</Typography></Link>
+              )}
               <Typography variant="button" name={subPage} >{subPage}</Typography>
             </Breadcrumbs>
           </Box>

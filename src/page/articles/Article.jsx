@@ -228,12 +228,15 @@ class Article extends Component {
   componentDidMount = async () =>  {
     // update authenticated state on logout
     //
+    console.log('article');
+    if(this.state.name === "") this.props.history.push('/'+this.props.intl.messages.menu.articles);
     await this.loadArticle();
   }
   render() {
-    const {article, loading} = this.state;
+    const {article, loading, name} = this.state;
     const {messages, locale} = this.props.intl;
     const images = (article) ? article.images : null;
+    console.log('name', name);
     return (
       <>
       <Backdrop open={loading} >
