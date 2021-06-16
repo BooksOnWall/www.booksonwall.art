@@ -17,7 +17,7 @@ import { injectIntl, defineMessages  } from 'react-intl';
 
 import {useReactive} from "../../utils/reactive";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-
+import {Helmet} from "react-helmet";
 import ExploreMap from '../map/exploreMap';
 import { ReactComponent as Mapbg } from './../../assets/images/svg/map.svg';
 
@@ -245,6 +245,14 @@ class Stories extends Component {
     const { messages } = this.props.intl;
     return (
       <>
+      {!insert &&
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{messages.menu.stories}</title>
+          <meta name="description" content="This is stories page" />
+          <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.stories} />
+        </Helmet>
+      }
       <ScrollToTop insert={insert} />
       <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
         <CircularProgress color="inherit" />
