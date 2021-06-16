@@ -134,7 +134,7 @@ const useStyles = makeStyles((theme) => ({
 
 const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
   const classes = useStyles();
-  const { isLarge, isMedium, isSmall, isTyny } = useReactive();
+  const { isLarge, isMedium, isSmall } = useReactive();
   const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
   const hideText = (isSmall) ? true : false ;
 

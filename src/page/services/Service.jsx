@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import {
     Container,
-    Grid,
     Typography,
     Backdrop,
     CircularProgress,
@@ -120,10 +119,10 @@ const Service = (props) => {
   }, [apiURL, locale, pathname, messages.menu]);
   return (
     <>
-    <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
     <Backdrop className={classes.backdrop}  open={loading} >
       <CircularProgress color="inherit" />
     </Backdrop>
+    <ScrollIntoViewIfNeeded active={true}>
     {service &&
       <Box className={classes.connect}>
 
@@ -143,6 +142,7 @@ const Service = (props) => {
         }
       </Box>
     }
+    </ScrollIntoViewIfNeeded>
     {service && <Projects history={history} service={service} insert limit={10}/>}
     </>
   )

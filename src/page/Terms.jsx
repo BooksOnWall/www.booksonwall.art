@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
-import { Typography,  Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
+import { Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
 import {Helmet} from "react-helmet";
 import {useReactive} from "../utils/reactive";

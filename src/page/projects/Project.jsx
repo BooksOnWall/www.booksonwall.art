@@ -87,7 +87,7 @@ class Project extends Component {
     await this.loadProject();
   }
   render() {
-    const {project, name, apiURL, loading} = this.state;
+    const {project, name, loading} = this.state;
     const {messages, locale} = this.props.intl;
     return (
       <>

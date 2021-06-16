@@ -410,15 +410,13 @@ const Community =({goToCommunity, messages, locale}) => {
   }, [locale]);
 
     useEffect(() => {
-      let sk = skills;
+      let sk = [];
       members.map((m,i) => {
         if(m.skills) {
           m.skills.map((skill, i) => {
             let index = skill.replace(/\s/g, '_');
             index = index.toLowerCase();
-            console.log('index', index);
-            console.log('value', tagTranslations[index]);
-            const tag = tagTranslations[index];
+            const tag = (tagTranslations[index]) ? tagTranslations[index] : skill;
             sk = (!sk[index]) ? [...sk,tag]: sk;
             return skill;
           });
@@ -428,7 +426,7 @@ const Community =({goToCommunity, messages, locale}) => {
 
       setSkills(sk);
 
-    },[members]);
+    },[members, tagTranslations]);
     const {isLarge, isMedium} = useReactive();
     const bg = (isLarge) ? 'communitybgLarge' : (isMedium) ? 'communitybgMedium' : 'communitybgSmall';
 

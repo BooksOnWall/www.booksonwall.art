@@ -36,7 +36,6 @@ const Services = (props) => {
   const { isLarge, isMedium } = useReactive();
   const formatHeader = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
   const format = 'thumbnail';
-  const [activeScroll, setActiveScroll] = useState('top');
   const [unique, setUnique] = useState();
   const [loading, setLoading] = useState(false);
   const {locale, messages} = props.intl;
@@ -126,11 +125,11 @@ const Services = (props) => {
     {unique &&
       <>
       {unique && unique.image_header && <Image aspectRatio={5/1} src={apiURL+unique.image_header.formats[formatHeader].url} />}
-      <ScrollIntoViewIfNeeded active={(activeScroll === 'top')}>
-      <Container>
-      <h1>{unique.Name}</h1>
-      <ReactMarkdown children={unique.header} />
-      </Container>
+      <ScrollIntoViewIfNeeded active={true}>
+        <Container>
+        <h1>{unique.Name}</h1>
+        <ReactMarkdown children={unique.header} />
+        </Container>
       </ScrollIntoViewIfNeeded>
       </>
 

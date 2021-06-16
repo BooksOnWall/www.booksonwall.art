@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 import {
     Avatar,
-    Badge,
   } from '@material-ui/core';
 
 import {Marker, FlyToInterpolator, StaticMap} from 'react-map-gl';

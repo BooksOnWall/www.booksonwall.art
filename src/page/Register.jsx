@@ -192,4 +192,4 @@ const Register = ({messages, locale}) => {
       </Box>
     );
 }
-export default Register
+export default injectIntl(Register)

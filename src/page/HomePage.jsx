@@ -360,7 +360,7 @@ const HomeHeaderBlock = ({messages, theme}) => {
 const WhoAreWe = ({messages}) => {
   const classes = useStyles();
   let history = useHistory();
-  const {isLarge, isMedium , isSmall} = useReactive();
+  const {isSmall} = useReactive();
   const blobDistribution = (isSmall) ? true : false ;
   const poligonsDistribution = (isSmall) ? true : false ;
   const btnSmall = (isSmall) ? true : false ;
@@ -467,7 +467,7 @@ const PlaceholderBlock = ({messages}) => {
        cols: 1,
      },
  ];
- const {isLarge, isMedium , isSmall} = useReactive();
+ const {isSmall} = useReactive();
  const btnSmall = (isSmall) ? true : false ;
 
 return (
@@ -493,7 +493,7 @@ return (
             <Grid item xs={12} md={6}>
              <Paper elevation={0}  className={classes.tile} style={{alignItems:'center', backgroundImage: `url(${Bg5})` }} >
                <Typography gutterBottom align="center" color="textSecondary" variant="h2">{messages.home.create_togheter}</Typography>
-               <Button size={(btnSmall) ? 'small' : 'large'} size="large"  onClick={() => history.push("/"+messages.menu.collaborate+"#"+messages.menu.support)} className={classes.button3}  variant="outlined">{messages.home.support_a_story_btn}</Button>
+               <Button size={(btnSmall) ? 'small' : 'large'}  onClick={() => history.push("/"+messages.menu.collaborate+"#"+messages.menu.support)} className={classes.button3}  variant="outlined">{messages.home.support_a_story_btn}</Button>
              </Paper>
             </Grid>
          </Grid>

@@ -18,8 +18,6 @@ import { Images } from './../assets/images/pages';
 
 import Social from './Social';
 
-import Projects from './projects/Projects';
-
 const connectTraductions = defineMessages({
 keed_in_touch:{
   id: 'connect.keed_in_touch',

@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { injectIntl, defineMessages  } from 'react-intl';
 import {Helmet} from "react-helmet";
 import { useLocation, useHistory } from 'react-router-dom';
-import { useReactive, MediaQuery } from '../utils/reactive';
+import { useReactive } from '../utils/reactive';
 import clsx from 'clsx';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Blob } from 'react-blob';
@@ -215,7 +215,7 @@ const collaborateTraductions = defineMessages({
 
 const CollaborateHeader = ({messages}) => {
   const classes = useStyles();
-  const {isLarge, isMedium , isSmall} = useReactive();
+  const {isLarge, isMedium } = useReactive();
   const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
 
 return (

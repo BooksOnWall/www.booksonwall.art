@@ -123,8 +123,6 @@ const Participants = ({participants}) =>  {
 
 
 const Credits = ({credits}) => {
-const classes = useStyles();
-
 return (
   <Box>
     <Typography gutterBottom align="center" variant="h4" component="h4">Credits</Typography>
@@ -213,15 +211,15 @@ class Story extends Component {
     await this.loadStory();
   }
   render() {
-    const {story, apiURL, loading, locale, messages} = this.state;
+    const {story, loading, locale, messages} = this.state;
     return (
       <>
-      <ScrollIntoViewIfNeeded active={true}></ScrollIntoViewIfNeeded>
+      <ScrollIntoViewIfNeeded active={true}>
       <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
         <CircularProgress color="inherit" />
       </Backdrop>
       {story && <StoryPage story={story} history={this.props.history} messages={messages} locale={locale} />}
-
+      </ScrollIntoViewIfNeeded>
       </>
     )
   }

@@ -13,7 +13,7 @@ import {
 import ToggleButton from '@material-ui/lab/ToggleButton';
 
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
-import Image from 'material-ui-image';
+
 import  ReactMarkdown from 'react-markdown';
 import ImageGallery from 'react-image-gallery';
 import {useReactive} from "../../utils/reactive";
@@ -123,8 +123,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ImgGallery = ({images, apiURL, setImages}) => {
   let set = [];
-  const classes = useStyles();
-  const { isLarge, isMedium, isSmall, isTyny } = useReactive();
+  const { isLarge, isMedium, isSmall } = useReactive();
   const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
   if(images.length > 0) {
     images.map((img,i) => {
@@ -145,7 +144,7 @@ const Categories = ({messages, categories}) => {
 }
 const ArticlePage = ({article, messages, locale, history, images}) => {
   const classes = useStyles();
-  const { isLarge, isMedium, isSmall, isTyny } = useReactive();
+  const { isLarge, isMedium, isSmall } = useReactive();
   const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
   return (
     <Box className="main" >
@@ -232,7 +231,7 @@ class Article extends Component {
     await this.loadArticle();
   }
   render() {
-    const {article, apiURL, loading} = this.state;
+    const {article, loading} = this.state;
     const {messages, locale} = this.props.intl;
     const images = (article) ? article.images : null;
     return (

@@ -11,7 +11,7 @@ import {
   } from '@material-ui/core';
 import {Helmet} from "react-helmet";
 import { useLocation } from 'react-router-dom';
-import {useReactive, MediaQuery} from "../utils/reactive";
+import {useReactive} from "../utils/reactive";
 import clsx from "clsx";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 
@@ -100,7 +100,7 @@ dividerSvg: {
 
 const ExploreHeader = forwardRef(({ onBackClick,messages }, ref) => {
   const classes = useStyles();
-  const {isLarge, isMedium , isSmall} = useReactive();
+  const {isLarge, isMedium } = useReactive();
   const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 //import {  Box, Menu, Grid, Icon, Breadcrumb, Divider } from 'semantic-ui-react';
-import {Paper,MenuList, Button,  makeStyles, Container,  Link, Box, Typography, Breadcrumbs, MenuItem, Grid, Icon, Divider} from '@material-ui/core';
+import {Paper,MenuList, Button,  makeStyles, Container,  Link, Box, Typography, Breadcrumbs, MenuItem, Grid, Divider} from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import { useReactive } from '../utils/reactive';
 import clsx from 'clsx';
@@ -9,16 +9,13 @@ import Cc from '@material-ui/icons/ClosedCaption';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import ChatIcon from '@material-ui/icons/Chat';
+
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import CloudIcon from '@material-ui/icons/Cloud';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TelegramIcon from '@material-ui/icons/Telegram';
 
-import { ReactComponent as FooterBg } from './../assets/images/svg/footer.svg';
-import { ReactComponent as Principal } from './../assets/images/svg/principal.svg';
-import { ReactComponent as Logo }   from './../assets/images/svg/logo_extended.svg';
 import { ReactComponent as LogoIcon }   from './../assets/images/logo.svg';
 
 import { injectIntl, defineMessages } from 'react-intl';
@@ -169,7 +166,7 @@ logoSmall:{
 const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) => {
   const classes = useStyles();
   let history = useHistory();
-  const {isLarge, isMedium , isSmall} = useReactive();
+  const {isLarge, isMedium } = useReactive();
   const menu = (isLarge) ? 'menuLarge' : (isMedium) ? 'menuMedium' : 'menuSmall';
   const bottomReactive = (isLarge) ? 'Large' : (isMedium) ? 'Medium' : 'Small';
 
@@ -308,10 +305,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
           <Paper elevation={0} className={classes.paper}>
             <Typography gutterBottom  variant="h6">{messages.menu.connect}</Typography>
             <MenuList className={classes.menuList}  variant="selectedMenu">
-              <MenuItem className={classes.menuItem}
-                selected={activeItem === messages.menu.connect}
-                onClick={(event) => handleMenuItemClick(event, 0, messages.menu.connect, messages.menu.email)}
-              >{messages.menu.email}</MenuItem>
+              <MenuItem className={classes.menuItem} >{messages.menu.email}</MenuItem>
             <Link href={'https://www.facebook.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem} >
               <FacebookIcon />  Facebook</MenuItem></Link>
             <Link href={'https://www.instagram.com/booksonwall'} className={classes.link} ><MenuItem className={classes.menuItem} >
@@ -356,7 +350,6 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
 };
 const Footer = ({intl}) => {
   let history = useHistory();
-  const classes = useStyles();
   const [activeItem, setActiveItem] = useState();
   const [activeIndex, setActiveIndex] = useState();
   const [anchor, setAnchor] = useState();

@@ -12,7 +12,7 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Images } from './../assets/images/pages';
 import { injectIntl, defineMessages } from 'react-intl';
 import {Helmet} from "react-helmet";
-import {useReactive, MediaQuery} from "../utils/reactive";
+import {useReactive} from "../utils/reactive";
 import clsx from 'clsx';
 import { Blob } from 'react-blob';
 
@@ -267,7 +267,7 @@ poligons2:{
 const WorkShop = ({messages}) => {
   const classes = useStyles();
   let history= useHistory();
-  const {isLarge, isMedium , isSmall} = useReactive();
+  const {isLarge, isMedium } = useReactive();
   const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
   return (
   <>
@@ -310,7 +310,7 @@ const WorkShop = ({messages}) => {
 )};
 const Community = ({history, messages}) => {
   const classes = useStyles();
-  const {isLarge, isMedium , isSmall} = useReactive();
+  const {isLarge, isMedium } = useReactive();
   const bg = (isLarge) ? 'weAreBgLarge' : (isMedium) ? 'weAreBgMedium' : 'weAreBgSmall';
 
   return (

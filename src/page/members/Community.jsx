@@ -14,7 +14,7 @@ import {
     Avatar,
     makeStyles
   } from '@material-ui/core';
-import { theme } from '../../theme/theme';
+
 import { useHistory } from 'react-router-dom';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
