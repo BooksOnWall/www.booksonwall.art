@@ -251,8 +251,11 @@ class Stories extends Component {
       </Backdrop>
       {stories &&
         <Box id={messages.menu.stories} className="stories">
-          <Box className='map' >{stories.length > 0 ? <ExploreMap stories={stories} /> : ''}
+        {!insert &&
+          <Box className='map' >
+            {stories.length > 0 ? <ExploreMap stories={stories} /> : ''}
           </Box>
+        }
           <StoriesTitle messages={messages} insert={insert} />
           <Box className='mapbg'><Mapbg /></Box>
           <Box id="storyList">
