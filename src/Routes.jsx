@@ -47,10 +47,11 @@ const Routes = ({messages, history, locale}) => (
       <Route exact path={"/"+messages[locale].menu.terms} ><Terms history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.services} ><Services history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.service} ><Services history={history}/></Route>
+      <Route exact path={"/"+messages[locale].menu.service+"/:name"}><Service history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.applications} ><Applications history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.partner} ><Partner history={history}/></Route>
       <Route exact path={"/"+messages[locale].menu.support} ><Support history={history}/></Route>
-      <Route exact path={"/"+messages[locale].menu.service+"/:name"}><Service history={history}/></Route>
+
     </Switch>
 );
 export default Routes

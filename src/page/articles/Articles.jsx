@@ -298,18 +298,23 @@ class Articles extends Component {
   selectCategory = (cat) => {
     let {selected} = this.state;
     selected = (selected.indexOf(cat) === 0) ?  selected.filter(item => (item !== cat)) : [cat];
-    const filter = (selected && selected.length >0) ? '&categories_contains='+selected[0] : null;
-    this.setState({selected: selected, filter: filter});
-    this.loadArticles();
+    const filter =  (selected && selected.length >0) ? '&categories_contains='+cat : "";
+    this.setState({selected: selected});
+    this.setState({filter});
+    console.log('selected', selected);
+    console.log('cat', cat);
+    console.log('filter', filter);
+    this.loadArticles(filter);
   }
   goToArticle = (url) => {
     this.props.history.push('/'+ url);
   }
-  loadArticles = async () => {
-    const { apiURL, filter, sort, locale, insert, limit, categories } = this.state;
+  loadArticles = async (find) => {
+    const { apiURL, filter , sort, locale, insert, limit, categories } = this.state;
+
     let fetchURL = (insert) ? apiURL + '/articles?_limit='+limit+'&_sort='+sort+'&lang='+ locale: apiURL + '/articles?_limit=-1&_sort='+sort+'&lang='+ locale;
-    console.log(filter);
-    fetchURL = (filter) ? fetchURL+filter : fetchURL;
+    console.log('filter',find);
+    fetchURL = (find) ? fetchURL+find : (filter) ? fetchURL+filter : fetchURL;
     this.setState({loading: true});
 
     await fetch(fetchURL, {

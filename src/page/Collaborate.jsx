@@ -232,7 +232,7 @@ return (
     </Box>
   </Box>
 )};
-const SupportStory = ({messages, lang}) => {
+const SupportStory = ({messages, lang, active}) => {
   const classes = useStyles();
   const [services, setServices] = useState([]);
   const apiURL = process.env.REACT_APP_API;
@@ -303,11 +303,13 @@ return (
     </Container>
 <br /><br /><br />
     <Container maxWidth="xl" className={classes.servicesWrap}>
-      <Box className={classes.servicesTitleWrap}>
-        <Typography align='center' className={classes.title}  gutterBottom  variant="h1" component="h3" >{messages.menu.develop}</Typography>
-        <Typography align='center' className={classes.title}  gutterBottom  variant="h4" >{messages.collaborate.we_produce}</Typography>
-        <Typography align='center' className={classes.title} gutterBottom  variant="subtitle1" >{messages.collaborate.we_are}</Typography>
-      </Box>
+      <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.develop)}>
+        <Box className={classes.servicesTitleWrap}>
+          <Typography align='center' className={classes.title}  gutterBottom  variant="h1" component="h3" >{messages.menu.develop}</Typography>
+          <Typography align='center' className={classes.title}  gutterBottom  variant="h4" >{messages.collaborate.we_produce}</Typography>
+          <Typography align='center' className={classes.title} gutterBottom  variant="subtitle1" >{messages.collaborate.we_are}</Typography>
+        </Box>
+      </ScrollIntoViewIfNeeded>
         <Grid container spacing={10} className={classes.servicesGrid}>
         {services && services.map((s,i) => (
           <Grid item xs={10} md={4} key={"s"+i}>
@@ -342,9 +344,7 @@ const Collaborate = (props) => {
         <ScrollIntoViewIfNeeded active={(!hash)}>
           <CollaborateHeader messages={messages}/>
         </ScrollIntoViewIfNeeded>
-        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.develop)}>
-          <SupportStory lang={locale} messages={messages} />
-        </ScrollIntoViewIfNeeded>
+        <SupportStory lang={locale} messages={messages} active={(hash && hash.substring(1) === messages.menu.develop)}/>
      </Box>
      </>
     )
