@@ -16,7 +16,8 @@ import {
     Divider,
     makeStyles
   } from '@material-ui/core';
-
+import  ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import { useReactive } from '../../utils/reactive';
 import loadable from '@loadable/component';
 import {Helmet} from "react-helmet";
@@ -188,7 +189,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
                {article.title}
              </Typography>
              <Typography gutterBottom variant="body2" color="textPrimary" component="p">
-               {article.header}
+               <ReactMarkdown  remarkPlugins={[gfm]} children={article.header} />
              </Typography>
            </CardContent>
          </CardActionArea>

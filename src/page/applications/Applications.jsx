@@ -14,6 +14,9 @@ import { useHistory } from 'react-router-dom';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import gfm from 'remark-gfm';
+
 import Image from 'material-ui-image';
 import {Helmet} from "react-helmet";
 import {useReactive} from "../../utils/reactive";
@@ -128,7 +131,7 @@ const Applications = (props) => {
         <Container>
 
         <h1>{unique.Name}</h1>
-        <ReactMarkdown children={unique.header} />
+        <ReactMarkdown remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={unique.header} />
       </Container>
       </>
       }
@@ -138,7 +141,7 @@ const Applications = (props) => {
           {s.header_image && <Image className={classes.applicationImage}  src={apiURL+s.header_image.formats.small.url}/>}
           <br />
           <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
-          <Typography  variant="body1" ><ReactMarkdown children={s.header} /></Typography>
+          <Typography  variant="body1" ><ReactMarkdown remarkPlugins={[gfm]} children={s.header} /></Typography>
           <br />
           <Button onClick={() => history.push("/"+messages.menu.project+"/"+s.name) } size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
           </Grid>

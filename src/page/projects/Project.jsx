@@ -10,6 +10,8 @@ import {
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import Image from 'material-ui-image';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import gfm from 'remark-gfm';
 import { injectIntl } from 'react-intl';
 import {useReactive} from "../../utils/reactive";
 const apiURL = process.env.REACT_APP_API;
@@ -24,8 +26,8 @@ const ProjectPage = ({project, history, messages, locale, name}) => {
         </ScrollIntoViewIfNeeded>
         <Container>
         <Typography gutterBottom variant="h1" component='h1'>{name}</Typography>
-        <ReactMarkdown children={project.header} />
-        <ReactMarkdown children={project.description} />
+        <ReactMarkdown remarkPlugins={[gfm]} children={project.header} />
+        <ReactMarkdown remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={project.description} />
         </Container>
     </Box>
   )

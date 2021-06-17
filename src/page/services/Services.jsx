@@ -15,6 +15,8 @@ import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl } from 'react-intl';
 import {useReactive} from "../../utils/reactive";
 import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import Image from 'material-ui-image';
 
 const useStyles =  makeStyles((theme) => ({
@@ -128,7 +130,7 @@ const Services = (props) => {
       <ScrollIntoViewIfNeeded active={true}>
         <Container>
         <h1>{unique.Name}</h1>
-        <ReactMarkdown children={unique.header} />
+        <ReactMarkdown remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={unique.header} />
         </Container>
       </ScrollIntoViewIfNeeded>
       </>
@@ -141,7 +143,7 @@ const Services = (props) => {
               {s.header_image && <Image className={classes.serviceImage}  src={apiURL+s.header_image.formats[format].url}/>}
               <br />
               <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
-              <Typography  variant="body1" ><ReactMarkdown children={s.header} /></Typography>
+              <Typography  variant="body1" ><ReactMarkdown remarkPlugins={[gfm]} children={s.header} /></Typography>
               <br />
               <Button onClick={() => history.push("/"+messages.menu.service+"/"+s.name) } size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
             </Grid>

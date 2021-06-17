@@ -19,7 +19,8 @@ import {useReactive} from "../utils/reactive";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { injectIntl, defineMessages  } from 'react-intl';
 import clsx from 'clsx';
-import ReactMarkdown from 'react-markdown';
+import  ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import gfm from 'remark-gfm';
 
 import PressReleases from './articles/pressRelease';
@@ -280,7 +281,7 @@ const Manifest = ({messages, locale}) => {
   <Container  maxWidth='false'>
     <Typography variant="h4" gutterBottom>{messages.info.we_create}</Typography>
     <br/><br/>
-    {manifest && <ReactMarkdown remarkPlugins={[gfm]} children={manifest.header} />}
+    {manifest && <ReactMarkdown rehypePlugins={[rehypeRaw]} remarkPlugins={[gfm]} children={manifest.header} />}
     <br/><br/>
       <ButtonGroup color="secondary" aria-label="outlined secondary button group">
         <Button size="large" className={classes.buton1} startIcon={<PictureAsPdfIcon />}>{messages.press.presentation} </Button>
@@ -330,7 +331,7 @@ const History =({messages, locale, historyFeed, goToCommunity}) => {
   return (
   <Box id={messages.menu.history} className={classes.history}>
     <Container maxWidth='false'>
-    {history && <ReactMarkdown remarkPlugins={[gfm]} children={history.header} />}
+    {history && <ReactMarkdown rehypePlugins={[rehypeRaw]} remarkPlugins={[gfm]} children={history.header} />}
       <Button primary  onClick={goToCommunity} labelPosition='right' icon='down arrow' content={messages.create.meet_comunity} />
     </Container>
   </Box>
@@ -442,7 +443,7 @@ const Community =({goToCommunity, messages, locale}) => {
         </Grid>
 
         <Grid item  xs={6}>
-            {community && <ReactMarkdown remarkPlugins={[gfm]} children={community.header} /> }
+            {community && <ReactMarkdown rehypePlugins={[rehypeRaw]} remarkPlugins={[gfm]} children={community.header} /> }
             <Button onClick={() => history.push('/'+messages.menu.community)} size="large" className={classes.buton2} >{messages.create.meet_comunity}</Button>
         </Grid>
       </Grid>

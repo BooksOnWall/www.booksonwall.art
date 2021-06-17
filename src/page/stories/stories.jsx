@@ -14,7 +14,8 @@ import {
   } from '@material-ui/core';
 
 import { injectIntl, defineMessages  } from 'react-intl';
-
+import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import {useReactive} from "../../utils/reactive";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import {Helmet} from "react-helmet";
@@ -152,7 +153,7 @@ const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
          <Typography color="textSecondary" variant="h6" align="center" component="h2">{messages.stories.by_booksonwall}</Typography>
          </Box>
          {!hideText &&
-         <Typography className={classes.paragraph} variant="subtitle1" align="center" color="textSecondary" component="p">{story.story_header}</Typography>
+         <Typography className={classes.paragraph} variant="subtitle1" align="center" color="textSecondary" component="p"><ReactMarkdown  remarkPlugins={[gfm]}  children={story.story_header} /></Typography>
          }
          <CardActions className={classes.actions}>
           <Button className={classes.storyBtn} elevation={0} variant="outlined" color="primary" size="large" onClick={() => goToStory(messages.menu.story+'/'+story.name)} endIcon={<ChevronRightIcon/ >}>{messages.stories.read_more_btn}</Button>

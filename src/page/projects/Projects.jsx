@@ -19,6 +19,7 @@ import { injectIntl, defineMessages } from 'react-intl';
 import {Helmet} from "react-helmet";
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import {useReactive} from "../../utils/reactive";
 import loadable from '@loadable/component';
 import Home from "../../assets/images/pages/home.jpg";
@@ -139,7 +140,7 @@ const Project = ({projects, goToProject, messages}) => {
          <Typography align='left' variant="h5" component="h2">
            {proj.name}
          </Typography>
-         <ReactMarkdown children={proj.header} />
+         <ReactMarkdown remarkPlugins={[gfm]} children={proj.header} />
        </CardContent>
 
       <CardActions className={classes.cardActions}>

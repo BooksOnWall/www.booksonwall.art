@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import {  Button, Box, Container,  Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
-import ReactMarkdown from 'react-markdown';
+import  ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import gfm from 'remark-gfm';
+
 import {Helmet} from "react-helmet";
 import Image from 'material-ui-image';
 import {useReactive} from "../utils/reactive";
@@ -121,7 +123,7 @@ const Support = (props) => {
       </ScrollIntoViewIfNeeded>
         <Container>
         {support && <h1>{support.title}</h1>}
-        {support && support.header && <ReactMarkdown remarkPlugins={[gfm]} className={classes.bodyMarkdown} children={support.header} />}
+        {support && support.header && <ReactMarkdown remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} className={classes.bodyMarkdown} children={support.header} />}
         <Button onClick={() => props.history.push('/'+messages.menu.connect)} className={classes.button} color="primary">{messages.menu.connect}</Button>
         </Container>
       </Box>

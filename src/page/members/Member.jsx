@@ -9,6 +9,8 @@ import {
 import Image from 'material-ui-image';
 import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import gfm from 'remark-gfm';
 
 const apiURL = process.env.REACT_APP_API;
 
@@ -101,8 +103,8 @@ class Member extends Component {
            {(member.avatar) ? <Image src={apiURL + member.avatar.formats.thumbnail.url}  circular /> : ''}
          </Card>
          <Card.Meta>{name}</Card.Meta>
-         <Card.Content ><ReactMarkdown source={member.bio} /></Card.Content>
-         <Card.Content ><ReactMarkdown source={member.cv} /></Card.Content>
+         <Card.Content ><ReactMarkdown remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} source={member.bio} /></Card.Content>
+         <Card.Content ><ReactMarkdown remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} source={member.cv} /></Card.Content>
          <Card.Description>
             <MemberDescription
               website={member.website}

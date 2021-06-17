@@ -16,6 +16,7 @@ import { injectIntl } from 'react-intl';
 import {useReactive} from "../../utils/reactive";
 import Image from 'material-ui-image';
 import  ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import gfm from 'remark-gfm';
 import ImageGallery from 'react-image-gallery';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
@@ -77,7 +78,7 @@ const StoryGallery = ({gallery, apiURL}) => {
 const StoryBody = ({story}) => {
 const classes = useStyles();
 return (
-  <Box  ><ReactMarkdown  allowDangerousHtml={true} escapeHtml={false} remarkPlugins={[gfm]} className={classes.bodyMarkdown} children={story.story_content} /></Box>
+  <Box  ><ReactMarkdown  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]}  className={classes.bodyMarkdown} children={story.story_content} /></Box>
 )
 };
 

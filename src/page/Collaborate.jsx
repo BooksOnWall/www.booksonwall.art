@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles, Grid, Button,  Typography, Container, Box } from '@material-ui/core';
-import ReactMarkdown from 'react-markdown';
+import  ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import { injectIntl, defineMessages  } from 'react-intl';
 import {Helmet} from "react-helmet";
@@ -317,7 +317,7 @@ return (
             {s.header_image && <Image className={classes.serviceImage}  src={apiURL+s.header_image.formats.small.url}/>}
             <br />
             <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
-            <Typography  variant="body1" ><ReactMarkdown remarkPlugins={[gfm]} children={s.header} /></Typography>
+            <Typography  variant="body1" ><ReactMarkdown  remarkPlugins={[gfm]} children={s.header} /></Typography>
             <br />
             <Button onClick={() => history.push("/"+messages.menu.service+"/"+s.name)} size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
           </Grid>
