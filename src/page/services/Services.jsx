@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {Helmet} from "react-helmet";
 import {
+    CardContent,
+    CardActionArea,
+    CardMedia,
+    Card,
+    CardActions,
+    Typography,
     Grid,
     Container,
-    Typography,
     Backdrop,
     CircularProgress,
     Box,
@@ -23,9 +28,35 @@ const useStyles =  makeStyles((theme) => ({
   root: {
     maxWidth: '100vw',
   },
+  services: {
+    display: 'flex',
+    alignItems: 'top',
+    justifyContent: 'center',
+  },
   media: {
     height: 140,
   },
+  card: {
+    background: 'transparent',
+    borderRadius: 10,
+    flexGrow: '2 1 25%',
+  },
+  CardContent: {
+    padding: '30px 20px 10px',
+    background: 'transparent',
+  },
+  CardActions:{
+    padding: '10px 20px 20px',
+    background: 'transparent'
+  },
+  CardActionArea:{
+    borderRadius: 10,
+    background: 'transparent',
+    '&:hover': {
+      background: 'transparent'
+    }
+  },
+  dividerCard:{ margin: '20px 0'},
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
     color: '#99FF44',
@@ -137,16 +168,30 @@ const Services = (props) => {
 
     }
 
-    <Grid container spacing={3}>
+    <Grid container spacing={3} className={classes.services}>
           {services && services.map((s,i) => (
-            <Grid item xs sm key={"s"+i}>
-              {s.header_image && <Image className={classes.serviceImage}  src={apiURL+s.header_image.formats[format].url}/>}
-              <br />
-              <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
-              <Typography  variant="body1" ><ReactMarkdown remarkPlugins={[gfm]} children={s.header} /></Typography>
-              <br />
-              <Button onClick={() => history.push("/"+messages.menu.service+"/"+s.name) } size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
-            </Grid>
+            <Grid item xs={12/1} md={12/3} xl={12/6} key={'ss'+i}>
+              <Card className={classes.card} elevation={0} key={'article'+i}>
+                <CardActionArea className={classes.CardActionArea} onClick={() => history.push("/"+messages.menu.service+"/"+s.name) } >
+                 <CardMedia
+                   className={classes.media}
+                   image={(s.header_image) ? apiURL + s.header_image.formats[format].url: null}
+                   title={s.name}
+                 />
+                 <CardContent className={classes.CardContent} >
+                   <Typography gutterBottom variant="h6" component="h3">
+                     {s.name}
+                   </Typography>
+                   <Typography gutterBottom variant="body2" color="textPrimary" component="p">
+                     <ReactMarkdown remarkPlugins={[gfm]} children={s.header} />
+                   </Typography>
+                 </CardContent>
+               </CardActionArea>
+               <CardActions className={classes.CardActions}>
+                  <Button className={classes.button} size="small"  onClick={() => history.push("/"+messages.menu.service+"/"+s.name)} >{messages.stories.read_more_btn}</Button>
+               </CardActions>
+            </Card>
+          </Grid>
           ))}
         </Grid>
     {insert && <Button onClick={() => history.push("/"+messages.menu.services)} size="large" className={classes.button3}>See more</Button>}

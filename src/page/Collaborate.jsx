@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles, Grid, Button,  Typography, Container, Box } from '@material-ui/core';
+import {
+  makeStyles,
+  CardContent,
+  CardActionArea,
+  CardMedia,
+  Typography,
+  Card,
+  CardActions,
+  Grid, Button, Container, Box } from '@material-ui/core';
 import  ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import { injectIntl, defineMessages  } from 'react-intl';
@@ -19,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(3),
     color: theme.palette.text.secondary,
+  },
+  media: {
+    height: 140,
   },
   card: {
     backgroundColor: 'transparent'
@@ -237,6 +248,7 @@ const SupportStory = ({messages, lang, active}) => {
   const classes = useStyles();
   const [services, setServices] = useState([]);
   const apiURL = process.env.REACT_APP_API;
+  const format = 'thumbnail';
   let history = useHistory();
   const {hash} = useLocation();
   useEffect(() => {
@@ -273,6 +285,7 @@ const SupportStory = ({messages, lang, active}) => {
     }
     getServices();
   }, [apiURL, lang]);
+if(services && services.length >0) console.log('service.header_image', services[4].header_image)
 return (
   <Box className={classes.root}>
   <Box>
@@ -313,14 +326,28 @@ return (
       </ScrollIntoViewIfNeeded>
         <Grid container spacing={10} className={classes.servicesGrid}>
         {services && services.map((s,i) => (
-          <Grid item xs={10} md={4} key={"s"+i}>
-            {s.header_image && <Image className={classes.serviceImage}  src={apiURL+s.header_image.formats.small.url}/>}
-            <br />
-            <Typography  gutterBottom variant="h3" component="h2" >{s.name}</Typography>
-            <Typography  variant="body1" ><ReactMarkdown  remarkPlugins={[gfm]} children={s.header} /></Typography>
-            <br />
-            <Button onClick={() => history.push("/"+messages.menu.service+"/"+s.name)} size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
-          </Grid>
+          <Grid item xs={12/1} md={12/3} xl={12/6} key={'s'+i}>
+            <Card className={classes.card} elevation={0} key={'article'+i}>
+              <CardActionArea className={classes.CardActionArea} onClick={() => history.push("/"+messages.menu.service+"/"+s.name) } >
+               <CardMedia
+                 className={classes.media}
+                 image={(s.header_image) ? apiURL + s.header_image.formats[format].url: null}
+                 title={s.name}
+               />
+               <CardContent className={classes.CardContent} >
+                 <Typography gutterBottom variant="h6" component="h3">
+                   {s.name}
+                 </Typography>
+                 <Typography gutterBottom variant="body2" color="textPrimary" component="p">
+                   <ReactMarkdown remarkPlugins={[gfm]} children={s.header} />
+                 </Typography>
+               </CardContent>
+             </CardActionArea>
+             <CardActions className={classes.CardActions}>
+                <Button className={classes.button} size="small"  onClick={() => history.push("/"+messages.menu.service+"/"+s.name)} >{messages.stories.read_more_btn}</Button>
+             </CardActions>
+          </Card>
+        </Grid>
         ))}
         <Button onClick={() => history.push("/"+messages.menu.services)} size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
       </Grid>

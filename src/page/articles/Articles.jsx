@@ -149,7 +149,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
     {articles.map((article, i) => (
     <Grid item xs={12/1} md={12/2} xl={12/4} key={'gg'+i}>
     <Card className={classes.card} elevation={0} key={'article'+i}>
-    <CardActionArea className={classes.CardActionArea}>
+    <CardActionArea className={classes.CardActionArea} onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >
        <CardMedia
          onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
          className={classes.media}
@@ -177,7 +177,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
     {articles.map((article, i) => (
       <Grid item xs={12/1} md={12/3} xl={12/6} key={'gg'+i}>
       <Card className={classes.card} elevation={0} key={'article'+i}>
-        <CardActionArea className={classes.CardActionArea}>
+        <CardActionArea className={classes.CardActionArea} onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >
            <CardMedia
              onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
              className={classes.media}
@@ -189,7 +189,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
                {article.title}
              </Typography>
              <Typography gutterBottom variant="body2" color="textPrimary" component="p">
-               <ReactMarkdown  remarkPlugins={[gfm]} children={article.header} />
+               <ReactMarkdown remarkPlugins={[gfm]} children={article.header} />
              </Typography>
            </CardContent>
          </CardActionArea>
