@@ -14,6 +14,7 @@ import {
   } from '@material-ui/core';
 
 import { injectIntl, defineMessages  } from 'react-intl';
+import { useHistory } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import {useReactive} from "../../utils/reactive";
@@ -172,6 +173,7 @@ const ScrollToTop = ({insert}) => {
 }
 
 const  StoriesTitle =({messages, insert}) => {
+  let history = useHistory();
   const classes = useStyles();
   return(
       <Box className={classes.storiesTitleWrap}>
@@ -179,9 +181,9 @@ const  StoriesTitle =({messages, insert}) => {
         <Typography gutterBottom className={classes.storiesSubTitle} variant="h3" color="secondary" component="h2" align="center" > {messages.stories.inmersive_storytelling}</Typography>
         <Typography gutterBottom className={classes.storiesAbout} variant="subtitle1" color="textPrimary" component="body" align="center"> {messages.stories.story_about}</Typography>
         <Box className={classes.storiesBtnWarp}>
-          {insert && <Button className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.see_all}</Button>}
-          <Button className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.menu.support}</Button>
-          <Button className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.learn_how}</Button>
+          {insert && <Button onClick={() => history.push('/'+messages.menu.stories)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.see_all}</Button>}
+          <Button onClick={() => history.push('/'+messages.menu.support)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.menu.support}</Button>
+          <Button onClick={() => history.push('/'+messages.menu.service+'/'+messages.menu.story)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.learn_how}</Button>
         </Box>
       </Box>
   )
