@@ -129,7 +129,7 @@ const Skills = ({skills, select, isSelected, selected, locale}) => {
   const tagTranslations = require('../../i18n/locales/skills-'+locale+'.json');
 
   return (
-    <ToggleButtonGroup className={classes.skills}>
+    <ToggleButtonGroup exclusive={true} className={classes.skills}>
       {(skills) ? skills.map((skill, i)=> {
         let index = skill.replace(/\s/g, '_');
         index = index.toLowerCase();

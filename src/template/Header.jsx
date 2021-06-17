@@ -357,10 +357,10 @@ const MainMenu = ({history, allMessages, switchLang, goTo,connectOptions, conten
         <Box className={classes.menuWrapp}>
         <MenuBranch
           primary="Menu"
-          secondary={menuOptions}
+          secondary={[...menuOptions,...contentOptions]}
           activeIndex={activeIndex}
           activeItem={activeItem}
-          handleMenuItemClick={(e) => history.push("/"+e.target.option)}
+          handleMenuItemClick={(e, i, m, n) => navigate(e,i,m,n)}
           />
 
           {Auth.isUserAuthenticated()
