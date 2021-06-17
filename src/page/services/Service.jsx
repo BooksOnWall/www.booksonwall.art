@@ -134,7 +134,7 @@ const Service = (props) => {
           <Container maxWidth="xl">
             <Typography gutterBottom color="textSecondary" variant='h2'> {unique.name}</Typography>
             <ReactMarkdown  remarkPlugins={[gfm]} children={unique.header} />
-            <ReactMarkdown  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]}children={service.header} />
+            <ReactMarkdown  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.header} />
             <ReactMarkdown  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.activity} />
             <ReactMarkdown  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.ressources} />
             <ReactMarkdown  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.fullOptions} />
