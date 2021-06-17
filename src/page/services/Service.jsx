@@ -128,7 +128,7 @@ const Service = (props) => {
     {service &&
       <Box className={classes.connect}>
 
-      {service && service.header_image && <Image src={apiURL+service.header_image.formats[format].url} />}
+      {service && service.header_image && <Image aspectRatio={5/1} src={(service.header_image.formats[format]) ? apiURL+service.header_image.formats[format].url : apiURL+service.header_image.formats.small.url} />}
         {unique && service &&
           <>
           <Container maxWidth="xl">
