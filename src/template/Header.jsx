@@ -354,6 +354,25 @@ const MainMenu = ({history, allMessages, switchLang, goTo,connectOptions, conten
         <IconButton className={classes.logoMobile} value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
           <Avatar alt="logo" src={logo} />
         </IconButton>
+        <LanguageSwitch langs={langs} history={history} allMessages={allMessages} messages={messages} locale={locale} switchLang={switchLang} className={classes.lenguageSwitch} />
+        {Auth.isUserAuthenticated()
+            ?
+            <Menu>
+            {adminMenu.map((option, index) => (
+              <MenuItem
+                className={classes.menubranchItem}
+                key={index}
+                value={option}
+                selected={index === activeIndex}
+                onClick={(e) => goTo({content:option, history})}
+                >
+                <ProfileIcon /> {option}
+              </MenuItem>
+
+            ))}
+            </Menu>
+           : <Login messages={messages} history={history}/>
+       }
         <Box className={classes.menuWrapp}>
         <MenuBranch
           primary="Menu"
@@ -362,26 +381,6 @@ const MainMenu = ({history, allMessages, switchLang, goTo,connectOptions, conten
           activeItem={activeItem}
           handleMenuItemClick={(e, i, m, n) => navigate(e,i,m,n)}
           />
-
-          {Auth.isUserAuthenticated()
-
-              ?
-              <Menu>
-              {adminMenu.map((option, index) => (
-                <MenuItem
-                  className={classes.menubranchItem}
-                  key={index}
-                  value={option}
-                  selected={index === activeIndex}
-                  onClick={(e) => goTo({content:option, history})}
-                  >
-                  <ProfileIcon /> {option}
-                </MenuItem>
-
-              ))}
-              </Menu>
-             : <Login messages={messages} history={history}/>
-         }
          </Box>
       </Toolbar>
     </AppBar>
