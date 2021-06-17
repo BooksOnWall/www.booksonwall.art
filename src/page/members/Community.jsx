@@ -17,6 +17,7 @@ import {
 
 import { useHistory } from 'react-router-dom';
 import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {Helmet} from "react-helmet";
@@ -54,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
     padding: '70px 10vw',
     maxWidth: '100vw',
     display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'center',
     '& ol':{
@@ -62,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
   },
   skill:{
     padding: '5px 13px',
+
     background: theme.palette.primary.dark,
     color: theme.palette.common.white,
     marginTop: 8,
@@ -125,11 +129,10 @@ const Skills = ({skills, select, isSelected, selected, locale}) => {
   const tagTranslations = require('../../i18n/locales/skills-'+locale+'.json');
 
   return (
-    <Breadcrumbs className={classes.skills}>
+    <ToggleButtonGroup className={classes.skills}>
       {(skills) ? skills.map((skill, i)=> {
         let index = skill.replace(/\s/g, '_');
         index = index.toLowerCase();
-        console.log('index', index);
         return (
         <ToggleButton
           value={skill}
@@ -142,7 +145,7 @@ const Skills = ({skills, select, isSelected, selected, locale}) => {
           {tagTranslations[index]}
         </ToggleButton>
       )}): ''}
-    </Breadcrumbs>
+    </ToggleButtonGroup>
   );
 };
 const Members = ({ style, members, selected, hasSkill,goToMember, apiURL}) => {
