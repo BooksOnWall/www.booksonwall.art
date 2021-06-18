@@ -124,12 +124,13 @@ const Service = (props) => {
     <Backdrop className={classes.backdrop}  open={loading} >
       <CircularProgress color="inherit" />
     </Backdrop>
-    <ScrollIntoViewIfNeeded active={true}>
+
     {service &&
       <Box className={classes.connect}>
-
+      <ScrollIntoViewIfNeeded active={true}>
       {service && service.header_image && <Image aspectRatio={5/1} src={(service.header_image.formats[format]) ? apiURL+service.header_image.formats[format].url : apiURL+service.header_image.formats.small.url} />}
-        {unique && service &&
+      </ScrollIntoViewIfNeeded>
+      {unique && service &&
           <>
           <Container maxWidth="xl">
             <Typography gutterBottom color="textSecondary" variant='h2'> {unique.name}</Typography>
@@ -144,7 +145,7 @@ const Service = (props) => {
         }
       </Box>
     }
-    </ScrollIntoViewIfNeeded>
+
     {service && <Projects history={history} service={service} insert limit={10}/>}
     </>
   )

@@ -269,6 +269,10 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
           <Typography gutterBottom  variant="h6">  {messages.menu.content} </Typography>
             <MenuList className={classes.menuList}  variant="selectedMenu">
             <MenuItem className={classes.menuItem}
+              selected={0 === activeIndex && activeItem === messages.menu.community}
+               onClick={(event) => handleMenuItemClick(event, 0, messages.menu.community)}
+            >{messages.menu.community}</MenuItem>
+            <MenuItem className={classes.menuItem}
               selected={0 === activeIndex && activeItem === messages.menu.articles}
                onClick={(event) => handleMenuItemClick(event, 0, messages.menu.articles)}
             >{messages.menu.articles}</MenuItem>

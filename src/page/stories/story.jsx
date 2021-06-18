@@ -135,9 +135,9 @@ const StoryPage = ({story, messages, locale, history}) => {
   return (
     <Box className="main">
     <Box className="story">
-
+      <ScrollIntoViewIfNeeded active={true}>
       {story.header_image && <Image aspectRatio={2/1} src={apiURL + story.header_image.formats[format].url} />}
-
+      </ScrollIntoViewIfNeeded>
         <Box className="bodyStory">
           <StoryHeader story={story}/>
         </Box>
@@ -207,12 +207,13 @@ class Story extends Component {
     const {story, loading, locale, messages} = this.state;
     return (
       <>
-      <ScrollIntoViewIfNeeded active={true}>
+
       <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
         <CircularProgress color="inherit" />
       </Backdrop>
+
       {story && <StoryPage story={story} history={this.props.history} messages={messages} locale={locale} />}
-      </ScrollIntoViewIfNeeded>
+
       </>
     )
   }

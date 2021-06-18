@@ -123,6 +123,7 @@ const useStyles = makeStyles((theme) => ({
 const ArticlesHeader = ({messages, insert, articles}) => {
   const classes = useStyles();
   return (
+    <ScrollIntoViewIfNeeded active={!insert}>
     <Box className={classes.homeHeader}>
     {!insert &&
       <>
@@ -135,6 +136,7 @@ const ArticlesHeader = ({messages, insert, articles}) => {
       </>
     }
     </Box>
+    </ScrollIntoViewIfNeeded>
   )
 };
 
@@ -222,11 +224,7 @@ const Categories = ({messages, categories, selectCategory, selected, lang}) => {
     </>
   )
 };
-const ScrollToTop = ({insert}) => {
-  return (
-    <ScrollIntoViewIfNeeded active={!insert}></ScrollIntoViewIfNeeded>
-  )
-}
+
 const ArticleList = ({loading, lang, messages, history, articles, categories, selected, insert, goToArticle,hasCategory,selectCategory }) => {
   const classes = useStyles();
 
@@ -242,9 +240,6 @@ const ArticleList = ({loading, lang, messages, history, articles, categories, se
 
     {articles && !insert &&
       <Box className={classes.articles}>
-
-      <ScrollToTop insert={insert}/>
-
         <Divider/>
         <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 40px 40px 40px',}}>
           <Categories lang={lang} selected={selected} categories={categories} messages={messages} selectCategory={selectCategory}/>
