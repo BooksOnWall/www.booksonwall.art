@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  useLocation,
 } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import loadable from '@loadable/component';
@@ -39,13 +40,34 @@ const messages = {
   'fr': intlMessages_fr,
   'it': intlMessages_it,
 };
-
+const getPathName =() =>  window.location.href.replace(process.env.REACT_APP_URL, '').substring(1);
 const App = () => {
+  const pathname = getPathName();
+  // get first url entry
+  let path = decodeURIComponent(pathname.split('/')[0]);
+  const checkLocale = () => {
+    if(path !== '') {
+        // locale and url are different
+        let locale = null;
+        for (const [key, value] of Object.entries(messages)) {
+            for (const [mkey, mvalue] of Object.entries(value.menu)) {
+              if(mvalue === path) {
+                locale = key;
+              }
+            }
+        }
+        return locale;
+
+    } else {
+      return false;
+    }
+  }
+  const localeFromUrl = checkLocale();
   let navLocale =  (navigator.languages && navigator.languages[0])
                  || navigator.language
                  || navigator.userLanguage
                  || 'en';
-  navLocale = navLocale.split("-")[0];
+  navLocale = (localeFromUrl) ? localeFromUrl :  navLocale.split("-")[0];
   const [locale, setLocale] = useState(navLocale);
   const switchLang = locale => setLocale(locale);
 
