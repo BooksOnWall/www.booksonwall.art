@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import {
   BrowserRouter as Router,
-  Route,
-  useLocation,
+  Route
 } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import loadable from '@loadable/component';
