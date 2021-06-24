@@ -84,6 +84,7 @@ const useStyles = makeStyles((theme) => ({
     background: 'transparent',
     alignItems: 'center',
     maxWidth: 560,
+    minHeight: 560,
     minWidth: 320,
     borderRadius: 18,
     margin: 20,

@@ -22,6 +22,7 @@ import { useReactive } from '../../utils/reactive';
 import loadable from '@loadable/component';
 import {Helmet} from "react-helmet";
 import ToggleButton from '@material-ui/lab/ToggleButton';
+import clsx from 'clsx';
 
 import { injectIntl} from 'react-intl';
 const apiURL = process.env.REACT_APP_API;
@@ -66,14 +67,14 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     padding: 0,
   },
-  homeHeaderGradient:{
+  homeHeaderTitle:{
     display: 'flex',
     flexFlow: 'column wrap',
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
     minHeight: '10vh',
     minWidth: '100vw',
-    padding: '80px 40px',
+    padding: '8vh 3vw 4vh',
   },
   dividerShape: {
     left: 0,
@@ -128,13 +129,14 @@ const ArticlesHeader = ({messages, insert, articles}) => {
     {!insert &&
       <>
        <ArticlesMap articles={articles} mode={"Light"}/>
-       <Box className={classes.homeHeaderGradient}>
-         <Container maxWidth='false' className={classes.tileHead}>
+       </>
+
+     }
+       <Box className={classes.homeHeaderTitle}>
+         <Container maxWidth='false' className={classes.titleHead}>
            <Typography color="textPrimary" variant="h5" component="h1">{messages.menu.articles}</Typography>
          </Container>
        </Box>
-      </>
-    }
     </Box>
     </ScrollIntoViewIfNeeded>
   )
@@ -147,7 +149,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
   return  (
     <>
     {insert &&
-    <Grid container spacing={4} style={{padding:40}}>
+    <Grid container spacing={4} style={{padding:"5vh 3vw"}}>
     {articles.map((article, i) => (
     <Grid item xs={12/1} md={12/2} xl={12/4} key={'gg'+i}>
     <Card className={classes.card} elevation={0} key={'article'+i}>
@@ -220,7 +222,6 @@ const Categories = ({messages, categories, selectCategory, selected, lang}) => {
   return (
     <>
         {(categories) ? categories.map((cat, i) => <ToggleButton selected={isSelected(cat)} className={classes.category} key={'cat'+i} onClick={(e) => selectCategory(cat)}  style={{margin: '7px'}} color="primary" name={cat} >{translate(cat)}</ToggleButton>): ''}
-
     </>
   )
 };
