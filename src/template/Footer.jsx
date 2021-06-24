@@ -403,11 +403,11 @@ const Footer = ({intl}) => {
       <Box className="footer" >
           <Box className="footerBreadcrumb">
             <Breadcrumbs aria-label="breadcrumb">
-              {feed && feed.length > 0 && feed.map((f,i) => (i === 0)
-                ? <Link key={"breadcrumb"+i} name={"Home"} href="/" onClick={(e) => handleClick(e, '/')}><Typography variant="button" name={subPage} >{messages.menu.home}</Typography></Link>
-                : <Link key={"breadcrumb"+i} name={f}  href={makePath(feed, f,i)} onClick={(e) => handleClick(e,makePath(feed, f,i))}><Typography variant="button" name={f} >{f}</Typography></Link>
-              )}
-              <Typography variant="button" name={subPage} >{subPage}</Typography>
+            {feed && feed.length > 0 && feed.map((f,i) => (i === 0)
+              ? <Link key={"breadcrumb"+i} name={"Home"} href="/" onClick={(e) => handleClick(e, '/')}><Typography variant="button" name={subPage} >{messages.menu.home}</Typography></Link>
+              : <Link key={"breadcrumb"+i} name={f}  href={makePath(feed, f,i)} onClick={(e) => handleClick(e,makePath(feed, f,i))}><Typography variant="button" name={f} >{f}</Typography></Link>
+            )}
+            <Typography variant="button" name={subPage} >{subPage}</Typography>
             </Breadcrumbs>
           </Box>
           <SpacingGrid  activeItem={activeItem} activeIndex={activeIndex} messages={messages} handleMenuItemClick={handleMenuItemClick}/>

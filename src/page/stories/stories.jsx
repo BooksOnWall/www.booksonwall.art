@@ -22,6 +22,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import {Helmet} from "react-helmet";
 import ExploreMap from '../map/exploreMap';
 import { ReactComponent as Mapbg } from './../../assets/images/svg/map.svg';
+import clsx from 'clsx';
 
 const apiURL = process.env.REACT_APP_API;
 
@@ -70,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
   storiesBtnWarp:{
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     maxWidth: 800,
     margin: 30
   },
@@ -83,11 +84,25 @@ const useStyles = makeStyles((theme) => ({
   card: {
     background: 'transparent',
     alignItems: 'center',
-    maxWidth: 560,
-    minHeight: 560,
-    minWidth: 320,
     borderRadius: 18,
+  },
+  cardLarge:{
+    maxWidth: 670,
+    minHeight: 360,
+    minWidth: 320,
+    maxHeight: 860,
+    margin: 30,
+  },
+  cadrMedium:{
+    maxWidth: 560,
+    minHeight: 380,
     margin: 20,
+  },
+  cardSmall:{
+    maxWidth: 560,
+    minHeight: 300,
+    margin: 10,
+
   },
   actionArea:{
     },
@@ -132,17 +147,46 @@ const useStyles = makeStyles((theme) => ({
       border: '2px solid #fff',
       borderRadius: 8,
     }
+  },
+  mapBg: {
+    position: 'absolute',
+    zIndex: -999,
+    opacity: .2,
+    right: '0vw',
+    paddingTop: '5vh',
+    opacity: '.4',
+  },
+  mapbgLarge: {
+    maxWidth:'90vw',
+  },
+  mapbgMedium: {
+    maxWidth:'90vw',
+  },
+  mapbgSmall: {
+    maxWidth:'100vw',
+    paddingTop: '-5vh',
+
   }
 }));
+const MapBackground =() => {
+  const classes = useStyles();
+  const { isLarge, isMedium, isSmall } = useReactive();
+  const mapbg = (isLarge) ? 'mapbgLarge': (isMedium) ? 'mapbgMedium': 'mapbgSmall' ;
+
+  return (
+    <Box ><Mapbg className={clsx(classes.mapBg, classes[mapbg])} /></Box>
+  )
+}
 
 const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
   const classes = useStyles();
   const { isLarge, isMedium, isSmall } = useReactive();
   const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
   const hideText = (isSmall) ? true : false ;
+  const card = (isLarge) ? 'cardLarge': (isMedium) ? 'cardMedium': 'cardSmall' ;
 
   return stories.map((story, i) => (
-    <Card elevation={1} className={classes.card} key={'story'+i}>
+    <Card elevation={1} className={clsx(classes.card, classes[card])} key={'story'+i}>
        <CardMedia
          onClick={() => goToStory(messages.menu.story+'/'+story.name)}
          className={classes.media}
@@ -180,11 +224,12 @@ const  StoriesTitle =({messages, insert}) => {
       <Box className={classes.storiesTitleWrap}>
         <Typography className={classes.storiesTitle} variant="h2" color="textPrimary" component="h1" align="center" > {messages.menu.stories}</Typography>
         <Typography gutterBottom className={classes.storiesSubTitle} variant="h3" color="secondary" component="h2" align="center" > {messages.stories.inmersive_storytelling}</Typography>
-        <Typography gutterBottom className={classes.storiesAbout} variant="subtitle1" color="textPrimary" component="body" align="center"> {messages.stories.story_about}</Typography>
+        {!insert && <Typography gutterBottom className={classes.storiesAbout} variant="subtitle1" color="textPrimary" component="body" align="center"> {messages.stories.story_about}</Typography>}
+
         <Box className={classes.storiesBtnWarp}>
-          {insert && <Button onClick={() => history.push('/'+messages.menu.stories)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.see_all}</Button>}
-          <Button onClick={() => history.push('/'+messages.menu.support)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.menu.support}</Button>
-          <Button onClick={() => history.push('/'+messages.menu.service+'/'+messages.menu.story)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.learn_how}</Button>
+          <Button onClick={() => history.push('/'+messages.menu.stories)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.see_all}</Button>
+          {!insert && <> <Button onClick={() => history.push('/'+messages.menu.support)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.menu.support}</Button>
+          <Button onClick={() => history.push('/'+messages.menu.service+'/'+messages.menu.story)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.learn_how}</Button> </>}
         </Box>
       </Box>
   )
@@ -269,7 +314,7 @@ class Stories extends Component {
           </Box>
         }
           <StoriesTitle messages={messages} insert={insert} />
-          <Box className='mapbg'><Mapbg /></Box>
+          <MapBackground />
           <Box id="storyList">
             <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
           </Box>

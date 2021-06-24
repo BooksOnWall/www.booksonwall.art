@@ -176,6 +176,13 @@ const useStyles = makeStyles((theme) => ({
     background: '#fff',
     padding: 3
   },
+  logoIconMobile:{
+    minHeight: 50,
+    minWidth: 50,
+    background: '#fff',
+    padding: 2,
+    marginTop: 8,
+  },
   logoMobile:{
     marginLeft: 10,
   },
@@ -186,7 +193,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     margin: 3,
     padding: '8px 14px',
-    background: 'rgba(0, 0, 0,  .09)',
+    background: 'rgba(0, 0, 0,  .5)',
     '&:hover': {
         background: 'rgba(0, 0, 0, 0.2)',
         color:  '#fff'
@@ -242,6 +249,13 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'noWrap',
     alignItems: 'center',
   },
+  menuWrappMobile:{
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'noWrap',
+    alignItems: 'center',
+    padding: 10
+  },
   popper:{
     marginTop: 6,
     background:'transparent',
@@ -257,13 +271,26 @@ const useStyles = makeStyles((theme) => ({
     padding:0,
     margin: 0,
   },
+  menuMobile:{
+    background: 'rgba(0, 0, 0,  .8)',
+  },
   menuListGrow:{
-    padding:0,
-    margin: 0,
-    background: 'rgba(0, 0, 0,  .3)',
-    borderRadius:6
+    padding: 40,
+    marginTop: 80,
+    background: 'rgba(0, 0, 0,  .8)',
+    borderRadius: 6,
+    overflow: 'scroll',
+    width: '97vw',
+  },
+  menubranchItem:{
+    width: '100%'
   },
   lenguageSwitch:{
+    background: 'rgba(0, 0, 0,  .8)',
+
+  },
+  loginMobile:{
+    marginRight: 10
   }
 }));
 /** @primary title of menu
@@ -352,35 +379,37 @@ const MainMenu = ({history, allMessages, switchLang, goTo,connectOptions, conten
     <AppBar elevation={0} id="appbar-mobile" color="transparent" >
       <Toolbar elevation={0}  className={classes.toolbar} disableGutters variant='regular' >
         <IconButton className={classes.logoMobile} value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
-          <Avatar alt="logo" src={logo} />
+        <Avatar className={classes.logoIconMobile}   alt="logo" src={logo} />
         </IconButton>
-        <LanguageSwitch langs={langs} history={history} allMessages={allMessages} messages={messages} locale={locale} switchLang={switchLang} className={classes.lenguageSwitch} />
-        {Auth.isUserAuthenticated()
-            ?
-            <Menu>
-            {adminMenu.map((option, index) => (
-              <MenuItem
-                className={classes.menubranchItem}
-                key={index}
-                value={option}
-                selected={index === activeIndex}
-                onClick={(e) => goTo({content:option, history})}
-                >
-                <ProfileIcon /> {option}
-              </MenuItem>
-
-            ))}
-            </Menu>
-           : <Login messages={messages} history={history}/>
-       }
-        <Box className={classes.menuWrapp}>
+        <Box className={classes.menuWrappMobile}>
         <MenuBranch
           primary="Menu"
+          className={classes.menuMobile}
           secondary={[...menuOptions,...contentOptions]}
           activeIndex={activeIndex}
           activeItem={activeItem}
           handleMenuItemClick={(e, i, m, n) => navigate(e,i,m,n)}
           />
+          <LanguageSwitch className={classes.languageSwitch}  langs={langs} history={history} allMessages={allMessages} messages={messages} locale={locale} switchLang={switchLang}  />
+          {Auth.isUserAuthenticated()
+              ?
+              <Menu>
+              {adminMenu.map((option, index) => (
+                <MenuItem
+                  className={classes.menubranchItem}
+                  key={index}
+                  value={option}
+                  selected={index === activeIndex}
+                  onClick={(e) => goTo({content:option, history})}
+                  >
+                  <ProfileIcon /> {option}
+                </MenuItem>
+
+              ))}
+              </Menu>
+             : <Login messages={messages} history={history}/>
+         }
+
          </Box>
       </Toolbar>
     </AppBar>

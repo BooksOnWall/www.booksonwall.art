@@ -128,7 +128,6 @@ card:{
   maxWidth: 650,
   marginLeft: '3vw'
 },
-
 imageGaller:{
   borderRadius: 0,
 },
@@ -144,12 +143,11 @@ tile: {
   margin: 0,
 
 },
-
 button1: {
   margin: 10,
   color: theme.palette.primary.main,
   border: '2px #D9D2C6 solid',
-  padding: '10px 20px',
+  padding: '5px 10px',
   '&:hover': {
       background: '#C33949',
       color: 'white',
@@ -228,6 +226,9 @@ dividerSvg: {
   width: 'calc(100% + 1.3px)',
   height: '110px',
 },
+dividerSvgSmall:{
+  height: '60px',
+},
 wrapperBlob:{
   minHeight: '0vh',
   display: 'flex',
@@ -246,6 +247,17 @@ gridBlob:{
   display: 'flex',
   justifyContent: 'center',
   minHeight: '65vh',
+},
+gridLarge:{
+  margin: 0,
+  padding: 0
+},
+gridMedium:{
+
+},
+gridSmall:{
+  margin: 0,
+  padding: 0
 },
 blobA: {
    zIndex: 1,
@@ -286,17 +298,29 @@ bgLarge:{
   backgroundImage: `url(${Home})`,
 },
 bgMedium:{
-  backgroundImage: `url(${Blob1})`, // falta imagen
+  backgroundImage: `url(${Home})`, // falta imagen
 },
 bgSmall:{
-  backgroundImage: `url(${Blob2})`, // falta imagen
+  backgroundImage: `url(${Home})`, // falta imagen
+  minHeight: '100vh',
+  backgroundPosition: 'right',
 },
 tileHead: {
     margin: 0,
     maxWidth: '850px',
+    display: 'flex',
+    alignItems: 'flex-end'
+  },
+  titleLarge: {
     padding: '0 8vh 10vh',
   },
-placeholderBlock:{
+  titleMedium:{
+    padding: '0 4vh 10vh',
+  },
+  titleSmall: {
+    padding: '0 3vh 4vh',
+  },
+  placeholderBlock:{
   marginTop: 150,
 }
 }));
@@ -306,17 +330,22 @@ const HomeHeaderBlock = ({messages, theme}) => {
   let history = useHistory();
   const {isLarge, isMedium , isSmall} = useReactive();
   const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
+  const title = (isLarge) ? 'titleLarge' : (isMedium) ? 'titleMedium' : 'titleSmall';
+  const grid = (isLarge) ? 'gridLarge' : (isMedium) ? 'gridMedium' : 'gridSmall';
+  const shape = (isSmall) ? 'dividerSvgSmall' : null ;
   const btnSmall = (isSmall) ? true : false ;
+  const format = (isLarge) ? '8': (isMedium) ? '4': (isSmall) ? '2' : '2';
+
   return (
     <>
   <div className={classes.root}>
 
     <Box id="HomeHeaderBlock" className={clsx(classes.homeHader, classes[bg])}>
-      <Container maxWidth='xs' className={classes.tileHead}>
+      <Container maxWidth='xs' className={clsx(classes.tileHead, classes[title])}>
             <Typography gutterBottom color="textSecondary" variant="h1" >{messages.home.title}</Typography>
       </Container>
       <Box className={classes.dividerShape}>
-        <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 130" preserveAspectRatio="none">
+        <svg className={clsx(classes.dividerSvg, classes[shape])} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 130" preserveAspectRatio="none">
             <path d="M0,63 C0,63 63,0 209,0 C355,0 358.5,63 466,63 C573.5,63 588,23 684,23 C780,23 797,68 972,68 C1147,68 1200,63 1200,63 L1200,136 L0,136 L0,63 Z" className={classes.shapeFill}></path>
         </svg>
       </Box>
@@ -328,14 +357,14 @@ const HomeHeaderBlock = ({messages, theme}) => {
 
     <Container maxWidth="false" className={classes.wrapperBlob}>
     <Box>
-      <Grid container spacing={8}>
+      <Grid container spacing={[format]}  >
 
-        <Grid item  xs={12} md={6} className={classes.gridBlob}>
+        <Grid item  xs={12} md={6} className={clsx(classes.gridBlob, classes[grid])}>
           <Blob className={classes.blobA} >
             <Blob className={classes.blobIn} src={Blob1} />
           </Blob>
         </Grid>
-        <Grid item xs={12} md={6} className={classes.wrapperGrid}>
+        <Grid item xs={12} md={6} className={clsx(classes.wrapperGrid, classes[grid])}>
             <Card elevation={0} className={classes.card}>
               <CardContent>
                 <Typography  gutterBottom variant="h2" component="h2" >{messages.home.take_a_tour}</Typography>
@@ -360,10 +389,11 @@ const HomeHeaderBlock = ({messages, theme}) => {
 const WhoAreWe = ({messages}) => {
   const classes = useStyles();
   let history = useHistory();
-  const {isSmall} = useReactive();
+  const {isLarge, isMedium , isSmall} = useReactive();
   const blobDistribution = (isSmall) ? true : false ;
   const poligonsDistribution = (isSmall) ? true : false ;
   const btnSmall = (isSmall) ? true : false ;
+  const format = (isLarge) ? '8': (isMedium) ? '4': (isSmall) ? '2' : '2';
 
 return (
   <>
@@ -376,7 +406,7 @@ return (
     <Container maxWidth="xl" className={classes.wrapperBlob}>
     <Box>
 
-    <Grid container spacing={8}>
+    <Grid container spacing={[format]}>
 
         {blobDistribution &&
           <Grid item  xs={12} md={6} className={classes.gridBlob}>
@@ -542,7 +572,6 @@ const HomePage = (props) => {
       <ScrollIntoViewIfNeeded active={(activeScroll === messages.menu.articles)}>
         <Box> <Articles messages={messages} history={props.history} limit={(reactive.isLarge) ? 4 : (reactive.isMedium) ? 4 :  3} insert/> </Box>
       </ScrollIntoViewIfNeeded>
-      <Divider />
     </Box>
     </>
     )
