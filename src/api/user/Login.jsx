@@ -48,9 +48,11 @@ const useStyles = makeStyles((theme) => ({
     menuItem:{
       padding: 0,
       margin: '0',
-      background: 'rgba(0, 0, 0, 0)',
+      background: 'rgba(0, 0, 0, 0.4)',
+      borderRadius: 100
     },
     menuItemButton:{
+      color: '#fff',
       padding:0,
       margin: 0,
       '&:hover':{

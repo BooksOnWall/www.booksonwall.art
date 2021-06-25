@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useReactive} from '../utils/reactive';
 
 import {
     Avatar,
@@ -13,6 +14,7 @@ import {
     Menu,
     ClickAwayListener,
     MenuItem,
+    Divider,
     makeStyles,
     Box,
     Typography
@@ -24,6 +26,8 @@ import LanguageSwitch from '../api/user/LanguageSwitch';
 import Login from '../api/user/Login';
 import Auth from '../api/user/Auth';
 import ProfileIcon from '@material-ui/icons/Face';
+import MenuIcon from '@material-ui/icons/Menu';
+import clsx from 'clsx';
 
 const menuTraductions = defineMessages({
   home: {
@@ -174,7 +178,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 70,
     minWidth: 70,
     background: '#fff',
-    padding: 3
+    padding: 3,
   },
   logoIconMobile:{
     minHeight: 50,
@@ -182,6 +186,7 @@ const useStyles = makeStyles((theme) => ({
     background: '#fff',
     padding: 2,
     marginTop: 8,
+    zIndex: 999
   },
   logoMobile:{
     marginLeft: 10,
@@ -195,10 +200,11 @@ const useStyles = makeStyles((theme) => ({
     padding: '8px 14px',
     background: 'rgba(0, 0, 0,  .5)',
     '&:hover': {
-        background: 'rgba(0, 0, 0, 0.2)',
+        background: 'rgba(0, 0, 0, 0.4)',
         color:  '#fff'
       }
   },
+
   menuItemContact:{
     textTransform: 'uppercase',
     fontSize: 14,
@@ -220,7 +226,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     fontSize: 14,
     margin: 0,
-    padding: '14px 17px',
+    padding: '14px 40px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -229,6 +235,14 @@ const useStyles = makeStyles((theme) => ({
         background: 'rgba(0, 0, 0, 0.1)',
         color:  "#000"
       }
+  },
+  menuitemitemSmall:{
+    padding: 0,
+    flex: '1 1 45%',
+     background: 'rgba(0, 0, 0, 0.6)',
+     border: '0px solid #000',
+     borderRadius: 12,
+     margin: "1%",
   },
   menuItemText:{
     padding: 20
@@ -261,33 +275,85 @@ const useStyles = makeStyles((theme) => ({
     background:'transparent',
     padding: 0,
   },
+  popperSmall:{
+    width: "100vw",
+    background: theme.palette.primary.mainGradient,
+    minHeight: '100vh',
+    display: 'flex',
+    alignItems: "self-end",
+    flexGrow: 1,
+    marginTop: -5,
+    marginRight: -5,
+    overflow: 'hidden',
+    paddingTop: 85,
+    paddingBottom: 20,
+    padding: 10
+  },
   paper:{
     background: 'transparent',
     margin: 0,
     padding: 0,
   },
+  paperSmall:{
+    display: 'flex',
+    flexGrow: 1,
+    minHeight: '100vh',
+  },
   grow:{
     background: 'transparent',
     padding:0,
     margin: 0,
+    display: 'flex',
+    flexGrow: 1,
   },
   menuMobile:{
-    background: 'rgba(0, 0, 0,  .8)',
   },
   menuListGrow:{
+    padding: 0,
+    background: 'rgba(0, 0, 0,  .6)',
+    borderRadius: 8,
+  },
+  menuListGrowMobile:{
     padding: 40,
     marginTop: 80,
     background: 'rgba(0, 0, 0,  .8)',
     borderRadius: 6,
     overflow: 'scroll',
-    width: '97vw',
+    width: '100vw',
+    display: 'flex',
+    flexGrow: 1,
+    minHeight: '100vh'
+  },
+  menuListGrowSmall:{
+    background: 'rgba(0, 0, 0, 0)',
+    display:'flex',
+    flexDirection: 'row',
+    borderRadius: 0,
+    flexGrow: 1,
+    flex: '1 1 auto',
+    flexWrap: 'wrap',
+    maxHeight: '85vh'
   },
   menubranchItem:{
-    width: '100%'
+  },
+  menuItemMobile:{
+    background: 'rgba(0, 0, 0,  .5)',
+    padding: 4,
+    width: 39,
+    height: 39,
+    flexGrow: 1,
+  },
+  menuIconMobile:{
+    color: "#fff",
+    background: 'rgba(0, 0, 0,  .5)',
+    borderRadius:100,
+    padding: 4,
+    width: 33,
+    height: 33
   },
   lenguageSwitch:{
     background: 'rgba(0, 0, 0,  .8)',
-
+    margin: 0
   },
   loginMobile:{
     marginRight: 10
@@ -325,42 +391,63 @@ const MenuBranch = ({primary, secondary, activeIndex, activeItem , handleMenuIte
     }
     prevOpen.current = open;
   }, [open]);
+  const {isLarge, isSmall} = useReactive();
+  const hideSmall = (isSmall) ? true : false ;
+  const hideLarge = (isLarge) ? true : false ;
+  const popper = (isSmall) ? 'popperSmall' : null;
+  const menuitemitem = (isSmall) ? 'menuitemitemSmall' : null;
+  const menuListGrow = (isSmall) ? 'menuListGrowSmall' : null;
+  const paper = (isSmall) ? 'paperSmall' : null;
 
 return (
   <div className={classes.root}>
 
     <div>
+    {!hideSmall &&
       <Button
         ref={anchorRef}
         aria-controls={open ? 'menu-list-grow' : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
-        color="primary"
-        className={classes.menuItem}
-        >
+        className={classes.menuItem}>
         {primary}
       </Button>
-      <Popper className={classes.popper} open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+    }
+    {!hideLarge &&
+      <IconButton
+        ref={anchorRef}
+        aria-controls={open ? 'menu-list-grow' : undefined}
+        aria-haspopup="true"
+        onClick={handleToggle}
+        size="medium"
+        className={classes.menuItemMobile}>
+        {primary}
+      </IconButton>
+    }
+
+      <Popper  className={clsx(classes.popper, classes[popper])} open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
-            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+            style={{ transformOrigin: placement === 'top' ? 'center top' : 'center bottom' }}
             className={classes.grow}
             >
-            <Paper className={classes.paper}>
+            <Paper className={clsx(classes.paper, classes[paper])} elevation={1}>
               <ClickAwayListener onClickAway={handleClose}>
-                <MenuList autoFocusItem={open} className={classes.menuListGrow} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                <MenuList autoFocusItem={open} className={clsx(classes.menuListGrow, classes[menuListGrow])} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                   {secondary.map((option, index) => (
                     <MenuItem
                       key={index}
                       value={option}
                       selected={index === activeIndex && activeItem === option}
                       onClick={(event) => handleMenuItemClick(event, index, primary, option)}
-                      className={classes.menuitemitem}
+                      className={clsx(classes.menuitemitem, classes[menuitemitem])}
                       >
                       <Typography color='textSecondary' variant="button">{option}</Typography>
+
                     </MenuItem>
                   ))}
+
                 </MenuList>
               </ClickAwayListener>
             </Paper>
@@ -379,11 +466,11 @@ const MainMenu = ({history, allMessages, switchLang, goTo,connectOptions, conten
     <AppBar elevation={0} id="appbar-mobile" color="transparent" >
       <Toolbar elevation={0}  className={classes.toolbar} disableGutters variant='regular' >
         <IconButton className={classes.logoMobile} value='home' onClick={(e)=> loadPage('/')} edge="start"  color="inherit" aria-label="menu">
-        <Avatar className={classes.logoIconMobile}   alt="logo" src={logo} />
+        <Avatar className={classes.logoIconMobile} alt="logo" src={logo} />
         </IconButton>
         <Box className={classes.menuWrappMobile}>
         <MenuBranch
-          primary="Menu"
+          primary=<MenuIcon fontSize="medium" className={classes.menuIconMobile} />
           className={classes.menuMobile}
           secondary={[...menuOptions,...contentOptions]}
           activeIndex={activeIndex}

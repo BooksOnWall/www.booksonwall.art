@@ -12,28 +12,33 @@ const languageOptions = [
 ];
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.primar,
-  },
+
   list:{
-    margin: 0,
+    margin: 5,
     padding: 0,
   },
   menulist:{
-    marginTop: 64,
-    marginLeft: -11,
+    marginTop: 88,
+    marginLeft:-10,
     padding: 0,
   },
   menuItem: {
-    padding: 8,
-    margin: '0 5px 0 15px',
-    background: 'rgba(0, 0, 0, 0)',
+    margin: 0,
+    padding:4,
+    background: 'rgba(0, 0, 0,  .5)',
+    '&:hover': {
+        background: 'rgba(0, 0, 0, 0.4)',
+        color:  '#fff'
+      },
+    minHeight: 30,
+    minWidth: 30,
+    borderRadius: 100
 },
   menuItemItem: {
     padding: 15
   },
   menuItemButton:{
-    padding:0,
+    padding: 0,
   },
   menuItemIcon:{
 

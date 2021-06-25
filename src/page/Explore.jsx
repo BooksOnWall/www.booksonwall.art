@@ -111,7 +111,7 @@ const ExploreHeader = forwardRef(({ onBackClick,messages }, ref) => {
       <br />
       <Box>
         <ButtonGroup>
-          <Button href="/download/app/BooksOnWall.0.99.105.apk" size="large" className={classes.button} startIcon={<GetAppIcon />}>{messages.explore.downloadDirect}</Button>
+          <Button href="/download/app/BooksOnWall.0.99.105.apk" size="large" color="primary" variant="contained" startIcon={<GetAppIcon />}>{messages.explore.downloadDirect}</Button>
         </ButtonGroup>
       </Box>
     </Box>
