@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
   },
   storiesTitle:{
     textTransform:'uppercase',
-    paddingTop: '8vh'
+    paddingTop: '4vh'
   },
   storiesSubTitle:{
   },
@@ -151,10 +151,9 @@ const useStyles = makeStyles((theme) => ({
   mapBg: {
     position: 'absolute',
     zIndex: -999,
-    opacity: .2,
+    opacity: .3,
     right: '0vw',
     paddingTop: '5vh',
-    opacity: '.4',
   },
   mapbgLarge: {
     maxWidth:'90vw',
@@ -165,8 +164,15 @@ const useStyles = makeStyles((theme) => ({
   mapbgSmall: {
     maxWidth:'100vw',
     paddingTop: '-5vh',
-
-  }
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#99FF44',
+  },
+  insertBackdrop:{
+    zIndex: "inherit",
+    position: "relative"
+  },
 }));
 const MapBackground =() => {
   const classes = useStyles();
@@ -210,9 +216,13 @@ const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
     </Card>
   ));
 };
-const ScrollToTop = ({insert}) => {
+const ScrollToTop = ({insert, loading}) => {
+  const classes = useStyles();
   return (
     <ScrollIntoViewIfNeeded active={!insert}>
+    <Backdrop className={(insert) ? classes.insertBackdrop : classes.backdrop} open={loading} >
+      <CircularProgress color="inherit" />
+    </Backdrop>
     </ScrollIntoViewIfNeeded>
   )
 }
@@ -302,10 +312,8 @@ class Stories extends Component {
           <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.stories} />
         </Helmet>
       }
-      <ScrollToTop insert={insert} />
-      <Backdrop styles={{zIndex: 1004, color: '#99FF44'}} open={loading} >
-        <CircularProgress color="inherit" />
-      </Backdrop>
+      <ScrollToTop insert={insert} loading={loading}/>
+
       {stories &&
         <Box id={messages.menu.stories} className="stories">
         {!insert &&

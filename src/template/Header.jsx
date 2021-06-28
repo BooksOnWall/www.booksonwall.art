@@ -278,7 +278,7 @@ const useStyles = makeStyles((theme) => ({
   popperSmall:{
     width: "100vw",
     background: theme.palette.primary.mainGradient,
-    minHeight: '100vh',
+    height: '100vh',
     display: 'flex',
     alignItems: "self-end",
     flexGrow: 1,
@@ -286,7 +286,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: -5,
     overflow: 'hidden',
     paddingTop: 85,
-    paddingBottom: 20,
+    paddingBottom: '8vh',
     padding: 10
   },
   paper:{
@@ -391,9 +391,10 @@ const MenuBranch = ({primary, secondary, activeIndex, activeItem , handleMenuIte
     }
     prevOpen.current = open;
   }, [open]);
-  const {isLarge, isSmall} = useReactive();
+  const {isLarge, isMedium, isSmall} = useReactive();
   const hideSmall = (isSmall) ? true : false ;
   const hideLarge = (isLarge) ? true : false ;
+  const hideMedium = (isMedium) ? true : false ;
   const popper = (isSmall) ? 'popperSmall' : null;
   const menuitemitem = (isSmall) ? 'menuitemitemSmall' : null;
   const menuListGrow = (isSmall) ? 'menuListGrowSmall' : null;
@@ -413,7 +414,7 @@ return (
         {primary}
       </Button>
     }
-    {!hideLarge &&
+    {!hideLarge && !hideMedium &&
       <IconButton
         ref={anchorRef}
         aria-controls={open ? 'menu-list-grow' : undefined}
@@ -444,10 +445,8 @@ return (
                       className={clsx(classes.menuitemitem, classes[menuitemitem])}
                       >
                       <Typography color='textSecondary' variant="button">{option}</Typography>
-
                     </MenuItem>
                   ))}
-
                 </MenuList>
               </ClickAwayListener>
             </Paper>
@@ -676,10 +675,10 @@ const TopMenu = ({intl, pathvalue, hash, authenticated, switchLang, locale , his
       messages.menu.articles,
       messages.menu.stories,
       messages.menu.projects,
-      messages.menu.applications,
-      messages.menu.services,
       messages.menu.support,
       messages.menu.partner,
+      messages.menu.applications,
+      messages.menu.services,
       messages.menu.terms,
     ];
     return (

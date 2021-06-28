@@ -63,6 +63,10 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     color: '#99FF44',
   },
+  insertBackdrop:{
+    zIndex: "inherit",
+    position: "relative"
+  },
   homeHeader:{
     color: 'white',
     padding: 0,
@@ -228,10 +232,9 @@ const Categories = ({messages, categories, selectCategory, selected, lang}) => {
 
 const ArticleList = ({loading, lang, messages, history, articles, categories, selected, insert, goToArticle,hasCategory,selectCategory }) => {
   const classes = useStyles();
-
   return (
     <>
-    <Backdrop open={loading} >
+    <Backdrop open={loading} className={(insert) ? classes.insertBackdrop : classes.backdrop}>
       <CircularProgress
       size={60}
       thickness={8}

@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import {
     Container,
     Box,
-    Typography
+    Typography,
+    Divider,
   } from '@material-ui/core';
-
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import HelpIcon from '@material-ui/icons/Help';
 import { injectIntl, defineMessages } from 'react-intl';
 
 
@@ -65,24 +70,27 @@ class Faqs extends Component {
 
     return (faqs) ? (
       <Box id="FAQs">
-      <Container maxWidth="xl">
-      <Typography gutterBottom variant='h2'>
-        {messages.menu.faqs}
+      <Container maxWidth="xl" style={{paddingBottom: 40}}>
+      <Typography  variant='h2'>
+          {messages.menu.faqs}
       </Typography>
-      <Typography gutterBottom variant='subtitle1'>
+      <Typography gutterBottom color="primary" variant='subtitle1'>
         {messages.faqs.subtitle}
       </Typography>
-      <hr/>
+      </Container>
+      <Divider/>
+      <Container disableGutters maxWidth="xl">
 
       {faqs.map((faq, i) => (
-        <Box key={i} className='questionWrap'>
-          <Box className='question' >
-            <Typography variant='h4'>{faq.Question}</Typography>
-          </Box>
-          <Box className='answer' compact>
-            <Typography variant='body1'>  {faq.Answer}</Typography>
-          </Box>
-        </Box>
+        <Accordion elevation={0} key={i} className='questionWrap'>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}  >
+          <Typography variant='h4'>{faq.Question}</Typography>
+        </AccordionSummary>
+        <AccordionDetails className='answer'>
+            <Typography variant='body1'> {faq.Answer}</Typography>
+        </AccordionDetails>
+        </Accordion>
+
       ))}
       </Container>
       </Box>

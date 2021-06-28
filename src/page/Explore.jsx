@@ -47,29 +47,51 @@ const useStyles = makeStyles((theme) => ({
   exploreHader: {
     display: 'flex',
     flexFlow: 'column wrap',
-    minHeight: '60vh',
+    minHeight: '80vh',
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
     backgroundColor: '#ccc',
     color: 'white',
     backgroundSize: 'cover',
-    backgroundPosition: 'right ',
+    backgroundPosition: 'left',
   },
   bgLarge: {
         backgroundImage: `url(${Images.image12.default})`,
   },
   bgMedium: {
-        backgroundImage: `url(${Images.image10.default})`, //cambiar
+        backgroundImage: `url(${Images.image12.default})`, //cambiar
   },
   bgSmall: {
-        backgroundImage: `url(${Images.image8.default})`, //cambiar
+        backgroundImage: `url(${Images.image12.default})`, //cambiar
+        backgroundPosition: 'center center',
+  },
+  dividerShape: {
+    left: 0,
+    width: '100%',
+    overflow: 'hidden',
+    lineHeight: 0,
+    alignSelf: "flex-end"
+  },
+  shapeFill: {
+   fill: '#fafafa',
+  },
+  dividerSvg: {
+  position: 'relative',
+  display: 'block',
+  width: 'calc(100% + 1.3px)',
+  height: '120px',
+  transform: 'rotateY(180deg)'
   },
   titleWrapper: {
     margin: '200px 0 0',
     padding: '40px 8vh 8vh',
   },
+  titleSmall:{
+    margin: '200px 0 0',
+    padding: '40px 4vh 8vh',
+  },
   title:{
-    maxWidth: '600px',
+    maxWidth: '800px',
   },
   button:{
     color: theme.palette.primary.main,
@@ -94,18 +116,20 @@ dividerSvg: {
   position: 'relative',
   display: 'block',
   width: 'calc(100% + 1.3px)',
-  height: '200px',
+  height: '100px',
 }
 }));
 
 const ExploreHeader = forwardRef(({ onBackClick,messages }, ref) => {
   const classes = useStyles();
-  const {isLarge, isMedium } = useReactive();
+  const {isLarge, isMedium, isSmall } = useReactive();
   const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
+  const  title = (isLarge) ? 'titlLarge' : (isMedium) ? 'titlMedium' : 'titleSmall';
+  const shape = (isSmall) ? 'dividerSvgSmall' : null ;
 
   return (
   <Box ref={ref} className={clsx(classes.exploreHader, classes[bg])}>
-    <Box className={classes.titleWrapper} >
+    <Box ref={ref} className={clsx(classes.titleWrapper, classes[title])} >
       <Typography className={classes.title} gutterBottom variant="h1" >{messages.explore.header}</Typography>
       <Typography className={classes.title} gutterBottom variant="h4" component="h2">{messages.explore.subheader}</Typography>
       <br />
@@ -114,6 +138,11 @@ const ExploreHeader = forwardRef(({ onBackClick,messages }, ref) => {
           <Button href="/download/app/BooksOnWall.0.99.105.apk" size="large" color="primary" variant="contained" startIcon={<GetAppIcon />}>{messages.explore.downloadDirect}</Button>
         </ButtonGroup>
       </Box>
+    </Box>
+    <Box className={classes.dividerShape} >
+      <svg  className={clsx(classes.dividerSvg, classes[shape])} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path className={classes.shapeFill} d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"></path>
+      </svg>
     </Box>
   </Box>
   );

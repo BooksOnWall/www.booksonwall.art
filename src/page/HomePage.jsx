@@ -141,7 +141,6 @@ tile: {
   backgroundSize: 'cover',
   borderRadius: 0,
   margin: 0,
-
 },
 button1: {
   margin: 10,
@@ -302,7 +301,7 @@ bgMedium:{
 },
 bgSmall:{
   backgroundImage: `url(${Home})`, // falta imagen
-  minHeight: '100vh',
+  minHeight: '95vh',
   backgroundPosition: 'right',
 },
 tileHead: {
@@ -394,7 +393,6 @@ const WhoAreWe = ({messages}) => {
   const poligonsDistribution = (isSmall) ? true : false ;
   const btnSmall = (isSmall) ? true : false ;
   const format = (isLarge) ? '8': (isMedium) ? '4': (isSmall) ? '2' : '2';
-
 return (
   <>
   <div className={classes.root}>
@@ -499,11 +497,9 @@ const PlaceholderBlock = ({messages}) => {
  ];
  const {isSmall} = useReactive();
  const btnSmall = (isSmall) ? true : false ;
-
 return (
   <div>
   <Box className={classes.placeholderBlock} >
-
           <Grid container justify="center" spacing={0}>
             {tileData.map((tile,i) => (
               <Grid key={i} item xs={6} md={3}>

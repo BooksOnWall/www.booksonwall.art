@@ -13,21 +13,24 @@ import {
   Typography,
   Backdrop } from '@material-ui/core';
 import { defineMessages, injectIntl } from 'react-intl';
+import { useReactive} from '../../utils/reactive';
+import clsx from 'clsx';
 import Auth from './Auth';
 import ParticlesBg from 'particles-bg';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 const apiURL = process.env.REACT_APP_API;
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 1200,
+    alignItems: 'center',
   },
   paper: {
-    background: theme.palette.primary.mainGradient,
     position: 'relative',
     width: '50vw',
-    maxHeight: '40vh',
+    maxHeight: 'auto',
     minHeight: '30vh',
     zIndex: '1300',
     display: 'flex',
@@ -39,7 +42,20 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[1],
     padding: 40,
     borderRadius: 15,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    background: theme.palette.primary.mainGradient
+  },
+  paperMedium:{
+    width: '90vw',
+    maxHeight: '95vh',
+    padding: 40,
+    minHeight: 400,
+  },
+  paperSmall:{
+    width: '90vw',
+    maxHeight: '95vh',
+    padding: 40,
+    minHeight: 400,
   },
   bg:{
     borderRadius: 15,
@@ -92,7 +108,10 @@ const loginTraductions = defineMessages({
 });
  const  LoginModal = ({values ,email, password, messages, handleChange, handleSubmit, login }) => {
    const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+   const [open, setOpen] = React.useState(false);
+
+   const {isLarge, isMedium , isSmall} = useReactive();
+   const paper = (isMedium) ? "paperMedium"  : (isSmall) ? "paperSmall" : null ;
 
   const handleOpen = () => {
     setOpen(true);
@@ -124,11 +143,13 @@ const loginTraductions = defineMessages({
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
-        BackdropProps={{
+        BackdropProps={
+          {
           timeout: 500,
+          class: "backdropLogin"
         }}
       >
-          <div className={classes.paper}>
+          <div className={clsx (classes.paper, classes[paper])}>
             <ParticlesBg className={classes.bg} type="circle" bg={true} num={5}/>
             <Typography color="textSecondary" variant="h6" component="h2">{messages.login.title}</Typography>
             <TextField

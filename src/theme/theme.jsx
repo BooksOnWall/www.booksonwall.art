@@ -95,7 +95,6 @@ palette: {
     fontSize: "3.8rem",
     lineHeight: 1,
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
-    maxWidth: 800
   },
   h3: {
     fontWeight: 400,
