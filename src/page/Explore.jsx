@@ -83,7 +83,6 @@ const useStyles = makeStyles((theme) => ({
   transform: 'rotateY(180deg)'
   },
   titleWrapper: {
-    margin: '200px 0 0',
     padding: '40px 8vh 8vh',
   },
   titleSmall:{

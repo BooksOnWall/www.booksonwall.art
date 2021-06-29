@@ -34,7 +34,8 @@ const useStyles =  makeStyles((theme) => ({
     justifyContent: 'center',
   },
   media: {
-    height: 140,
+    height: 220,
+    borderRadius: 10,
   },
   card: {
     background: 'transparent',
@@ -157,7 +158,7 @@ const Services = (props) => {
     <Box className={classes.root}>
     {unique &&
       <>
-      {unique && unique.image_header && <Image aspectRatio={5/1} src={apiURL+unique.image_header.formats[formatHeader].url} />}
+      {unique && unique.image_header && <Image aspectRatio={2/1} src={apiURL+unique.image_header.formats[formatHeader].url} />}
       <ScrollIntoViewIfNeeded active={true}>
         <Container>
         <h1>{unique.Name}</h1>
@@ -188,7 +189,7 @@ const Services = (props) => {
                  </CardContent>
                </CardActionArea>
                <CardActions className={classes.CardActions}>
-                  <Button className={classes.button} size="small"  onClick={() => history.push("/"+messages.menu.service+"/"+s.name)} >{messages.stories.read_more_btn}</Button>
+                  <Button className={classes.button} size="small" color='primary'  onClick={() => history.push("/"+messages.menu.service+"/"+s.name)} >{messages.stories.read_more_btn}</Button>
                </CardActions>
             </Card>
           </Grid>

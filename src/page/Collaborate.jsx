@@ -18,36 +18,66 @@ import clsx from 'clsx';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { Blob } from 'react-blob';
 
-import Image from 'material-ui-image';
 import { Images } from './../assets/images/pages';
 const useStyles = makeStyles((theme) => ({
-  root: {
-
-  },
   paper: {
     padding: theme.spacing(3),
     color: theme.palette.text.secondary,
   },
   media: {
-    height: 140,
+    height: 220,
+    borderRadius: 10,
+    marginBottom: 16
   },
   card: {
     backgroundColor: 'transparent'
   },
-  collaborate: {
-    padding:'12vh 12vw',
-    minHeight: '100vh'
+  CardActionArea:{
+    borderRadius: 10,
+  },
+  containerGrid: {
+    minHeight: '100vh',
+    justifyContent: 'space-around'
+  },
+    gridItemALarge:{
+        marginTop: '10vh'
+    },
+    gridItemAMedium:{},
+    gridItemASmall:{
+      marginTop: '5vh',
+      padding: '0 3vw'
+    },
+  gridItemB: {
+    alignItems: "flex-end",
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'flex-end',
+    justifyContent: 'flex-end,'
+  },
+  gridItemBLarge:{
+    marginTop: '30vh'
+  },
+  gridItemBMedium:{
+        marginTop: '10vh',
+        padding: '0 3vw'
+  },
+  gridItemBSmall:{
+        marginTop: '0vh',
+        padding: '0 2vw'
   },
   titleTop: {
-     maxWidth: 1280,
-     padding: '8vh'
+     maxWidth: 900,
+     padding: '0vh'
+  },
+    titleTopWrapper: {
+    padding: '40px 8vh 8vh',
+  },
+    titleTopWrapperSmall:{
+    padding: '40px 2vh 0vh',
   },
   title: {
-     maxWidth: 1280,
-     padding: '0 8vh'
-  },
-  blobText: {
-     maxWidth: 780,
+     maxWidth: 1480,
+     padding: '0 4vw'
   },
   collaborateHader: {
     display: 'flex',
@@ -62,12 +92,16 @@ const useStyles = makeStyles((theme) => ({
   },
   bgLarge: {
     backgroundImage: `url(${Images.image22.default})`,
+    backgroundPosition: '80% center',
+    minHeight: '55vh',
   },
   bgMedium:{
-    backgroundImage: `url(${Images.image19.default})`, //cambiar
+    backgroundImage: `url(${Images.image22.default})`, //cambiar
   },
   bgSmall:{
-    backgroundImage: `url(${Images.image20.default})`, //cambar
+    backgroundImage: `url(${Images.image22.default})`, //cambar
+    backgroundPosition: '80% center',
+    minHeight: '90vh',
   },
   button1: {
     margin: '30px 0',
@@ -118,11 +152,18 @@ const useStyles = makeStyles((theme) => ({
     gradient: {
       background: theme.palette.primary.darkGradient,
       display: "flex",
-      minHeight: '50vh',
+      minHeight: '55vh',
       flexDirection: 'column',
       width: '100vw',
       justifyContent: 'flex-end',
-      alignItems: 'flex-end',
+    },
+    gradientLarge: {
+    },
+    gradientMedium:{
+      minHeight: '90vh',
+    },
+    gradientSmall:{
+      minHeight: '90vh',
     },
     dividerShape: {
       left: 0,
@@ -141,25 +182,29 @@ const useStyles = makeStyles((theme) => ({
     width: 'calc(151% + 1.3px)',
     height: '70px',
     },
-    collaborateGrid2:{
-        marginTop: '28vh',
-        alignItems: "flex-end",
-        display: 'flex',
-        flexDirection: 'column',
-        alignContent: 'flex-end',
-        justifyContent: 'flex-end,'
-  },
-  marginTop: {
-    marginTop: '10vh',
-  },
-  blob: {
-    background: theme.palette.primary.mainGradient,
-    marginLeft: '-5vw',
-    marginBottom: '50px',
+  blobA: {
+     zIndex: 1,
+     backgroundColor: theme.palette.primary.main,
+     background: theme.palette.primary.mainGradient,
+     maxWidth: '800px',
+     maxHeight: '800px',
+     padding: 15,
+     marginBottom: '50px',
   },
   blobB: {
     background: theme.palette.primary.darkGradient,
-    marginBottom: '30px',
+    marginBottom: '50px',
+    maxWidth: '650px',
+    maxHeight: '650px',
+    padding: 15,
+  },
+  blobIn:{
+    maxWidth: '800px',
+    maxHeight: '800px',
+    padding: 20
+  },
+  blobText: {
+     maxWidth: 780,
   },
   servicesTitleWrap:{
     display: 'flex',
@@ -172,13 +217,21 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    padding:'4vw'
+    padding:'4vw 0'
   },
   servicesGrid:{
     justifyContent: 'space-evenly'
   },
+  servicesGridLarge:{
+    padding:'2vw'
+  },
+  servicesGridMedium:{
+    padding:'3vw'
+  },
+  servicesGridSmall:{
+    padding:'0 3vw'
+  },
   serviceImage:{
-    borderRadius: 10,
   }
 }));
 
@@ -229,13 +282,15 @@ const CollaborateHeader = ({messages}) => {
   const classes = useStyles();
   const {isLarge, isMedium } = useReactive();
   const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
+  const gradient = (isLarge) ? 'gradientLarge' : (isMedium) ? 'gradientMedium' : 'gradientSmall';
+  const titleTopWrapper = (isLarge) ? 'titleTopWrapperLarge' : (isMedium) ? 'titleTopWrapperMedium' : 'titleTopWrapperSmall';
 
 return (
   <Box className={clsx(classes.collaborateHader, classes[bg])}>
-    <Box className={classes.gradient}>
-    <Container maxWidth="false">
+    <Box className={clsx(classes.gradient, classes[gradient])}>
+    <Box className={clsx(classes.titleTopWrapper, classes[titleTopWrapper])} >
       <Typography className={classes.titleTop} gutterBottom variant="h2" component="h1"> {messages.collaborate.title}</Typography>
-    </Container>
+    </Box>
     <Box className={classes.dividerShape}>
       <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className={classes.shapeFill}></path>
@@ -251,6 +306,12 @@ const SupportStory = ({messages, lang, active}) => {
   const format = 'thumbnail';
   let history = useHistory();
   const {hash} = useLocation();
+  const {isLarge, isMedium, isSmall } = useReactive();
+  const gridItemA = (isLarge) ? 'gridItemALarge' : (isMedium) ? 'gridItemAMedium' : 'gridItemASmall';
+  const gridItemB = (isLarge) ? 'gridItemBLarge' : (isMedium) ? 'gridItemBMedium' : 'gridItemBSmall';
+  const servicesGrid = (isLarge) ? 'servicesGridLarge' : (isMedium) ? 'servicesGridMedium' : 'servicesGridSmall';
+  const btnSmall = (isSmall) ? true : false ;
+
   useEffect(() => {
     const getServices = async () => {
       try {
@@ -289,30 +350,34 @@ if(services && services.length >0) console.log('service.header_image', services[
 return (
   <Box className={classes.root}>
   <Box>
-    <Container className={classes.collaborate} maxWidth='false'>
+    <Container  maxWidth='false'>
 
-      <Grid container spacing={8}>
-        <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.support)}>
-          <Grid item xs>
-            <Blob className={classes.blob} size="530px">
-                <Blob size="500px" src={Images.image11.default} />
-            </Blob>
-              <Typography gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.fund_a_story}</Typography>
-              <Typography gutterBottom  variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.create_new_story}</Typography>
-              <Button onClick={() => history.push('/'+messages.menu.support)} size="large" className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
-          </Grid>
-          </ScrollIntoViewIfNeeded>
-          <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.associate)}>
-              <Grid item xs className={classes.collaborateGrid2}>
-                <Blob  className={classes.blobB} size="380px">
-                    <Blob size="330px" src={Images.image1.default} />
-                </Blob>
-                  <Typography align="right" gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.join_us}</Typography>
-                  <Typography align="right" gutterBottom variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.strategic_partner}</Typography>
-                  <Typography align="right" gutterBottom variant="subtitle1" className={classes.blobText}>{messages.collaborate.looking_for}</Typography>
-                  <Button onClick={() => history.push('/'+messages.menu.partner)} size="large" className={classes.button2}>{messages.collaborate.how}</Button>
-                </Grid>
+      <Grid container spacing={4} className={classes.containerGrid}>
+            <Grid item className={clsx(classes.gridItemA, classes[gridItemA])}>
+            <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.support)}>
+
+              <Blob className={classes.blobA}>
+                  <Blob className={classes.blobIn} src={Images.image11.default} />
+              </Blob>
+                <Typography gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.fund_a_story}</Typography>
+                <Typography gutterBottom  variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.create_new_story}</Typography>
+                <Button onClick={() => history.push('/'+messages.menu.support)} size={(btnSmall) ? 'small' : 'large'} className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
+                </ScrollIntoViewIfNeeded>
+
+            </Grid>
+
+
+            <Grid item className={clsx(classes.gridItemB, classes[gridItemB])}>
+              <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.associate)}>
               </ScrollIntoViewIfNeeded>
+              <Blob  className={classes.blobB}>
+                  <Blob className={classes.blobIn} src={Images.image1.default} />
+              </Blob>
+                <Typography align="right" gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.join_us}</Typography>
+                <Typography align="right" gutterBottom variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.strategic_partner}</Typography>
+                <Typography align="right" gutterBottom variant="subtitle1" className={classes.blobText}>{messages.collaborate.looking_for}</Typography>
+                <Button onClick={() => history.push('/'+messages.menu.partner)} size={(btnSmall) ? 'small' : 'large'} className={classes.button2}>{messages.collaborate.how}</Button>
+              </Grid>
           </Grid>
     </Container>
 <br /><br /><br />
@@ -324,9 +389,9 @@ return (
           <Typography align='center' className={classes.title} gutterBottom  variant="subtitle1" >{messages.collaborate.we_are}</Typography>
         </Box>
       </ScrollIntoViewIfNeeded>
-        <Grid container spacing={10} className={classes.servicesGrid}>
+        <Grid container spacing={10} className={clsx(classes.servicesGrid, classes[servicesGrid])}>
         {services && services.map((s,i) => (
-          <Grid item xs={12/1} md={12/3} xl={12/6} key={'s'+i}>
+          <Grid item xs={12/1} md={12/3} xl={12/3} key={'s'+i}>
             <Card className={classes.card} elevation={0} key={'article'+i}>
               <CardActionArea className={classes.CardActionArea} onClick={() => history.push("/"+messages.menu.service+"/"+s.name) } >
                <CardMedia
@@ -344,12 +409,12 @@ return (
                </CardContent>
              </CardActionArea>
              <CardActions className={classes.CardActions}>
-                <Button className={classes.button} size="small"  onClick={() => history.push("/"+messages.menu.service+"/"+s.name)} >{messages.stories.read_more_btn}</Button>
+                <Button className={classes.button} color="primary" size="small" onClick={() => history.push("/"+messages.menu.service+"/"+s.name)} >{messages.stories.read_more_btn}</Button>
              </CardActions>
           </Card>
         </Grid>
         ))}
-        <Button onClick={() => history.push("/"+messages.menu.services)} size="large" className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
+        <Button onClick={() => history.push("/"+messages.menu.services)} size={(btnSmall) ? 'small' : 'large'} className={classes.button3}>{messages.collaborate.read_more_btn}</Button>
       </Grid>
     </Container>
 
