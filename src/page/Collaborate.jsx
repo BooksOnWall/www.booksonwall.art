@@ -355,6 +355,7 @@ return (
       <Grid container spacing={4} className={classes.containerGrid}>
             <Grid item className={clsx(classes.gridItemA, classes[gridItemA])}>
             <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.support)}>
+            </ScrollIntoViewIfNeeded>
 
               <Blob className={classes.blobA}>
                   <Blob className={classes.blobIn} src={Images.image11.default} />
@@ -362,10 +363,8 @@ return (
                 <Typography gutterBottom variant="h2" component="h3" className={classes.blobText}>{messages.collaborate.fund_a_story}</Typography>
                 <Typography gutterBottom  variant="h4" component="h4" className={classes.blobText}>{messages.collaborate.create_new_story}</Typography>
                 <Button onClick={() => history.push('/'+messages.menu.support)} size={(btnSmall) ? 'small' : 'large'} className={classes.button1}>{messages.collaborate.read_more_btn}</Button>
-                </ScrollIntoViewIfNeeded>
 
             </Grid>
-
 
             <Grid item className={clsx(classes.gridItemB, classes[gridItemB])}>
               <ScrollIntoViewIfNeeded active={(hash && hash.substring(1) === messages.menu.associate)}>

@@ -341,7 +341,7 @@ const HomeHeaderBlock = ({messages, theme}) => {
 
     <Box id="HomeHeaderBlock" className={clsx(classes.homeHader, classes[bg])}>
       <Container maxWidth='xs' className={clsx(classes.tileHead, classes[title])}>
-            <Typography gutterBottom color="textSecondary" variant="h1" >{messages.home.title}</Typography>
+          <Typography gutterBottom color="textSecondary" variant="h1" >{messages.home.title}</Typography>
       </Container>
       <Box className={classes.dividerShape}>
         <svg className={clsx(classes.dividerSvg, classes[shape])} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 130" preserveAspectRatio="none">
