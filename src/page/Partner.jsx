@@ -138,7 +138,7 @@ const Partner = (props) => {
       <Box className={classes.partner}>
       <ScrollIntoViewIfNeeded active={true}>
         <Box className={classes.partnerHeader} >
-          {partner && partner.image_header && <Image aspectRatio={5/1} src={apiURL + partner.image_header.formats[format].url} />}
+          {partner && partner.image_header && <Image aspectRatio={4/3} src={apiURL + partner.image_header.formats[format].url} />}
         </Box>
       </ScrollIntoViewIfNeeded>
       <Container>

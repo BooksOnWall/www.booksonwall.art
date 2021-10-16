@@ -13,9 +13,9 @@
   },
   "connect": {
     "adress": "Magallanes 1064, Montevideo, Uruguay.",
-    "keed_in_touch": "¿Sigamos en contacto?, tambien estamos en las redes sociales.",
+    "keed_in_touch": "¿Seguimos en contacto? También estamos en Redes Sociales.",
     "register": "Si quieres unirtenos y colaborar, pasa por aquí ¡nos encanta la idea!",
-    "we_are": "Nuestro equipo de gestión de la marca tiene su sede en Montevideo, Uruguay.  Además la comunidad cuenta actualmente con referentes en Portugal, España, Egipto y Chile."
+    "we_are": "Nuestro equipo de gestión de la marca tiene su sede en Montevideo, Uruguay. Además, la comunidad cuenta actualmente con referentes en Portugal, España, Egipto y Chile."
   },
   "contact": {
     "contactUs": "¿conversamos?",
@@ -28,7 +28,7 @@
   "create": {
     "community": "Comunidad",
     "community_we_are": "Somos artistas que aman trabajar con otros artistas.",
-    "community_we_create": "Creamos historias con recorridos originales e inspirados en diversos elementos de la cultura local. Cada cuento requiere de la colaboración de numerosos oficios como escritores, guionistas, muralistas, escultores, gráficos, animadores, músicos, narradores, diseñadores audiovisuales, comunicadores y gestores. Juntos procesamos, diseñamos, creamos y optimizamos todo tipo de contenidos que hacen a la experiencia.",
+    "community_we_create": "Creamos historias con recorridos originales e inspirados en diversos elementos de la cultura local. Cada cuento requiere de la colaboración de numerosos oficios como escritores, guionistas, muralistas, escultores, gráficos, animadores, músicos, narradores, diseñadores audiovisuales, comunicadores y gestores. Juntos creamos, diseñamos, procesamos y optimizamos todo tipo de contenidos que hacen a la experiencia.",
     "join_us": "¿Te gustaria ser parte?",
     "joinus_header": "¿Querés formar parte de un equipo de creadores multidisciplinarios, innovadores y apasionados?",
     "know_more": "Aquí te contamos más...",
@@ -56,19 +56,19 @@
     "download_app": "Descargar Booksonwall AR",
     "download_app_btn": "Comienza la aventura",
     "enjoy_btn": "A disfrutar la experiencia",
-    "enjoy_the_experience": "Animate a disfrutar de una experiencia hipermedia y vive un cuento a través del arte urbano!",
+    "enjoy_the_experience": "¡Animáte a disfrutar de una experiencia hipermedia y viví un cuento a través del arte urbano!",
     "join_btn": "Has parte, únetenos!",
     "know_btn": "Conoce la comunidad",
     "support_a_story_btn": "Apoya una historia",
-    "take_a_tour": "Vamos a recorrer la ciudad con BooksOnWall AR",
-    "title": "Narrativas inmersivas, cultura y arte urbano",
-    "we_are": "Somos un colectivo de creativos que cuenta historias por el mundo",
+    "take_a_tour": "Vamos a recorrer la cuidad con BooksOnWall AR",
+    "title": "Narrativas inmersivas, cultura y arte urbano.",
+    "we_are": "Somos un colectivo diverso de creativos que contamos historias a través de tecnologías digitales y bienes culturales",
     "we_connect": "Conectamos a las personas con sus territorios y revalorizamos sus propias narrativas a través del arte y las tecnologías."
   },
   "info": {
     "more_articles": "Más articulos",
     "we_are": "Somos es un colectivo interdisciplinario de creativos que contamos historias a través de tecnología digitales y bienes culturales.",
-    "we_create": "Hemos creamos la aplicación de realidad aumentada Booksonwall AR que con estímulos visuales y sonoros, interactúa con las personas volviendolas parte de sus cuentos recorriendo la ciudad y visitando obras de arte urbano."
+    "we_create": "Hemos creado la aplicación de realidad aumentada BooksOnWall AR, que con estímulos visuales y sonoros, interactúa con las personas, volviéndolas parte de sus cuentos, recorriendo la cuidad y visitando obras de arte urbano."
   },
   "lang": {
     "english": "English",
@@ -144,6 +144,6 @@
     "learn_how": "Aprende cómo",
     "read_more_btn": "Leer más",
     "see_all": "Ver Todos",
-    "story_about": "BooksOnWall Ar es una biblioteca de historias, cuentos o narraciones inmersivas que ocurren alrededor del mundo y aquí están algunas de ellas que puedes experimentar con la aplicación. También esperamos poder contar pronto una historia en tu ciudad. ¿Te gustaría crear una?"
+    "story_about": "BooksOnWall Ar es una biblioteca de historias, cuentos y narraciones inversivas que ocurren alrededor del mundo. Aquí están algunas de ellas, para que puedas experimentar con la aplicación. ¡Esperamos  poder contar pronto un cuento en tu ciudad! ¿Te gustaría crear una?"
   }
 }

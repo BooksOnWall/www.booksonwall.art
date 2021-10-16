@@ -119,7 +119,7 @@ const Support = (props) => {
     {support &&
       <Box>
       <ScrollIntoViewIfNeeded active={true}>
-        {support && support.image_header && <Image aspectRatio={5/1} src={apiURL + support.image_header.formats[format].url} />}
+        {support && support.image_header && <Image aspectRatio={4/3} src={apiURL + support.image_header.formats[format].url} />}
       </ScrollIntoViewIfNeeded>
         <Container>
         {support && <h1>{support.title}</h1>}

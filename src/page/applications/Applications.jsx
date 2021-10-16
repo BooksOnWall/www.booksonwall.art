@@ -157,7 +157,7 @@ const Applications = (props) => {
       {unique &&
         <>
         <ScrollIntoViewIfNeeded active={true}>
-        <Image aspectRatio={5/1} src={apiURL+unique.image_header.formats[format].url} />
+        <Image src={apiURL+unique.image_header.formats[format].url} />
         </ScrollIntoViewIfNeeded>
         <Container>
 

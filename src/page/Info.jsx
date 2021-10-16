@@ -83,24 +83,36 @@ history:{
 tileHead: {
     margin: 0,
     maxWidth: '1280px',
+  },
+  tileHeadLarge:{
     padding: '8vh 8vh',
   },
-  homeHader:{
+  tileHeadMedium:{
+    padding: '8vh 4vh',
+  },
+  tileHeadSmall:{
+    padding: '3vh 4vw',
+    fontSize: '2em'
+  },
+  hader:{
     backgroundColor: '#ccc',
     color: 'white',
     backgroundSize: 'cover',
     backgroundPositionY: 'top',
+    display: 'flex',
   },
   bgLarge:{
     backgroundImage: `url(${Images.image5.default})`,
   },
   bgMedium:{
-    backgroundImage: `url(${Images.image4.default})`, // falta imagen
+    backgroundImage: `url(${Images.image5.default})`, // falta imagen
   },
   bgSmall:{
-    backgroundImage: `url(${Images.image3.default})`, // falta imagen
+    backgroundImage: `url(${Images.image5.default})`, // falta imagen
+    backgroundPosition: 'lef center',
+    backgroundSize: 'cover',
   },
-  homeHaderBg: {
+  haderBg: {
     background: theme.palette.secondary.mainGradient,
     with: '100vw',
     display: 'flex',
@@ -262,13 +274,15 @@ const Manifest = ({messages, locale}) => {
 
   const {isLarge, isMedium } = useReactive();
   const bg = (isLarge) ? 'bgLarge' : (isMedium) ? 'bgMedium' : 'bgSmall';
+  const tileHead = (isLarge) ? 'tileHeadLarge' : (isMedium) ? 'tileHeadMedium' : 'tileHeadSmall';
+  const header = (isLarge) ? 'headerLarge' : (isMedium) ? 'headerMedium' : 'headerSmall';
 
   return (
     <>
-    <Box className={clsx(classes.homeHader, classes[bg])}>
-      <Box className={classes.homeHaderBg}>
+    <Box className={clsx(classes.Hader, classes[bg])}>
+      <Box className={clsx(classes.haderBg, classes[header])}>
       <Container maxWidth='false' >
-        <Typography className={classes.tileHead} variant="h1" gutterBottom>{messages.info.we_are}</Typography>
+        <Typography color='textSecondary' className={clsx(classes.tileHead, classes[tileHead])} variant="h1" gutterBottom>{messages.info.we_are}</Typography>
       </Container>
       <Box className={classes.dividerShape}>
         <svg className={classes.dividerSvg2} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
