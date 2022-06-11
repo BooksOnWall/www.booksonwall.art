@@ -34,7 +34,8 @@ const useStyles =  makeStyles((theme) => ({
     justifyContent: 'center',
   },
   media: {
-    height: 220,
+    height: 0,
+    paddingTop: '56.25%', // 16:9
     borderRadius: 10,
   },
   card: {
@@ -57,19 +58,96 @@ const useStyles =  makeStyles((theme) => ({
       background: 'transparent'
     }
   },
+  headerImage:{
+    minHeight: '20vh',
+    maxHeight: '55vh',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    marginBottom: 80,
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'end'
+    },
+    headerImageContainer:{
+      minHeight: '20vh',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+    dividerShape: {
+      left: 0,
+      width: '100%',
+      overflow: 'hidden',
+      lineHeight: 0,
+      transform: 'rotate(0deg)',
+    },
+    shapeFill: {
+     fill: '#fafafa',
+    },
+    dividerSvg: {
+      position: 'relative',
+      display: 'block',
+      width: 'calc(100% + 1.3px)',
+      height: '110px',
+    },
   dividerCard:{ margin: '20px 0'},
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
-    color: '#99FF44',
+    color: '#91201F',
   },
+  bodyMarkdown:{
+      '& blockquote p':{
+        fontSize: theme.typography.h3.fontSize,
+        fontFamily: theme.typography.subtitle1.fontFamily,
+        maxWidth: theme.typography.subtitle1.maxWidth,
+        lineHeight: theme.typography.subtitle1.lineHeight
+      },
+      '& p': {
+        fontSize: theme.typography.body1.fontSize,
+        fontFamily: theme.typography.body1.fontFamily,
+        maxWidth: theme.typography.body1.maxWidth,
+        lineHeight: theme.typography.body1.lineHeight
+      },
+      '& li': {
+        fontSize: theme.typography.body1.fontSize,
+        fontFamily: theme.typography.body1.fontFamily,
+        maxWidth: theme.typography.body1.maxWidth,
+        lineHeight: theme.typography.body1.lineHeight
+      },
+      '& h1':{
+        fontFamily: theme.typography.h1.fontFamily,
+        fontSize: theme.typography.h1.fontSize,
+        color: theme.palette.primary.main
+      },
+      '& h2':{
+        fontFamily: theme.typography.h2.fontFamily,
+        fontSize: theme.typography.h2.fontSize,
+        color: theme.palette.primary.main
+      },
+      '& h3':{
+        fontFamily: theme.typography.h3fontFamily,
+        fontSize: theme.typography.h3.fontSize,
+      },
+      '& h4':{
+        fontFamily: theme.typography.h4.fontFamily,
+        fontSize: theme.typography.h4.fontSize,
+      },
+      '& h5':{
+        fontFamily: theme.typography.h5.fontFamily,
+        fontSize: theme.typography.h5.fontSize,
+      },
+      '& h6':{
+        fontFamily: theme.typography.h6.fontFamily,
+        fontSize: theme.typography.h6.fontSize,
+      }
+    },
 }));
 
 const Services = (props) => {
   const classes = useStyles();
   const [services, setServices] = useState([]);
-  const { isLarge, isMedium } = useReactive();
+  const { isLarge, isMedium, isRetina, is4k } = useReactive();
   const formatHeader = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
-  const format = 'thumbnail';
+  const format = formatHeader;
   const [unique, setUnique] = useState();
   const [loading, setLoading] = useState(false);
   const {locale, messages} = props.intl;
@@ -156,22 +234,30 @@ const Services = (props) => {
       <CircularProgress color="inherit" />
     </Backdrop>
     <Box className={classes.root}>
+
     {unique &&
       <>
-      {unique && unique.image_header && <Image aspectRatio={2/1} src={apiURL+unique.image_header.formats[formatHeader].url} />}
+      {(unique.image_header) ? <Box className={classes.headerImage} style={{ backgroundImage: `url(${apiURL + unique.image_header.formats[formatHeader].url})`, }}>
+      <Box className={classes.dividerShape}>
+        <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 130" preserveAspectRatio="none">
+            <path d="M0,63 C0,63 63,0 209,0 C355,0 358.5,63 466,63 C573.5,63 588,23 684,23 C780,23 797,68 972,68 C1147,68 1200,63 1200,63 L1200,136 L0,136 L0,63 Z" className={classes.shapeFill}></path>
+        </svg>
+      </Box>
+      </Box> : ''}
+
       <ScrollIntoViewIfNeeded active={true}>
-        <Container>
-        <h1>{unique.Name}</h1>
-        <ReactMarkdown remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={unique.header} />
+        <Container maxWidth="xl">
+        <Typography gutterBottom variant="h1" component='h1'>{unique.title}</Typography>
+            <ReactMarkdown className={classes.bodyMarkdown} remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={unique.header} />
         </Container>
       </ScrollIntoViewIfNeeded>
       </>
-
     }
 
-    <Grid container spacing={3} className={classes.services}>
+    <Container maxWidth="xl">
+    <Grid container spacing={3} className={classes.services} style={{paddingTop:50}}>
           {services && services.map((s,i) => (
-            <Grid item xs={12/1} md={12/3} xl={12/6} key={'ss'+i}>
+            <Grid item xs={12/1} md={12/3} xl={12/3} key={'ss'+i}>
               <Card className={classes.card} elevation={0} key={'article'+i}>
                 <CardActionArea className={classes.CardActionArea} onClick={() => history.push("/"+messages.menu.service+"/"+s.name) } >
                  <CardMedia
@@ -196,6 +282,7 @@ const Services = (props) => {
           ))}
         </Grid>
     {insert && <Button onClick={() => history.push("/"+messages.menu.services)} size="large" className={classes.button3}>See more</Button>}
+  </Container>
   </Box>
   </>
   )

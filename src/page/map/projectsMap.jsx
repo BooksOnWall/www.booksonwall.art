@@ -37,8 +37,8 @@ const Projects =({projects, goToProject, onHover}) => {
           source='projects'
           type='circle'
           paint={{
-            'circle-radius': 20,
-            'circle-color': '#1978c8'
+            'circle-radius': 15,
+            'circle-color': '#91201F'
           }}
           onClick={(e, m) => goToProject(e,m)}
         />

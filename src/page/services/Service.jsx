@@ -6,6 +6,8 @@ import {
     Backdrop,
     CircularProgress,
     Box,
+    Button,
+    Divider,
     makeStyles
   } from '@material-ui/core';
 import { useLocation, useHistory } from 'react-router-dom';
@@ -15,37 +17,122 @@ import { injectIntl } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import Image from 'material-ui-image';
 import Gallery from "../../utils/Gallery";
-import Projects from "../projects/Projects";
+import {Helmet} from "react-helmet";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: '100vw',
-  },
-  media: {
-    height: 140,
-  },
-  homeHaderBg:{
-    padding:0,
-  },
-  service:{
-    minWidth: '100vw',
-    minHeight: '90vh'
-  },
-  backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
-    color: '#99FF44',
-  },
+
+  headerImage:{
+    minHeight: '45vh',
+    maxHeight: '55vh',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    marginBottom: 80,
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'end'
+    },
+    headerImageContainer:{
+      minHeight: '40vh',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+    dividerShape: {
+      left: 0,
+      width: '100%',
+      overflow: 'hidden',
+      lineHeight: 0,
+      transform: 'rotate(0deg)',
+    },
+    shapeFill: {
+     fill: '#fafafa',
+    },
+    dividerSvg: {
+      position: 'relative',
+      display: 'block',
+      width: 'calc(100% + 1.3px)',
+      height: '110px',
+    },
+    backdrop: {
+      zIndex: theme.zIndex.drawer + 1,
+      color: '#91201F',
+    },
+  bodyMarkdown:{
+      '& blockquote p':{
+        fontSize: theme.typography.h3.fontSize,
+        fontFamily: theme.typography.subtitle1.fontFamily,
+        maxWidth: theme.typography.subtitle1.maxWidth,
+        lineHeight: theme.typography.subtitle1.lineHeight
+      },
+      '& p': {
+        fontSize: theme.typography.body1.fontSize,
+        fontFamily: theme.typography.body1.fontFamily,
+        maxWidth: theme.typography.body1.maxWidth,
+        lineHeight: theme.typography.body1.lineHeight
+      },
+      '& li': {
+        fontSize: theme.typography.body1.fontSize,
+        fontFamily: theme.typography.body1.fontFamily,
+        maxWidth: theme.typography.body1.maxWidth,
+        lineHeight: theme.typography.body1.lineHeight
+      },
+      '& h1':{
+        fontFamily: theme.typography.h1.fontFamily,
+        fontSize: theme.typography.h1.fontSize,
+        color: theme.palette.primary.main
+      },
+      '& h2':{
+        fontFamily: theme.typography.h2.fontFamily,
+        fontSize: theme.typography.h2.fontSize,
+        color: theme.palette.primary.main
+      },
+      '& h3':{
+        fontFamily: theme.typography.h3fontFamily,
+        fontSize: theme.typography.h3.fontSize,
+      },
+      '& h4':{
+        fontFamily: theme.typography.h4.fontFamily,
+        fontSize: theme.typography.h4.fontSize,
+      },
+      '& h5':{
+        fontFamily: theme.typography.h5.fontFamily,
+        fontSize: theme.typography.h5.fontSize,
+      },
+      '& h6':{
+        fontFamily: theme.typography.h6.fontFamily,
+        fontSize: theme.typography.h6.fontSize,
+      }
+    },
+    button1: {
+      margin: 10,
+      marginTop: 20,
+      color: theme.palette.primary.main,
+      border: '2px #D9D2C6 solid',
+      padding: '5px 10px',
+      '&:hover': {
+          background: '#C33949',
+          color: 'white',
+            border: '2px #C33949 solid',
+        },
+      },
+      ImgGallery:{
+        flexGrow: 1,
+        justifyContent: 'center',
+        padding: ' 0 10px',
+        marginTop: 90,
+        marginBottom: 70,
+      },
 }));
+
 
 const Service = (props) => {
   const classes = useStyles();
   const [unique, setUnique] = useState();
   const [service, setService] = useState();
   const [loading, setLoading] = useState(false);
-  const { isLarge, isMedium } = useReactive();
-  const format = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
+  const { isSmall, isLarge, isMedium, isRetina, is4k } = useReactive();
+  const format = (is4k) ? 'xLarge' : (isRetina)? 'xLarge' :(isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
+  const btnSmall = (isSmall) ? true : false ;
   const {locale, messages} = props.intl;
   const apiURL = process.env.REACT_APP_API;
   let history = useHistory();
@@ -70,7 +157,10 @@ const Service = (props) => {
         })
         .then(data => {
             if(data) {
-              setService(data[0]);
+              let res = data[0];
+              res.header_image.formats['xLarge'] = [];
+              res.header_image.formats['xLarge'].url = res.header_image.url;
+              setService(res);
               setLoading(false);
             } else {
               console.log('No Data received from the server');
@@ -121,32 +211,56 @@ const Service = (props) => {
   }, [apiURL, locale, pathname, messages.menu]);
   return (
     <>
+    <Helmet>
+       <meta charset="utf-8" />
+       <title>{messages.menu.partner}</title>
+       <meta name="description" content="This a service page" />
+       <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.service} />
+    </Helmet>
     <Backdrop className={classes.backdrop}  open={loading} >
       <CircularProgress color="inherit" />
     </Backdrop>
 
     {service &&
       <Box className={classes.connect}>
+
       <ScrollIntoViewIfNeeded active={true}>
-      {service && service.header_image && <Image aspectRatio={5/1} src={(service.header_image.formats[format]) ? apiURL+service.header_image.formats[format].url : apiURL+service.header_image.formats.small.url} />}
+        {(service.header_image) ? <Box className={classes.headerImage} style={{ backgroundImage: `url(${apiURL + service.header_image.formats[format].url})`, }}>
+        <Box className={classes.dividerShape}>
+          <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 130" preserveAspectRatio="none">
+              <path d="M0,63 C0,63 63,0 209,0 C355,0 358.5,63 466,63 C573.5,63 588,23 684,23 C780,23 797,68 972,68 C1147,68 1200,63 1200,63 L1200,136 L0,136 L0,63 Z" className={classes.shapeFill}></path>
+          </svg>
+        </Box>
+        </Box> : ''}
       </ScrollIntoViewIfNeeded>
+
       {unique && service &&
           <>
           <Container maxWidth="xl">
-            <Typography gutterBottom color="textSecondary" variant='h2'> {unique.name}</Typography>
-            <ReactMarkdown  remarkPlugins={[gfm]} children={unique.header} />
-            <ReactMarkdown  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.header} />
-            <ReactMarkdown  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.activity} />
-            <ReactMarkdown  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.ressources} />
-            <ReactMarkdown  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.fullOptions} />
-          </Container>
+
+            <Box>
+                <Typography gutterBottom variant='h1' Component="h1">{service.Name}</Typography>
+                <Divider />
+            </Box>
+          <Typography gutterBottom color="primary" variant='subtitle1'> <ReactMarkdown remarkPlugins={[gfm]} children={service.header} /></Typography>
+          <Divider />
+
+          <ReactMarkdown className={classes.bodyMarkdown}  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.activity} />
+          <ReactMarkdown className={classes.bodyMarkdown}  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.ressources} />
+          <ReactMarkdown className={classes.bodyMarkdown}  remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={service.fullOptions} />
           <Gallery images={service.images} />
+          </Container>
+
           </>
         }
+        <Container maxWidth="xl">
+
+        <Divider />
+        <Button size={(btnSmall) ? 'small' : 'large'} onClick={() => history.push('/'+messages.menu.connect+'#'+messages.menu.contact)} className={classes.button1}>{messages.menu.connect}</Button>
+        </Container>
       </Box>
     }
 
-    {service && <Projects history={history} service={service} insert limit={10}/>}
     </>
   )
 }

@@ -12,7 +12,9 @@ import {
     Button,
     Backdrop,
     CircularProgress,
-    Divider,
+    List,
+    ListItem,
+    Grid,
     makeStyles
   } from '@material-ui/core';
 import { injectIntl, defineMessages } from 'react-intl';
@@ -27,34 +29,35 @@ import Home from "../../assets/images/pages/home.jpg";
 const apiURL = process.env.REACT_APP_API;
 const ProjectsMap = loadable(() => import('../map/projectsMap'));
 const useStyles = makeStyles((theme) => ({
-  card: {
-    background: 'transparent',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  CardActionArea:{
+  services: {
     display: 'flex',
-    flexGrow: 1,
-    flexDirection: 'row',
-    background: 'transparent',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    padding: '30px 70px 30px'
+    alignItems: 'top',
+    justifyContent: 'center',
   },
   media: {
-    height: 250,
-    minWidth: 250,
-    borderRadius: 400,
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+    borderRadius: 10,
   },
-  cardContent:{
-    flexGrow: '2 1 20%'
+  card: {
+    background: 'transparent',
+    borderRadius: 10,
+    flexGrow: '2 1 25%',
   },
-  cardActions: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    minWidth: '30%',
-    padding: '30px 70px 30px'
+  CardContent: {
+    padding: '40px 20px 10px',
+    background: 'transparent',
+  },
+  CardActions:{
+    padding: '10px 20px 20px',
+    background: 'transparent'
+  },
+  CardActionArea:{
+    borderRadius: 10,
+    background: 'transparent',
+    '&:hover': {
+      background: 'transparent'
+    }
   },
   homeHader:{
     backgroundColor: '#ccc',
@@ -70,7 +73,6 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: 'column wrap',
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
-    background: theme.palette.primary.mainGradient,
     minHeight: '30vh',
     minWidth: '100vw'
   },
@@ -101,8 +103,59 @@ const useStyles = makeStyles((theme) => ({
       }
     },
     tileHead:{
-      paddingBottom: 50,
-    }
+      paddingBottom: 40,
+      paddingTop:40
+    },
+    backdrop: {
+      zIndex: theme.zIndex.drawer + 1,
+      color: '#91201F',
+    },
+    bodyMarkdown:{
+        '& blockquote p':{
+          fontSize: theme.typography.h3.fontSize,
+          fontFamily: theme.typography.subtitle1.fontFamily,
+          maxWidth: theme.typography.subtitle1.maxWidth,
+          lineHeight: theme.typography.subtitle1.lineHeight
+        },
+        '& p': {
+          fontSize: theme.typography.body1.fontSize,
+          fontFamily: theme.typography.body1.fontFamily,
+          maxWidth: theme.typography.body1.maxWidth,
+          lineHeight: theme.typography.body1.lineHeight
+        },
+        '& li': {
+          fontSize: theme.typography.body1.fontSize,
+          fontFamily: theme.typography.body1.fontFamily,
+          maxWidth: theme.typography.body1.maxWidth,
+          lineHeight: theme.typography.body1.lineHeight
+        },
+        '& h1':{
+          fontFamily: theme.typography.h1.fontFamily,
+          fontSize: theme.typography.h1.fontSize,
+          color: theme.palette.primary.main
+        },
+        '& h2':{
+          fontFamily: theme.typography.h2.fontFamily,
+          fontSize: theme.typography.h2.fontSize,
+          color: theme.palette.primary.main
+        },
+        '& h3':{
+          fontFamily: theme.typography.h3fontFamily,
+          fontSize: theme.typography.h3.fontSize,
+        },
+        '& h4':{
+          fontFamily: theme.typography.h4.fontFamily,
+          fontSize: theme.typography.h4.fontSize,
+        },
+        '& h5':{
+          fontFamily: theme.typography.h5.fontFamily,
+          fontSize: theme.typography.h5.fontSize,
+        },
+        '& h6':{
+          fontFamily: theme.typography.h6.fontFamily,
+          fontSize: theme.typography.h6.fontSize,
+        }
+      },
 }));
 
 const projectsTraductions = defineMessages({
@@ -127,49 +180,44 @@ const projectsTraductions = defineMessages({
 const Project = ({projects, goToProject, messages}) => {
   const classes = useStyles();
   const { isLarge } = useReactive();
-  const format = (isLarge) ? 'small': 'thumbnail';
+  const format = (isLarge) ? 'large': 'small';
   return projects.map((proj, i) => (
+    <Grid item xs={12/1} md={12/4} xl={12/4} key={'proj'+i}>
     <Card elevation={0} className={classes.card} key={'proj'+i}>
     <CardActionArea className={classes.CardActionArea} onClick={(e) => goToProject(proj.name)}>
        <CardMedia
          className={classes.media}
-         image={(proj.header_image && proj.header_image.formats && proj.header_image[format] ) ? apiURL + proj.header_image.formats[format].url : null}
+         image={(proj.header_image) ? apiURL + proj.header_image.formats[format].url: null}
          title={proj.name}
        />
-       <CardContent className={classes.cardContent}>
-         <Typography align='left' variant="h5" component="h2">
-           {proj.name}
-         </Typography>
-         <ReactMarkdown remarkPlugins={[gfm]} children={proj.header} />
+
+       <CardContent className={classes.c}>
+         <Typography align='left' variant="h5" component="h2">{proj.name}</Typography>
+         <ReactMarkdown className={classes.bodyMarkdown} remarkPlugins={[gfm]} children={proj.header} />
        </CardContent>
 
       <CardActions className={classes.cardActions}>
-       <Typography  variant="Button1" component="p"><b>{messages.projects.started}:</b> {proj.start_date}</Typography>
-       <Typography  variant="button1" component="p"><b>{messages.projects.complete}:</b>{proj.end_date} </Typography>
-       <Typography  variant="button1" component="p"><b>{messages.projects.project_stage}:</b> {proj.project_step} </Typography>
-       <Button className={classes.button} size="small" onClick={(e) => goToProject(proj.name)} >{messages.projects.read_more}</Button>
+        <List>
+           <ListItem> <Typography variant="body2" component="p"><b>{messages.projects.started}:</b>{proj.start_date}</Typography></ListItem>
+           <ListItem><Typography variant="body2" component="p"><b>{messages.projects.complete}:</b>{proj.end_date}</Typography></ListItem>
+           <ListItem><Typography variant="body2" component="p"><b>{messages.projects.project_stage}:</b>{proj.project_step}</Typography></ListItem>
+           <ListItem><Button className={classes.button} size="small" onClick={(e) => goToProject(proj.name)} >{messages.projects.read_more}</Button></ListItem>
+         </List>
       </CardActions>
      </CardActionArea>
-     <Divider />
     </Card>
+    </Grid>
   ));
 };
 
 const ProjectHeader = ({messages}) => {
   const classes = useStyles();
   return (
-    <Box className={classes.homeHader}>
-    <Box className={classes.homeHaderGradient}>
-      <Container maxWidth='xs' className={classes.tileHead}>
-        <Typography gutterBottom color="textSecondary" variant="h1" >{messages.menu.projects}</Typography>
-      </Container>
-      <Box className={classes.dividerShape}>
-        <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 130" preserveAspectRatio="none">
-            <path d="M0,63 C0,63 63,0 209,0 C355,0 358.5,63 466,63 C573.5,63 588,23 684,23 C780,23 797,68 972,68 C1147,68 1200,63 1200,63 L1200,136 L0,136 L0,63 Z" className={classes.shapeFill}></path>
-        </svg>
-      </Box>
-    </Box>
-    </Box>
+    <>
+    <Container maxWidth='false' className={classes.tileHead}>
+      <Typography gutterBottom  variant="h1" >{messages.menu.projects}</Typography>
+    </Container>
+    </>
   )
 };
 
@@ -235,7 +283,7 @@ class Projects extends Component {
           <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.projects} />
         </Helmet>
       }
-      <Backdrop styles={{zIndex: 1003, color: '#99FF44'}} open={loading} >
+      <Backdrop styles={{zIndex: 1003, color: '#91201F'}} open={loading} >
         <CircularProgress color="inherit" />
       </Backdrop>
       {projects &&
@@ -246,8 +294,10 @@ class Projects extends Component {
         <Box >
           <ProjectHeader messages={messages}/>
           <Box style={{display: 'flex', flexDirection:'column'}}>
-            <Container maxWidth='xl'>
+            <Container maxWidth='false'>
+            <Grid container spacing={8}>
               <Project messages={messages} projects={projects} goToProject={this.goToProject} locale={locale}/>
+            </Grid>
             </Container>
           </Box>
         </Box>

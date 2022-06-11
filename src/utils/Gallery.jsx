@@ -13,8 +13,10 @@ const useStyles = makeStyles({
     maxWidth: '100vw',
   },
   gridList: {
-    width: 500,
-    height: 450,
+    maxWidth: 500,
+    maxHeight: 450,
+    paddingBottom: 20,
+    paddingTop:20
   },
 });
 
