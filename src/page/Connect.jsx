@@ -7,7 +7,6 @@ import {
     Button,
     makeStyles
   } from '@material-ui/core';
-
 import { injectIntl, defineMessages } from 'react-intl';
 import {Helmet} from "react-helmet";
 import ContactForm from './ContactForm';
@@ -54,7 +53,7 @@ contact: {
   alignItems: 'center',
   justifyContent: 'center',
   alignContent: 'center',
-  padding: '20vh 30px',
+  padding: '20vh 10px',
 },
 gradine:{
   background:  theme.palette.primary.darkGradient,
@@ -68,7 +67,7 @@ project:{
 },
 register:{
   background:  'transparent',
-  padding: '120px 30px',
+  padding: '120px 10px',
   minHeight: '70vh',
   display: 'flex',
   alignItems: 'center',

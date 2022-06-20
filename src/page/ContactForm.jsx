@@ -11,6 +11,7 @@ import {
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useForm, Controller } from "react-hook-form";
 import { defineMessages } from 'react-intl';
+import { useReactive} from '../utils/reactive';
 
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/plain.css';
@@ -45,13 +46,23 @@ const contactTraductions = defineMessages({
 const useStyles = makeStyles((theme) => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
-    color: '#99FF44',
+    color: '#91201F',
+  },
+  contactForm: {
+
+  },
+  formLarge: {
+    padding: '50px 60px 20px'
+  },
+  formSmall: {
+    padding: 14
   },
 }));
 const ContactForm = ({messages, locale}) => {
     const classes = useStyles();
     const [complete, setComplete] = useState(false);
-
+    const {isLarge, isMedium , isSmall} = useReactive();
+    const format = (isSmall) ? 'formSmall' : 'formLarge';
     const [open, setOpen] = useState(false);
     const [captchaSuccess, setCaptchaSuccess] = useState(false);
     const { control, handleSubmit, formState: { errors } } = useForm();
@@ -92,9 +103,12 @@ const ContactForm = ({messages, locale}) => {
     }
 
     return (
-      <Box id="contactForm" >
+      <Box id="contactForm"  className={classes.[format]}>
       <Backdrop className={classes.backdrop} open={open} >
-        <CircularProgress color="inherit" />
+          <CircularProgress
+          size={90}
+          thickness={8}
+          />
       </Backdrop>
       {complete &&
         <Box>
@@ -103,7 +117,7 @@ const ContactForm = ({messages, locale}) => {
       }
       {!complete &&
         <>
-        <Typography gutterBottom className="titleContactForm" color="primary" variant="h5">{messages.contact.contactUs}</Typography>
+        <Typography gutterBottom className="titleContactForm" color="textSecondary" variant="h5">{messages.contact.contactUs}</Typography>
       <form  onSubmit={handleSubmit(onSubmit)}>
 
               <Controller

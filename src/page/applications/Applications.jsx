@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   media: {
-    minHeight: 320,
+    minHeight: 380,
+    borderRadius: 10,
   },
   card: {
     background: 'transparent',
@@ -149,7 +150,7 @@ const Applications = (props) => {
   const [applications, setApplications] = useState([]);
   const { isLarge, isMedium, isSmall } = useReactive();
   const format = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
-  const formatHeader = (isSmall) ? 'small' : (isMedium) ? 'medium':  'large';
+  const formatHeader = (isSmall) ? 'small' : (isMedium) ? 'medium' : (isLarge) ? 'large' : 'xlarge';
   const [loading, setLoading] = useState(false);
   const [unique, setUnique] = useState();
   const {locale, messages} = props.intl;
@@ -206,7 +207,10 @@ const Applications = (props) => {
         })
         .then(data => {
             if(data) {
-              setUnique(data[0]);
+              let p = data[0];
+              p.image_header.formats['xlarge']=[];
+              p.image_header.formats['xlarge'].url = p.image_header.url;
+              setUnique(p);
               setLoading(false);
             } else {
               console.log('No Data received from the server');
@@ -232,7 +236,10 @@ const Applications = (props) => {
       <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.applications} />
     </Helmet>
     <Backdrop className={classes.backdrop} open={loading} >
-      <CircularProgress color="inherit" />
+        <CircularProgress
+        size={90}
+        thickness={8}
+        />
     </Backdrop>
     <Box className={classes.root}>
       {unique &&
@@ -256,7 +263,7 @@ const Applications = (props) => {
       <Container maxWidth="xl" className={classes.apps} >
       <Grid container spacing={3} className={classes.applications}>
         {applications && applications.map((s,i) => (
-          <Grid item xs={12/1} md={12/4} xl={12/4} key={'ss'+i}>
+          <Grid item xs={12/1} md={12/2} xl={12/2} key={'ss'+i}>
             <Card className={classes.card} elevation={0} key={'article'+i}>
               <CardActionArea className={classes.CardActionArea} onClick={() => history.push("/"+messages.menu.project+"/"+s.name) } >
                <CardMedia
@@ -265,12 +272,8 @@ const Applications = (props) => {
                  title={s.name}
                />
                <CardContent className={classes.CardContent} >
-                 <Typography gutterBottom variant="h6" component="h3">
-                   {s.name}
-                 </Typography>
-                 <Typography gutterBottom variant="body2" color="textPrimary" component="p">
-                   <ReactMarkdown className={classes.bodyMarkdown} remarkPlugins={[gfm]} children={s.header} />
-                 </Typography>
+                 <Typography gutterBottom variant="h6" component="h3">{s.name}</Typography>
+                 <ReactMarkdown className={classes.bodyMarkdown} remarkPlugins={[gfm]} children={s.header} />
                </CardContent>
              </CardActionArea>
              <CardActions className={classes.CardActions}>

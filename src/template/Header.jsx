@@ -391,9 +391,9 @@ const MenuBranch = ({primary, secondary, activeIndex, activeItem , handleMenuIte
     }
     prevOpen.current = open;
   }, [open]);
-  const {isLarge, isMedium, isSmall} = useReactive();
+  const {isLarge, isMedium, isSmall, isTablet, isMobile} = useReactive();
   const hideSmall = (isSmall) ? true : false ;
-  const hideLarge = (isLarge) ? true : false ;
+  const hideLarge = (isTablet, isMobile) ? false : true ;
   const hideMedium = (isMedium) ? true : false ;
   const popper = (isSmall) ? 'popperSmall' : null;
   const menuitemitem = (isSmall) ? 'menuitemitemSmall' : null;

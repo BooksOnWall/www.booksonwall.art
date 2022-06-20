@@ -8,6 +8,7 @@ import {
   Typography,
   makeStyles,
   } from '@material-ui/core';
+  import { useReactive} from '../utils/reactive';
   import CircularProgress from '@material-ui/core/CircularProgress';
   import { useForm, Controller } from "react-hook-form";
   import { injectIntl, defineMessages } from 'react-intl';
@@ -28,7 +29,16 @@ import {
   const useStyles = makeStyles((theme) => ({
     backdrop: {
       zIndex: theme.zIndex.drawer + 1,
-      color: '#99FF44',
+      color: '#91201F',
+    },
+    contactForm: {
+
+    },
+    formLarge: {
+      padding: '50px 60px 20px'
+    },
+    formSmall: {
+      padding: 14
     },
     input:{
       fontFamily: theme.typography.button.fontFamily
@@ -42,6 +52,8 @@ const Register = ({messages, locale}) => {
     const [open, setOpen] = useState(false);
     const [captchaSuccess, setCaptchaSuccess] = useState(false);
     const { control, handleSubmit, formState: { errors } } = useForm();
+    const {isLarge, isMedium , isSmall} = useReactive();
+    const format = (isSmall) ? 'formSmall' : 'formLarge';
     const onSubmit = async data => {
 
       try {
@@ -80,9 +92,12 @@ const Register = ({messages, locale}) => {
       }
     }
     return (
-      <Box id="registerForm">
+      <Box id="registerForm" className={classes.[format]}>
         <Backdrop className={classes.backdrop} open={open} >
-          <CircularProgress color="inherit" />
+        <CircularProgress
+        size={90}
+        thickness={8}
+        />
         </Backdrop>
         {complete &&
           <Box>
@@ -91,7 +106,7 @@ const Register = ({messages, locale}) => {
         }
         {!complete &&
           <>
-      <Typography gutterBottom className="titleContactForm" color="secondary" variant="h5">{messages.register.register}</Typography>
+      <Typography gutterBottom className="titleContactForm" color="textSecondary" variant="h5">{messages.register.register}</Typography>
 
           <form size='large'  onSubmit={handleSubmit(onSubmit)}>
             <>

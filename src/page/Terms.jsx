@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
-import { Box, Container, Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
+import { Box, Container, Backdrop, CircularProgress, Typography, makeStyles } from '@material-ui/core';
 import  ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import gfm from 'remark-gfm';
@@ -105,7 +105,7 @@ const Terms = (props) => {
   const [terms, setTerms] = useState();
   const [loading, setLoading] = useState(false);
   const { isSmall, isLarge, isMedium } = useReactive();
-  const formatHeader = (isSmall) ? 'small' : (isMedium) ? 'medium':  'large';
+  const formatHeader = (isSmall) ? 'small' : (isMedium) ? 'medium' : (isLarge) ? 'large' : 'xlarge';
   const {messages, locale} = props.intl;
   useEffect(() => {
     const fetchURL = apiURL + '/uniques?type=terms&lang=' + locale;
@@ -123,7 +123,10 @@ const Terms = (props) => {
         })
         .then(data => {
             if(data) {
-              setTerms(data[0]);
+              let p = data[0];
+              p.image_header.formats['xlarge']=[];
+              p.image_header.formats['xlarge'].url = p.image_header.url;
+              setTerms(p);
               setLoading(false);
             } else {
               console.log('No Data received from the server');
@@ -150,7 +153,10 @@ const Terms = (props) => {
     </Helmet>
   <ScrollIntoViewIfNeeded active={true}>
     <Backdrop className={classes.backdrop} open={loading} >
-      <CircularProgress color="inherit" />
+        <CircularProgress
+        size={90}
+        thickness={8}
+        />
     </Backdrop>
   </ScrollIntoViewIfNeeded>
   {terms &&
@@ -167,7 +173,7 @@ const Terms = (props) => {
 
       </ScrollIntoViewIfNeeded>
       <Container>
-          {terms && <h1>{terms.title}</h1>}
+          {terms && <Typography variant='h1'>{terms.title}</Typography>}
           {terms && terms.header && <ReactMarkdown className={classes.bodyMarkdown} remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={terms.header} />}
       </Container>
     </Box>

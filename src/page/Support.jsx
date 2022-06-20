@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
-import {  Button, Box, Container,  Backdrop, CircularProgress, Divider, makeStyles } from '@material-ui/core';
+import {  Button, Box, Container,  Backdrop, CircularProgress, Divider, Typography, makeStyles } from '@material-ui/core';
 import  ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import gfm from 'remark-gfm';
@@ -109,8 +109,8 @@ const Support = (props) => {
   const classes = useStyles();
   const [support, setSupport] = useState();
   const [loading, setLoading] = useState(false);
-  const { isSmall, isMedium } = useReactive();
-  const formatHeader = (isSmall) ? 'small' : (isMedium) ? 'medium':  'large';
+  const { isSmall, isMedium, isLarge } = useReactive();
+  const formatHeader = (isSmall) ? 'small' : (isMedium) ? 'medium' : (isLarge) ? 'large' : 'xlarge' ;
   const {messages, locale} = props.intl;
   useEffect(() => {
     const fetchURL = apiURL + '/uniques?type=support&lang=' + locale;
@@ -128,7 +128,10 @@ const Support = (props) => {
         })
         .then(data => {
             if(data) {
-              setSupport(data[0]);
+              let p = data[0];
+              p.image_header.formats['xlarge']=[];
+              p.image_header.formats['xlarge'].url = p.image_header.url;
+              setSupport(p);
               setLoading(false);
             } else {
               console.log('No Data received from the server');
@@ -153,7 +156,10 @@ const Support = (props) => {
       <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.support} />
     </Helmet>
     <Backdrop className={classes.backdrop} open={loading} >
-      <CircularProgress color="inherit" />
+        <CircularProgress
+        size={90}
+        thickness={8}
+        />
     </Backdrop>
     {support &&
       <Box>
@@ -167,7 +173,7 @@ const Support = (props) => {
           </Box> : ''}
       </ScrollIntoViewIfNeeded>
         <Container>
-        {support && <h1>{support.title}</h1>}
+        {support &&  <Typography variant="h1" component="h1">{support.title}</Typography>}
         {support && support.header && <ReactMarkdown remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} className={classes.bodyMarkdown} children={support.header} />}
         <Divider />
         <Button onClick={() => props.history.push('/'+messages.menu.connect)} className={classes.button} color="primary">{messages.menu.connect}</Button>

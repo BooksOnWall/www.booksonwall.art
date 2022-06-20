@@ -10,6 +10,8 @@ import {
     Backdrop,
     CircularProgress,
     Button,
+    Container,
+    Grid,
     makeStyles
   } from '@material-ui/core';
 
@@ -55,13 +57,8 @@ const storiesTraductions = defineMessages({
 
 const useStyles = makeStyles((theme) => ({
   storiesTitleWrap:{
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    width: 'auto',
-    maxWidth: '1280px',
-    alignItems: 'center',
-    padding: 40
+    paddingTop: 40,
+    paddingBottom: 40
   },
   storiesTitle:{
     textTransform:'uppercase',
@@ -72,8 +69,12 @@ const useStyles = makeStyles((theme) => ({
   storiesBtnWarp:{
     display: 'flex',
     justifyContent: 'center',
-    maxWidth: 800,
-    margin: 30
+    marginTop: 30,
+    marginBottom: 30
+  },
+  storiesBtnGrid: {
+    justifyContent:'center'
+
   },
   storiesBtn:{
     margin: 10
@@ -87,20 +88,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 18,
   },
   cardLarge:{
-    maxWidth: 670,
-    minHeight: 360,
-    minWidth: 320,
-    maxHeight: 860,
+    maxWidth:800,
     margin: 30,
   },
   cadrMedium:{
-    maxWidth: 560,
-    minHeight: 380,
+    maxWidth: 620,
     margin: 20,
   },
   cardSmall:{
-    maxWidth: 560,
-    minHeight: 300,
+    maxWidth: 400,
     margin: 10,
 
   },
@@ -110,6 +106,10 @@ const useStyles = makeStyles((theme) => ({
     minHeight:"100%",
     display: 'flex',
     flexDirection: 'column',
+  },
+  gridStory:{
+    display:'flex',
+    justifyContent: 'center'
   },
   content:{
     background: theme.palette.primary.mainGradient,
@@ -130,7 +130,6 @@ const useStyles = makeStyles((theme) => ({
   },
   paragraph:{
     marginTop: 30,
-    maxWidth: 620
   },
   actions:{
     padding: '25px 0 0'
@@ -167,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
   },
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
-    color: '#99FF44',
+    color: '#91201F',
   },
   insertBackdrop:{
     zIndex: "inherit",
@@ -187,11 +186,12 @@ const MapBackground =() => {
 const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
   const classes = useStyles();
   const { isLarge, isMedium, isSmall } = useReactive();
-  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
+  const format = (isLarge) ? 'large': (isMedium) ? 'large': (isSmall) ? 'small' : 'thumbnail';
   const hideText = (isSmall) ? true : false ;
-  const card = (isLarge) ? 'cardLarge': (isMedium) ? 'cardMedium': 'cardSmall' ;
+  const card = (isSmall) ? 'small' : (isMedium) ? 'cardMedium' : 'cardLarge' ;
 
   return stories.map((story, i) => (
+    <Grid item className={classes.gridStory}>
     <Card elevation={1} className={clsx(classes.card, classes[card])} key={'story'+i}>
        <CardMedia
          onClick={() => goToStory(messages.menu.story+'/'+story.name)}
@@ -214,15 +214,19 @@ const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
        </CardMedia>
 
     </Card>
+      </Grid>
   ));
 };
 const ScrollToTop = ({insert, loading}) => {
   const classes = useStyles();
   return (
     <ScrollIntoViewIfNeeded active={!insert}>
-    <Backdrop className={(insert) ? classes.insertBackdrop : classes.backdrop} open={loading} >
-      <CircularProgress color="inherit" />
-    </Backdrop>
+      <Backdrop className={(insert) ? classes.insertBackdrop : classes.backdrop} open={loading} >
+          <CircularProgress
+          size={90}
+          thickness={8}
+          />
+      </Backdrop>
     </ScrollIntoViewIfNeeded>
   )
 }
@@ -231,17 +235,23 @@ const  StoriesTitle =({messages, insert}) => {
   let history = useHistory();
   const classes = useStyles();
   return(
+    <>
+    <Container maxWidth='xl'>
       <Box className={classes.storiesTitleWrap}>
         <Typography className={classes.storiesTitle} variant="h2" color="textPrimary" component="h1" align="center" > {messages.menu.stories}</Typography>
         <Typography gutterBottom className={classes.storiesSubTitle} variant="h3" color="secondary" component="h2" align="center" > {messages.stories.inmersive_storytelling}</Typography>
         {!insert && <Typography gutterBottom className={classes.storiesAbout} variant="subtitle1" color="textPrimary" component="body" align="center"> {messages.stories.story_about}</Typography>}
 
         <Box className={classes.storiesBtnWarp}>
+        <Grid className={classes.storiesBtnGrid} container>
           <Button onClick={() => history.push('/'+messages.menu.stories)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.see_all}</Button>
           {!insert && <> <Button onClick={() => history.push('/'+messages.menu.support)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.menu.support}</Button>
           <Button onClick={() => history.push('/'+messages.menu.service+'/'+messages.menu.story)} className={classes.storiesBtn} elevation={1} variant="outlined" color="primary" size="large" endIcon={<ChevronRightIcon/ >}>{messages.stories.learn_how}</Button> </>}
+          </Grid>
         </Box>
       </Box>
+      </Container>
+</>
   )
 }
 
@@ -323,8 +333,10 @@ class Stories extends Component {
         }
           <StoriesTitle messages={messages} insert={insert} />
           <MapBackground />
-          <Box id="storyList">
+          <Box >
+            <Grid container spacing={8} alignItems='center'>
             <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
+            </Grid>
           </Box>
         </Box>
       }

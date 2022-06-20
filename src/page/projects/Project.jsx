@@ -115,8 +115,8 @@ const useStyles = makeStyles((theme) => ({
 
 const ProjectPage = ({project, history, messages, locale, name}) => {
   const classes = useStyles();
-  const { isSmall, isMedium } = useReactive();
-  const format = (isSmall) ? 'small' : (isMedium) ? 'medium' : 'large';
+  const { isSmall, isMedium, islarge } = useReactive();
+  const format = (isSmall) ? 'small' : (isMedium) ? 'medium' : (islarge) ? 'large': 'xlarge';
   return (
     <Box >
         {(project.header_image) ? <Box className={classes.headerImage} style={{ backgroundImage: `url(${apiURL + project.header_image.formats[format].url})`, }}>
@@ -175,7 +175,10 @@ class Project extends Component {
       })
       .then(data => {
           if(data) {
-            this.setState({project: data[0], loading: false});
+            let p = data[0];
+             p.header_image.formats['xlarge']=[];
+             p.header_image.formats['xlarge'].url = p.header_image.url;
+            this.setState({project: p, loading: false});
           } else {
             console.log('No Data received from the server');
           }
@@ -197,7 +200,10 @@ class Project extends Component {
     return (
       <>
       <Backdrop styles={{zIndex: 1003, color: '#91201F'}} open={loading} >
-        <CircularProgress color="inherit" />
+          <CircularProgress
+          size={90}
+          thickness={8}
+          />
       </Backdrop>
       {project && <ProjectPage name={name} project={project} history={this.props.history} messages={messages} locale={locale} />}
       </>

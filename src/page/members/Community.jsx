@@ -12,12 +12,12 @@ import {
     Button,
     Divider,
     Avatar,
+    Grid,
     makeStyles
   } from '@material-ui/core';
 
 import { useHistory } from 'react-router-dom';
 import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {Helmet} from "react-helmet";
@@ -28,24 +28,26 @@ const apiURL = process.env.REACT_APP_API;
 const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
-    maxWidth: '180px',
-    minWidth: '180px',
-    margin: '20px 10px',
-    background: 'transparent'
+    background: 'transparent',
+    minWidth: 180,
+    maxWidth: 320,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignContent: 'center',
   },
   media: {
     display: 'flex',
-    justifyContent:'center',
-    alignItems: 'center',
+    justifyContent: 'center',
   },
   avatar:{
-    height: 150,
-    width: 150,
+    minHeight: 180,
+    minWidth: 180,
   },
   patrick:{
-    opacity: .3,
-    height: 150,
-    width: 150,
+    opacity: .4,
+    height: 180,
+    width: 180,
   },
   memberName:{
     fontFamily: theme.typography.button.fontFamily,
@@ -65,10 +67,9 @@ const useStyles = makeStyles((theme) => ({
   },
   skill:{
     padding: '5px 13px',
-
     background: theme.palette.primary.dark,
     color: theme.palette.common.white,
-    marginTop: 8,
+    margin: 4,
     borderRadius:30,
     '&:hover': {
       background: theme.palette.secondary.main,
@@ -113,10 +114,12 @@ const CommunityHeader =({messages, theme}) => {
       <Typography variant="h2" align='center' color="textPrimary" component="h1" style={{textTransform:'uppercase', paddingTop: '8vh'}}> {messages.menu.community}</Typography>
       <Typography gutterBottom variant="h3" align='center' color="primary" component="p"> {messages.create.community_we_are}</Typography>
       <Typography variant="subtitle1" align='center' color="textPrimary" component="p"> {messages.create.community_we_create}</Typography>
-      <Box style={{ padding: 40, display: 'flex', justifyContent: 'space-around', width:'80%', maxWidth:600, minWidth:320}}>
-        <Button onClick={() => history.push('/'+messages.menu.info+'#'+messages.menu.manifest)} className={classes.button2} size="large" >{messages.menu.manifest}</Button>
-        <Button onClick={() => history.push('/'+messages.menu.connect+'#'+messages.menu.register)} className={classes.button2} size="large" >{messages.menu.joinus}</Button>
-        <Button onClick={() => history.push('/'+messages.menu.projects)} className={classes.button2} size="large" >{messages.menu.projects}</Button>
+      <Box style={{ paddingTop: 60, paddingBottom: 60}}>
+        <Grid container spacing={8}   justifyContent="center" alignItems="center">
+          <Button onClick={() => history.push('/'+messages.menu.info+'#'+messages.menu.manifest)} className={classes.button2} size="large" >{messages.menu.manifest}</Button>
+          <Button onClick={() => history.push('/'+messages.menu.connect+'#'+messages.menu.register)} className={classes.button2} size="large" >{messages.menu.joinus}</Button>
+          <Button onClick={() => history.push('/'+messages.menu.projects)} className={classes.button2} size="large" >{messages.menu.projects}</Button>
+        </Grid>
       </Box>
     </Container>
     <Divider/>
@@ -129,7 +132,7 @@ const Skills = ({skills, select, isSelected, selected, locale}) => {
   const tagTranslations = require('../../i18n/locales/skills-'+locale+'.json');
 
   return (
-    <ToggleButtonGroup exclusive={true} className={classes.skills}>
+    <Grid exclusive={true} className={classes.skills}>
       {(skills) ? skills.map((skill, i)=> {
         let index = skill.replace(/\s/g, '_');
         index = index.toLowerCase();
@@ -145,7 +148,7 @@ const Skills = ({skills, select, isSelected, selected, locale}) => {
           {tagTranslations[index]}
         </ToggleButton>
       )}): ''}
-    </ToggleButtonGroup>
+    </Grid>
   );
 };
 const Members = ({ style, members, selected, hasSkill,goToMember, apiURL}) => {
@@ -155,30 +158,34 @@ const Members = ({ style, members, selected, hasSkill,goToMember, apiURL}) => {
     // return filtered map of members
     (members) ? members.map((member,i) => (
       (hasSkill(member)) ?
-      <Card className={classes.root} elevation={0} key={i} >
-          <CardMedia  className={classes.media}>
-              {(member.avatar) ?
-                <Avatar className={classes.avatar} title={member.name} src={apiURL + member.avatar.formats.thumbnail.url} /> : <Avatar className={classes.patrick}  src={Patrick} />
-              }
-          </CardMedia>
-          <CardContent onClick={(e) => goToMember('/Community/Member/'+ member.name)}>
-            <Typography className={classes.memberName}  align='center'>{member.name}</Typography>
-          </CardContent>
-      </Card>
+      <Grid item key={i} >
+        <Card className={classes.root} elevation={0} key={i} >
+            <CardMedia  className={classes.media}>
+                {(member.avatar) ?
+                  <Avatar className={classes.avatar} title={member.name} src={apiURL + member.avatar.formats.thumbnail.url} /> : <Avatar className={classes.patrick}  src={Patrick} />
+                }
+            </CardMedia>
+            <CardContent onClick={(e) => goToMember('/Community/Member/'+ member.name)}>
+              <Typography variatn="Button" className={classes.memberName}  >{member.name}</Typography>
+            </CardContent>
+        </Card>
+        </Grid>
       : ''
     )) : ''
 
   ) :(
     // return all
     (members) ? members.map((member, i) => (
+      <Grid item>
       <Card className={classes.root} elevation={0}  key={i} >
         <CardMedia  className={classes.media}>
         {(member.avatar) ?
         <Avatar className={classes.avatar} title={member.name} src={apiURL + member.avatar.formats.thumbnail.url} /> : <Avatar className={classes.patrick}  src={Patrick} /> }</CardMedia>
-        <CardContent onClick={(e) => goToMember('/Community/Member/'+ member.name)}>
-          <Typography className={classes.memberName}  align='center'>{member.name}</Typography>
+        <CardContent className={classes.media} onClick={(e) => goToMember('/Community/Member/'+ member.name)}>
+          <Typography variant="button" className={classes.memberName}  aling='center'>{member.name}</Typography>
         </CardContent>
       </Card>
+      </Grid>
     )) : ''
 
   );
@@ -265,7 +272,6 @@ class Community extends Component {
   render() {
     const {skills, selected, members, apiURL, insert, loading} = this.state;
     const {messages, locale} = this.props.intl;
-    console.log('selected', selected);
     return (
       <>
       {!insert &&
@@ -278,9 +284,8 @@ class Community extends Component {
       }
       <Backdrop open={loading} >
         <CircularProgress
-        size={60}
+        size={90}
         thickness={8}
-        className="CircularProgress"
         />
       </Backdrop>
       <Box className="main" >
@@ -291,17 +296,11 @@ class Community extends Component {
           <CommunityHeader messages={messages} members={members} selected={selected}/>
           <Skills locale={locale} skills={skills} select={this.select} isSelected={this.isSelected} selected={selected}/>
           <Divider/>
-
-          <Box style={{
-              display: 'flex',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              alignContent : 'space-between',
-              justifyContent: 'center',
-              padding: '4vh 5vw',
-               }}>
-             <Members  selected={selected} members={members} hasSkill={this.hasSkill} goToMember={this.goToMember} apiURL={apiURL}/>
-          </Box>
+           <Container maxWidth='false'>
+              <Grid container spacing={3} style={{justifyContent: 'center', paddingTop: 40}}>
+                  <Members  selected={selected} members={members} hasSkill={this.hasSkill} goToMember={this.goToMember} apiURL={apiURL}/>
+             </Grid>
+           </Container>
           </>
         }
       </Box>

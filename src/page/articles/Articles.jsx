@@ -31,7 +31,7 @@ const ArticlesMap = loadable(() => import('../map/articlesMap'));
 
 const useStyles = makeStyles((theme) => ({
   articles:{
-    padding: 'px 0px'
+    padding: '0px 0px'
   },
   card: {
     background: 'transparent',
@@ -58,10 +58,11 @@ const useStyles = makeStyles((theme) => ({
       background: 'transparent'
     }
   },
-  dividerCard:{ margin: '20px 0'},
+  dividerCard:{ margin: '20px 0'
+  },
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
-    color: '#99FF44',
+    color: '#91201F',
   },
   insertBackdrop:{
     zIndex: "inherit",
@@ -148,12 +149,12 @@ const ArticlesHeader = ({messages, insert, articles}) => {
 
 const News = ({messages, insert, articles, goToArticle, selected , hasCategory }) => {
   const classes = useStyles();
-  const { isLarge, isMedium, isSmall } = useReactive();
-  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
+  const { isMedium, isSmall } = useReactive();
+  const format = (isSmall) ? 'small' : (isMedium) ? 'medium' : 'medium' ;
   return  (
     <>
     {insert &&
-    <Grid container spacing={4} style={{padding:"5vh 3vw"}}>
+    <Grid container spacing={3} style={{padding:"5vh 3vw"}}>
     {articles.map((article, i) => (
     <Grid item xs={12/1} md={12/2} xl={12/4} key={'gg'+i}>
     <Card className={classes.card} elevation={0} key={'article'+i}>
@@ -183,7 +184,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
     <Grid container spacing={4} style={{padding:40}}>
 
     {articles.map((article, i) => (
-      <Grid item xs={12/1} md={12/3} xl={12/6} key={'gg'+i}>
+      <Grid item xs={12/1} md={12/2} xl={12/4} key={'gg'+i}>
       <Card className={classes.card} elevation={0} key={'article'+i}>
         <CardActionArea className={classes.CardActionArea} onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >
            <CardMedia
@@ -193,10 +194,10 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
              title={article.title}
            />
            <CardContent className={classes.CardContent} >
-             <Typography gutterBottom variant="h6" component="h3">
+             <Typography gutterBottom variant="h4" component="h3">
                {article.title}
              </Typography>
-             <Typography gutterBottom variant="body2" color="textPrimary" component="p">
+             <Typography gutterBottom variant="body2" color ="textPrimary" component="p">
                <ReactMarkdown remarkPlugins={[gfm]} children={article.header} />
              </Typography>
            </CardContent>
@@ -236,9 +237,8 @@ const ArticleList = ({loading, lang, messages, history, articles, categories, se
     <>
     <Backdrop open={loading} className={(insert) ? classes.insertBackdrop : classes.backdrop}>
       <CircularProgress
-      size={60}
+      size={90}
       thickness={8}
-      className="CircularProgress"
       />
     </Backdrop>
 
@@ -246,11 +246,11 @@ const ArticleList = ({loading, lang, messages, history, articles, categories, se
       <Box className={classes.articles}>
         <Divider/>
         <Box style={{ alignItems: 'flex-start', display: 'flex', padding:' 40px 40px 40px',}}>
-          <Categories lang={lang} selected={selected} categories={categories} messages={messages} selectCategory={selectCategory}/>
+        <Grid container spacing={3}>  <Categories lang={lang} selected={selected} categories={categories} messages={messages} selectCategory={selectCategory}/></Grid>
         </Box>
         <Divider/>
 
-      <Box style={{justifyContent: 'space-around', display: 'flex',padding:' 60px 40px'}}>
+      <Box style={{justifyContent: 'space-around', display: 'flex'}}>
         <Grid container spacing={3}>
           <News hasCategory={hasCategory} selected={selected} articles={articles} messages={messages} goToArticle={goToArticle}/>
         </Grid>

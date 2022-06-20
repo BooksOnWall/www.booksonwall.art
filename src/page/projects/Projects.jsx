@@ -179,28 +179,30 @@ const projectsTraductions = defineMessages({
 
 const Project = ({projects, goToProject, messages}) => {
   const classes = useStyles();
-  const { isLarge } = useReactive();
-  const format = (isLarge) ? 'large': 'small';
+  const { isSmall, isMedium } = useReactive();
+  const format = (isSmall) ? 'small' : (isMedium) ? 'medium' : 'large';
   return projects.map((proj, i) => (
-    <Grid item xs={12/1} md={12/4} xl={12/4} key={'proj'+i}>
+    <Grid item xs={12/1} md={12/2} xl={12/4} key={'proj'+i}>
     <Card elevation={0} className={classes.card} key={'proj'+i}>
     <CardActionArea className={classes.CardActionArea} onClick={(e) => goToProject(proj.name)}>
-       <CardMedia
-         className={classes.media}
-         image={(proj.header_image) ? apiURL + proj.header_image.formats[format].url: null}
-         title={proj.name}
-       />
 
-       <CardContent className={classes.c}>
+    {proj.header_image &&
+      <CardMedia
+      className={classes.media}
+      image={(proj.header_image) ? apiURL + proj.header_image.formats[format].url: null}
+      title={proj.name}
+    />}
+
+       <CardContent className={classes.CardContent}>
          <Typography align='left' variant="h5" component="h2">{proj.name}</Typography>
          <ReactMarkdown className={classes.bodyMarkdown} remarkPlugins={[gfm]} children={proj.header} />
        </CardContent>
 
       <CardActions className={classes.cardActions}>
-        <List>
-           <ListItem> <Typography variant="body2" component="p"><b>{messages.projects.started}:</b>{proj.start_date}</Typography></ListItem>
-           <ListItem><Typography variant="body2" component="p"><b>{messages.projects.complete}:</b>{proj.end_date}</Typography></ListItem>
-           <ListItem><Typography variant="body2" component="p"><b>{messages.projects.project_stage}:</b>{proj.project_step}</Typography></ListItem>
+        <List disablePadding dense>
+           <ListItem> <Typography variant="button" component="p">{messages.projects.started}: {proj.start_date}</Typography></ListItem>
+           <ListItem><Typography variant="button" component="p">{messages.projects.complete}: {proj.end_date}</Typography></ListItem>
+           <ListItem><Typography variant="button" component="p">{messages.projects.project_stage}: {proj.project_step}</Typography></ListItem>
            <ListItem><Button className={classes.button} size="small" onClick={(e) => goToProject(proj.name)} >{messages.projects.read_more}</Button></ListItem>
          </List>
       </CardActions>
@@ -256,7 +258,7 @@ class Projects extends Component {
     .then(data => {
         if(data) {
           this.setState({projects: (service) ? data.filter((o) => (o.service && o.service.id === service.id)): data, loading: false});
-        } else {
+                } else {
           console.log('No Data received from the server');
         }
     })
@@ -284,7 +286,10 @@ class Projects extends Component {
         </Helmet>
       }
       <Backdrop styles={{zIndex: 1003, color: '#91201F'}} open={loading} >
-        <CircularProgress color="inherit" />
+          <CircularProgress
+          size={90}
+          thickness={8}
+          />
       </Backdrop>
       {projects &&
         <>
@@ -295,7 +300,7 @@ class Projects extends Component {
           <ProjectHeader messages={messages}/>
           <Box style={{display: 'flex', flexDirection:'column'}}>
             <Container maxWidth='false'>
-            <Grid container spacing={8}>
+            <Grid container spacing={3}>
               <Project messages={messages} projects={projects} goToProject={this.goToProject} locale={locale}/>
             </Grid>
             </Container>

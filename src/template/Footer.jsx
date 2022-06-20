@@ -167,8 +167,8 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
   const classes = useStyles();
   let history = useHistory();
 
-  const {isLarge, isMedium } = useReactive();
-  const menu = (isLarge) ? 'menuLarge' : (isMedium) ? 'menuMedium' : 'menuSmall';
+  const {isLarge, isMedium, isSmall } = useReactive();
+  const menu = (isSmall) ? 'menuSmall' : 'null' ;
   const bottomReactive = (isLarge) ? 'Large' : (isMedium) ? 'Medium' : 'Small';
 
   return (
@@ -404,7 +404,7 @@ const Footer = ({intl}) => {
           <Box className="footerBreadcrumb">
             <Breadcrumbs aria-label="breadcrumb">
             {feed && feed.length > 0 && feed.map((f,i) => (i === 0)
-              ? <Link key={"breadcrumb"+i} name={"Home"} href="/" onClick={(e) => handleClick(e, '/')}><Typography variant="button" name={subPage} >{messages.menu.home}</Typography></Link>
+              ? <Link key={"breadcrumb"+i} name={"Home"} href="" onClick={(e) => handleClick(e, '/')}><Typography variant="button" name={subPage} >{messages.menu.home}</Typography></Link>
               : <Link key={"breadcrumb"+i} name={f}  href={makePath(feed, f,i)} onClick={(e) => handleClick(e,makePath(feed, f,i))}><Typography variant="button" name={f} >{f}</Typography></Link>
             )}
             <Typography variant="button" name={subPage} >{subPage}</Typography>

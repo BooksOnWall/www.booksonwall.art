@@ -28,6 +28,9 @@ const useStyles =  makeStyles((theme) => ({
   root: {
     maxWidth: '100vw',
   },
+  header: {
+    paddingBottom: 30
+  },
   services: {
     display: 'flex',
     alignItems: 'top',
@@ -145,9 +148,9 @@ const useStyles =  makeStyles((theme) => ({
 const Services = (props) => {
   const classes = useStyles();
   const [services, setServices] = useState([]);
-  const { isLarge, isMedium, isRetina, is4k } = useReactive();
-  const formatHeader = (isLarge) ? 'large' : (isMedium) ? 'medium' : 'small';
-  const format = formatHeader;
+  const { islarge, isMedium, isSmall } = useReactive();
+  const formatHeader = (isSmall) ? 'small' : (isMedium) ? 'medium' : (islarge) ? 'large': 'xlarge';
+  const format = (isSmall) ? 'small' : (isMedium) ? 'medium' : (islarge) ? 'large': 'large';
   const [unique, setUnique] = useState();
   const [loading, setLoading] = useState(false);
   const {locale, messages} = props.intl;
@@ -205,6 +208,10 @@ const Services = (props) => {
         })
         .then(data => {
             if(data) {
+              let p = data[0];
+              p.image_header.formats['xlarge']=[];
+              p.image_header.formats['xlarge'].url = p.image_header.url;
+
               setUnique(data[0]);
               setLoading(false);
             } else {
@@ -231,12 +238,15 @@ const Services = (props) => {
       <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.services} />
     </Helmet>
     <Backdrop className={classes.backdrop} open={loading} >
-      <CircularProgress color="inherit" />
+        <CircularProgress
+        size={90}
+        thickness={8}
+        />
     </Backdrop>
     <Box className={classes.root}>
 
     {unique &&
-      <>
+      <Box className={classes.header}>
       {(unique.image_header) ? <Box className={classes.headerImage} style={{ backgroundImage: `url(${apiURL + unique.image_header.formats[formatHeader].url})`, }}>
       <Box className={classes.dividerShape}>
         <svg className={classes.dividerSvg} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 130" preserveAspectRatio="none">
@@ -251,13 +261,13 @@ const Services = (props) => {
             <ReactMarkdown className={classes.bodyMarkdown} remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]} children={unique.header} />
         </Container>
       </ScrollIntoViewIfNeeded>
-      </>
+      </Box>
     }
 
     <Container maxWidth="xl">
     <Grid container spacing={3} className={classes.services} style={{paddingTop:50}}>
           {services && services.map((s,i) => (
-            <Grid item xs={12/1} md={12/3} xl={12/3} key={'ss'+i}>
+            <Grid item xs={12/1} md={12/2} xl={12/3} key={'ss'+i}>
               <Card className={classes.card} elevation={0} key={'article'+i}>
                 <CardActionArea className={classes.CardActionArea} onClick={() => history.push("/"+messages.menu.service+"/"+s.name) } >
                  <CardMedia

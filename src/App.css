@@ -75,7 +75,6 @@ body{
   justify-content: space-between;
 }
 #contactForm{
-  padding: 50px 60px 20px;
   background: linear-gradient(0deg,  rgba(190,66,81,.0)  0%, rgba(190,66,81,.5) 100%);
   border-radius: 12px;
 }
@@ -92,8 +91,6 @@ body{
 }
 .MuiBackdrop-root .CircularProgress{ color: #fff}
 #registerForm{
-  padding: 50px 60px 20px;
-  background: ;
   background: linear-gradient(0deg, rgba(56,142,60, 0.88) 0%, rgba(0,153,153, 0.88) 100%);
   border-radius: 12px;
 }
@@ -137,6 +134,9 @@ body{
 #contactForm .react-tel-input .selected-flag, #registerForm .react-tel-input .selected-flag{ border: 0; background: transparent; padding: 0 44px 0 20px !important;}
 .react-tel-input .flag-dropdown{ border: 0px solid #cacaca !important; border-radius: 6px 0 0 0; background-color: rgba(0, 0, 0, 0.20) !important}
 .react-tel-input .flag-dropdown.open{ background: rgba(0, 0, 0, 0.6);}
+#registerForm .react-tel-input .selected-flag .arrow, #contactForm .react-tel-input .selected-flag .arrow{border-left: 3px solid transparent;
+border-right: 3px solid transparent;
+border-top: 4px solid #fff;}
 .react-tel-input .country-list{ border-radius: 0 0 6px 6px; top: 61px;  left: 1px; background-color: rgba(0, 0, 0, 0.42) !important; border: 0 !important}
 .react-tel-input .country-list li.country{padding:15px 22px; background: rgba(0, 0, 0, 0.6); color: #fff  }
 .react-tel-input .country-list li.country:hover{padding:15px 22px; background: rgba(0, 0, 0, 0.9); color: #fff  }
@@ -147,7 +147,7 @@ body{
 height: 10px;}
 .hLCrav{ margin-top: 40px; }
 #contactForm  .hLCrav .rnc-input, #registerForm .hLCrav .rnc-input{ padding: 18px 12px }
-#registerForm .hLCrav .rnc-canvas,  #contactForm .hLCrav .rnc-canvas{ background: rgba(255,255,255, 0.2);}
+#registerForm .hLCrav .rnc-canvas,  #contactForm .hLCrav .rnc-canvas{ border-radius: 4px}
 #registerForm .react-tel-input .selected-flag .arrow.up, #contactForm .react-tel-input .selected-flag .arrow.up {border-top: 0px solid #fff; border-bottom: 4px solid #fff !important;}
 #contactForm .MuiInputBase-input, #registerForm .MuiInputBase-input{margin: 20px 0 0; color: #fff; }
 #contactForm .formImput .MuiFormLabel-root.Mui-focused, #registerForm .formImput .MuiFormLabel-root.Mui-focused{color: #fff; font-weight: bold;}

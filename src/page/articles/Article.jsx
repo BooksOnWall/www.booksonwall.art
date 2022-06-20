@@ -18,8 +18,6 @@ import  ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import gfm from 'remark-gfm';
 
-
-
 import ImageGallery from 'react-image-gallery';
 import {useReactive} from "../../utils/reactive";
 import { injectIntl } from 'react-intl';
@@ -131,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
 const ImgGallery = ({images, apiURL, setImages}) => {
   let set = [];
   const { isLarge, isMedium, isSmall } = useReactive();
-  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
+  const format = (isSmall) ? 'small': (isMedium) ? 'medium' : (isLarge) ? 'large' : 'large';
   if(images.length > 0) {
     images.map((img,i) => {
       let imgs = img;
@@ -153,7 +151,7 @@ const Categories = ({messages, categories}) => {
 const ArticlePage = ({article, messages, locale, history, images}) => {
   const classes = useStyles();
   const { isLarge, isMedium, isSmall } = useReactive();
-  const format = (isLarge) ? 'large': (isMedium) ? 'medium': (isSmall) ? 'small' : 'thumbnail';
+  const format = (isSmall) ? 'small' : (isMedium) ? 'medium' : (isLarge) ? 'large' : 'xlarge';
 
 
   const config = {
@@ -196,7 +194,7 @@ const ArticlePage = ({article, messages, locale, history, images}) => {
       <Box>
           <Typography gutterBottom variant='h1' Component="h1">{article.title}</Typography>
           <Box placeholder>
-            <ReactMarkdown remarkPlugins={[gfm]}  className={classes.bodyMarkdown} children={article.header} />
+            <Typography gutterBottom variant='subtitle1' color="secondary"  Component="h2"><ReactMarkdown remarkPlugins={[gfm]} children={article.header} /> </Typography>
           </Box>
           <Typography gutterBottom variant='h6' color="primary" Component="p">{article.updated_at}</Typography>
           <Divider />
@@ -249,7 +247,10 @@ class Article extends Component {
     })
     .then(data => {
         if(data) {
-          this.setState({loading: false, article: data[0]});
+          let p = data[0];
+          p.header_image.formats['xlarge']=[];
+          p.header_image.formats['xlarge'].url = p.header_image.url;
+          this.setState({loading: false, article: p});
         } else {
           console.log('No Data received from the server');
         }
@@ -275,9 +276,8 @@ class Article extends Component {
       <>
       <Backdrop open={loading} >
         <CircularProgress
-        size={60}
+        size={90}
         thickness={8}
-        className="CircularProgress"
         />
       </Backdrop>
       {article && <ArticlePage images={images} messages={messages} history={this.props.history} article={article} locale={locale} />

@@ -31,7 +31,7 @@ const Members = ({lines, members, selected, centerMap, goToMember}) => {
           longitude={parseFloat(member.geometry.coordinates[0])}
           latitude={parseFloat(member.geometry.coordinates[1])}
           >
-          {(member.avatar) ? <Avatar style={{border:'2px solid #fff'}} onClick={() => goToMember(member.name)} src={apiURL + member.avatar.formats.thumbnail.url} /> : ''}
+          {(member.avatar) ? <Avatar style={{border:'1px solid #fff'}} onClick={() => goToMember(member.name)} src={apiURL + member.avatar.formats.thumbnail.url} /> : ''}
         </Marker>
 
       ): ''});
@@ -53,7 +53,7 @@ export default class CommunityMap extends Component {
       longitude: center.geometry.coordinates[0],
       zoom: 1.8,
       bearing:  0, // bearing in degrees
-      pitch: 0  // pitch in degrees
+      pitch: 36  // pitch in degrees
     };
 
     this.state = { mapStyle: (mode && mode === "Light") ? 'mapbox://styles/cseverin/ckp6acbwt08hj17o3shq8bmgw' : 'mapbox://styles/cseverin/ckp6acbwt08hj17o3shq8bmgw', lines: lines, members: members, selected: selected, viewport: viewport }
@@ -120,6 +120,11 @@ export default class CommunityMap extends Component {
         mapStyle={mapStyle}
         logoEnabled={false}
         localizeLabels={true}
+        captureScroll={true}
+        captureZoom={true}
+        showZoom={true}
+        showCompass={true}
+        captureDrag={true}
         onViewportChange={this.onViewportChange}
         mapboxApiAccessToken={MapboxAccessToken}
       >

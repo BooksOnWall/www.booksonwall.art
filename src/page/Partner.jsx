@@ -106,8 +106,8 @@ const useStyles = makeStyles((theme) => ({
 const Partner = (props) => {
   const classes = useStyles();
   const [partner, setPartner] = useState();
-  const {isMedium, isSmall } = useReactive();
-  const formatHeader = (isSmall) ? 'small' : (isMedium) ? 'medium':  'large';
+  const {isMedium, isSmall, isLarge } = useReactive();
+  const formatHeader = (isSmall) ? 'small' : (isMedium) ? 'medium': (isLarge) ? 'large': 'xlarge';
   const [loading, setLoading] = useState(false);
   const {messages, locale} = props.intl;
 
@@ -127,7 +127,10 @@ const Partner = (props) => {
         })
         .then(data => {
             if(data) {
-              setPartner(data[0]);
+              let p = data[0];
+              p.image_header.formats['xlarge']=[];
+              p.image_header.formats['xlarge'].url = p.image_header.url;
+              setPartner(p);
               setLoading(false);
             } else {
               console.log('No Data received from the server');
@@ -153,7 +156,10 @@ const Partner = (props) => {
        <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.partner} />
     </Helmet>
     <Backdrop className={classes.backdrop} open={loading} >
-      <CircularProgress color="inherit" />
+        <CircularProgress
+        size={90}
+        thickness={8}
+        />
     </Backdrop>
 
     {partner &&

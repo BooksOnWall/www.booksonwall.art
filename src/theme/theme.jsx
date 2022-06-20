@@ -86,7 +86,7 @@ palette: {
     fontSize: "4.44rem",
     lineHeight: .98,
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
-    maxWidth: 800
+    maxWidth: 1080,
   },
   h2: {
     fontWeight: 700,
@@ -123,10 +123,10 @@ palette: {
     lineHeight: 1.2,
   },
   subtitle1:{
-    fontSize: "1.66rem",
-    lineHeight: 1.4,
+    fontSize: "2rem",
+    lineHeight: 1.33,
     fontFamily: '"Roboto Condensed", Helvetica, Arial, sans-serif',
-    fontWeight: 700,
+    fontWeight: 400,
 
   },
   subtitle2:{
