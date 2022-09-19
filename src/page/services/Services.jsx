@@ -69,12 +69,13 @@ const useStyles =  makeStyles((theme) => ({
     marginBottom: 80,
     display: 'flex',
     justifyContent: 'flex-end',
-    alignItems: 'end'
+    alignItems: 'flex-end'
     },
     headerImageContainer:{
       minHeight: '20vh',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
+
     },
     dividerShape: {
       left: 0,
@@ -265,9 +266,9 @@ const Services = (props) => {
     }
 
     <Container maxWidth="xl">
-    <Grid container spacing={3} className={classes.services} style={{paddingTop:50}}>
+    <Grid container spacing={4} className={classes.services} style={{paddingTop:50}}>
           {services && services.map((s,i) => (
-            <Grid item xs={12/1} md={12/2} xl={12/3} key={'ss'+i}>
+            <Grid item xs={12} md={4} xl={4} key={'ss'+i}>
               <Card className={classes.card} elevation={0} key={'article'+i}>
                 <CardActionArea className={classes.CardActionArea} onClick={() => history.push("/"+messages.menu.service+"/"+s.name) } >
                  <CardMedia

@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   media: {
-    height: 220,
+    height: 0,
+    paddingTop: '56.25%', // 16:9
     borderRadius: 10,
-    marginBottom: 16
   },
   card: {
     backgroundColor: 'transparent'
@@ -303,7 +303,6 @@ const SupportStory = ({messages, lang, active}) => {
   const classes = useStyles();
   const [services, setServices] = useState([]);
   const apiURL = process.env.REACT_APP_API;
-  const format = 'thumbnail';
   let history = useHistory();
   const {hash} = useLocation();
   const {isLarge, isMedium, isSmall } = useReactive();
@@ -311,6 +310,8 @@ const SupportStory = ({messages, lang, active}) => {
   const gridItemB = (isLarge) ? 'gridItemBLarge' : (isMedium) ? 'gridItemBMedium' : 'gridItemBSmall';
   const servicesGrid = (isLarge) ? 'servicesGridLarge' : (isMedium) ? 'servicesGridMedium' : 'servicesGridSmall';
   const btnSmall = (isSmall) ? true : false ;
+  const formatHeader = (isSmall) ? 'small' : (isMedium) ? 'medium' : (isLarge) ? 'large': 'xlarge';
+  const format = (isSmall) ? 'small' : (isMedium) ? 'medium' : (isLarge) ? 'large': 'large';
 
   useEffect(() => {
     const getServices = async () => {
@@ -388,9 +389,9 @@ return (
           <Typography align='center' className={classes.title} gutterBottom  variant="subtitle1" >{messages.collaborate.we_are}</Typography>
         </Box>
       </ScrollIntoViewIfNeeded>
-        <Grid container spacing={10} className={clsx(classes.servicesGrid, classes[servicesGrid])}>
+        <Grid container spacing={4} className={clsx(classes.servicesGrid, classes[servicesGrid])}>
         {services && services.map((s,i) => (
-          <Grid item xs={12/1} md={12/3} xl={12/3} key={'s'+i}>
+          <Grid item xs={12} md={4} xl={4} key={'s'+i}>
             <Card className={classes.card} elevation={0} key={'article'+i}>
               <CardActionArea className={classes.CardActionArea} onClick={() => history.push("/"+messages.menu.service+"/"+s.name) } >
                <CardMedia

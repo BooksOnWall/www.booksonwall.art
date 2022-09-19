@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   media: {
-    minHeight: 380,
+    height: 0,
+    paddingTop: '56.25%', // 16:9
     borderRadius: 10,
   },
   card: {
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 80,
     display: 'flex',
     justifyContent: 'flex-end',
-    alignItems: 'end'
+    alignItems: 'flex-end'
     },
     headerImageContainer:{
       minHeight: '20vh',
@@ -261,9 +262,9 @@ const Applications = (props) => {
       </>
       }
       <Container maxWidth="xl" className={classes.apps} >
-      <Grid container spacing={3} className={classes.applications}>
+      <Grid container spacing={4} className={classes.applications}>
         {applications && applications.map((s,i) => (
-          <Grid item xs={12/1} md={12/2} xl={12/2} key={'ss'+i}>
+          <Grid item xs={12} md={4} xl={4} key={'ss'+i}>
             <Card className={classes.card} elevation={0} key={'article'+i}>
               <CardActionArea className={classes.CardActionArea} onClick={() => history.push("/"+messages.menu.project+"/"+s.name) } >
                <CardMedia

@@ -182,7 +182,7 @@ const Project = ({projects, goToProject, messages}) => {
   const { isSmall, isMedium } = useReactive();
   const format = (isSmall) ? 'small' : (isMedium) ? 'medium' : 'large';
   return projects.map((proj, i) => (
-    <Grid item xs={12/1} md={12/2} xl={12/4} key={'proj'+i}>
+    <Grid item xs={12} md={4} xl={4} key={'proj'+i}>
     <Card elevation={0} className={classes.card} key={'proj'+i}>
     <CardActionArea className={classes.CardActionArea} onClick={(e) => goToProject(proj.name)}>
 

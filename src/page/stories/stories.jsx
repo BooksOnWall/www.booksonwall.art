@@ -165,12 +165,15 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '-5vh',
   },
   backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
+    zIndex: theme.zIndex.drawer + 99,
     color: '#91201F',
+    backgroundColor:'rgba(0, 0, 0, 0)',
   },
   insertBackdrop:{
     zIndex: "inherit",
-    position: "relative"
+    position: "relative",
+    backgroundColor:'rgba(0, 0, 0, 0)',
+
   },
 }));
 const MapBackground =() => {
@@ -191,7 +194,7 @@ const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
   const card = (isSmall) ? 'small' : (isMedium) ? 'cardMedium' : 'cardLarge' ;
 
   return stories.map((story, i) => (
-    <Grid item className={classes.gridStory}>
+    <Grid item className={classes.gridStory} xs={6} md={6}>
     <Card elevation={1} className={clsx(classes.card, classes[card])} key={'story'+i}>
        <CardMedia
          onClick={() => goToStory(messages.menu.story+'/'+story.name)}
@@ -334,7 +337,7 @@ class Stories extends Component {
           <StoriesTitle messages={messages} insert={insert} />
           <MapBackground />
           <Box >
-            <Grid container spacing={8} alignItems='center'>
+            <Grid container spacing={0} alignItems='center'>
             <StoriesList messages={messages} goToStory={this.goToStory} stories={stories} apiURL={apiURL}/>
             </Grid>
           </Box>

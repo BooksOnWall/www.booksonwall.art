@@ -139,7 +139,7 @@ const ArticlesHeader = ({messages, insert, articles}) => {
      }
        <Box className={classes.homeHeaderTitle}>
          <Container maxWidth='false' className={classes.titleHead}>
-           <Typography color="textPrimary" variant="h5" component="h1">{messages.menu.articles}</Typography>
+           <Typography color="textPrimary" variant="h1" component="h1">{messages.menu.articles}</Typography>
          </Container>
        </Box>
     </Box>

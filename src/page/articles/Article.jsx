@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 80,
     display: 'flex',
     justifyContent: 'flex-end',
-    alignItems: 'end'
+    alignItems: 'flex-end'
     },
     headerImageContainer:{
       minHeight: '40vh',
@@ -274,11 +274,11 @@ class Article extends Component {
     console.log('name', name);
     return (
       <>
-      <Backdrop open={loading} >
-        <CircularProgress
-        size={90}
-        thickness={8}
-        />
+      <Backdrop styles={{zIndex: 1004, color: '#91201F'}} open={loading} >
+      <CircularProgress
+      size={90}
+      thickness={8}
+      />
       </Backdrop>
       {article && <ArticlePage images={images} messages={messages} history={this.props.history} article={article} locale={locale} />
       }

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 80,
     display: 'flex',
     justifyContent: 'flex-end',
-    alignItems: 'end'
+    alignItems: 'flex-end'
     },
     headerImageContainer:{
       minHeight: '40vh',

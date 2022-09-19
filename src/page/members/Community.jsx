@@ -282,11 +282,11 @@ class Community extends Component {
           <link rel="canonical" href={"https://www.booksonwall.art/"+messages.menu.community} />
         </Helmet>
       }
-      <Backdrop open={loading} >
-        <CircularProgress
-        size={90}
-        thickness={8}
-        />
+      <Backdrop styles={{zIndex: 1004, color: '#91201F'}} open={loading} >
+      <CircularProgress
+      size={90}
+      thickness={8}
+      />
       </Backdrop>
       <Box className="main" >
         <ScrollIntoViewIfNeeded active={(!insert)}></ScrollIntoViewIfNeeded>

@@ -1,0 +1,1305 @@
+commit 9503f48d3ac1b4d8b11b190ef8ee91b2d7e6aaf6
+Author: cs <cristobalseverin@gmail.com>
+Date:   Sat Oct 16 17:18:15 2021 -0300
+
+    txt and banner correction
+
+commit a0316f506d1ea92dd3bc76cd7aa534843e59895c
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 29 20:01:11 2021 -0300
+
+    responsive create page
+
+commit 263e4187f098e7bc640a82015500433b88ea79a6
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 29 15:58:43 2021 -0300
+
+    responsive colaborate and explore details
+
+commit 62dfc98e6eb1da3e13d994d30423025b1c536f2d
+Author: cs <cristobal@pulsar113.org>
+Date:   Mon Jun 28 20:54:07 2021 -0300
+
+    movile adjust and details of design: login, home, explore, articles, faqs, stories, header, theme
+
+commit b7d6e4989829d16e95d83aacb3f4384d398af4c0
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 24 23:55:12 2021 -0300
+
+    menu mobile adapt and responsibe
+
+commit ac3f10e16e74bc703fde262bec1778e83bcc3823
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 24 17:14:17 2021 -0300
+
+    responsive adaptation home, stories, footer ad header
+
+commit 19688de86cf81a02d95e706afab426630910aaaa
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 24 17:13:22 2021 -0300
+
+    merge
+
+commit ff0a2e48bb2c21844e3961f62b1706ec7c9b0b60
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri Jun 18 14:13:09 2021 -0300
+
+    corrected translation
+
+commit 2634fb4376f697030827f45144809a3f4fa6e352
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri Jun 18 14:08:22 2021 -0300
+
+    corrected translation
+
+commit 91964596e8380324d5d02e977d2fdb21256d6cfb
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri Jun 18 13:56:20 2021 -0300
+
+    added community link to footer and adjusted scroll to top rules for article, service , story
+
+commit fb04ac9f5c96a242f24928d0e34ed7c7b2a7f343
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri Jun 18 13:09:50 2021 -0300
+
+    removed useHistory from App
+
+commit c15c0d94f43a0c378044e2e7c5d88e55068c9786
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri Jun 18 13:04:30 2021 -0300
+
+    check locale from URL path
+
+commit 6d6b109954f213b4ea6f722c573927b264f22350
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 17 14:52:49 2021 -0300
+
+    set image ratio for applications page
+
+commit 4a67ead38959202abd99695ccd621b67aef085f4
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 17 14:12:47 2021 -0300
+
+    add switchLang to mobile menu
+
+commit f16acb7699b20205080d2c304c1052b2e8162cb1
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 17 14:04:34 2021 -0300
+
+    fixed mobile menu
+
+commit b3ed3b1888b6c147d7d8e7070df396eb69a2043d
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 17 13:31:16 2021 -0300
+
+    removed breadcrumb for skills items
+
+commit 58747e7dddab6935ad40278625aef2b9dc5cd05a
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 17 13:03:25 2021 -0300
+
+    set ratio to image in service
+
+commit bd7b8e9c8817e872de1c7ec90140ec74dd56e133
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 17 12:25:01 2021 -0300
+
+    fixed buttons links in stories
+
+commit db06636663274e2966dc7cd4b486b57ff77cd835
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 17 11:36:12 2021 -0300
+
+    added Card to services, collaborate applications
+
+commit cbc021c8653b11083d2104c5a42010d6983d7783
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 17 10:39:56 2021 -0300
+
+    fixed rehype status markdown
+
+commit bc241d84be73275bfae53088674daed71fb74322
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 17 10:31:53 2021 -0300
+
+    added rehype-raw to allow react-markdown to process html tags as iframe
+
+commit 8f57543951d99a3f503c64b293548a63cd2ce8cf
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 17:39:30 2021 -0300
+
+    working on video embed in markdown
+
+commit 32970afaf76b34f30502fb344f962d03782d759e
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 14:57:21 2021 -0300
+
+    fixed articles tag filter
+
+commit c71515ad5f2c60f6fa138ee34f67091073bc88ac
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 14:18:52 2021 -0300
+
+    added redirect routes for breadcrumbs
+
+commit 13d8213be91c1089b3b117d4b2e932eda7637779
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 13:04:06 2021 -0300
+
+    cleaning a lot of warning for unused element or component
+
+commit 662b239522bee23e39a9c0c703781bc91f237e55
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 12:33:05 2021 -0300
+
+    fixed warnings
+
+commit 7beaa143b528cc272617fee0da1e9355fb35ce91
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 12:24:39 2021 -0300
+
+    fixed zIndex for to Top arrow scroll element
+
+commit e856f086d7407025ef2c9d73312a2a7dbe5d17a9
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 12:09:10 2021 -0300
+
+    fixed history in pressReleases
+
+commit 95a81dddafb9a808c8e6bfcf78710e93e3a3145d
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 12:01:39 2021 -0300
+
+    added PressReleases in page Info with filter by tag Press
+
+commit bc88cbc7d815c21eb5b1d629389c701f47526bea
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 11:21:02 2021 -0300
+
+    fixed translations for menu , there cannot be 2 fields with the same traduction ex(articles and press)
+
+commit 937c526b3e5b793484c59ca632867671924774a8
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 11:08:16 2021 -0300
+
+    updated french categories translations
+
+commit e2a5fd1657683b08f858f24e034f30214f07e188
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 16 10:58:54 2021 -0300
+
+    added articles categories translations
+
+commit 5086d4c6d92f3c2e5caf73e239ddbe3ecd432e5d
+Merge: 1f6d6a2 ea8c3cc
+Author: cs <cristobal@pulsar113.org>
+Date:   Wed Jun 16 09:12:42 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 1f6d6a292229bfec5cd80dbc070f7f90ac98a069
+Author: cs <cristobal@pulsar113.org>
+Date:   Wed Jun 16 09:12:36 2021 -0300
+
+    storyes btns and insert
+
+commit ea8c3cc1f296a41ac1241785ee00eff2f73dbfb3
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 17:16:08 2021 -0300
+
+    fixed categories filter in articles
+
+commit 6b6cd39b6f3c9ef2e635b7a3bdc4f90d134914c1
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 17:04:24 2021 -0300
+
+    fixed category filter for articles
+
+commit 6bfcc9c28a91783efb3b162a1c3218031d614594
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 16:20:54 2021 -0300
+
+    added helmet for stories
+
+commit 9689b1f7b455937764eaac27e7e865b38fcf4e0e
+Merge: 0abee47 4a94ff7
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 15 15:49:25 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 0abee47dab833121f23886f443dffdfc4ba9122b
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 15 15:49:17 2021 -0300
+
+    stories titles
+
+commit 8c5740006eae11735de18e69c46399b54f33c1cb
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 15 15:48:29 2021 -0300
+
+    translate
+
+commit 4a94ff7e1d0d32391cd389e1b1d0fc8f425df73a
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 15:38:19 2021 -0300
+
+    added Helmet and some title and ref links in major site entries
+
+commit 2112257a3447790201c6fc2ad20e5a117b2a0e39
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 14:36:10 2021 -0300
+
+    added links to social networks and other footer links
+
+commit 31169f468490995ddda3c3e58d2c0cb90f34702b
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 14:33:58 2021 -0300
+
+    added links to social networks and other footer links
+
+commit 1e19f18678c5a8f433800d4b297fcce60018e9de
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 14:31:45 2021 -0300
+
+    added links to social networks and other footer links
+
+commit 94477d49a80b48b0eea12bc6d0d51ecb88a50f81
+Merge: e571817 769a552
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 14:28:43 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit e571817b9de707d79376757e80f9fe4876314113
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 14:28:12 2021 -0300
+
+    added links to social networks and other footer links
+
+commit 769a55241c1de7ea7d96d32b5057a704865bf1e5
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 15 12:48:36 2021 -0300
+
+    translate
+
+commit 7bebb495932c43d9f0a79025037fc36ed74e3fcd
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 12:33:20 2021 -0300
+
+    added onClick to buttons in page community
+
+commit ef4859168f9b3bc8906f274e56bb5ccb427aa7f0
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 12:23:42 2021 -0300
+
+    added skills tags translations to community page
+
+commit bb6d1419de1d0a40010aad755517e07f07b9333c
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 12:07:12 2021 -0300
+
+    updated skiils translations for fr, it, pt
+
+commit 82883a04926c4218bda60d045309332a245ef828
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 11:45:46 2021 -0300
+
+    added node-fetch as a dev dependencies in NODE_ENV=development for custom-translations.jsx
+
+commit f01f673ce58c5aab41c03871dd25ba4e2b4d6a65
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 15 11:36:46 2021 -0300
+
+    updated skills locales es
+
+commit 61c78bdb04480676362aec29bb2a72ca4c180654
+Merge: 7f51380 ec67291
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 15 10:44:08 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 7f513801a72365a9be08f3c40d841375c23104f5
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 15 10:44:03 2021 -0300
+
+    stories insert and theme style adjust
+
+commit 2c97a912f1a6b78064c4a848079bbb549fe89497
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 15 10:43:13 2021 -0300
+
+    translations
+
+commit ec672919165891b890529e83fb78b88536656499
+Merge: cd055e8 cc559f8
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 14 16:50:10 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit cd055e898466b17945a3c9d921460e79ed7b8118
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 14 16:49:47 2021 -0300
+
+    added custom translations for skills
+
+commit cc559f806d6ffcac7023bf0052ad8fbc8477d9e3
+Author: cs <cristobal@pulsar113.org>
+Date:   Mon Jun 14 12:19:44 2021 -0300
+
+    merge
+
+commit b1be9603bdf52b4542ddeb68dad1a499bd1c55c7
+Author: cs <cristobal@pulsar113.org>
+Date:   Mon Jun 14 12:15:19 2021 -0300
+
+    home and starories adjust
+
+commit f2d707abc33ad0fef3df6a0223d16735a99d11c4
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 14 11:47:26 2021 -0300
+
+    extract:messages fixed
+
+commit 6edaf16a298941fe7ed9532a0f32f73807369e2d
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri Jun 11 20:53:19 2021 -0300
+
+    style and theme
+
+commit 655290a30e66afaf67a1cceb7dc6de74cf0d1cb5
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri Jun 11 11:38:33 2021 -0300
+
+    comunity and articles design
+
+commit ecc32c780520b5885207b829bb3a0da90ccb7262
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 21:51:09 2021 -0300
+
+    theme update
+
+commit 302e2290cec3f9e9d17cc83f021321c8070adc66
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 21:47:55 2021 -0300
+
+    pacakge and yarnlock
+
+commit 6abcdb0bf6d6445b7ae187aada2569cac27fb155
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 21:47:07 2021 -0300
+
+    style community
+
+commit a4a898da4280e7b08e487e7a367925a179de6f10
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 21:46:28 2021 -0300
+
+    styling maps
+
+commit 60dca69c53318c2312e70a44669a4851c2eae67d
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 16:52:08 2021 -0300
+
+    adjust for translate problems
+
+commit a716510aedac93a90e12600e1fad40ece167e486
+Merge: de2c000 973d08c
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 15:51:15 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit de2c000dc0241757682aea13d5522b1cfcdbdf8a
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 15:51:06 2021 -0300
+
+    design page
+
+commit 8127d2c3a34f1f51aafec86310f1068c21d40834
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 15:50:18 2021 -0300
+
+    translates
+
+commit 973d08c442b57aa1c24a54b34c5bc37bbadc2e51
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 10 13:27:02 2021 -0300
+
+    added members skills to page Info
+
+commit db542ae4bf47a4d2489587fe577cd3380fd80dba
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 10 13:24:56 2021 -0300
+
+    added members skills to page Info
+
+commit 3eeda6275edf157b81d97f937fe9bc2cfe7e142a
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 10 12:16:25 2021 -0300
+
+    added react-intl-auto plugin
+
+commit 520f2e42a9155ca422965b8d17f7e2a3ab6b5661
+Merge: ec10bd5 46e0ddf
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 10 12:10:44 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit ec10bd52ab12d15cbbb9710b5c9642b93f03e709
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 10 12:10:21 2021 -0300
+
+    debug extract:messages
+
+commit 46e0ddfc9ecf4e637786116a4b92c27ea24a0d82
+Merge: 493141a 5f39d7a
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 11:29:11 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 493141a041f2b9dae6e9aae28438ac103990b71e
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 11:28:59 2021 -0300
+
+    translate
+
+commit f40efa4b6c61dc7858503bc17fa67522b17c2335
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 10 11:28:26 2021 -0300
+
+    responsive adjutment on homepage, stories
+
+commit 5f39d7a0f3e962100858280ca35b215098e0d2db
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 10 10:36:07 2021 -0300
+
+    added design to pages
+
+commit 54c70843138dc5d2b8c0e479d3ad154f3cf2cbd1
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 9 17:26:34 2021 -0300
+
+    fixed image ratio in applications
+
+commit 2cdab9892e67bad71eeec4d261c2554651707f0f
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 9 17:24:11 2021 -0300
+
+    fixed image ratio in applications
+
+commit 1ab838f25eab68c70e3f73463f75b27dae9d82f9
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 9 17:21:14 2021 -0300
+
+    Added image_header to services and applications
+
+commit 49b6c1bb8f09e414168ec5245d3b8b5e2cc616e9
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 9 16:47:57 2021 -0300
+
+    Fixed link in project list
+
+commit 89838f7b66c78b0ef4b20158c9465e96aafaa98a
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 9 15:18:36 2021 -0300
+
+    added field header to project
+
+commit 0797749835f39c3e205c5739ceb3eabb0999401e
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 9 14:33:07 2021 -0300
+
+    fixed project link in applications page
+
+commit ad9341a21ce8f910dbfb9d599ffe31ed73c7594e
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 9 12:28:39 2021 -0300
+
+    Menu item traduction cannot contain ¿ o ? as they are used in the url
+
+commit 1a5ba824a415ca50569202e034ca8559c1a75e36
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 9 12:14:11 2021 -0300
+
+    fixed service filter for projects  in page Applications
+
+commit fb01835ddab0ce49b75e921f3203f3c94b4ea13d
+Merge: e72d43c 7af8fff
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 8 16:24:41 2021 -0300
+
+    merge and footer responsive
+
+commit e72d43ca12109258163bf2d4c6b98098b7045c38
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 8 16:07:13 2021 -0300
+
+    footer responsive
+
+commit c08922dd5bdfed82d5e14bae51e65c7b9f5d2e95
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 8 16:06:15 2021 -0300
+
+    translates
+
+commit 7af8fff81d4701720fb1fae75216db5d88f8e32a
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 8 11:59:45 2021 -0300
+
+    added map to articles and projects
+
+commit e5667b6181a53f3f87589a1cc22d1b45ea998709
+Author: cs <cristobal@pulsar113.org>
+Date:   Mon Jun 7 23:55:32 2021 -0300
+
+    bg images whit clsx create, collaborate, explore, home, info
+
+commit 17ca9c6f24359107e184b04f959c0f74e0a26145
+Author: cs <cristobal@pulsar113.org>
+Date:   Mon Jun 7 22:42:06 2021 -0300
+
+    clsx homePage header
+
+commit cae6d9f8729c2612313fede3679b96fe070124ae
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 7 16:05:41 2021 -0300
+
+    Added applications list in page applications
+
+commit afe2f28492d9a698998c445bd9cbf2a63afb988e
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 7 15:34:17 2021 -0300
+
+    added hook to fix mapgl transpilation
+
+commit 82c92132a83f4cf7dd5c11e071fee7c38c7871cc
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 7 15:27:26 2021 -0300
+
+    split map gl workerClass
+
+commit 2d7524117a41294a0b904cb71dc1ac17ecb20a17
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 7 15:17:31 2021 -0300
+
+    transpilation ....
+
+commit 1d190b08cf3e2195a6e1526a75e2a73fa1633b52
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 7 15:11:37 2021 -0300
+
+    transpilation problem with mapboxgl
+
+commit c9473997765d067b69df4758eef63c908c5c6b20
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 7 14:49:52 2021 -0300
+
+    added worker-loader to mapbox-gl
+
+commit f1b91c63fdba52b738209e1f6ad367c50a36023e
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 7 14:19:44 2021 -0300
+
+    added @babel/preset-env
+
+commit 282c688c3fcc5666ab18215d10f893e651368ca5
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 7 14:14:23 2021 -0300
+
+    added browserlist instructions to avoid transpilation problem in babel
+
+commit 92dd988311dbb05b4fbc200c2ad11a0021a919d8
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 7 14:12:49 2021 -0300
+
+    added browserlist
+
+commit 7e9127df37d40f19ca728fc2bcfc199f43b9064b
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon Jun 7 13:16:40 2021 -0300
+
+    added hook useReactive to set images and design with device dimensions good match
+
+commit eff69e6b00a9e865e20bad32aa503e9f470c06e4
+Merge: c7d4f60 5d38269
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Sat Jun 5 14:58:30 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit c7d4f60e753fdb721086ae0686a788e6ace1d095
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Sat Jun 5 14:58:06 2021 -0300
+
+    added service filter for projects
+
+commit 5d38269bd03359495f4223fe672d2b69df51d89c
+Merge: 19c2a34 64abc57
+Author: cs <cristobal@pulsar113.org>
+Date:   Sat Jun 5 13:22:36 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 19c2a340614d6785077b92f6b0a3e7158bf60da1
+Author: cs <cristobal@pulsar113.org>
+Date:   Sat Jun 5 13:22:31 2021 -0300
+
+    translate
+
+commit b896b06a44aa17bc3ca539469181130d0ddfd0f8
+Author: cs <cristobal@pulsar113.org>
+Date:   Sat Jun 5 13:22:18 2021 -0300
+
+    trnalate
+
+commit 6bbe795912154316a1dc9fb79e764b6c53daef21
+Author: cs <cristobal@pulsar113.org>
+Date:   Sat Jun 5 13:16:45 2021 -0300
+
+    articles proyects and proyect, support, partner, stile
+
+commit 64abc574071f24e550e68b3095f67986ccb13933
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Sat Jun 5 12:55:28 2021 -0300
+
+    added projects in service
+
+commit 038ad141d03975e7adc3686688cc7997eaa3de68
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri Jun 4 15:04:56 2021 -0300
+
+    carousel
+
+commit d18f462bcab78250f15b95e838a96ec46f5df068
+Merge: 4f094db 2b6b840
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri Jun 4 12:12:52 2021 -0300
+
+    articles merge
+
+commit 4f094db6c167a7e894930794bfcad714677c7d52
+Merge: 40e2397 79f9595
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri Jun 4 12:10:15 2021 -0300
+
+    merch articules and style size of map on the community
+
+commit 2b6b8405806394f2727c332b3de4cb54a4ba2690
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri Jun 4 10:30:27 2021 -0300
+
+    added insert and limit as parameters for stories in explore
+
+commit 1e94cefd1047213e4296945bda19247d2c066313
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri Jun 4 10:24:07 2021 -0300
+
+    added backdrop and loading in article list
+
+commit 40e23975d604d67692f33e6476f00ae3fe442198
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri Jun 4 10:22:14 2021 -0300
+
+    translate correction
+
+commit 6fe34ea5f32db8e4ba550f0ab4091139cf909ef8
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri Jun 4 10:21:55 2021 -0300
+
+    desing of the singles page and some detalis
+
+commit 02a5500f3db4f1322d0dff115a6265cf60c7cb71
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri Jun 4 10:20:46 2021 -0300
+
+    adding react-elastic-carrousel
+
+commit 79f95958c7d9571b9903a2257efefa528cf22054
+Merge: 7a59d0e 0042279
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri Jun 4 10:17:17 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 7a59d0e0f86c6d369eb227c4320e8ffe9c2d2b56
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri Jun 4 10:16:56 2021 -0300
+
+    sort articles list out of class
+
+commit 0042279a8bac96272fbdebd01685372a56c48b83
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 3 19:04:18 2021 -0300
+
+    story and articles styly
+
+commit affd84c432c488aecd10905433610e5ddbe2eadd
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 3 15:58:29 2021 -0300
+
+    terms merch
+
+commit 9ff426413de9521fc3cdd0e423c0d8e90a18505f
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 3 15:49:55 2021 -0300
+
+    added site map
+
+commit 5716f2f095249b9171cd25e59724c7ea1dfe4467
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 3 14:43:03 2021 -0300
+
+    fixed bad merge
+
+commit 03d458a78bec23b855257396e69c5c444fdf686e
+Merge: d8e7a5e 29c9858
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 3 14:38:16 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit d8e7a5efa3881df806497fa23ac99d0729da337f
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 3 14:37:51 2021 -0300
+
+    working on sitemap
+
+commit 29c985894cb71048f9d06ced4524b5a6516ff72f
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu Jun 3 14:11:24 2021 -0300
+
+    font adjust and termn font template for test
+
+commit fb37edf4ddafac3b3e1dd48906cebea7e84738e8
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 3 13:26:11 2021 -0300
+
+    cleaning warning for pages
+
+commit 1825385c418b2b28f2a7661f142a795094c27ca8
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 3 12:59:58 2021 -0300
+
+    added dropback pre loading in pages
+
+commit 428b02c128bd6f5299215f540f823988176aab33
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 3 11:30:12 2021 -0300
+
+    add app for download
+
+commit 5b8e80c2ca49a35a448c8a5378a5aef6669ef8c6
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 3 09:56:45 2021 -0300
+
+    added cardMedia to participant
+
+commit 734405cc109da8b352aad8b9046fa01cace1b05b
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 3 09:47:54 2021 -0300
+
+    clean console.log
+
+commit 5c15fd19f33e0992b5d84838b234df1e75bddb26
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu Jun 3 09:45:46 2021 -0300
+
+    fixed credits participants
+
+commit 63a77f78fc8b43ebde09738877634c3cebd4c479
+Author: cs <cristobal@pulsar113.org>
+Date:   Wed Jun 2 16:33:57 2021 -0300
+
+    story not working properly
+
+commit 84faf621ab83c05d7a9c5cecb89f8a9ddb5a5d8f
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 15:59:44 2021 -0300
+
+    added scrollToTop to terms
+
+commit d4fcb60421ec87e9d24a98a3f081c40d6f0807b0
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 15:50:09 2021 -0300
+
+    added see more button to page
+
+commit e8a23bbc0b1e10aa8c5902e8d4e378bf5acb628d
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 15:19:29 2021 -0300
+
+    added scrollToTop to pages
+
+commit 30a4baa6b7ac0f041efa75358644e119d0acc6b6
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 14:52:12 2021 -0300
+
+    corrected wrong link in register
+
+commit 00cd8a1e590af4c8518eef0b1070b34be7dce84b
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 14:43:55 2021 -0300
+
+    added scrollToTop to page create and fixed bad links in create
+
+commit e9cc6fd19cefc49f53ac43ac60d91dda8c471c44
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 14:30:48 2021 -0300
+
+    fixed links for support and partner
+
+commit 017d10c3fb5a381bcddc83346cdc872f5d3565ed
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 14:22:23 2021 -0300
+
+    added new menus
+
+commit 71b094e7c00fcd7c9bd8b00ffc8dfe7841f960be
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 13:07:22 2021 -0300
+
+    fixed articles reuest
+
+commit 7eb920421e97d9afc4cd0545804d3aa349cf8184
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 13:02:13 2021 -0300
+
+    added ScrollToTop to pages and added insert and limit to list widgets
+
+commit 7d17037275235503df34733fcf1f3f67629203e0
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 12:11:35 2021 -0300
+
+    added ScrollToTop for all pages
+
+commit fc8f430d3cc76f1e860d79622410adf5378f1c04
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 11:39:23 2021 -0300
+
+    scrollToTop button than appear on scroll
+
+commit 8713367b56480cd391caea46c6b360aa6a27c356
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 10:59:49 2021 -0300
+
+    added ScrollToTop arrow icon
+
+commit 0a7fa8c0deccfe1ca0da03ffb37dea98e6ff7886
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed Jun 2 10:40:13 2021 -0300
+
+    added page support
+
+commit 0cf17e02f5414a42a658cce23734715f736c641a
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 1 19:18:46 2021 -0300
+
+    Added ImageGallery and page service
+
+commit a2e76f76865fc8a478b64b105883d2f2e943d66c
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 1 17:54:30 2021 -0300
+
+    added links in footer and page applications partnet and support
+
+commit bd6d45a0872228bf308c3a5902519b1d31f1a513
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 1 17:13:17 2021 -0300
+
+    added page applications
+
+commit 92361e2932b5ffb8f0c498684b754e1084cff16a
+Merge: 51406e7 6804ec9
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 1 16:10:21 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 51406e7451040d6f2ea76b93e0738560f5db68f6
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 1 16:09:56 2021 -0300
+
+    added Services page
+
+commit 6804ec97f1d47a9c03e9716924f425c7ca10f797
+Merge: 57f741f 99126ef
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 1 14:46:47 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 57f741f7fb0d20f581f4a79f680b934408c75501
+Author: cs <cristobal@pulsar113.org>
+Date:   Tue Jun 1 14:46:42 2021 -0300
+
+    styling homepage, terms, story and stories
+
+commit 99126ef6a505f76550f4c42acaffd4f75c22cbe2
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 1 14:02:41 2021 -0300
+
+    added scroll to connect and link to buttons in create
+
+commit f3777a77cfb80d6f8e3127c282510abaaafe11bd
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue Jun 1 13:10:09 2021 -0300
+
+    added captcha
+
+commit 7d6d411c1bec84dd743cdddf4c4bb7867f2cbf7f
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon May 31 16:54:05 2021 -0300
+
+    added scroll when hash in url
+
+commit a77ba8c7b63c37c5bf9be40401a02a68c2c7592e
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon May 31 16:04:44 2021 -0300
+
+    corrected image in terms
+
+commit 9cf992523582691d8ecf805773d3fb4d41de7e7c
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon May 31 15:47:53 2021 -0300
+
+    doing some cleaning
+
+commit 99089d587a004c99057045604eb55c235ce5a377
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon May 31 14:37:55 2021 -0300
+
+    terms
+
+commit 94e1277ec7d63803c2f44273ff123be07f4775fd
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon May 31 14:33:05 2021 -0300
+
+    added Terms to footer
+
+commit 2a16096ea2e7b23b0c04c6a59f7ec92ab18685a9
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon May 31 12:07:20 2021 -0300
+
+    added translations on home page buttons
+
+commit 1bec6e6494eac11bd7498bba781945069527fbaa
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri May 28 17:29:07 2021 -0300
+
+    debug
+
+commit a84dd951fbd32d1e7753db339a7a92045131748d
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri May 28 15:59:42 2021 -0300
+
+    fixed project page
+
+commit cba96686f0d88134b9d0255b727b70b337f72537
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri May 28 14:54:04 2021 -0300
+
+    fixed url when lang is wrong
+
+commit cc2a5ee71dbb918e8949ac6dc22f82b7aab51333
+Merge: 83d8b95 2f6bde9
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri May 28 12:57:37 2021 -0300
+
+    merger locale en
+
+commit 83d8b958b954fbf6d4831317ccfa450d06892cff
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri May 28 12:55:59 2021 -0300
+
+    updated locale and fixed page article, story
+
+commit 2f6bde95730429f30d72ef8852b0d026424acd96
+Merge: 0128a86 d24a42a
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri May 28 12:54:52 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 0128a864fdc49a01bf3d795608ffd5984e39ae1a
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri May 28 12:54:41 2021 -0300
+
+    translate
+
+commit d24a42a117b99d4e87ac7ad11d150b5133dcc51d
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri May 28 11:06:42 2021 -0300
+
+    fixed warnings
+
+commit 31f35fd0dd48dad9da44480effac700c0f520579
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu May 27 15:55:04 2021 -0300
+
+    fixed members list request
+
+commit 6e3f583c505c7b4949e3f9212370d6a1545c9d1c
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu May 27 15:50:06 2021 -0300
+
+    fixed Comumunity page and map for translate
+
+commit 2db15f68394d925c2619b06df63885f33e0b9dce
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu May 27 15:13:10 2021 -0300
+
+    removed all markdown files , we use now uniques from backoff
+
+commit 34d9cb326ed597f3a0da331c725c140258a460d6
+Merge: 9beb352 81aff7c
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu May 27 14:10:16 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 9beb352d522c48eee5fba68a3d7532b972388db1
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu May 27 14:09:55 2021 -0300
+
+    adde french translation
+
+commit 81aff7c8731bb10890bbafab9c624d2e13e249ef
+Merge: 06826a5 ab4f43f
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu May 27 13:09:53 2021 -0300
+
+    faqs
+
+commit 06826a52090e4660ce901ea5a5c0c341d1d94c4e
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu May 27 13:08:03 2021 -0300
+
+    faqs style and story adjust
+
+commit ab4f43faeb9b6971e3345f7a71072c172d44e1bc
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu May 27 12:22:24 2021 -0300
+
+    added register form mail sent
+
+commit e209c6cea914973b238507dfd78ff9e7b4e5df41
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu May 27 11:47:46 2021 -0300
+
+    Fixed lang in services and faqs
+
+commit 738c26a898b458768848136fed743094a70f0ae9
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu May 27 09:33:31 2021 -0300
+
+    home gallery
+
+commit 11c2739f7d67eabd99a8fdd181670d6d19387deb
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu May 27 00:26:08 2021 -0300
+
+    package yanr
+
+commit a1838dc936aa7a80cd563a01759d2ef34b0ea942
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu May 27 00:25:14 2021 -0300
+
+    jsx and some detalis
+
+commit 6d129fbb86461d492aa69966da3f76a9c00dc72a
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu May 27 00:23:33 2021 -0300
+
+    contactoFrom
+
+commit 6c069a12d07e18718c0a2ec219bba031a5cc1f52
+Merge: 5d15fc3 16a2642
+Author: cs <cristobal@pulsar113.org>
+Date:   Wed May 26 11:06:34 2021 -0300
+
+    Merge branch 'master' of https://git.pulsar113.org/BooksOnWall/www.booksonwall.art
+
+commit 5d15fc3763bdf5412ff107cd89c7036eb5a63136
+Author: cs <cristobal@pulsar113.org>
+Date:   Wed May 26 09:01:03 2021 -0300
+
+    translates
+
+commit 16a2642bdac041883ad9873808fe9e85057ddaa7
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue May 25 16:36:22 2021 -0300
+
+    fixed faqs 10 max and sort by last first
+
+commit e0acdcc84cc6b67570eb0b84a2ac68de72cf379c
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue May 25 16:11:03 2021 -0300
+
+    fixed contact form
+
+commit 6888fc51219c24d0838d1a72293539a42cbeec7a
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue May 25 14:47:05 2021 -0300
+
+    added react hook form to contact page
+
+commit ed42d3ab781abd1b53a3076bfeb627f6bcc52168
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue May 25 13:55:39 2021 -0300
+
+    added language redirect when switch lang
+
+commit d9ed9cf36e8d5f06b2159e0878b070d504ed0804
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri May 21 16:12:48 2021 -0300
+
+    changed class to function
+
+commit 90873e5457bd528119454193df6a00d60f7f26bf
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Fri May 21 16:05:09 2021 -0300
+
+    All menu need to be translmated git status !
+
+commit 29df30d2d64f50c14923bffc2b87203a75c43b75
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri May 21 15:56:15 2021 -0300
+
+    new image
+
+commit 9e7739385cf759f89d413823889b21102ed7f3fb
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri May 21 15:55:50 2021 -0300
+
+     footer and header layout adjust
+
+commit 94dc8a7ae04ae9a55c99643851b03f8d75c65c27
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri May 21 15:55:07 2021 -0300
+
+    adjust desing in apges
+
+commit bd64758f02998c705a96007806cd8d5a9681ce28
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri May 21 15:54:46 2021 -0300
+
+    content
+
+commit 9ada8e59208ed4592a4e06834d0d8a747600daa6
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri May 21 15:54:28 2021 -0300
+
+    style forms
+
+commit ff4146bda98ea6a105bd543d7db6cb0ddc7b5a50
+Author: cs <cristobal@pulsar113.org>
+Date:   Fri May 21 15:53:46 2021 -0300
+
+    translate'
+
+commit db852bcdbaa5e13d726fcc6955edf233a3684fc8
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed May 19 10:27:25 2021 -0300
+
+    changed collabora for hooks
+
+commit 645db3a739f82ce6c9b6454b4e58f5932bba4a98
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed May 19 10:26:47 2021 -0300
+
+    changed collabora for hooks
+
+commit 179a2d89dc0489301803e384a8b960c833b0569e
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Wed May 19 10:16:43 2021 -0300
+
+    added services to collaborate
+
+commit 5eef493d543ad0fae60f12e99875bdf8f33b6718
+Author: cs <cristobal@pulsar113.org>
+Date:   Wed May 19 09:47:21 2021 -0300
+
+    styling and layout
+
+commit 09bfc7fcdc347cf020cd93f50b30e765c9cd52b8
+Author: cs <cristobal@pulsar113.org>
+Date:   Wed May 19 09:46:50 2021 -0300
+
+    new content
+
+commit 90d22effc759207ab6378971815c93ebd998e189
+Author: cs <cristobal@pulsar113.org>
+Date:   Wed May 19 09:46:08 2021 -0300
+
+    languaje and loging button fix
+
+commit 9514a99c253e24da36310d3ea2f330a944e71fb4
+Author: cs <cristobal@pulsar113.org>
+Date:   Wed May 19 09:45:33 2021 -0300
+
+    page organization and design
+
+commit 67121d46933f4231ee87a62a0735b89f9438d6a4
+Author: cs <cristobal@pulsar113.org>
+Date:   Wed May 19 09:44:06 2021 -0300
+
+    translates
+
+commit e24eb407fab99ff010b0201af81634d6c08d7509
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu May 13 00:35:18 2021 -0300
+
+    translate
+
+commit 78575f9843a0d31617b39773a9affee2ba994fe4
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu May 13 00:34:59 2021 -0300
+
+    adjust layout and styling details, fixin respnsive nav toolbar
+
+commit c641f970809d0bd52bd3117fd56cb832a550c693
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Thu May 6 15:07:17 2021 -0300
+
+    Extract:message function only with .jsx files
+
+commit 974fc6cfef7c6e80c8108cba418338eefb0b513b
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu May 6 14:56:44 2021 -0300
+
+    translat
+
+commit be9a6ea077e861a28642f00a612800e9085274c6
+Author: cs <cristobal@pulsar113.org>
+Date:   Thu May 6 14:56:07 2021 -0300
+
+    style adjust
+
+commit a46d6a1c2394ccd555a0da95ab845a1ecd9390d9
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue May 4 15:53:45 2021 -0300
+
+    added extract-message
+
+commit efee87caa015b0f27e27a48ee3fe6b11ce29edef
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue May 4 14:20:49 2021 -0300
+
+    Final debug
+
+commit 981cde01cf199f1a1563abaf4de0b65faede61f1
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Tue May 4 11:36:57 2021 -0300
+
+    Added logo and favicon
+
+commit b15db97d72fa6c1c4ea586592e200f18a530a3d0
+Author: Tom Bouillut <tom@booksonwall.art>
+Date:   Mon May 3 13:55:26 2021 -0300
+
+    first commit
