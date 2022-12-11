@@ -159,12 +159,14 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
     <Grid item xs={12/1} md={12/2} xl={12/4} key={'gg'+i}>
     <Card className={classes.card} elevation={0} key={'article'+i}>
     <CardActionArea className={classes.CardActionArea} onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >
-       <CardMedia
-         onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
-         className={classes.media}
-         image={apiURL + article.header_image.formats[format].url}
-         title={article.title}
-       />
+	    {article.header_image && 
+		    <CardMedia
+         		onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
+         		className={classes.media}
+         		image={apiURL + article.header_image.formats[format].url}
+         		title={article.title}
+       		/>
+	    }	    
        <CardContent className={classes.CardContent} >
          <Typography gutterBottom variant="h4" component="h3">
            {article.title}
@@ -187,12 +189,14 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
       <Grid item xs={12/1} md={12/2} xl={12/4} key={'gg'+i}>
       <Card className={classes.card} elevation={0} key={'article'+i}>
         <CardActionArea className={classes.CardActionArea} onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >
-           <CardMedia
-             onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
-             className={classes.media}
-             image={apiURL + article.header_image.formats[format].url}
-             title={article.title}
-           />
+	    {article.header_image && 
+	      <CardMedia
+               onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
+               className={classes.media}
+               image={apiURL + article.header_image.formats[format].url}
+               title={article.title}
+            />
+	   } 
            <CardContent className={classes.CardContent} >
              <Typography gutterBottom variant="h4" component="h3">
                {article.title}
