@@ -469,7 +469,7 @@ const MainMenu = ({history, allMessages, switchLang, goTo,connectOptions, conten
         </IconButton>
         <Box className={classes.menuWrappMobile}>
         <MenuBranch
-          primary=<MenuIcon fontSize="medium" className={classes.menuIconMobile} />
+          primary=<MenuIcon fontSize="default" className={classes.menuIconMobile} />
           className={classes.menuMobile}
           secondary={[...menuOptions,...contentOptions]}
           activeIndex={activeIndex}
