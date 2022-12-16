@@ -194,7 +194,7 @@ const StoriesList = ({stories, apiURL, goToStory, messages, theme }) => {
   const card = (isSmall) ? 'small' : (isMedium) ? 'cardMedium' : 'cardLarge' ;
 
   return stories.map((story, i) => (
-    <Grid item className={classes.gridStory} xs={6} md={6}>
+    <Grid key={"s"+i} item className={classes.gridStory} xs={6} md={6}>
     <Card elevation={1} className={clsx(classes.card, classes[card])} key={'story'+i}>
        <CardMedia
          onClick={() => goToStory(messages.menu.story+'/'+story.name)}

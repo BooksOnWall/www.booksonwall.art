@@ -354,9 +354,9 @@ const HomeHeaderBlock = ({messages, theme}) => {
     <Box className='bg2'><Bg2 /></Box>
     <Box className='bg3'><Bg3 /></Box>
 
-    <Container maxWidth="false" className={classes.wrapperBlob}>
+    <Container maxWidth="xl" className={classes.wrapperBlob}>
     <Box>
-      <Grid container spacing={[format]}  >
+      <Grid container spacing={format}  >
 
         <Grid item  xs={12} md={6} className={clsx(classes.gridBlob, classes[grid])}>
           <Blob className={classes.blobA} >
@@ -392,7 +392,7 @@ const WhoAreWe = ({messages}) => {
   const blobDistribution = (isSmall) ? true : false ;
   const poligonsDistribution = (isSmall) ? true : false ;
   const btnSmall = (isSmall) ? true : false ;
-  const format = (isLarge) ? '8': (isMedium) ? '4': (isSmall) ? '2' : '2';
+  const format = (isLarge) ? 8 : (isMedium) ? 4 : (isSmall) ?  2 : 2;
 return (
   <>
   <div className={classes.root}>
@@ -404,7 +404,7 @@ return (
     <Container maxWidth="xl" className={classes.wrapperBlob}>
     <Box>
 
-    <Grid container spacing={[format]}>
+    <Grid container spacing={format}>
 
         {blobDistribution &&
           <Grid item  xs={12} md={6} className={classes.gridBlob}>

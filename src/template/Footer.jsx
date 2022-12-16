@@ -168,16 +168,16 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
   let history = useHistory();
 
   const {isLarge, isMedium, isSmall } = useReactive();
-  const menu = (isSmall) ? 'menuSmall' : 'null' ;
+  const menu = (isSmall) ? 'menuSmall' : null ;
   const bottomReactive = (isLarge) ? 'Large' : (isMedium) ? 'Medium' : 'Small';
 
   return (
     <>
     <Box className={classes.footerContainer}>
-    <Container maxWidth="false" >
+    <Container maxWidth="xl" >
     <Grid container className={clsx(classes.root, classes.[menu])}>
       <Grid container className={classes.gridMenuContainer}>
-          <Grid className={classes.gridMenu} item xs={6/12}>
+          <Grid className={classes.gridMenu} item xs={6}>
           <Paper elevation={0} className={classes.paper}>
             <Typography gutterBottom variant="h6">{messages.menu.explore}</Typography>
             <MenuList className={classes.menuList}  variant="selectedMenu">
@@ -218,7 +218,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
 
           <Divider orientation="vertical" flexItem className={classes.divider} />
 
-          <Grid className={classes.gridMenu} item xs={6/12}>
+          <Grid className={classes.gridMenu} item xs={6}>
           <Paper elevation={0} className={classes.paper}>
           <Typography gutterBottom  variant="h6">  {messages.menu.collaborate} </Typography>
             <MenuList className={classes.menuList}  variant="selectedMenu">
@@ -264,7 +264,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
         <Divider orientation="vertical" flexItem className={classes.divider} />
 
       <Grid container  className={classes.gridMenuContainer}>
-        <Grid className={classes.gridMenu} item xs={6/12}>
+        <Grid className={classes.gridMenu} item xs={6}>
           <Paper elevation={0} className={classes.paper}>
           <Typography gutterBottom  variant="h6">  {messages.menu.content} </Typography>
             <MenuList className={classes.menuList}  variant="selectedMenu">
@@ -306,7 +306,7 @@ const SpacingGrid = ({activeItem, activeIndex, handleMenuItemClick, messages}) =
 
         <Divider orientation="vertical" flexItem className={classes.divider} />
 
-        <Grid className={classes.gridMenu} item xs={6/12}>
+        <Grid className={classes.gridMenu} item xs={6}>
           <Paper elevation={0} className={classes.paper}>
             <Typography gutterBottom  variant="h6">{messages.menu.connect}</Typography>
             <MenuList className={classes.menuList}  variant="selectedMenu">
