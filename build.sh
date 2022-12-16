@@ -14,6 +14,7 @@ yarn
 echo "##   build start ..."
 yarn build
 echo "##   build complete ..."
+cp _htaccess build/.htaccess
 echo "##   set permissions ..."
 chown -R booksonwall:booksonwall public
 rm -rf node_modules
