@@ -150,7 +150,7 @@ const ArticlesHeader = ({messages, insert, articles}) => {
 const News = ({messages, insert, articles, goToArticle, selected , hasCategory }) => {
   const classes = useStyles();
   const { isMedium, isSmall } = useReactive();
-  const format = (isSmall) ? 'small' : (isMedium) ? 'medium' : 'medium' ;
+  let format = (isSmall) ? 'small' : (isMedium) ? 'medium' : 'medium' ;
   return  (
     <>
     {insert &&
@@ -185,11 +185,13 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
     <>
     <Grid container spacing={4} style={{padding:40}}>
 
-    {articles.map((article, i) => (
+    {articles.map((article, i) => {
+      format = (article.header_image.formats[format]) ? format : 'small';
+      return (
       <Grid item xs={12/1} md={12/2} xl={12/4} key={'gg'+i}>
       <Card className={classes.card} elevation={0} key={'article'+i}>
         <CardActionArea className={classes.CardActionArea} onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)} >
-          {article.header_image && 
+          {article && article.header_image && article.header_image.url &&
             <CardMedia
                   onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
                   className={classes.media}
@@ -212,7 +214,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
       </Card>
     </Grid>
 
-  ))}
+  )})}
   </Grid>
   </>
   }
