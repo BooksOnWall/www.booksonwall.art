@@ -365,7 +365,7 @@ const useStyles = makeStyles((theme) => ({
 const MenuBranch = ({primary, secondary, activeIndex, activeItem , handleMenuItemClick}) => {
    const classes = useStyles();
    const [open, setOpen] = useState(false);
-   const anchorRef = useRef(null);
+   const anchorRef = useRef();
 
    const handleToggle = () => {
      setOpen((prevOpen) => !prevOpen);
