@@ -62,6 +62,32 @@ body{
   padding: 9vh 0 0;
   flex-direction: column;
 }
+ {
+
+}
+#HomeHeaderBlock:hover, 
+.MuiCardMedia-root:hover, 
+.makeStyles-imageGaller-123:hover, 
+.MuiBox-root-131:hover, 
+.MuiBox-root-316:hover ,
+.MuiBox-root-432:hover,
+.MuiBox-root-304:hover,
+.MuiBox-root-287:hover,
+.MuiBox-root-265:hover,
+.MuiBox-root-1146:hover,
+.MuiBox-root-159:hover,
+.makeStyles-media-169:hover,
+.makeStyles-content-808:hover {
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  -webkit-transform: scale(1.25) rotate(0deg);
+          transform: scale(1.25) rotate(0deg);
+          overflow: hidden;
+}
 #home .HomeHeaderBlock .MuiBox-root{ width: 40vw; margin-bottom: 10vh;}
 #home .WhoAreWe{ padding: 10vh 0 20vh }
 .bodyStory{ padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center;}
