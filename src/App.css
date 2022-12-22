@@ -65,7 +65,59 @@ body{
  {
 
 }
+#HomeHeaderBlock, 
+.MuiCardMedia-root, 
+.image-gallery-image,
+.makeStyles-imageGaller-123,
+.MuiBox-root-131,
+.MuiBox-root-316,
+.MuiBox-root-432,
+.MuiBox-root-304,
+.MuiBox-root-517,
+.MuiBox-root-287,
+.MuiBox-root-265,
+.MuiBox-root-1146,
+.MuiBox-root-159,
+.makeStyles-media-169,
+.makeStyles-content-808 {
+
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  -webkit-transform: scale(1) rotate(0deg);
+          transform: scale(1) rotate(0deg);
+          overflow: hidden;
+}
+#HomeHeaderBlock, 
+.image-gallery-image,
+.MuiCardMedia-root, 
+.makeStyles-imageGaller-123:after,
+.MuiBox-root-131:after,
+.MuiBox-root-316:after,
+.MuiBox-root-432:after,
+.MuiBox-root-304:after,
+.MuiBox-root-517:after,
+.MuiBox-root-287:after,
+.MuiBox-root-265:after,
+.MuiBox-root-1146:after,
+.MuiBox-root-159:after,
+.makeStyles-media-169:after,
+.makeStyles-content-808:after {
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  -webkit-transform: scale(1) rotate(0deg);
+          transform: scale(1) rotate(0deg);
+          overflow: hidden;
+}
 #HomeHeaderBlock:hover, 
+.image-gallery-image,
 .MuiCardMedia-root:hover, 
 .makeStyles-imageGaller-123:hover, 
 .MuiBox-root-131:hover, 
@@ -73,6 +125,7 @@ body{
 .MuiBox-root-432:hover,
 .MuiBox-root-304:hover,
 .MuiBox-root-287:hover,
+.MuiBox-root-517:hover,
 .MuiBox-root-265:hover,
 .MuiBox-root-1146:hover,
 .MuiBox-root-159:hover,
@@ -87,6 +140,9 @@ body{
   -webkit-transform: scale(1.25) rotate(0deg);
           transform: scale(1.25) rotate(0deg);
           overflow: hidden;
+}
+.MuiCardActionArea-root {
+  overflow: hidden;
 }
 #home .HomeHeaderBlock .MuiBox-root{ width: 40vw; margin-bottom: 10vh;}
 #home .WhoAreWe{ padding: 10vh 0 20vh }
