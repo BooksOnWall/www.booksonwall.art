@@ -25,6 +25,7 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import clsx from 'clsx';
 
 import { injectIntl} from 'react-intl';
+
 const apiURL = process.env.REACT_APP_API;
 
 const ArticlesMap = loadable(() => import('../map/articlesMap'));
@@ -186,7 +187,8 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
     <Grid container spacing={4} style={{padding:40}}>
 
     {articles.map((article, i) => {
-      format = (article.header_image.formats[format]) ? format : 'small';
+      console.log("article", article);
+
       return (
       <Grid item xs={12/1} md={12/2} xl={12/4} key={'gg'+i}>
       <Card className={classes.card} elevation={0} key={'article'+i}>
@@ -195,7 +197,7 @@ const News = ({messages, insert, articles, goToArticle, selected , hasCategory }
             <CardMedia
                   onClick={(e) => goToArticle(messages.menu.article+'/'+article.title)}
                   className={classes.media}
-                  image={apiURL + (article.header_image.formats[format]) ? article.header_image.formats[format].url: article.header_image.formats.small.url}
+                  image={apiURL + article.header_image.formats[format].url}
                   title={article.title}
                 />
         } 
