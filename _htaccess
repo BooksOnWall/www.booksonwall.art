@@ -2,9 +2,15 @@
 RewriteEngine On
 RewriteBase /subdirectory
 RewriteRule ^index\.html$ - [L]
-RewriteCond %{HTTPS} off
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]	
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteBase /subdirectory
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule . /index.html [L]
+<FilesMatch "\.(gz|pdf|zip|rar|apk)$" >
+    Order allow,deny
+    Allow from all
+    Satisfy any
+</FilesMatch>
 </IfModule>
